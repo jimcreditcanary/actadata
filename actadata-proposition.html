@@ -1,0 +1,557 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Acta Data — Data made human</title>
+<meta name="description" content="Acta Data turns data chaos into clarity. Strategy, AI, and delivery — for C-suites who need intelligent decisions, faster." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --magenta:#B5147B;
+    --magenta-deep:#7A0E54;
+    --magenta-soft:#F6E6F0;
+    --magenta-tint:#FBF5F8;
+    --ink:#161019;
+    --ink-soft:#4A3F4F;
+    --line:#E9DDE5;
+    --bg:#FFFFFF;
+    --shadow:0 30px 60px -25px rgba(122,14,84,.25);
+    --radius:18px;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    color:var(--ink);
+    background:var(--bg);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{font-family:'Archivo Black',Impact,sans-serif;letter-spacing:-.01em;line-height:1.02;margin:0}
+  h1{font-size:clamp(40px,6.4vw,84px)}
+  h2{font-size:clamp(28px,3.8vw,48px)}
+  h3{font-size:clamp(20px,2vw,26px)}
+  p{margin:0 0 1em}
+  a{color:var(--magenta);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+  .eyebrow{
+    text-transform:uppercase;letter-spacing:.18em;font-size:12px;font-weight:600;
+    color:var(--magenta);margin-bottom:18px;display:inline-block;
+  }
+  .btn{
+    display:inline-block;padding:14px 22px;border-radius:999px;font-weight:600;
+    font-size:15px;transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .btn-primary{background:var(--magenta);color:#fff}
+  .btn-primary:hover{background:var(--magenta-deep);text-decoration:none;transform:translateY(-1px);box-shadow:var(--shadow)}
+  .btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--ink)}
+  .btn-ghost:hover{background:var(--ink);color:#fff;text-decoration:none}
+
+  /* NAV */
+  nav.top{
+    position:sticky;top:0;z-index:30;background:rgba(255,255,255,.85);
+    backdrop-filter:saturate(140%) blur(10px);border-bottom:1px solid var(--line);
+  }
+  nav.top .row{display:flex;align-items:center;justify-content:space-between;padding:18px 28px;max-width:1180px;margin:0 auto}
+  .logo{display:flex;align-items:center;gap:12px;font-family:'Archivo Black';color:var(--magenta);font-size:22px;letter-spacing:.02em}
+  .logo svg{display:block}
+  nav .links{display:flex;gap:28px;align-items:center}
+  nav .links a{color:var(--ink);font-size:14px;font-weight:500}
+  nav .links a:hover{color:var(--magenta);text-decoration:none}
+  @media(max-width:760px){ nav .links{display:none} }
+
+  /* HERO */
+  .hero{
+    position:relative;overflow:hidden;
+    padding:90px 0 120px;
+    background:
+      radial-gradient(1100px 500px at 85% -10%, rgba(181,20,123,.10), transparent 60%),
+      linear-gradient(180deg,#fff 0%, #fff 60%, var(--magenta-tint) 100%);
+  }
+  .hero-grid{display:grid;grid-template-columns:1.25fr .9fr;gap:64px;align-items:center}
+  @media(max-width:900px){ .hero-grid{grid-template-columns:1fr;gap:36px} }
+  .hero h1 span{color:var(--magenta)}
+  .hero .lede{font-size:20px;color:var(--ink-soft);margin-top:24px;max-width:560px}
+  .hero-cta{margin-top:34px;display:flex;gap:14px;flex-wrap:wrap}
+  .stat-stack{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:40px;max-width:520px}
+  .stat{
+    background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+    padding:18px 20px;
+  }
+  .stat .n{font-family:'Archivo Black';font-size:30px;color:var(--magenta);line-height:1}
+  .stat .l{font-size:13px;color:var(--ink-soft);margin-top:6px}
+
+  /* hero visual: stylised data block */
+  .hero-art{
+    position:relative;border-radius:24px;
+    background:linear-gradient(135deg,var(--magenta) 0%, var(--magenta-deep) 100%);
+    color:#fff;padding:32px;box-shadow:var(--shadow);
+    aspect-ratio:1/1;display:flex;flex-direction:column;justify-content:space-between;
+    overflow:hidden;
+  }
+  .hero-art::before{
+    content:"";position:absolute;inset:auto -40% -60% auto;width:90%;height:90%;
+    background:rgba(255,255,255,.08);transform:rotate(18deg);border-radius:40px;
+  }
+  .hero-art .tag{font-size:12px;letter-spacing:.18em;text-transform:uppercase;opacity:.85}
+  .hero-art .quote{font-family:'Archivo Black';font-size:clamp(22px,2.3vw,30px);line-height:1.1}
+  .hero-art .meta{display:flex;justify-content:space-between;font-size:13px;opacity:.85}
+
+  /* SECTION */
+  section{padding:96px 0}
+  section .head{max-width:780px;margin-bottom:48px}
+  section .head p{color:var(--ink-soft);font-size:18px;margin-top:14px}
+
+  .alt{background:var(--magenta-tint)}
+  .dark{background:var(--ink);color:#fff}
+  .dark .head p, .dark p{color:#D9CFD7}
+  .dark .eyebrow{color:#FFB7DC}
+
+  /* PROBLEM band */
+  .problem-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  @media(max-width:860px){ .problem-grid{grid-template-columns:1fr} }
+  .problem{
+    background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+    padding:28px;position:relative;
+  }
+  .problem .num{
+    font-family:'Archivo Black';color:var(--magenta);font-size:14px;letter-spacing:.18em;
+    text-transform:uppercase;margin-bottom:12px;display:block;
+  }
+  .problem h3{margin-bottom:10px}
+  .problem p{color:var(--ink-soft);font-size:15px;margin:0}
+
+  /* SERVICES */
+  .svc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+  @media(max-width:860px){ .svc-grid{grid-template-columns:1fr} }
+  .svc{
+    background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+    padding:32px;transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .svc:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:transparent}
+  .svc .pill{
+    display:inline-block;background:var(--magenta-soft);color:var(--magenta);
+    font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+    padding:6px 12px;border-radius:999px;margin-bottom:16px;
+  }
+  .svc h3{margin-bottom:14px}
+  .svc ul{margin:14px 0 0 0;padding:0;list-style:none}
+  .svc li{
+    color:var(--ink-soft);font-size:15px;padding:8px 0 8px 26px;position:relative;
+    border-top:1px dashed var(--line);
+  }
+  .svc li:first-child{border-top:0}
+  .svc li::before{
+    content:"";position:absolute;left:0;top:13px;width:14px;height:14px;
+    background:var(--magenta);border-radius:3px;
+  }
+
+  /* APPROACH */
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line)}
+  @media(max-width:860px){ .steps{grid-template-columns:1fr} }
+  .step{padding:28px;background:#fff;border-right:1px solid var(--line)}
+  .step:last-child{border-right:0}
+  .step .n{font-family:'Archivo Black';color:var(--magenta);font-size:42px;line-height:1}
+  .step h3{margin:8px 0 6px;font-size:18px}
+  .step p{font-size:14px;color:var(--ink-soft);margin:0}
+  @media(max-width:860px){
+    .step{border-right:0;border-bottom:1px solid var(--line)}
+    .step:last-child{border-bottom:0}
+  }
+
+  /* PRICING */
+  .tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;align-items:stretch}
+  @media(max-width:980px){ .tiers{grid-template-columns:1fr} }
+  .tier{
+    background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+    padding:32px;display:flex;flex-direction:column;
+  }
+  .tier.featured{
+    background:linear-gradient(180deg,#fff,#FFF6FB);
+    border-color:var(--magenta);box-shadow:var(--shadow);transform:translateY(-6px);
+    position:relative;
+  }
+  .tier.featured::after{
+    content:"Most chosen";position:absolute;top:-12px;left:32px;background:var(--magenta);
+    color:#fff;font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;
+    padding:6px 12px;border-radius:999px;
+  }
+  .tier .name{font-family:'Archivo Black';font-size:22px;color:var(--ink);margin-bottom:6px}
+  .tier .who{color:var(--ink-soft);font-size:14px;margin-bottom:22px;min-height:42px}
+  .tier .price{font-family:'Archivo Black';font-size:34px;color:var(--magenta);line-height:1}
+  .tier .price small{font-family:'Inter';font-size:14px;color:var(--ink-soft);font-weight:500;display:block;margin-top:6px}
+  .tier ul{list-style:none;padding:0;margin:24px 0;flex:1}
+  .tier li{padding:10px 0;border-top:1px dashed var(--line);font-size:14.5px;color:var(--ink)}
+  .tier li:first-child{border-top:0}
+  .tier .duration{
+    background:var(--magenta-tint);color:var(--magenta-deep);font-size:12px;
+    font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+    padding:8px 12px;border-radius:8px;display:inline-block;margin-bottom:18px;
+  }
+  .tier .btn{align-self:stretch;text-align:center}
+
+  /* TEAM */
+  .team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  @media(max-width:900px){ .team-grid{grid-template-columns:1fr} }
+  .person{
+    background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+    padding:28px;
+  }
+  .person .role{
+    font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--magenta);
+    font-weight:600;margin-bottom:8px;
+  }
+  .person h3{margin-bottom:12px}
+  .person p{color:var(--ink-soft);font-size:14.5px;margin:0}
+  .avatar{
+    width:64px;height:64px;border-radius:50%;
+    background:linear-gradient(135deg,var(--magenta),var(--magenta-deep));
+    color:#fff;display:flex;align-items:center;justify-content:center;
+    font-family:'Archivo Black';font-size:22px;margin-bottom:18px;
+  }
+
+  /* OUTCOMES band */
+  .outcomes{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;text-align:center}
+  @media(max-width:860px){ .outcomes{grid-template-columns:repeat(2,1fr)} }
+  .outcome .n{font-family:'Archivo Black';font-size:48px;color:#fff;line-height:1}
+  .outcome .l{color:#E9CFE0;font-size:14px;margin-top:10px}
+
+  /* CTA */
+  .cta-card{
+    background:linear-gradient(135deg,var(--magenta),var(--magenta-deep));
+    color:#fff;border-radius:24px;padding:56px;
+    display:grid;grid-template-columns:1.4fr .8fr;gap:32px;align-items:center;
+    box-shadow:var(--shadow);
+  }
+  @media(max-width:860px){ .cta-card{grid-template-columns:1fr;padding:36px} }
+  .cta-card h2{color:#fff}
+  .cta-card p{color:#FAEAF3}
+  .cta-card .btn-primary{background:#fff;color:var(--magenta-deep)}
+  .cta-card .btn-primary:hover{background:#161019;color:#fff}
+
+  /* FOOTER */
+  footer{padding:40px 0;border-top:1px solid var(--line);color:var(--ink-soft);font-size:14px}
+  footer .row{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px}
+
+  /* Diagonal divider (matches brand element) */
+  .divider{
+    height:0;border-top:0;position:relative;overflow:visible;
+  }
+  .divider::after{
+    content:"";display:block;height:120px;
+    background:linear-gradient(135deg,transparent 49.6%, var(--magenta-tint) 50%);
+    margin-top:-120px;
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="top">
+  <div class="row">
+    <a href="#top" class="logo" aria-label="Acta Data">
+      <!-- inline blocky ACTA mark -->
+      <svg width="38" height="38" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <rect width="100" height="100" rx="14" fill="#B5147B"/>
+        <text x="50" y="44" text-anchor="middle" font-family="Archivo Black, Impact, sans-serif" font-size="26" fill="#fff">ACTA</text>
+        <text x="50" y="74" text-anchor="middle" font-family="Archivo Black, Impact, sans-serif" font-size="26" fill="#fff">DATA</text>
+      </svg>
+      ACTA DATA
+    </a>
+    <div class="links">
+      <a href="#problem">The Problem</a>
+      <a href="#services">What We Do</a>
+      <a href="#approach">Approach</a>
+      <a href="#pricing">Engagements</a>
+      <a href="#team">Who We Are</a>
+      <a href="#contact" class="btn btn-primary" style="padding:10px 18px;font-size:14px">Book a call</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Data strategy · AI · Delivery</span>
+      <h1>Make intelligent decisions, <span>quicker.</span></h1>
+      <p class="lede">
+        Acta Data turns data chaos into clarity for ambitious leadership teams.
+        We align strategy, deploy AI, and embed the talent to deliver — so your data
+        finally pays back the investment you've made in it.
+      </p>
+      <div class="hero-cta">
+        <a href="#contact" class="btn btn-primary">Book a 30-minute scoping call</a>
+        <a href="#services" class="btn btn-ghost">See what we do</a>
+      </div>
+      <div class="stat-stack">
+        <div class="stat"><div class="n">15+ yrs</div><div class="l">C-suite data &amp; AI leadership</div></div>
+        <div class="stat"><div class="n">4 sectors</div><div class="l">Retail · Media · Legal · Finance</div></div>
+        <div class="stat"><div class="n">Global</div><div class="l">Deployable specialist network</div></div>
+        <div class="stat"><div class="n">Boardroom → backlog</div><div class="l">Strategy and delivery, end-to-end</div></div>
+      </div>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <div class="tag">Data made human</div>
+      <div class="quote">"We don't sell strategy decks. We sell decisions you can act on by Monday."</div>
+      <div class="meta"><span>— The Acta Promise</span><span>est. 2024</span></div>
+    </div>
+  </div>
+</header>
+
+<!-- PROBLEM -->
+<section id="problem" class="alt">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">The C-suite problem</span>
+      <h2>You've invested in data. Where's the return?</h2>
+      <p>Most boards have spent years and millions on data. Few can answer a simple question — what is it actually doing for the business? We close that gap.</p>
+    </div>
+    <div class="problem-grid">
+      <div class="problem">
+        <span class="num">01 · Misalignment</span>
+        <h3>Strategy and metrics don't talk</h3>
+        <p>Departments optimise for competing KPIs. Investment is busy but uncoordinated, and the board can't see a single picture of performance.</p>
+      </div>
+      <div class="problem">
+        <span class="num">02 · Stalled value</span>
+        <h3>Tooling without traction</h3>
+        <p>Warehouses, dashboards and AI pilots exist — but they're not changing decisions. Insight stays in slides, not in the operating model.</p>
+      </div>
+      <div class="problem">
+        <span class="num">03 · Talent friction</span>
+        <h3>The right people, briefly</h3>
+        <p>Hiring full-time senior data and AI talent is slow and expensive. Big-four consultancy is overpriced for the actual work that needs doing.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">What we do</span>
+      <h2>From strategic insight to execution — and beyond.</h2>
+      <p>Four interlocking capabilities. Pick the one you need, or run them as a continuous programme. Every engagement is led by senior partners and delivered by our specialist network.</p>
+    </div>
+
+    <div class="svc-grid">
+      <div class="svc">
+        <span class="pill">01 · Align</span>
+        <h3>Strategic Alignment &amp; Measurement</h3>
+        <p>We rebuild the connection between business strategy and the metrics that actually move it — with a digital-twin view of the operating model so leaders see cause and effect, not just lagging indicators.</p>
+        <ul>
+          <li>Executive alignment workshops</li>
+          <li>KPI architecture &amp; value-tree design</li>
+          <li>Digital twin of the operating model</li>
+          <li>Board-grade performance narrative</li>
+        </ul>
+      </div>
+
+      <div class="svc">
+        <span class="pill">02 · Strategise</span>
+        <h3>Data &amp; Analytics Strategy Development</h3>
+        <p>A bespoke, sequenced data and AI strategy — from foundational measurement to advanced AI applications — paired with the advisory bandwidth to keep it relevant as conditions change.</p>
+        <ul>
+          <li>Data &amp; AI maturity assessment</li>
+          <li>Use-case prioritisation &amp; ROI modelling</li>
+          <li>Target operating model &amp; capability roadmap</li>
+          <li>Ongoing C-suite advisory</li>
+        </ul>
+      </div>
+
+      <div class="svc">
+        <span class="pill">03 · Deliver</span>
+        <h3>End-to-End Implementation</h3>
+        <p>We don't hand strategy over the wall. Our embedded squads — engineers, analysts, AI specialists — turn the roadmap into shipped product, integrated into your stack and your operations.</p>
+        <ul>
+          <li>Modern data platform &amp; architecture</li>
+          <li>Analytics engineering &amp; productisation</li>
+          <li>Applied AI &amp; ML delivery</li>
+          <li>Vendor &amp; partner orchestration</li>
+        </ul>
+      </div>
+
+      <div class="svc">
+        <span class="pill">04 · Sustain</span>
+        <h3>Continuous Upskilling &amp; Mentoring</h3>
+        <p>Through the Data Action Mentor Network, your people grow into the capability you need — so the value compounds long after we step out.</p>
+        <ul>
+          <li>1:1 leader coaching</li>
+          <li>Team capability programmes</li>
+          <li>Hiring scorecards &amp; talent design</li>
+          <li>Ongoing community of practice</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APPROACH -->
+<section id="approach" class="alt">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">How we engage</span>
+      <h2>Senior-led. Outcome-bound. Quietly relentless.</h2>
+      <p>One simple rhythm — diagnose, decide, deliver, develop. No 80-page decks; just decisions, dashboards, and shipped change.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="n">01</div><h3>Diagnose</h3><p>Two weeks to map your data reality, the strategy gap, and the decisions waiting on it.</p></div>
+      <div class="step"><div class="n">02</div><h3>Decide</h3><p>A C-suite-ready roadmap with sequenced bets, ROI models, and clear ownership.</p></div>
+      <div class="step"><div class="n">03</div><h3>Deliver</h3><p>Embedded squads ship platform, analytics and AI — measured against the business case.</p></div>
+      <div class="step"><div class="n">04</div><h3>Develop</h3><p>We coach, mentor and step out — leaving capability, not dependency.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Engagement packages</span>
+      <h2>Three ways to start. One promise: senior people, real outcomes.</h2>
+      <p>Indicative pricing is a starting point — every engagement is scoped against your specific decisions. All packages include partner-led delivery and access to our specialist network.</p>
+    </div>
+
+    <div class="tiers">
+      <div class="tier">
+        <span class="duration">2–3 weeks</span>
+        <div class="name">Compass</div>
+        <div class="who">A focused diagnostic for boards that need a clear answer on where their data investment stands.</div>
+        <div class="price">From £18,000<small>fixed fee · single engagement</small></div>
+        <ul>
+          <li>Data &amp; AI maturity audit</li>
+          <li>Two C-suite alignment workshops</li>
+          <li>Opportunity map &amp; quick-win shortlist</li>
+          <li>Board-ready findings deck</li>
+          <li>30-day post-engagement advisory</li>
+        </ul>
+        <a href="#contact" class="btn btn-ghost">Start with Compass</a>
+      </div>
+
+      <div class="tier featured">
+        <span class="duration">8–12 weeks</span>
+        <div class="name">Catalyst</div>
+        <div class="who">A strategy sprint that produces a sequenced, costed, board-approved data &amp; AI roadmap.</div>
+        <div class="price">From £85,000<small>fixed fee · phased payment</small></div>
+        <ul>
+          <li>Everything in Compass</li>
+          <li>Target operating model &amp; KPI architecture</li>
+          <li>Digital-twin design of the operating model</li>
+          <li>AI use-case portfolio with ROI cases</li>
+          <li>Talent &amp; capability gap plan</li>
+          <li>Quarterly C-suite advisory for 6 months</li>
+        </ul>
+        <a href="#contact" class="btn btn-primary">Run a Catalyst sprint</a>
+      </div>
+
+      <div class="tier">
+        <span class="duration">6 months+</span>
+        <div class="name">Embedded</div>
+        <div class="who">A senior-led delivery partnership — our squad embedded inside yours, shipping the roadmap.</div>
+        <div class="price">From £35,000<small>per month · scaled to scope</small></div>
+        <ul>
+          <li>Embedded data &amp; AI squad</li>
+          <li>Platform, analytics &amp; AI delivery</li>
+          <li>Mentor Network for your in-house team</li>
+          <li>Monthly C-suite executive review</li>
+          <li>Outcome-linked commercial model on request</li>
+        </ul>
+        <a href="#contact" class="btn btn-ghost">Plan an Embedded engagement</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OUTCOMES -->
+<section class="dark">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">What good looks like</span>
+      <h2 style="color:#fff">Outcomes our clients ask us for.</h2>
+      <p>Indicative ranges from comparable engagements across retail, media, legal and financial services. Specific outcomes scoped per client.</p>
+    </div>
+    <div class="outcomes">
+      <div class="outcome"><div class="n">3–6×</div><div class="l">faster time-to-decision in the executive cadence</div></div>
+      <div class="outcome"><div class="n">25–40%</div><div class="l">reduction in duplicated reporting &amp; tooling spend</div></div>
+      <div class="outcome"><div class="n">90 days</div><div class="l">from first workshop to first AI use case in production</div></div>
+      <div class="outcome"><div class="n">1 view</div><div class="l">of performance — boardroom to operating floor</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section id="team">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Who we are</span>
+      <h2>Strategy leaders. A managed network of world-class data &amp; AI talent.</h2>
+      <p>Our partners have sat in the seats your data is meant to serve — operator, founder, board advisor. The work is led by them, end to end.</p>
+    </div>
+    <div class="team-grid">
+      <div class="person">
+        <div class="avatar">SA</div>
+        <div class="role">Founder &amp; Principal Consultant</div>
+        <h3>Shaun Adams</h3>
+        <p>15+ years transforming data into strategic assets across retail, media, legal, SaaS and finance. Specialist in unifying value streams, integrating data, analytics and strategic experimentation to refine decision-making — and getting organisations to act on what their data tells them.</p>
+      </div>
+      <div class="person">
+        <div class="avatar">LA</div>
+        <div class="role">Founder &amp; Consulting Project Manager</div>
+        <h3>Lauren Adams</h3>
+        <p>15+ years elevating higher education and merging project leadership with data-driven delivery. Crafts solid project frameworks and sets the standards that turn ambition into delivered outcomes — on time, in scope, with the team behind it.</p>
+      </div>
+      <div class="person">
+        <div class="avatar">N</div>
+        <div class="role">The Network</div>
+        <h3>Data &amp; AI Specialists</h3>
+        <p>A curated, deployable bench of senior data engineers, analytics engineers, ML practitioners and AI architects. Right-sized squads for the work in front of you — without the overhead of a global consultancy.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="contact">
+  <div class="wrap">
+    <div class="cta-card">
+      <div>
+        <span class="eyebrow" style="color:#FFD9EC">Let's talk</span>
+        <h2>Book a 30-minute scoping call.</h2>
+        <p style="font-size:18px;max-width:560px">Bring one decision your data should be helping you make. We'll tell you, on the call, whether Acta Data is the right partner — and what we'd do in the first 30 days.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <a class="btn btn-primary" href="mailto:hello@actadata.io?subject=Scoping%20call%20with%20Acta%20Data">Email hello@actadata.io</a>
+        <a class="btn btn-ghost" style="border-color:#fff;color:#fff" href="#">Schedule via calendar →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap row">
+    <div>© <span id="yr"></span> Acta Data · Data made human.</div>
+    <div>Strategy · AI · Delivery — for boards that want both.</div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  // smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click',e=>{
+      const id=a.getAttribute('href');
+      if(id.length>1){
+        const t=document.querySelector(id);
+        if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'})}
+      }
+    });
+  });
+</script>
+</body>
+</html>
