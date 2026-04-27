@@ -121,7 +121,7 @@ White is `text-foreground` (`#E6EEF8` via HSL). Muted text is `text-muted-foregr
 
 ### Navigation
 
-`components/nav.tsx` is a **client component**. The nav is fixed to top but starts hidden (`opacity-0 -translate-y-4 pointer-events-none`) and reveals once `window.scrollY > window.innerHeight * 0.7` — i.e. after the user has scrolled past the hero. This keeps the hero clean and the nav out of the way until it earns its place. Do not change this default reveal behaviour without a reason — Jim asked for it explicitly.
+`components/nav.tsx` is a **client component**. The header bar and the Acta Data **logo are ALWAYS visible at the top**, regardless of scroll position — Jim is firm on this. Above the hero, the bar is transparent (no background, no border). Once the user scrolls past `window.scrollY > window.innerHeight * 0.7` (i.e. past the hero), the bar picks up a `bg-navy/70` + `backdrop-blur` surface AND the link list + CTA buttons fade/slide in. This keeps the hero visually clean while the brand is never absent from the viewport. Do not hide the logo on scroll. Do not change the threshold without a reason.
 
 ### Logo
 
@@ -227,3 +227,17 @@ At the end of every session, **append** a new entry below. Format:
 - Vercel preview URL still not captured here.
 - Calendar CTA still `#`.
 - No analytics yet.
+
+### 2026-04-27b — Logo always visible at top
+**Done:**
+- Reworked `components/nav.tsx` so the **logo is always visible** at the top, regardless of scroll position. The previous behaviour (entire nav hidden over the hero) was wrong — the brand should never be absent from the viewport.
+- Bar is transparent above the hero, then transitions to `bg-navy/70 backdrop-blur` after the 70%-viewport scroll threshold.
+- Link list + CTA buttons keep the same reveal-after-hero behaviour (fade + slide in).
+- Skill rule under "Navigation" rewritten to lock this in. Build verified clean.
+
+**Outstanding:**
+- Real client logos for `LogoStrip`.
+- Real quote text + attribution for `Quote`.
+- Vercel preview URL.
+- Calendar CTA target.
+- Analytics.
