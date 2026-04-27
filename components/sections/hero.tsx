@@ -9,7 +9,7 @@ export function Hero() {
       <div className="container relative pt-20 pb-28 md:pt-28 md:pb-36">
         <Badge variant="electric" className="mb-6 gap-1.5">
           <span className="h-1.5 w-1.5 rounded-full bg-electric animate-pulse" />
-          Acta Data Ltd · Data &amp; AI consultancy
+          Data &amp; AI consultancy
         </Badge>
         <h1 className="max-w-4xl text-4xl md:text-6xl lg:text-7xl font-semibold tracking-[-0.03em] leading-[1.02]">
           Your entire data function.{" "}

@@ -34,6 +34,7 @@ This skill contains everything you need to clone, edit, build, and deploy withou
   git push https://jimcreditcanary:<GH_TOKEN>@github.com/jimcreditcanary/actadata.git main
   ```
 - **Auth token:** the real PAT is not committed (GitHub secret scanning blocks it). It's stored in the user's `acta-data-website-SKILL.md` on `~/Desktop/acta/` and in the installed skill at `~/.claude/skills/acta-data-website/SKILL.md`. Replace `<GH_TOKEN>` in commands above with that value.
+- **Legal entity:** the registered company is **Braemar Brook & New Limited**, trading as **ActaData**. Footer copyright must read `© YYYY Braemar Brook & New Limited T/A ActaData. All rights reserved.` Brand-facing copy elsewhere uses "Acta Data" / "Acta".
 - **Git config:** `user.email "jim@creditcanary.co.uk"` / `user.name "Jim"`
 - **Source brand assets** (legacy logos, founder photos) live in `~/Desktop/acta` and in the repo's `legacy/` folder.
 
@@ -116,7 +117,7 @@ White is `text-foreground` (`#E6EEF8` via HSL). Muted text is `text-muted-foregr
 
 ### Logo
 
-The `Logo` component (`components/logo.tsx`) renders a navy rounded square with white "ACTA" / electric-blue "DATA" stacked text — plus an "ACTA·DATA" wordmark next to it. Use this in nav and footer. **Never re-introduce magenta** — that brand was retired.
+The `Logo` component (`components/logo.tsx`) renders the official ACTA/DATA wordmark as **inlined SVG** — path data byte-identical to the uploaded `actalogo.svg` (also stored at `/public/logo.svg` for OG cards / external use). Eight letterform paths, white at `fillOpacity="0.5"`. **Never edit the path "d" strings or fill values** — Jim cares about pixel fidelity here. **Never re-introduce magenta** — that brand was retired. The favicon (`/public/favicon.ico` + `favicon.svg`) is built from the same `A` letterform path, electric-blue on a navy rounded square.
 
 ### Voice and copy rules
 
@@ -186,3 +187,16 @@ At the end of every session, **append** a new entry below. Format:
 - No `/insights` or `/case-studies` routes yet — single-page site for now.
 - The Activity Schema concept is mentioned (Why Acta + What We Build); a deeper page on it might be worth building once Jim has the explainer copy.
 - KPI mock data is plausible but generic — could be tuned per real client conversation.
+
+### 2026-04-27 — Patch: Next.js bump, real logo, favicon, legal entity wired in
+**Done:**
+- Bumped Next.js `14.2.15 → 14.2.35` to clear the security advisory in the Vercel deploy log.
+- Replaced the placeholder logo with the uploaded `actalogo.svg`. After a render bug on Vercel where `<img src="/logo.svg">` rendered as alt text, switched to **inlined SVG** in `components/logo.tsx` — paths byte-identical to the source, `fillOpacity="0.5"` preserved.
+- Built `/favicon.ico` (multi-res 16/32/48) + `/favicon.svg` from the `A` path of the uploaded logo, electric-blue on navy. Wired into `app/layout.tsx` via `metadata.icons`.
+- Updated legal entity references: footer copyright now reads "© YYYY Braemar Brook & New Limited T/A ActaData. All rights reserved." Removed legal entity from the hero badge (now just "Data & AI consultancy").
+- Build verified clean before each push.
+
+**Outstanding:**
+- Vercel preview URL still not captured here.
+- Calendar CTA still `#`.
+- No analytics yet.

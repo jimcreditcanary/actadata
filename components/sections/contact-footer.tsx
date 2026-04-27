@@ -32,7 +32,7 @@ export function ContactFooter() {
         <div className="container flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
           <Logo />
           <div className="text-center md:text-right">
-            <div>© {new Date().getFullYear()} Acta Data Ltd. All rights reserved.</div>
+            <div>© {new Date().getFullYear()} Braemar Brook & New Limited T/A ActaData. All rights reserved.</div>
             <div className="mt-1 text-xs">Strategy · Build · Run — for consumer businesses.</div>
           </div>
         </div>
