@@ -10,7 +10,7 @@ export function PricingAnchor() {
           <div className="relative grid lg:grid-cols-2 gap-10 items-start">
             <div>
               <Badge variant="muted" className="mb-5">The honest comparison</Badge>
-              <h2 className="text-3xl md:text-5xl font-semibold tracking-tight leading-tight">
+              <h2 className="font-display font-normal text-4xl md:text-6xl tracking-[-0.02em] leading-[1.05]">
                 12 months. <span className="text-electric">£120k.</span> A working data function.
               </h2>
               <p className="mt-5 text-lg text-muted-foreground max-w-xl">

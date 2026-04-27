@@ -102,12 +102,12 @@ White is `text-foreground` (`#E6EEF8` via HSL). Muted text is `text-muted-foregr
 
 ### Typography
 
-- Geist Sans for everything except numerics (which can use `tabular-nums`).
-- Section H2: `text-3xl md:text-5xl font-semibold tracking-tight leading-tight`.
-- H3: `text-lg font-semibold tracking-tight`.
-- Eyebrow pattern: `Badge` (`muted` or `electric` variant) above each H2.
-- Body: `text-muted-foreground` for paragraphs, `text-foreground` for emphasis.
-- Tracking is tight: `tracking-tight` on display, `-0.03em` for the hero H1.
+- **Display headings** (Hero H1, all section H2s): **Instrument Serif** via `font-display` class. Loaded as a Google Font through `next/font/google` in `app/layout.tsx`. Weight `400` only — never `font-semibold` on serif headings (they have intrinsic weight). Tracking tight (`tracking-[-0.02em]` for H2, `tracking-[-0.03em]` for H1). The accent phrase in headings can use `<span className="italic text-electric">` for an editorial highlight.
+- **Sans body / sub-headings**: Geist Sans for everything else — paragraphs, H3s, KPI labels, badges, buttons.
+- **Numerics**: `tabular-nums` on all stat tiles and KPIs.
+- Standard H2 class string (use this exact combo): `font-display font-normal text-4xl md:text-6xl tracking-[-0.02em] leading-[1.05]`.
+- H3: `text-lg font-semibold tracking-tight` (still Geist).
+- Eyebrow pattern: `Badge` (`muted` or `electric`) above each H2.
 
 ### Layout
 
@@ -247,6 +247,21 @@ At the end of every session, **append** a new entry below. Format:
 - Reworked `components/nav.tsx` again. The bar (translucent navy + backdrop-blur + bottom border) is always present from page load. Logo always visible (left). CTA buttons "Talk to us" + "Book a call" always visible (right).
 - The only thing that hides above the hero is the centered link list — it fades + slides in once the user scrolls past ~70% of the viewport height.
 - Skill rule under "Navigation" rewritten to reflect this. Build verified clean.
+
+**Outstanding:**
+- Real client logos for `LogoStrip`.
+- Real quote text + attribution for `Quote`.
+- Vercel preview URL.
+- Calendar CTA target.
+- Analytics.
+
+### 2026-04-27d — Serif display font + abstract aurora hero background
+**Done:**
+- Loaded **Instrument Serif** (Google Fonts, weight 400, italic enabled) via `next/font/google` and exposed as `--font-instrument-serif` / Tailwind `font-display`.
+- Applied `font-display font-normal text-4xl md:text-6xl tracking-[-0.02em] leading-[1.05]` to all 8 section H2s. Hero H1 uses the same family at 5xl/7xl/[88px] sizes. Geist remains the sans body font.
+- Hero gets a real abstract background: layered aurora gradient blobs (electric + sky) with `mix-blend-screen` and three independent slow-drift keyframe animations; an SVG of warped concentric arcs evoking topography / data wavefronts; soft terminal-grid; and an SVG-noise grain at low opacity for tactile depth. Honors `prefers-reduced-motion`.
+- The hero accent phrase "Built, handed over, done." is now serif italic in electric blue — small editorial moment.
+- Skill typography rules rewritten. Build verified clean.
 
 **Outstanding:**
 - Real client logos for `LogoStrip`.

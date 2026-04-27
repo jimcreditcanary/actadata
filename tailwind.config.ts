@@ -67,8 +67,9 @@ const config: Config = {
         sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
-        sans: ["var(--font-geist-sans)", "Inter", "system-ui", "sans-serif"],
-        mono: ["var(--font-geist-mono)", "ui-monospace", "monospace"],
+        sans:    ["var(--font-geist-sans)", "Inter", "system-ui", "sans-serif"],
+        mono:    ["var(--font-geist-mono)", "ui-monospace", "monospace"],
+        display: ["var(--font-instrument-serif)", "ui-serif", "Georgia", "serif"],
       },
       backgroundImage: {
         "grid-fade":
