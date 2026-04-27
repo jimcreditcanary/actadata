@@ -121,7 +121,7 @@ White is `text-foreground` (`#E6EEF8` via HSL). Muted text is `text-muted-foregr
 
 ### Navigation
 
-`components/nav.tsx` is a **client component**. The header bar and the Acta Data **logo are ALWAYS visible at the top**, regardless of scroll position — Jim is firm on this. Above the hero, the bar is transparent (no background, no border). Once the user scrolls past `window.scrollY > window.innerHeight * 0.7` (i.e. past the hero), the bar picks up a `bg-navy/70` + `backdrop-blur` surface AND the link list + CTA buttons fade/slide in. This keeps the hero visually clean while the brand is never absent from the viewport. Do not hide the logo on scroll. Do not change the threshold without a reason.
+`components/nav.tsx` is a **client component**. From page load, the header bar (`bg-navy/70` + `backdrop-blur` + bottom border), the **logo** (left), and the **CTA buttons** "Talk to us" + "Book a call →" (right) are all ALWAYS visible. The only element that changes on scroll is the **centered link list** (Why now / What we build / The Summary Page / Engagements / Verticals) — it's hidden on load and fades + slides in once `window.scrollY > window.innerHeight * 0.7` (i.e. past the hero). Rationale: keep the hero text clean of nav-link clutter, but never hide the brand or remove the user's path to a CTA. Do not hide the logo or the CTAs on scroll. Do not change the threshold without a reason.
 
 ### Logo
 
@@ -234,6 +234,19 @@ At the end of every session, **append** a new entry below. Format:
 - Bar is transparent above the hero, then transitions to `bg-navy/70 backdrop-blur` after the 70%-viewport scroll threshold.
 - Link list + CTA buttons keep the same reveal-after-hero behaviour (fade + slide in).
 - Skill rule under "Navigation" rewritten to lock this in. Build verified clean.
+
+**Outstanding:**
+- Real client logos for `LogoStrip`.
+- Real quote text + attribution for `Quote`.
+- Vercel preview URL.
+- Calendar CTA target.
+- Analytics.
+
+### 2026-04-27c — Nav bar back on load; only the centered links wait for scroll
+**Done:**
+- Reworked `components/nav.tsx` again. The bar (translucent navy + backdrop-blur + bottom border) is always present from page load. Logo always visible (left). CTA buttons "Talk to us" + "Book a call" always visible (right).
+- The only thing that hides above the hero is the centered link list — it fades + slides in once the user scrolls past ~70% of the viewport height.
+- Skill rule under "Navigation" rewritten to reflect this. Build verified clean.
 
 **Outstanding:**
 - Real client logos for `LogoStrip`.
