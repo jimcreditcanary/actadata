@@ -66,15 +66,17 @@ legacy/             — old static-HTML version, kept for reference
 
 ## Page Section Order (always)
 
-1. `Hero`              — headline + CTA + trust strip
-2. `Problem`           — internal team cost vs Acta
-3. `WhatWeBuild`       — six capability tiles
-4. `SummaryPageDemo`   — **the centrepiece** — tabbed dashboard mock
-5. `EngagementModels`  — six engagement cards
-6. `Verticals`         — Retail / Credit / Legal / Services tabs
-7. `WhyActa`           — four reasons
-8. `PricingAnchor`     — £120k vs £350k+
-9. `ContactFooter`     — CTA + footer
+1.  `Hero`              — headline + CTA + trust strip
+2.  `LogoStrip`         — auto-marquee of past-client logos (placeholders until real SVGs land)
+3.  `Problem`           — internal team cost vs Acta
+4.  `WhatWeBuild`       — six capability tiles
+5.  `SummaryPageDemo`   — **the centrepiece** — tabbed dashboard mock
+6.  `Quote`             — single big pullout testimonial (one only — never more than one)
+7.  `EngagementModels`  — six engagement cards
+8.  `Verticals`         — Retail / Credit / Legal / Services tabs
+9.  `WhyActa`           — four reasons
+10. `PricingAnchor`     — £120k vs £350k+
+11. `ContactFooter`     — CTA + footer
 
 ## Standing Design Rules
 
@@ -85,13 +87,15 @@ These apply to **every section** added. Don't deviate without explicit instructi
 Defined in `tailwind.config.ts` and `app/globals.css`. Use these — no new accents.
 
 ```
-navy DEFAULT   #050D1A   — page background
-navy 50        #0A1828   — card surface
-navy 100       #0F2236   — elevated surface
+navy DEFAULT   #070A1A   — page background (slight purple-warm shift, scytale-flavoured)
+navy 50        #0C1428   — card surface
+navy 100       #121C36   — elevated surface
 navy 200/300/400        — borders, hover states
-electric DEFAULT #3DDBFF — single brand accent (electric blue)
+electric DEFAULT #3DDBFF — primary brand accent (electric blue)
 electric dim   #1FB8DF
 electric glow  #7CE7FF   — hover
+sky DEFAULT    #7AA8FF   — secondary accent (sky blue), pairs with electric for gradients
+sky soft       #A9C4FF
 ```
 
 White is `text-foreground` (`#E6EEF8` via HSL). Muted text is `text-muted-foreground`.
@@ -115,6 +119,10 @@ White is `text-foreground` (`#E6EEF8` via HSL). Muted text is `text-muted-foregr
 - Always render a `Badge` eyebrow above section H2s.
 - Background atmospherics — use sparingly: `bg-terminal-grid`, `bg-grid-fade`, `bg-scan` are defined as utilities for that "trading terminal" feel.
 
+### Navigation
+
+`components/nav.tsx` is a **client component**. The nav is fixed to top but starts hidden (`opacity-0 -translate-y-4 pointer-events-none`) and reveals once `window.scrollY > window.innerHeight * 0.7` — i.e. after the user has scrolled past the hero. This keeps the hero clean and the nav out of the way until it earns its place. Do not change this default reveal behaviour without a reason — Jim asked for it explicitly.
+
 ### Logo
 
 The `Logo` component (`components/logo.tsx`) renders the official ACTA/DATA wordmark as **inlined SVG** — path data byte-identical to the uploaded `actalogo.svg` (also stored at `/public/logo.svg` for OG cards / external use). Eight letterform paths, white at `fillOpacity="0.5"`. **Never edit the path "d" strings or fill values** — Jim cares about pixel fidelity here. **Never re-introduce magenta** — that brand was retired. The favicon (`/public/favicon.ico` + `favicon.svg`) is built from the same `A` letterform path, electric-blue on a navy rounded square.
@@ -128,6 +136,8 @@ The `Logo` component (`components/logo.tsx`) renders the official ACTA/DATA word
 - Six capabilities are fixed and in order: Integrations & Data Sources → Cloud Warehouse & ETL → Business Mapping & Metric Trees → Core Reporting Suite → **The Summary Page (hero output)** → LLM Readiness.
 - Verticals are fixed and in order: Retail → Consumer Credit → Legal → Consumer Services.
 - The flagship pricing is **12 months × £10k = £120k**, contrasted against ~£350k+ for an internal team.
+- Logo strip: only past-client logos (or anonymised stand-ins) sit there. Never invented brand names. Strip is auto-marquee with a soft mask on each edge. Copy must read "Senior team experience across…" until ActaData itself has shipped engagements.
+- Quote section: at most ONE quote on the homepage. Use real attribution (name, title, company). If no real quote yet, the section ships with placeholder copy clearly labelled in code as `Placeholder` — never publish placeholder copy as real attribution.
 - Avoid: "synergy", "leverage", "unlock", "transformation journey", "data-driven" (overused).
 
 ### The Summary Page demo
@@ -197,6 +207,23 @@ At the end of every session, **append** a new entry below. Format:
 - Build verified clean before each push.
 
 **Outstanding:**
+- Vercel preview URL still not captured here.
+- Calendar CTA still `#`.
+- No analytics yet.
+
+### 2026-04-27 — Scytale-flavoured polish: nav-after-hero, logo strip, pullout quote, palette tweak
+**Done:**
+- Reviewed scytale.ai's site (Montserrat type, indigo/sky-blue accents, deep purple-tinted dark surface) and lifted three things that fit ActaData's brief without diluting brand: secondary `sky` accent (`#7AA8FF`), slight purple-warmth on the navy surface, and the auto-marquee logo strip pattern.
+- Added `components/sections/logo-strip.tsx` — full-bleed auto-scrolling marquee, edge mask, pause-on-hover, 8 placeholder client tiles. Sits directly under the hero. Visibly placeholder until real client SVGs are dropped in.
+- Added `components/sections/quote.tsx` — single big pullout quote with oversized opening mark, dual-glow background, placeholder attribution. Sits between `SummaryPageDemo` and `EngagementModels` so it lands right after the wow moment.
+- `components/nav.tsx` is now a **client component** that reveals only after `window.scrollY > 0.7 * viewportHeight` — past the hero. Smooth opacity + translate transition.
+- Tailwind palette updated: `navy.DEFAULT` warmed slightly toward purple (`#070A1A`), new `sky` accent added. `globals.css` background gradients now use both electric and sky tones.
+- Section order updated to 11 sections (LogoStrip + Quote inserted). Skill rules updated for nav behaviour, palette, logo strip, and quote.
+- Build verified clean.
+
+**Outstanding:**
+- **Real client logos** — drop SVGs into `public/clients/` and replace `clients[]` array in `logo-strip.tsx`. Eight ideal, six minimum.
+- **Real quote** — text + name + title + company in `quote.tsx`. One quote only.
 - Vercel preview URL still not captured here.
 - Calendar CTA still `#`.
 - No analytics yet.

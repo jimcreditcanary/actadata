@@ -44,17 +44,21 @@ const config: Config = {
           foreground: "hsl(var(--card-foreground))",
         },
         navy: {
-          DEFAULT: "#050D1A",
-          50: "#0A1828",
-          100: "#0F2236",
-          200: "#142B44",
-          300: "#1E3550",
-          400: "#2A4564",
+          DEFAULT: "#070A1A",     /* slight purple-warm shift */
+          50: "#0C1428",
+          100: "#121C36",
+          200: "#1A2544",
+          300: "#243054",
+          400: "#324166",
         },
         electric: {
           DEFAULT: "#3DDBFF",
           dim:     "#1FB8DF",
           glow:    "#7CE7FF",
+        },
+        sky: {                    /* secondary accent, paired with electric for gradients */
+          DEFAULT: "#7AA8FF",
+          soft:    "#A9C4FF",
         },
       },
       borderRadius: {

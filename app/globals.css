@@ -4,24 +4,24 @@
 
 @layer base {
   :root {
-    --background: 213 65% 6%;          /* #050D1A */
+    --background: 230 50% 6%;          /* warmer navy-purple #070A1A */
     --foreground: 213 35% 92%;
-    --card: 213 50% 9%;                /* #0A1828 */
+    --card: 225 45% 10%;
     --card-foreground: 213 35% 92%;
-    --popover: 213 50% 9%;
+    --popover: 225 45% 10%;
     --popover-foreground: 213 35% 92%;
     --primary: 190 100% 62%;           /* electric blue #3DDBFF */
-    --primary-foreground: 213 65% 6%;
-    --secondary: 213 40% 14%;
+    --primary-foreground: 230 50% 6%;
+    --secondary: 225 40% 15%;
     --secondary-foreground: 213 35% 92%;
-    --muted: 213 30% 18%;
-    --muted-foreground: 213 18% 60%;
+    --muted: 225 30% 18%;
+    --muted-foreground: 220 18% 62%;
     --accent: 190 100% 62%;
-    --accent-foreground: 213 65% 6%;
+    --accent-foreground: 230 50% 6%;
     --destructive: 0 70% 55%;
     --destructive-foreground: 213 35% 92%;
-    --border: 213 30% 18%;
-    --input: 213 30% 18%;
+    --border: 225 30% 18%;
+    --input: 225 30% 18%;
     --ring: 190 100% 62%;
     --radius: 0.85rem;
   }
@@ -32,7 +32,7 @@
     font-feature-settings: "cv11", "ss01";
     background-image:
       radial-gradient(900px 480px at 80% -10%, rgba(61,219,255,0.08), transparent 60%),
-      radial-gradient(700px 400px at 0% 30%, rgba(61,219,255,0.05), transparent 60%);
+      radial-gradient(900px 520px at 0% 35%, rgba(122,168,255,0.08), transparent 60%);
     background-attachment: fixed;
   }
   ::selection { background: hsl(var(--primary) / .35); color: white; }
@@ -46,10 +46,7 @@
   background-size: 56px 56px;
 }
 
-.shimmer {
-  position: relative;
-  overflow: hidden;
-}
+.shimmer { position: relative; overflow: hidden; }
 .shimmer::after {
   content: "";
   position: absolute; inset: 0;
@@ -64,4 +61,19 @@
     0 0 0 1px rgba(61,219,255,0.30),
     0 0 40px rgba(61,219,255,0.18),
     inset 0 0 60px rgba(61,219,255,0.04);
+}
+
+/* marquee for the logo strip */
+@keyframes marquee {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(-50%, 0, 0); }
+}
+.marquee-track {
+  animation: marquee 38s linear infinite;
+  will-change: transform;
+}
+.marquee:hover .marquee-track { animation-play-state: paused; }
+.marquee-mask {
+  -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+          mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
 }
