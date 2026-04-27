@@ -9,6 +9,13 @@ export const metadata: Metadata = {
   description:
     "Acta Data builds the data and AI capability your consumer business needs — integrations, warehouse, ETL, metric trees, board-grade reporting, LLM readiness — in months, not years.",
   metadataBase: new URL("https://actadata.io"),
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
+    ],
+    shortcut: "/favicon.ico",
+  },
   openGraph: {
     title: "Acta Data — Your entire data function. Built, handed over, done.",
     description:
