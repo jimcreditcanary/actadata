@@ -202,7 +202,7 @@ export function SummaryPageDemo() {
       <div className="container">
         <div className="max-w-3xl">
           <Badge variant="electric" className="mb-5">The Summary Page · Hero output</Badge>
-          <h2 className="font-display font-normal text-4xl md:text-6xl tracking-[-0.02em] leading-[1.05]">
+          <h2 className="font-display text-4xl md:text-5xl tracking-tight leading-[1.05]">
             One page. The whole business. <span className="text-electric">Refreshed daily.</span>
           </h2>
           <p className="mt-5 text-lg text-muted-foreground">

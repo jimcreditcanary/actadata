@@ -1,15 +1,14 @@
 import type { Metadata } from "next";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
-import { Instrument_Serif } from "next/font/google";
+import { Archivo_Black } from "next/font/google";
 import "./globals.css";
 import { Nav } from "@/components/nav";
 
-const instrument = Instrument_Serif({
+const archivoBlack = Archivo_Black({
   subsets: ["latin"],
   weight: "400",
-  style: ["normal", "italic"],
-  variable: "--font-instrument-serif",
+  variable: "--font-archivo-black",
   display: "swap",
 });
 
@@ -40,7 +39,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="en"
-      className={`${GeistSans.variable} ${GeistMono.variable} ${instrument.variable} dark`}
+      className={`${GeistSans.variable} ${GeistMono.variable} ${archivoBlack.variable} dark`}
       suppressHydrationWarning
     >
       <body className="min-h-dvh bg-background font-sans">

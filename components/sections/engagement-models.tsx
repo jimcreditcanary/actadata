@@ -48,7 +48,7 @@ export function EngagementModels() {
       <div className="container">
         <div className="max-w-3xl">
           <Badge variant="muted" className="mb-5">Engagement models</Badge>
-          <h2 className="font-display font-normal text-4xl md:text-6xl tracking-[-0.02em] leading-[1.05]">
+          <h2 className="font-display text-4xl md:text-5xl tracking-tight leading-[1.05]">
             Choose how you work with us.
           </h2>
           <p className="mt-5 text-lg text-muted-foreground">

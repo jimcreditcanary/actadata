@@ -18,7 +18,7 @@ export function Problem() {
       <div className="container">
         <div className="max-w-3xl">
           <Badge variant="muted" className="mb-5">The problem</Badge>
-          <h2 className="font-display font-normal text-4xl md:text-6xl tracking-[-0.02em] leading-[1.05]">
+          <h2 className="font-display text-4xl md:text-5xl tracking-tight leading-[1.05]">
             Building a data team is expensive,{" "}
             <span className="text-electric">slow</span>, and usually wrong.
           </h2>

@@ -9,7 +9,7 @@ export function ContactFooter() {
         <div className="container">
           <div className="mx-auto max-w-3xl text-center">
             <Badge variant="electric" className="mb-6">Let's talk</Badge>
-            <h2 className="font-display font-normal text-4xl md:text-6xl tracking-[-0.02em] leading-[1.05]">
+            <h2 className="font-display text-4xl md:text-5xl tracking-tight leading-[1.05]">
               Bring one decision your data should be helping you make.
             </h2>
             <p className="mt-5 text-lg text-muted-foreground">

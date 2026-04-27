@@ -44,7 +44,7 @@ export function WhatWeBuild() {
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
           <div className="max-w-2xl">
             <Badge variant="muted" className="mb-5">What we build</Badge>
-            <h2 className="font-display font-normal text-4xl md:text-6xl tracking-[-0.02em] leading-[1.05]">
+            <h2 className="font-display text-4xl md:text-5xl tracking-tight leading-[1.05]">
               Six capabilities. One coherent data function.
             </h2>
             <p className="mt-5 text-lg text-muted-foreground">

@@ -71,7 +71,7 @@ const config: Config = {
       fontFamily: {
         sans:    ["var(--font-geist-sans)", "Inter", "system-ui", "sans-serif"],
         mono:    ["var(--font-geist-mono)", "ui-monospace", "monospace"],
-        display: ["var(--font-instrument-serif)", "ui-serif", "Georgia", "serif"],
+        display: ["var(--font-archivo-black)", "Impact", "Arial Black", "ui-sans-serif", "sans-serif"],
       },
       backgroundImage: {
         "grid-fade":

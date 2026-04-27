@@ -37,15 +37,13 @@
   }
   ::selection { background: hsl(var(--primary) / .35); color: white; }
 
-  /* Display headings: Instrument Serif, light italic-edge feel */
+  /* Display headings: Archivo Black — heavy geometric display sans
+     that mirrors the chunky ACTA DATA wordmark letterforms. */
   .font-display {
-    font-feature-settings: "ss01", "ss02";
-    font-style: normal;
-  }
-  .font-display em,
-  .font-display .italic {
-    font-style: italic;
-    font-feature-settings: "ss01", "ss02";
+    font-weight: 400; /* Archivo Black ships at weight 400; the face is intrinsically heavy */
+    text-transform: none;
+    /* slightly raise the optical baseline so cap-heavy lines breathe */
+    line-height: 1.05;
   }
 }
 

@@ -30,7 +30,7 @@ export function WhyActa() {
       <div className="container">
         <div className="max-w-3xl">
           <Badge variant="muted" className="mb-5">Why Acta</Badge>
-          <h2 className="font-display font-normal text-4xl md:text-6xl tracking-[-0.02em] leading-[1.05]">
+          <h2 className="font-display text-4xl md:text-5xl tracking-tight leading-[1.05]">
             Four reasons we keep getting picked.
           </h2>
         </div>

@@ -60,9 +60,9 @@ export function Hero() {
           <span className="h-1.5 w-1.5 rounded-full bg-electric animate-pulse" />
           Data &amp; AI consultancy
         </Badge>
-        <h1 className="font-display font-normal max-w-5xl text-5xl md:text-7xl lg:text-[88px] tracking-[-0.03em] leading-[1.02]">
+        <h1 className="font-display max-w-5xl text-5xl md:text-7xl lg:text-[88px] tracking-tight leading-[1.04]">
           Your entire data function.{" "}
-          <span className="italic text-electric">Built, handed over, done.</span>
+          <span className="text-electric">Built, handed over, done.</span>
         </h1>
         <p className="mt-7 max-w-2xl text-lg md:text-xl text-muted-foreground leading-relaxed">
           Acta builds the data capability your consumer business actually needs —

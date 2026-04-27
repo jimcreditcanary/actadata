@@ -104,10 +104,11 @@ White is `text-foreground` (`#E6EEF8` via HSL). Muted text is `text-muted-foregr
 
 ### Typography
 
-- **Display headings** (Hero H1, all section H2s): **Instrument Serif** via `font-display` class. Loaded as a Google Font through `next/font/google` in `app/layout.tsx`. Weight `400` only — never `font-semibold` on serif headings (they have intrinsic weight). Tracking tight (`tracking-[-0.02em]` for H2, `tracking-[-0.03em]` for H1). The accent phrase in headings can use `<span className="italic text-electric">` for an editorial highlight.
+- **Display headings** (Hero H1, all section H2s): **Archivo Black** via `font-display` class. Loaded as a Google Font through `next/font/google` in `app/layout.tsx`. Single weight (400 — the face is intrinsically heavy). This was chosen specifically to mirror the chunky geometric letterforms of the ACTA DATA wordmark / SVG logo. **No italic** — Archivo Black has no italic style. Accent phrases in headings use `<span className="text-electric">…</span>` for a colour highlight (no `italic` class).
 - **Sans body / sub-headings**: Geist Sans for everything else — paragraphs, H3s, KPI labels, badges, buttons.
 - **Numerics**: `tabular-nums` on all stat tiles and KPIs.
-- Standard H2 class string (use this exact combo): `font-display font-normal text-4xl md:text-6xl tracking-[-0.02em] leading-[1.05]`.
+- Standard H1 class string (Hero only): `font-display max-w-5xl text-5xl md:text-7xl lg:text-[88px] tracking-tight leading-[1.04]`.
+- Standard H2 class string (use this exact combo): `font-display text-4xl md:text-5xl tracking-tight leading-[1.05]`.
 - H3: `text-lg font-semibold tracking-tight` (still Geist).
 - Eyebrow pattern: `Badge` (`muted` or `electric`) above each H2.
 
@@ -279,6 +280,22 @@ At the end of every session, **append** a new entry below. Format:
 - Rebuilt `public/favicon.ico` from the new violet `favicon.svg` (multi-res 16/32/48 ICO regenerated via ImageMagick).
 - Tailwind class names `electric` and `sky` retained for legacy reasons — hex values changed only. Skill palette block updated with a clear pivot note.
 - Build verified clean. Verified no residual blue hex codes anywhere outside `legacy/`.
+
+**Outstanding:**
+- Real client logos for `LogoStrip`.
+- Real quote text + attribution for `Quote`.
+- Vercel preview URL.
+- Calendar CTA target.
+- Analytics.
+
+### 2026-04-27f — Headings: Instrument Serif → Archivo Black (logo-matching display sans)
+**Done:**
+- Swapped `font-display` from Instrument Serif (elegant editorial serif) to **Archivo Black** — heavy geometric display sans that mirrors the chunky letterforms of the uploaded ACTA DATA SVG logo.
+- Loaded via `next/font/google` as `--font-archivo-black`. Single weight 400 (face is intrinsically heavy). No italic.
+- Updated Hero H1 class string: dropped `font-normal`, switched to `tracking-tight` (looser than the serif version), `leading-[1.04]`. Removed the `italic` keyword from the "Built, handed over, done." accent span — Archivo Black has no italic, so the accent is now colour-only (electric/violet).
+- Updated all 8 section H2 class strings: standard now `font-display text-4xl md:text-5xl tracking-tight leading-[1.05]`. Capped at `md:text-5xl` (down from `md:text-6xl`) because Archivo Black's heavier face would overwhelm at 6xl.
+- `globals.css` `.font-display` rules rewritten: removed Instrument Serif's `ss01/ss02` features, added a baseline `line-height: 1.05` hint.
+- Skill typography section rewritten with new H1/H2 class strings. Build verified clean.
 
 **Outstanding:**
 - Real client logos for `LogoStrip`.
