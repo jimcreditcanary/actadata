@@ -15,7 +15,7 @@ const buttonVariants = cva(
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
         electric:
-          "bg-electric text-navy hover:bg-electric-glow shadow-[0_0_30px_rgba(61,219,255,0.35)]",
+          "bg-electric text-navy hover:bg-electric-glow shadow-[0_0_30px_rgba(168,85,247,0.35)]",
       },
       size: {
         default: "h-10 px-4 py-2",

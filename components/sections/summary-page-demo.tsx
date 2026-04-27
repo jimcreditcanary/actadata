@@ -118,7 +118,7 @@ function Sparkline({ data }: { data: number[] }) {
           <Line
             type="monotone"
             dataKey="v"
-            stroke="#3DDBFF"
+            stroke="#A855F7"
             strokeWidth={1.8}
             dot={false}
           />
@@ -170,8 +170,8 @@ function MainChart({ data, label }: { data: VerticalConfig["trend"]; label: stri
             <AreaChart data={data} margin={{ top: 5, right: 8, left: -16, bottom: 0 }}>
               <defs>
                 <linearGradient id="curr" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor="#3DDBFF" stopOpacity={0.45} />
-                  <stop offset="100%" stopColor="#3DDBFF" stopOpacity={0} />
+                  <stop offset="0%" stopColor="#A855F7" stopOpacity={0.45} />
+                  <stop offset="100%" stopColor="#A855F7" stopOpacity={0} />
                 </linearGradient>
               </defs>
               <CartesianGrid stroke="rgba(255,255,255,0.06)" vertical={false} />
@@ -187,7 +187,7 @@ function MainChart({ data, label }: { data: VerticalConfig["trend"]; label: stri
                 labelStyle={{ color: "rgba(255,255,255,0.7)" }}
               />
               <Area type="monotone" dataKey="prior" stroke="rgba(255,255,255,0.35)" strokeDasharray="4 4" fill="transparent" strokeWidth={1.5} />
-              <Area type="monotone" dataKey="current" stroke="#3DDBFF" fill="url(#curr)" strokeWidth={2.2} />
+              <Area type="monotone" dataKey="current" stroke="#A855F7" fill="url(#curr)" strokeWidth={2.2} />
             </AreaChart>
           </ResponsiveContainer>
         </div>

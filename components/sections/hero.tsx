@@ -24,12 +24,12 @@ export function Hero() {
       >
         <defs>
           <linearGradient id="topoStroke" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%"  stopColor="#3DDBFF" stopOpacity="0.55" />
-            <stop offset="100%" stopColor="#7AA8FF" stopOpacity="0.20" />
+            <stop offset="0%"  stopColor="#A855F7" stopOpacity="0.55" />
+            <stop offset="100%" stopColor="#A78BFA" stopOpacity="0.20" />
           </linearGradient>
           <radialGradient id="topoCore" cx="50%" cy="50%" r="50%">
-            <stop offset="0%"  stopColor="#3DDBFF" stopOpacity="0.10" />
-            <stop offset="100%" stopColor="#3DDBFF" stopOpacity="0" />
+            <stop offset="0%"  stopColor="#A855F7" stopOpacity="0.10" />
+            <stop offset="100%" stopColor="#A855F7" stopOpacity="0" />
           </radialGradient>
         </defs>
         {/* concentric warped arcs that suggest a topographic map / data wavefronts */}

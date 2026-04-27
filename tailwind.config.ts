@@ -51,14 +51,16 @@ const config: Config = {
           300: "#243054",
           400: "#324166",
         },
-        electric: {
-          DEFAULT: "#3DDBFF",
-          dim:     "#1FB8DF",
-          glow:    "#7CE7FF",
+        /* Brand accents — names retained for legacy class references.
+           Palette pivoted from blue to PURPLE tones in 2026-04. */
+        electric: {              /* primary accent (violet) */
+          DEFAULT: "#A855F7",
+          dim:     "#7C3AED",
+          glow:    "#C084FC",
         },
-        sky: {                    /* secondary accent, paired with electric for gradients */
-          DEFAULT: "#7AA8FF",
-          soft:    "#A9C4FF",
+        sky: {                    /* secondary accent (lavender), pairs with electric for gradients */
+          DEFAULT: "#A78BFA",
+          soft:    "#C4B5FD",
         },
       },
       borderRadius: {
@@ -73,9 +75,9 @@ const config: Config = {
       },
       backgroundImage: {
         "grid-fade":
-          "radial-gradient(ellipse at top, rgba(61,219,255,.10), transparent 60%)",
+          "radial-gradient(ellipse at top, rgba(168,85,247,.10), transparent 60%)",
         "scan":
-          "linear-gradient(180deg, rgba(61,219,255,0) 0%, rgba(61,219,255,.04) 50%, rgba(61,219,255,0) 100%)",
+          "linear-gradient(180deg, rgba(168,85,247,0) 0%, rgba(168,85,247,.04) 50%, rgba(168,85,247,0) 100%)",
       },
     },
   },

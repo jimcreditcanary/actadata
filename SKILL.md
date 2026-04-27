@@ -87,16 +87,18 @@ These apply to **every section** added. Don't deviate without explicit instructi
 Defined in `tailwind.config.ts` and `app/globals.css`. Use these — no new accents.
 
 ```
-navy DEFAULT   #070A1A   — page background (slight purple-warm shift, scytale-flavoured)
+navy DEFAULT   #070A1A   — page background (slight purple-warm shift)
 navy 50        #0C1428   — card surface
 navy 100       #121C36   — elevated surface
 navy 200/300/400        — borders, hover states
-electric DEFAULT #3DDBFF — primary brand accent (electric blue)
-electric dim   #1FB8DF
-electric glow  #7CE7FF   — hover
-sky DEFAULT    #7AA8FF   — secondary accent (sky blue), pairs with electric for gradients
-sky soft       #A9C4FF
+electric DEFAULT #A855F7 — PRIMARY brand accent (violet). Class name `electric` is legacy — colour is now PURPLE, not blue.
+electric dim   #7C3AED   — deep violet
+electric glow  #C084FC   — light violet, used on hover and glow effects
+sky DEFAULT    #A78BFA   — SECONDARY accent (lavender). Class name `sky` is legacy — colour is now PURPLE, not blue. Pairs with electric for gradients.
+sky soft       #C4B5FD
 ```
+
+> **Brand colour pivot (2026-04):** the palette moved from a blue duo (cyan + sky-blue) to a purple duo (violet + lavender). Tailwind class names `electric` and `sky` were retained for backwards compatibility — too many components reference them — but they now point at purple values. Hardcoded hex codes anywhere in the codebase MUST use `#A855F7` / `#7C3AED` / `#C084FC` / `#A78BFA` / `#C4B5FD`. Do not introduce blue accents (`#3DDBFF`, `#7AA8FF`, etc.). Do not introduce magenta — that brand was retired earlier.
 
 White is `text-foreground` (`#E6EEF8` via HSL). Muted text is `text-muted-foreground`.
 
@@ -262,6 +264,21 @@ At the end of every session, **append** a new entry below. Format:
 - Hero gets a real abstract background: layered aurora gradient blobs (electric + sky) with `mix-blend-screen` and three independent slow-drift keyframe animations; an SVG of warped concentric arcs evoking topography / data wavefronts; soft terminal-grid; and an SVG-noise grain at low opacity for tactile depth. Honors `prefers-reduced-motion`.
 - The hero accent phrase "Built, handed over, done." is now serif italic in electric blue — small editorial moment.
 - Skill typography rules rewritten. Build verified clean.
+
+**Outstanding:**
+- Real client logos for `LogoStrip`.
+- Real quote text + attribution for `Quote`.
+- Vercel preview URL.
+- Calendar CTA target.
+- Analytics.
+
+### 2026-04-27e — Brand palette pivot: blue → purple
+**Done:**
+- Repainted the entire site from blue tones to purple tones. Primary `#3DDBFF` → `#A855F7` (violet); secondary `#7AA8FF` → `#A78BFA` (lavender). Supporting tones updated: `dim` `#1FB8DF` → `#7C3AED`, `glow` `#7CE7FF` → `#C084FC`, `sky.soft` `#A9C4FF` → `#C4B5FD`.
+- Updated `tailwind.config.ts` (palette + bg-grid-fade/bg-scan rgba), `app/globals.css` (HSL `--primary`/`--accent`/`--ring` from `190 100% 62%` to `270 91% 65%`, plus all rgba aurora/grid/glow values), every component file with hardcoded hex codes (hero topo SVG gradient, summary-page-demo Recharts colours, button electric variant shadow, tabs active-state ring, favicon.svg).
+- Rebuilt `public/favicon.ico` from the new violet `favicon.svg` (multi-res 16/32/48 ICO regenerated via ImageMagick).
+- Tailwind class names `electric` and `sky` retained for legacy reasons — hex values changed only. Skill palette block updated with a clear pivot note.
+- Build verified clean. Verified no residual blue hex codes anywhere outside `legacy/`.
 
 **Outstanding:**
 - Real client logos for `LogoStrip`.

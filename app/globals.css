@@ -10,19 +10,19 @@
     --card-foreground: 213 35% 92%;
     --popover: 225 45% 10%;
     --popover-foreground: 213 35% 92%;
-    --primary: 190 100% 62%;
+    --primary: 270 91% 65%;
     --primary-foreground: 230 50% 6%;
     --secondary: 225 40% 15%;
     --secondary-foreground: 213 35% 92%;
     --muted: 225 30% 18%;
     --muted-foreground: 220 18% 62%;
-    --accent: 190 100% 62%;
+    --accent: 270 91% 65%;
     --accent-foreground: 230 50% 6%;
     --destructive: 0 70% 55%;
     --destructive-foreground: 213 35% 92%;
     --border: 225 30% 18%;
     --input: 225 30% 18%;
-    --ring: 190 100% 62%;
+    --ring: 270 91% 65%;
     --radius: 0.85rem;
   }
   * { @apply border-border; }
@@ -31,8 +31,8 @@
     @apply bg-background text-foreground antialiased;
     font-feature-settings: "cv11", "ss01";
     background-image:
-      radial-gradient(900px 480px at 80% -10%, rgba(61,219,255,0.06), transparent 60%),
-      radial-gradient(900px 520px at 0% 35%, rgba(122,168,255,0.06), transparent 60%);
+      radial-gradient(900px 480px at 80% -10%, rgba(168,85,247,0.06), transparent 60%),
+      radial-gradient(900px 520px at 0% 35%, rgba(167,139,250,0.06), transparent 60%);
     background-attachment: fixed;
   }
   ::selection { background: hsl(var(--primary) / .35); color: white; }
@@ -52,8 +52,8 @@
 /* terminal grid (existing) */
 .bg-terminal-grid {
   background-image:
-    linear-gradient(to right, rgba(61,219,255,0.06) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(61,219,255,0.06) 1px, transparent 1px);
+    linear-gradient(to right, rgba(168,85,247,0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(168,85,247,0.06) 1px, transparent 1px);
   background-size: 56px 56px;
 }
 
@@ -61,7 +61,7 @@
 .shimmer::after {
   content: "";
   position: absolute; inset: 0;
-  background: linear-gradient(110deg, transparent 30%, rgba(61,219,255,0.10) 50%, transparent 70%);
+  background: linear-gradient(110deg, transparent 30%, rgba(168,85,247,0.10) 50%, transparent 70%);
   transform: translateX(-100%);
   animation: shimmer 6s linear infinite;
 }
@@ -69,9 +69,9 @@
 
 .glow-ring {
   box-shadow:
-    0 0 0 1px rgba(61,219,255,0.30),
-    0 0 40px rgba(61,219,255,0.18),
-    inset 0 0 60px rgba(61,219,255,0.04);
+    0 0 0 1px rgba(168,85,247,0.30),
+    0 0 40px rgba(168,85,247,0.18),
+    inset 0 0 60px rgba(168,85,247,0.04);
 }
 
 /* Marquee for the logo strip */

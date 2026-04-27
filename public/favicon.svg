@@ -1,6 +1,6 @@
 <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Acta Data">
   <rect width="64" height="64" rx="11" fill="#050D1A"/>
   <g transform="translate(7.8 4.5) scale(0.15)">
-    <path d="M323 367H228.5V307H102V367H0V138L66.5 66.5L127.5 0H323V367ZM167.423 97L130.107 138L102 170V204H228V97H167.423Z" fill="#3DDBFF"/>
+    <path d="M323 367H228.5V307H102V367H0V138L66.5 66.5L127.5 0H323V367ZM167.423 97L130.107 138L102 170V204H228V97H167.423Z" fill="#A855F7"/>
   </g>
 </svg>
