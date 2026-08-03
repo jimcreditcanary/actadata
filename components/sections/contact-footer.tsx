@@ -32,7 +32,7 @@ export function ContactFooter() {
             <div className="text-xs">Strategy · Build · Run — for consumer businesses.</div>
           </div>
           <div className="md:text-right space-y-1">
-            <div>© {new Date().getFullYear()} Acta Data Ltd. All rights reserved.</div>
+            <div className="text-foreground/80">Acta Data Ltd</div>
             <div className="text-xs">
               Registered in England &amp; Wales, company no. 14182372 · ICO reg. ZB502441.
             </div>
