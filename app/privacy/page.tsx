@@ -61,8 +61,8 @@ export default function PrivacyPage() {
                 ZB502441
               </a>
               . You can reach us at{" "}
-              <a href="mailto:hello@actadata.co.uk" className="text-electric hover:underline">
-                hello@actadata.co.uk
+              <a href="mailto:info@actadata.co.uk" className="text-electric hover:underline">
+                info@actadata.co.uk
               </a>
               .
             </p>

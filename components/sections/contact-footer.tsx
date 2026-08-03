@@ -18,8 +18,8 @@ export function ContactFooter() {
             </p>
             <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
               <Button asChild variant="electric" size="lg">
-                <a href="mailto:hello@actadata.co.uk?subject=Acta%20Data%20%E2%80%94%20scoping%20call">
-                  Email hello@actadata.co.uk
+                <a href="mailto:info@actadata.co.uk?subject=Acta%20Data%20%E2%80%94%20scoping%20call">
+                  Email info@actadata.co.uk
                 </a>
               </Button>
             </div>
@@ -48,10 +48,10 @@ export function ContactFooter() {
             <div className="pt-2 flex gap-4 md:justify-end text-xs">
               <a href="/privacy" className="hover:text-foreground transition-colors">Privacy notice</a>
               <a
-                href="mailto:hello@actadata.co.uk"
+                href="mailto:info@actadata.co.uk"
                 className="hover:text-foreground transition-colors"
               >
-                hello@actadata.co.uk
+                info@actadata.co.uk
               </a>
             </div>
           </div>
