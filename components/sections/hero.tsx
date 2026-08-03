@@ -66,8 +66,9 @@ export function Hero() {
         </h1>
         <p className="mt-7 max-w-2xl text-lg md:text-xl text-muted-foreground leading-relaxed">
           Acta builds the data capability your consumer business actually needs —
-          integrations, warehouse, ETL, metric trees, board-grade reporting and
-          LLM readiness — in months, not years. You own the output.
+          BigQuery warehouse, pipelines, metric trees, board-grade reporting and
+          Claude wired in for real self-service — in months, not years. You own
+          the output.
         </p>
         <div className="mt-9 flex flex-wrap items-center gap-3">
           <Button asChild variant="electric" size="lg">
@@ -80,8 +81,8 @@ export function Hero() {
 
         <div className="mt-14 grid grid-cols-2 md:grid-cols-4 gap-3 max-w-3xl">
           {[
-            ["Start", "Inside a week"],
-            ["Build", "12 months"],
+            ["Start", "Immediately"],
+            ["Stack", "Google · BigQuery · Claude"],
             ["Cost", "From £10k / month"],
             ["Ownership", "100% yours"],
           ].map(([k, v]) => (

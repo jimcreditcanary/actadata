@@ -12,7 +12,7 @@ const models = [
   },
   {
     name: "Build & Manage",
-    blurb: "We build it, then stay on as your data team. No hiring, no hand-off.",
+    blurb: "We build it, then stay on as your data team — wiring in new data and sources as they arrive.",
     price: "Build + ongoing retainer",
     duration: "12 mo + ongoing",
   },
@@ -35,8 +35,8 @@ const models = [
     duration: "3–4 weeks",
   },
   {
-    name: "AI Readiness Sprint",
-    blurb: "LLM use-case mapping, data readiness, evals plan. Fixed price, fixed scope.",
+    name: "Claude Self-Service Sprint",
+    blurb: "Claude wired into your warehouse in your own enterprise account, with guardrails and evals. Fixed price, fixed scope.",
     price: "From £25k fixed",
     duration: "4–6 weeks",
   },
@@ -52,8 +52,8 @@ export function EngagementModels() {
             Choose how you work with us.
           </h2>
           <p className="mt-5 text-lg text-muted-foreground">
-            Same operators, same standards. Different shapes — depending on whether
-            you want a team forever, a team for now, or just the answer.
+            Same operators, same stack, same standards. The only question is whether you
+            want a team forever, a team for now, or just the answer.
           </p>
         </div>
 

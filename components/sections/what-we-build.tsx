@@ -6,22 +6,22 @@ const tiles = [
   {
     icon: Database,
     title: "Integrations & Data Sources",
-    blurb: "Every system that matters — Shopify, Stripe, ad platforms, CRMs, ops tooling — pulled into one place, reliably.",
+    blurb: "Every system that matters — Shopify, Stripe, ad platforms, CRMs, ops tooling — landed in one place, on a schedule you can trust.",
   },
   {
     icon: Cloud,
-    title: "Cloud Warehouse & ETL",
-    blurb: "A modern, low-maintenance warehouse with idempotent pipelines. Snowflake or BigQuery, dbt under the hood.",
+    title: "BigQuery Warehouse & ETL",
+    blurb: "A low-maintenance warehouse with idempotent pipelines. BigQuery and dbt, deployed by CI/CD — not hand-built in a console.",
   },
   {
     icon: GitBranch,
     title: "Business Mapping & Metric Trees",
-    blurb: "We map how revenue actually moves through your business, then build the metric tree your operators can argue with.",
+    blurb: "We map how revenue actually moves through your business, then build the metric tree your operators can argue with — and settle arguments from.",
   },
   {
     icon: LineChart,
-    title: "Core Reporting Suite",
-    blurb: "Dashboards your team will actually open — finance, marketing, ops, product — wired straight to the metric tree.",
+    title: "Operational & Risk Intelligence",
+    blurb: "Dashboards your team actually opens — finance, marketing, ops, risk — wired to the metric tree, with thresholds that raise the work rather than just colouring a cell red.",
   },
   {
     icon: LayoutDashboard,
@@ -32,8 +32,8 @@ const tiles = [
   },
   {
     icon: Sparkles,
-    title: "LLM Readiness",
-    blurb: "Clean schemas, vector layers, evals, guardrails. Your data, prompt-ready — without the hallucination roulette.",
+    title: "Self-Service Analytics with Claude",
+    blurb: "Claude wired into your warehouse in your own enterprise account. Your operators ask in plain English; the answer comes from the metric tree, not a guess.",
   },
 ];
 
@@ -48,8 +48,8 @@ export function WhatWeBuild() {
               Six capabilities. One coherent data function.
             </h2>
             <p className="mt-5 text-lg text-muted-foreground">
-              Built on the Activity Schema — a foundation that makes every later
-              question (analytics, AI, attribution) cheaper to answer.
+              Built on the Activity Schema in BigQuery — a foundation that makes every
+              later question (analytics, AI, attribution) cheaper to answer.
             </p>
           </div>
           <Badge variant="electric" className="self-start md:self-end gap-1.5">

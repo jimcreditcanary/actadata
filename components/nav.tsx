@@ -5,9 +5,9 @@ import { Logo } from "@/components/logo";
 import { Button } from "@/components/ui/button";
 
 const links = [
-  { href: "#problem", label: "The problem" },
+  { href: "#stack", label: "The stack" },
+  { href: "#crew", label: "The crew" },
   { href: "#what-we-build", label: "What we build" },
-  { href: "#summary", label: "The Summary Page" },
   { href: "#engagements", label: "Engagements" },
   { href: "#verticals", label: "Verticals" },
 ];

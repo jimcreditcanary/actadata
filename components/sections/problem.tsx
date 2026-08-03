@@ -7,7 +7,7 @@ import {
   inHouseTimeToFirstOutput,
   actaYearOneK,
   actaTimeToFirstOutput,
-  headcount,
+  headcountWord,
 } from "@/lib/economics";
 
 export function Problem() {
@@ -21,7 +21,7 @@ export function Problem() {
             <span className="text-electric">slow</span>, and usually wrong.
           </h2>
           <p className="mt-5 text-lg text-muted-foreground">
-            By the time you&apos;ve hired {headcount} people, scoped a stack, picked vendors and
+            By the time you&apos;ve hired {headcountWord} people, scoped a stack, picked vendors and
             shipped your first dashboards, your competitors have already made the next
             three decisions. There&apos;s a faster way in.
           </p>
@@ -81,7 +81,7 @@ export function Problem() {
                   ["Year-1 cost", `From £${actaYearOneK}k`],
                   ["First output", actaTimeToFirstOutput],
                   ["Headcount risk", "Zero"],
-                  ["Stack", "Modern, owned by you"],
+                  ["Stack", "Google · BigQuery · Claude"],
                   ["Exit", "Hand over, embed, or stay on"],
                 ].map(([k, v]) => (
                   <div key={k}>
@@ -92,8 +92,8 @@ export function Problem() {
               </div>
               <div className="mt-7 rounded-lg border border-white/[0.06] bg-navy-100/60 p-4 text-sm text-muted-foreground">
                 <span className="text-foreground font-medium">The deal:</span>{" "}
-                we build the whole data function for the price of one mid-level hire.
-                You get senior operators, a working stack, and a team you don't have to manage.
+                we build the whole data function for the price of one senior hire.
+                You get senior operators, a working stack, and a team you don&apos;t have to manage.
               </div>
             </div>
           </div>

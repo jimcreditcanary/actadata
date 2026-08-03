@@ -205,9 +205,9 @@ export function SummaryPageDemo() {
             One page. The whole business. <span className="text-electric">Refreshed daily.</span>
           </h2>
           <p className="mt-5 text-lg text-muted-foreground">
-            The Summary Page is what we ship that other consultancies don't.
-            A trading-pack-grade view of how the business actually moved this week —
-            built per vertical, tied to the metric tree, ready for the boardroom.
+            One trading-pack-grade view of how the business actually moved this week —
+            built for your vertical, tied to the metric tree, ready for the boardroom.
+            It answers the question your C-suite was going to ask before they ask it.
           </p>
         </div>
 

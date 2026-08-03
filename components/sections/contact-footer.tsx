@@ -13,8 +13,8 @@ export function ContactFooter() {
               Bring one decision your data should be helping you make.
             </h2>
             <p className="mt-5 text-lg text-muted-foreground">
-              30 minutes, no deck. We'll tell you on the call whether Acta is the right
-              partner — and what we'd ship in the first 30 days.
+              30 minutes, no deck. We&apos;ll tell you on the call whether we&apos;re the right
+              partner, and exactly what we&apos;d ship in the first 30 days.
             </p>
             <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
               <Button asChild variant="electric" size="lg">

@@ -20,9 +20,9 @@ export function PricingAnchor() {
                 12 months. <span className="text-electric">£{actaYearOneK}k.</span> A working data function.
               </h2>
               <p className="mt-5 text-lg text-muted-foreground max-w-xl">
-                Or hire {headcount} people, carry ~£{inHouseYearOneK}k a year fully loaded, wait{" "}
-                {inHouseTimeToFirstOutput} for the first useful output, and carry the
-                retention risk yourself.
+                The alternative is {headcount} hires, ~£{inHouseYearOneK}k a year fully loaded,{" "}
+                {inHouseTimeToFirstOutput} before anything useful appears, and the retention
+                risk sitting on your side of the table.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <Button asChild variant="electric" size="lg">
