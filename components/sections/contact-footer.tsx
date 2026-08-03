@@ -31,11 +31,29 @@ export function ContactFooter() {
       </section>
 
       <footer className="border-t border-white/[0.04] py-10">
-        <div className="container flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
-          <Logo />
-          <div className="text-center md:text-right">
+        <div className="container flex flex-col md:flex-row items-start justify-between gap-6 text-sm text-muted-foreground">
+          <div className="flex flex-col gap-3">
+            <Logo />
+            <div className="text-xs">Strategy · Build · Run — for consumer businesses.</div>
+          </div>
+          <div className="md:text-right space-y-1">
             <div>© {new Date().getFullYear()} Acta Data Ltd. All rights reserved.</div>
-            <div className="mt-1 text-xs">Strategy · Build · Run — for consumer businesses.</div>
+            <div className="text-xs">
+              Registered in England &amp; Wales, company no. 14182372.
+            </div>
+            <div className="text-xs">
+              Registered office: Chester House, Lloyd Drive, Cheshire Oaks Business Park,
+              Ellesmere Port, Cheshire CH65 9HQ.
+            </div>
+            <div className="pt-2 flex gap-4 md:justify-end text-xs">
+              <a href="/privacy" className="hover:text-foreground transition-colors">Privacy notice</a>
+              <a
+                href="mailto:hello@actadata.co.uk"
+                className="hover:text-foreground transition-colors"
+              >
+                hello@actadata.co.uk
+              </a>
+            </div>
           </div>
         </div>
       </footer>
