@@ -10,6 +10,7 @@ const links = [
   { href: "#what-we-build", label: "What we build" },
   { href: "#engagements", label: "Engagements" },
   { href: "#verticals", label: "Verticals" },
+  { href: "#pricing", label: "Pricing" },
 ];
 
 /**

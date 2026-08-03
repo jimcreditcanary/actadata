@@ -1,7 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Cloud, GitBranch, Sparkles } from "lucide-react";
-import { actaYearOneK } from "@/lib/economics";
+import { entryYearK } from "@/lib/economics";
 import { Eyebrow } from "@/components/eyebrow";
 
 const pillars = [
@@ -84,7 +84,7 @@ export function Stack() {
               </ul>
               <p className="mt-5 text-sm text-foreground/90 leading-relaxed">
                 In their place: BI delivery, tracking and decisioning, end to end, for
-                the price of one senior data hire. We build it and hand it over, or we
+                less than half a senior data hire. We build it and hand it over, or we
                 stay on and wire in new data as it arrives.
               </p>
             </CardContent>
@@ -105,7 +105,7 @@ export function Stack() {
               <div className="mt-6 grid grid-cols-2 gap-x-6 gap-y-5">
                 {[
                   ["Kick-off", "This month"],
-                  ["Year-1 cost", `From £${actaYearOneK}k`],
+                  ["Year-1 cost", `From £${entryYearK}k`],
                   ["We need", "Non-PII read access"],
                   ["You keep", "Every asset we build"],
                 ].map(([k, v]) => (

@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { entryMonthlyK } from "@/lib/economics";
 
 export function Hero() {
   return (
@@ -78,7 +79,7 @@ export function Hero() {
           {[
             ["Start", "Immediately"],
             ["Stack", "Google · BigQuery · Claude"],
-            ["Cost", "From £10k / month"],
+            ["Cost", `From £${entryMonthlyK}k / month`],
             ["Ownership", "100% yours"],
           ].map(([k, v]) => (
             <div key={k} className="rounded-lg border border-white/[0.08] bg-card/40 backdrop-blur px-4 py-3">

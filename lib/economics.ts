@@ -20,9 +20,30 @@ export const loadingMultiplier = 1.3;
 export const baseSalaryK = inHouseTeam.reduce((sum, r) => sum + r.salaryK, 0);
 export const inHouseYearOneK = Math.round(baseSalaryK * loadingMultiplier);
 
-/** Build & Hand Over: 12 months at the entry monthly rate. */
-export const actaMonthlyK = 10;
-export const actaYearOneK = actaMonthlyK * 12;
+/**
+ * Three tiers, priced monthly. Annual figures are derived, never typed twice.
+ *   1. BI Only        — SME, the whole BI kit live
+ *   2. BI + Claude    — adds safe, PII-restricted self-service analytics
+ *   3. Enterprise     — adds autonomous agents, plus an outcome bonus
+ */
+export const tiers = {
+  biOnly: { monthlyK: 5 },
+  biClaude: { monthlyK: 10 },
+  enterprise: { monthlyK: 10, bonus: "+ outcome bonus" },
+} as const;
+
+export const entryMonthlyK = tiers.biOnly.monthlyK;
+export const entryYearK = entryMonthlyK * 12;
+
+/** After the 12-month build: walk away, or keep us on for support. */
+export const maintenanceMonthlyK = 1;
+
+/**
+ * The senior data hire Foundations is measured against — the Data Lead line
+ * above, fully loaded. Used for the "less than half a senior hire" claim, so
+ * that claim can never drift from the salary table.
+ */
+export const seniorHireLoadedK = Math.round(inHouseTeam[0].salaryK * loadingMultiplier);
 
 export const headcount = inHouseTeam.length;
 /** Spelled out for prose; numerals only in tables and stat tiles. */

@@ -1,6 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { actaMonthlyK } from "@/lib/economics";
 import { Eyebrow } from "@/components/eyebrow";
 
 const models = [
@@ -9,7 +8,7 @@ const models = [
     duration: "12 months",
     blurb:
       "New business, or you missed the BI boom and there's nothing to build on. We start from nothing — and put your first real report in front of you inside a week.",
-    price: `From £${actaMonthlyK}k / month`,
+    tier: "BI Only and up",
     featured: true,
   },
   {
@@ -17,21 +16,21 @@ const models = [
     duration: "Migration",
     blurb:
       "A tired stack and a department that can't get ahead of it. We take the whole thing over and convert it into something AI-ready, without the lights going out on the way.",
-    price: `From £${actaMonthlyK}k / month`,
+    tier: "BI Only and up",
   },
   {
     name: "Claude Enterprise Onboarding",
     duration: "Safety first",
     blurb:
       "Claude into your own enterprise account, properly: access boundaries, guardrails, evals and a data policy your risk and compliance teams will actually sign.",
-    price: "Fixed price, fixed scope",
+    tier: "BI + Claude and up",
   },
   {
     name: "AI Readiness",
     duration: "Activation",
     blurb:
       "Agent-driven operational pipelines with a master agent orchestrating them. Your data stops being something you report on and starts being something that does the work.",
-    price: "Fixed price, fixed scope",
+    tier: "Enterprise",
   },
 ];
 
@@ -66,7 +65,7 @@ export function EngagementModels() {
                 </div>
                 <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{m.blurb}</p>
                 <div className="mt-6 flex items-center justify-between gap-3">
-                  <div className="text-electric font-medium">{m.price}</div>
+                  <div className="text-electric font-medium">{m.tier}</div>
                   <Button asChild variant="ghost" size="sm" className="text-foreground/80 hover:text-electric shrink-0">
                     <a href="#contact">Discuss →</a>
                   </Button>

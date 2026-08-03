@@ -5,7 +5,8 @@ import {
   loadingMultiplier,
   inHouseYearOneK,
   inHouseTimeToFirstOutput,
-  actaYearOneK,
+  entryYearK,
+  seniorHireLoadedK,
   actaTimeToFirstOutput,
   headcountWord,
 } from "@/lib/economics";
@@ -78,7 +79,7 @@ export function Problem() {
               <div className="grid grid-cols-2 gap-x-6 gap-y-5">
                 {[
                   ["Start date", "This month"],
-                  ["Year-1 cost", `From £${actaYearOneK}k`],
+                  ["Year-1 cost", `From £${entryYearK}k`],
                   ["First output", actaTimeToFirstOutput],
                   ["Headcount risk", "Zero"],
                   ["Stack", "Google · BigQuery · Claude"],
@@ -92,7 +93,8 @@ export function Problem() {
               </div>
               <div className="mt-7 rounded-lg border border-white/[0.06] bg-navy-100/60 p-4 text-sm text-muted-foreground">
                 <span className="text-foreground font-medium">The deal:</span>{" "}
-                we build the whole data function for the price of one senior hire.
+                we build the whole data function for less than half the cost of one senior
+                hire (~£{seniorHireLoadedK}k fully loaded).
                 You get senior operators, a working stack, and a team you don&apos;t have to manage.
               </div>
             </div>

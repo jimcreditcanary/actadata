@@ -6,7 +6,7 @@ import { WhatWeBuild } from "@/components/sections/what-we-build";
 import { SummaryPageDemo } from "@/components/sections/summary-page-demo";
 import { EngagementModels } from "@/components/sections/engagement-models";
 import { Verticals } from "@/components/sections/verticals";
-import { PricingAnchor } from "@/components/sections/pricing-anchor";
+import { Pricing } from "@/components/sections/pricing";
 import { ContactFooter } from "@/components/sections/contact-footer";
 
 export default function Page() {
@@ -20,7 +20,7 @@ export default function Page() {
       <SummaryPageDemo />
       <EngagementModels />
       <Verticals />
-      <PricingAnchor />
+      <Pricing />
       <ContactFooter />
     </>
   );
