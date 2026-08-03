@@ -50,8 +50,17 @@ export default function PrivacyPage() {
               Drive, Cheshire Oaks Business Park, Ellesmere Port, Cheshire CH65 9HQ.
             </p>
             <p>
-              We are the data controller for the personal data described here. You can reach
-              us at{" "}
+              We are the data controller for the personal data described here, and we are
+              registered with the Information Commissioner&apos;s Office under reference{" "}
+              <a
+                href="https://ico.org.uk/ESDWebPages/Entry/ZB502441"
+                className="text-electric hover:underline"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                ZB502441
+              </a>
+              . You can reach us at{" "}
               <a href="mailto:hello@actadata.co.uk" className="text-electric hover:underline">
                 hello@actadata.co.uk
               </a>

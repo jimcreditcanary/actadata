@@ -39,7 +39,7 @@ export function ContactFooter() {
           <div className="md:text-right space-y-1">
             <div>© {new Date().getFullYear()} Acta Data Ltd. All rights reserved.</div>
             <div className="text-xs">
-              Registered in England &amp; Wales, company no. 14182372.
+              Registered in England &amp; Wales, company no. 14182372 · ICO reg. ZB502441.
             </div>
             <div className="text-xs">
               Registered office: Chester House, Lloyd Drive, Cheshire Oaks Business Park,
