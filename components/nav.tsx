@@ -58,13 +58,10 @@ export function Nav() {
           ))}
         </nav>
 
-        {/* CTA buttons — always visible */}
-        <div className="flex items-center gap-2 shrink-0">
-          <Button asChild variant="ghost" size="sm" className="hidden sm:inline-flex">
-            <a href="#contact">Talk to us</a>
-          </Button>
+        {/* Single CTA — always visible */}
+        <div className="shrink-0">
           <Button asChild variant="electric" size="sm">
-            <a href="#contact">Book a call →</a>
+            <a href="#contact">Talk to us</a>
           </Button>
         </div>
       </div>

@@ -1,6 +1,6 @@
-import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/logo";
 import { CopyEmail } from "@/components/copy-email";
+import { EnquiryDialog } from "@/components/enquiry-dialog";
 import { Eyebrow } from "@/components/eyebrow";
 
 export function ContactFooter() {
@@ -18,16 +18,9 @@ export function ContactFooter() {
               partner, and exactly what we&apos;d ship in the first 30 days.
             </p>
             <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
-              <Button asChild variant="electric" size="lg">
-                <a href="mailto:info@actadata.co.uk?subject=Acta%20Data%20%E2%80%94%20scoping%20call">
-                  Email us
-                </a>
-              </Button>
+              <EnquiryDialog />
               <CopyEmail email="info@actadata.co.uk" />
             </div>
-            <p className="mt-5 text-sm text-muted-foreground">
-              Tell us the decision and we&apos;ll come back with times the same day.
-            </p>
           </div>
         </div>
       </section>
