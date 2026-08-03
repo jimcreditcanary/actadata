@@ -1,6 +1,6 @@
-import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { actaFirstOutputWeeks } from "@/lib/economics";
+import { Eyebrow } from "@/components/eyebrow";
 
 const stats = [
   { figure: "100+", label: "Years of combined data and AI experience" },
@@ -14,7 +14,7 @@ export function Crew() {
     <section id="crew" className="relative py-24 md:py-32 border-t border-white/[0.04]">
       <div className="container">
         <div className="max-w-3xl">
-          <Badge variant="muted" className="mb-5">The crew</Badge>
+          <Eyebrow className="mb-5">The crew</Eyebrow>
           <h2 className="font-display text-4xl md:text-5xl tracking-tight leading-[1.05]">
             A hundred years of data and AI experience.{" "}
             <span className="text-electric">Pointed at your P&amp;L.</span>

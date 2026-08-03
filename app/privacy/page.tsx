@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Badge } from "@/components/ui/badge";
+import { Eyebrow } from "@/components/eyebrow";
 
 export const metadata: Metadata = {
   title: "Privacy notice — Acta Data",
@@ -32,7 +32,7 @@ export default function PrivacyPage() {
     <div className="relative">
       <div className="container pt-32 pb-24 md:pt-40 md:pb-32">
         <div className="mx-auto max-w-3xl">
-          <Badge variant="muted" className="mb-5">Legal</Badge>
+          <Eyebrow className="mb-5">Legal</Eyebrow>
           <h1 className="font-display text-4xl md:text-5xl tracking-tight leading-[1.05]">
             Privacy notice
           </h1>

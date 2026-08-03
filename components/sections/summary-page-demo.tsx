@@ -1,8 +1,8 @@
 "use client";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { ArrowDown, ArrowUp } from "lucide-react";
+import { Eyebrow } from "@/components/eyebrow";
 import {
   ResponsiveContainer, LineChart, Line, AreaChart, Area,
   XAxis, YAxis, Tooltip, CartesianGrid,
@@ -200,7 +200,7 @@ export function SummaryPageDemo() {
     <section id="summary" className="relative py-24 md:py-32 border-t border-white/[0.04]">
       <div className="container">
         <div className="max-w-3xl">
-          <Badge variant="electric" className="mb-5">The Summary Page · Hero output</Badge>
+          <Eyebrow accent className="mb-5">The Summary Page</Eyebrow>
           <h2 className="font-display text-4xl md:text-5xl tracking-tight leading-[1.05]">
             One page. The whole business. <span className="text-electric">Refreshed daily.</span>
           </h2>
@@ -224,12 +224,12 @@ export function SummaryPageDemo() {
                 <div className="rounded-2xl border border-white/[0.06] bg-card/40 backdrop-blur p-5 md:p-6">
                   <div className="flex flex-wrap items-center justify-between gap-3 pb-5 border-b border-white/[0.06]">
                     <div className="flex items-center gap-3">
-                      <div className="h-2 w-2 rounded-full bg-electric animate-pulse" />
+                      
                       <div className="text-sm text-foreground/90 font-medium">{v.label} · Trading Pack</div>
                       <div className="text-xs text-muted-foreground hidden sm:block">{v.caption}</div>
                     </div>
                     <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                      <Badge variant="muted">Illustrative</Badge>
+                      <span className="text-[11px] uppercase tracking-[0.16em]">Illustrative</span>
                       <span>Refreshed 06:00 daily</span>
                     </div>
                   </div>

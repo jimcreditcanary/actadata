@@ -1,5 +1,5 @@
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { Badge } from "@/components/ui/badge";
+import { Eyebrow } from "@/components/eyebrow";
 import {
   inHouseTeam,
   loadingMultiplier,
@@ -15,7 +15,7 @@ export function Problem() {
     <section id="problem" className="relative py-24 md:py-32">
       <div className="container">
         <div className="max-w-3xl">
-          <Badge variant="muted" className="mb-5">The problem</Badge>
+          <Eyebrow className="mb-5">The problem</Eyebrow>
           <h2 className="font-display text-4xl md:text-5xl tracking-tight leading-[1.05]">
             Building a data team is expensive,{" "}
             <span className="text-electric">slow</span>, and usually wrong.
@@ -31,7 +31,7 @@ export function Problem() {
           {/* Internal team */}
           <div>
             <div className="mb-3 flex items-center gap-2">
-              <Badge variant="muted">Build it yourself</Badge>
+              <Eyebrow>Build it yourself</Eyebrow>
               <span className="text-xs text-muted-foreground">Typical UK fully-loaded</span>
             </div>
             <Table>
@@ -72,7 +72,7 @@ export function Problem() {
             <div className="absolute -inset-px rounded-xl bg-gradient-to-b from-electric/40 to-transparent opacity-60 blur-xl pointer-events-none" />
             <div className="relative rounded-xl border border-electric/30 bg-card/80 backdrop-blur p-6 md:p-8 glow-ring">
               <div className="flex items-center gap-2 mb-4">
-                <Badge variant="electric">Acta Data</Badge>
+                <Eyebrow accent>Acta Data</Eyebrow>
                 <span className="text-xs text-muted-foreground">From day one</span>
               </div>
               <div className="grid grid-cols-2 gap-x-6 gap-y-5">

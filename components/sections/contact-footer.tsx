@@ -1,6 +1,7 @@
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/logo";
+import { CopyEmail } from "@/components/copy-email";
+import { Eyebrow } from "@/components/eyebrow";
 
 export function ContactFooter() {
   return (
@@ -8,7 +9,7 @@ export function ContactFooter() {
       <section id="contact" className="relative py-24 md:py-32 border-t border-white/[0.04]">
         <div className="container">
           <div className="mx-auto max-w-3xl text-center">
-            <Badge variant="electric" className="mb-6">Let's talk</Badge>
+            <Eyebrow accent className="mb-6">Let&apos;s talk</Eyebrow>
             <h2 className="font-display text-4xl md:text-5xl tracking-tight leading-[1.05]">
               Bring one decision your data should be helping you make.
             </h2>
@@ -19,9 +20,10 @@ export function ContactFooter() {
             <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
               <Button asChild variant="electric" size="lg">
                 <a href="mailto:info@actadata.co.uk?subject=Acta%20Data%20%E2%80%94%20scoping%20call">
-                  Email info@actadata.co.uk
+                  Email us
                 </a>
               </Button>
+              <CopyEmail email="info@actadata.co.uk" />
             </div>
             <p className="mt-5 text-sm text-muted-foreground">
               Tell us the decision and we&apos;ll come back with times the same day.

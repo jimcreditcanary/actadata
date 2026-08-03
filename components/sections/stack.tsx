@@ -1,8 +1,8 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Cloud, GitBranch, Sparkles } from "lucide-react";
 import { actaYearOneK } from "@/lib/economics";
+import { Eyebrow } from "@/components/eyebrow";
 
 const pillars = [
   {
@@ -37,7 +37,7 @@ export function Stack() {
     <section id="stack" className="relative py-24 md:py-32 border-t border-white/[0.04]">
       <div className="container">
         <div className="max-w-3xl">
-          <Badge variant="electric" className="mb-5">The stack</Badge>
+          <Eyebrow accent className="mb-5">The stack</Eyebrow>
           <h2 className="font-display text-4xl md:text-5xl tracking-tight leading-[1.05]">
             Google, BigQuery and Claude.{" "}
             <span className="text-electric">Chosen once, so you never re-platform.</span>
@@ -94,7 +94,7 @@ export function Stack() {
           <div className="relative">
             <div className="absolute -inset-px rounded-xl bg-gradient-to-b from-electric/40 to-transparent opacity-60 blur-xl pointer-events-none" />
             <div className="relative h-full rounded-xl border border-electric/30 bg-card/80 backdrop-blur p-6 md:p-8 glow-ring flex flex-col">
-              <Badge variant="electric" className="self-start mb-5">Start immediately</Badge>
+              <Eyebrow accent className="mb-5">Start immediately</Eyebrow>
               <h3 className="text-2xl font-semibold tracking-tight leading-tight">
                 The only thing we&apos;re waiting on is access to your data.
               </h3>

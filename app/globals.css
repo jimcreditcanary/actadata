@@ -26,7 +26,15 @@
     --radius: 0.85rem;
   }
   * { @apply border-border; }
-  html { color-scheme: dark; }
+  html {
+    color-scheme: dark;
+    scroll-behavior: smooth;
+    /* Clears the 4rem fixed header so #anchor jumps don't land under it. */
+    scroll-padding-top: 5.5rem;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
   body {
     @apply bg-background text-foreground antialiased;
     font-feature-settings: "cv11", "ss01";

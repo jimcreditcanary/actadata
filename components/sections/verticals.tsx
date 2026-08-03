@@ -1,7 +1,7 @@
 "use client";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import { Eyebrow } from "@/components/eyebrow";
 
 const verticals = [
   {
@@ -71,7 +71,7 @@ export function Verticals() {
     <section id="verticals" className="relative py-24 md:py-32 border-t border-white/[0.04]">
       <div className="container">
         <div className="max-w-3xl">
-          <Badge variant="muted" className="mb-5">Verticals</Badge>
+          <Eyebrow className="mb-5">Verticals</Eyebrow>
           <h2 className="font-display text-4xl md:text-5xl tracking-tight leading-[1.05]">
             Built for consumer businesses.
           </h2>

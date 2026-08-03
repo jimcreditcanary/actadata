@@ -1,5 +1,4 @@
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 
 export function Hero() {
   return (
@@ -56,10 +55,6 @@ export function Hero() {
 
       {/* ---- HERO CONTENT ---- */}
       <div className="container relative pt-28 pb-32 md:pt-36 md:pb-40">
-        <Badge variant="electric" className="mb-7 gap-1.5">
-          <span className="h-1.5 w-1.5 rounded-full bg-electric animate-pulse" />
-          Data &amp; AI consultancy
-        </Badge>
         <h1 className="font-display max-w-5xl text-5xl md:text-7xl lg:text-[88px] tracking-tight leading-[1.04]">
           Your entire data function.{" "}
           <span className="text-electric">Built, handed over, done.</span>

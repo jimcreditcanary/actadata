@@ -1,5 +1,5 @@
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Eyebrow } from "@/components/eyebrow";
 import {
   inHouseYearOneK,
   inHouseTimeToFirstOutput,
@@ -15,7 +15,7 @@ export function PricingAnchor() {
           <div className="absolute inset-0 bg-grid-fade pointer-events-none" />
           <div className="relative grid lg:grid-cols-2 gap-10 items-start">
             <div>
-              <Badge variant="muted" className="mb-5">The honest comparison</Badge>
+              <Eyebrow className="mb-5">The honest comparison</Eyebrow>
               <h2 className="font-display text-4xl md:text-5xl tracking-tight leading-[1.05]">
                 12 months. <span className="text-electric">£{actaYearOneK}k.</span> A working data function.
               </h2>

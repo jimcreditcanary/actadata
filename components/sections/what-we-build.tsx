@@ -1,6 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { Database, Cloud, GitBranch, LineChart, LayoutDashboard, Sparkles } from "lucide-react";
+import { Eyebrow } from "@/components/eyebrow";
 
 const tiles = [
   {
@@ -43,7 +43,7 @@ export function WhatWeBuild() {
       <div className="container">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
           <div className="max-w-2xl">
-            <Badge variant="muted" className="mb-5">What we build</Badge>
+            <Eyebrow className="mb-5">What we build</Eyebrow>
             <h2 className="font-display text-4xl md:text-5xl tracking-tight leading-[1.05]">
               Six capabilities. One coherent data function.
             </h2>
@@ -52,9 +52,6 @@ export function WhatWeBuild() {
               later question (analytics, AI, attribution) cheaper to answer.
             </p>
           </div>
-          <Badge variant="electric" className="self-start md:self-end gap-1.5">
-            <span className="h-1.5 w-1.5 rounded-full bg-electric" /> Activity Schema, day one
-          </Badge>
         </div>
 
         <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -68,7 +65,7 @@ export function WhatWeBuild() {
                   <div className={`flex h-10 w-10 items-center justify-center rounded-lg ${featured ? "bg-electric/15 text-electric" : "bg-white/5 text-foreground/80"}`}>
                     <Icon className="h-5 w-5" />
                   </div>
-                  {badge && <Badge variant="electric">{badge}</Badge>}
+                  {badge && <span className="text-[11px] font-medium uppercase tracking-[0.18em] text-electric">{badge}</span>}
                 </div>
                 <h3 className="mt-5 text-lg font-semibold tracking-tight">{title}</h3>
                 <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{blurb}</p>

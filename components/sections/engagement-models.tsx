@@ -1,7 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { actaMonthlyK } from "@/lib/economics";
+import { Eyebrow } from "@/components/eyebrow";
 
 const models = [
   {
@@ -40,7 +40,7 @@ export function EngagementModels() {
     <section id="engagements" className="relative py-24 md:py-32 border-t border-white/[0.04]">
       <div className="container">
         <div className="max-w-3xl">
-          <Badge variant="muted" className="mb-5">Engagement models</Badge>
+          <Eyebrow className="mb-5">Engagement models</Eyebrow>
           <h2 className="font-display text-4xl md:text-5xl tracking-tight leading-[1.05]">
             Choose how you work with us.
           </h2>
@@ -57,12 +57,12 @@ export function EngagementModels() {
               className={`relative p-6 md:p-7 ${m.featured ? "border-electric/40 bg-gradient-to-b from-electric/[0.06] to-transparent glow-ring" : ""}`}
             >
               {m.featured && (
-                <Badge variant="electric" className="absolute -top-2.5 left-6">Flagship</Badge>
+                <Eyebrow accent className="absolute -top-3 left-7 bg-background px-2">Flagship</Eyebrow>
               )}
               <CardContent className="p-0">
                 <div className="flex items-start justify-between gap-3">
                   <h3 className="text-xl font-semibold tracking-tight">{m.name}</h3>
-                  <Badge variant="muted" className="shrink-0">{m.duration}</Badge>
+                  <span className="shrink-0 text-[11px] uppercase tracking-[0.16em] text-muted-foreground pt-1.5">{m.duration}</span>
                 </div>
                 <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{m.blurb}</p>
                 <div className="mt-6 flex items-center justify-between gap-3">
