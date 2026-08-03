@@ -31,7 +31,7 @@ export function WhyActa() {
         <div className="max-w-3xl">
           <Badge variant="muted" className="mb-5">Why Acta</Badge>
           <h2 className="font-display text-4xl md:text-5xl tracking-tight leading-[1.05]">
-            Four reasons we keep getting picked.
+            Four reasons this route beats hiring.
           </h2>
         </div>
 

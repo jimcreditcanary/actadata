@@ -64,7 +64,7 @@ export function EngagementModels() {
               className={`relative p-6 ${m.featured ? "border-electric/40 bg-gradient-to-b from-electric/[0.06] to-transparent glow-ring" : ""}`}
             >
               {m.featured && (
-                <Badge variant="electric" className="absolute -top-2.5 left-6">Most popular</Badge>
+                <Badge variant="electric" className="absolute -top-2.5 left-6">Flagship</Badge>
               )}
               <CardContent className="p-0">
                 <div className="flex items-center justify-between gap-3">

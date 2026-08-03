@@ -1,5 +1,4 @@
 "use client";
-import { useMemo } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -162,7 +161,7 @@ function MainChart({ data, label }: { data: VerticalConfig["trend"]; label: stri
           </div>
           <div className="flex items-center gap-3 text-xs text-muted-foreground">
             <span className="flex items-center gap-1.5"><span className="h-1.5 w-3 rounded bg-electric" /> Current</span>
-            <span className="flex items-center gap-1.5"><span className="h-1.5 w-3 rounded bg-white/30" /> Prior year</span>
+            <span className="flex items-center gap-1.5"><span className="h-1.5 w-3 rounded bg-white/30" /> Prior 12 weeks</span>
           </div>
         </div>
         <div className="h-64">
@@ -230,8 +229,8 @@ export function SummaryPageDemo() {
                       <div className="text-xs text-muted-foreground hidden sm:block">{v.caption}</div>
                     </div>
                     <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                      <Badge variant="muted">v2.4</Badge>
-                      <span>Last refresh · 06:00 GMT</span>
+                      <Badge variant="muted">Illustrative</Badge>
+                      <span>Refreshed 06:00 daily</span>
                     </div>
                   </div>
 

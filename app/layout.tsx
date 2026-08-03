@@ -16,7 +16,8 @@ export const metadata: Metadata = {
   title: "Acta Data — Your entire data function. Built, handed over, done.",
   description:
     "Acta Data builds the data and AI capability your consumer business needs — integrations, warehouse, ETL, metric trees, board-grade reporting, LLM readiness — in months, not years.",
-  metadataBase: new URL("https://actadata.io"),
+  metadataBase: new URL("https://www.actadata.co.uk"),
+  alternates: { canonical: "/" },
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },
@@ -28,10 +29,16 @@ export const metadata: Metadata = {
     title: "Acta Data — Your entire data function. Built, handed over, done.",
     description:
       "Acta Data builds the data and AI capability your consumer business needs — in months, not years.",
-    url: "https://actadata.io",
+    url: "/",
     siteName: "Acta Data",
     locale: "en_GB",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Acta Data — Your entire data function. Built, handed over, done.",
+    description:
+      "Acta Data builds the data and AI capability your consumer business needs — in months, not years.",
   },
 };
 

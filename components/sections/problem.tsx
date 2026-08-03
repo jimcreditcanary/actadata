@@ -1,18 +1,16 @@
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
-
-const team = [
-  ["Data Lead",            "£110k", "3–4 mo"],
-  ["Data Engineer",        "£90k",  "3 mo"],
-  ["Analytics Engineer",   "£80k",  "3 mo"],
-  ["Commercial Analyst",   "£65k",  "2 mo"],
-  ["BI Developer",         "£70k",  "2 mo"],
-];
+import {
+  inHouseTeam,
+  loadingMultiplier,
+  inHouseYearOneK,
+  inHouseTimeToFirstOutput,
+  actaYearOneK,
+  actaTimeToFirstOutput,
+  headcount,
+} from "@/lib/economics";
 
 export function Problem() {
-  const totalSalary = 110 + 90 + 80 + 65 + 70;
-  const fullyLoaded = Math.round(totalSalary * 1.3);
-
   return (
     <section id="problem" className="relative py-24 md:py-32">
       <div className="container">
@@ -23,9 +21,9 @@ export function Problem() {
             <span className="text-electric">slow</span>, and usually wrong.
           </h2>
           <p className="mt-5 text-lg text-muted-foreground">
-            By the time you've hired five people, scoped a stack, picked vendors and
+            By the time you&apos;ve hired {headcount} people, scoped a stack, picked vendors and
             shipped your first dashboards, your competitors have already made the next
-            three decisions. There's a faster way in.
+            three decisions. There&apos;s a faster way in.
           </p>
         </div>
 
@@ -45,21 +43,28 @@ export function Problem() {
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {team.map(([r, s, t]) => (
-                  <TableRow key={r}>
-                    <TableCell className="font-medium text-foreground">{r}</TableCell>
-                    <TableCell className="text-muted-foreground">{s}</TableCell>
-                    <TableCell className="text-muted-foreground">{t}</TableCell>
+                {inHouseTeam.map(r => (
+                  <TableRow key={r.role}>
+                    <TableCell className="font-medium text-foreground">{r.role}</TableCell>
+                    <TableCell className="text-muted-foreground">£{r.salaryK}k</TableCell>
+                    <TableCell className="text-muted-foreground">{r.rampMonths}</TableCell>
                   </TableRow>
                 ))}
                 <TableRow>
                   <TableCell className="font-semibold">Year-1 cost</TableCell>
                   <TableCell colSpan={2} className="font-semibold text-foreground">
-                    ~£{fullyLoaded}k <span className="text-muted-foreground font-normal">fully loaded · 6 mo to first output</span>
+                    ~£{inHouseYearOneK}k{" "}
+                    <span className="text-muted-foreground font-normal">
+                      fully loaded · {inHouseTimeToFirstOutput} to first output
+                    </span>
                   </TableCell>
                 </TableRow>
               </TableBody>
             </Table>
+            <p className="mt-3 text-xs text-muted-foreground">
+              Fully loaded = base salary plus employer NI, pension, tooling and
+              recruitment fees, at {loadingMultiplier}× base.
+            </p>
           </div>
 
           {/* Acta Data */}
@@ -73,8 +78,8 @@ export function Problem() {
               <div className="grid grid-cols-2 gap-x-6 gap-y-5">
                 {[
                   ["Start date", "This month"],
-                  ["Year-1 cost", "From £120k"],
-                  ["First output", "Weeks 2–4"],
+                  ["Year-1 cost", `From £${actaYearOneK}k`],
+                  ["First output", actaTimeToFirstOutput],
                   ["Headcount risk", "Zero"],
                   ["Stack", "Modern, owned by you"],
                   ["Exit", "Hand over, embed, or stay on"],

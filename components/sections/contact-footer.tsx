@@ -18,12 +18,14 @@ export function ContactFooter() {
             </p>
             <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
               <Button asChild variant="electric" size="lg">
-                <a href="mailto:hello@actadata.io?subject=Acta%20Data%20%E2%80%94%20scoping%20call">Email hello@actadata.io</a>
-              </Button>
-              <Button asChild variant="outline" size="lg">
-                <a href="#" aria-label="Schedule via calendar">Schedule via calendar →</a>
+                <a href="mailto:hello@actadata.co.uk?subject=Acta%20Data%20%E2%80%94%20scoping%20call">
+                  Email hello@actadata.co.uk
+                </a>
               </Button>
             </div>
+            <p className="mt-5 text-sm text-muted-foreground">
+              Tell us the decision and we&apos;ll come back with times the same day.
+            </p>
           </div>
         </div>
       </section>
