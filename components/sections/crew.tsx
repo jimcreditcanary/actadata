@@ -1,10 +1,10 @@
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
-import { actaTimeToFirstOutput } from "@/lib/economics";
+import { actaFirstOutputWeeks } from "@/lib/economics";
 
 const stats = [
   { figure: "100+", label: "Years of combined data and AI experience" },
-  { figure: actaTimeToFirstOutput.replace("Weeks ", ""), label: "Weeks to your first useful output" },
+  { figure: actaFirstOutputWeeks, label: "Week to your first real report" },
   { figure: "1", label: "Stack, chosen once — no vendor bake-off" },
   { figure: "0", label: "New hires for you to make or manage" },
 ];
@@ -21,9 +21,9 @@ export function Crew() {
           </h2>
           <p className="mt-5 text-lg text-muted-foreground">
             Our team has run these businesses, not just advised them. You feel the
-            difference in week two: we find the handful of numbers that actually move
-            your outcome, and ship them. Tangible output in weeks — not a discovery
-            deck in six months.
+            difference in week one: we find the handful of numbers that actually move
+            your outcome, and ship them. A real report in days — not a discovery deck
+            in six months.
           </p>
         </div>
 

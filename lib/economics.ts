@@ -28,4 +28,6 @@ export const headcount = inHouseTeam.length;
 /** Spelled out for prose; numerals only in tables and stat tiles. */
 export const headcountWord = ["zero", "one", "two", "three", "four", "five", "six"][headcount] ?? String(headcount);
 export const inHouseTimeToFirstOutput = "3–6 months";
-export const actaTimeToFirstOutput = "Weeks 2–4";
+export const actaTimeToFirstOutput = "Within a week";
+/** Numeral for stat tiles, which read better without the preposition. */
+export const actaFirstOutputWeeks = "1";

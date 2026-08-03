@@ -100,7 +100,7 @@ export function Stack() {
               </h3>
               <p className="mt-4 text-sm text-muted-foreground leading-relaxed">
                 No discovery phase to sit through, no procurement marathon. Give us
-                non-PII read access and we start — first useful output in weeks.
+                non-PII read access and we start — your first report inside a week.
               </p>
               <div className="mt-6 grid grid-cols-2 gap-x-6 gap-y-5">
                 {[

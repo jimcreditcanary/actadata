@@ -48,7 +48,7 @@ export function PricingAnchor() {
                 <div className="mt-1 text-sm text-electric/80">total, 12 months</div>
                 <ul className="mt-5 space-y-2 text-sm text-foreground/90">
                   <li>One senior team</li>
-                  <li>First output in weeks</li>
+                  <li>First report in a week</li>
                   <li>You own everything</li>
                 </ul>
               </div>
