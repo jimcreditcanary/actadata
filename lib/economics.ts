@@ -29,7 +29,8 @@ export const inHouseYearOneK = Math.round(baseSalaryK * loadingMultiplier);
 export const tiers = {
   biOnly: { monthlyK: 5 },
   biClaude: { monthlyK: 10 },
-  enterprise: { monthlyK: 10, bonus: "+ outcome bonus" },
+  /** No list price: scoped and priced against the outcome it delivers. */
+  enterprise: { price: "Let's talk", note: "Outcome-driven pricing" },
 } as const;
 
 export const entryMonthlyK = tiers.biOnly.monthlyK;

@@ -44,15 +44,15 @@ const plans = [
   {
     name: "Enterprise",
     audience: "Autonomous agents",
-    monthlyK: tiers.enterprise.monthlyK,
-    bonus: tiers.enterprise.bonus,
+    price: tiers.enterprise.price,
+    priceNote: tiers.enterprise.note,
     summary: "Everything above, plus agents that do the work.",
     features: [
       "Everything in BI + Claude",
       "Autonomous agents running operational workflows",
       "Organisational optimisation, by operators who do it for a living",
       "Exceptions routed and escalated without a human chasing them",
-      "Outcome bonus — we share the upside we create",
+      "Priced against the outcome — we share the upside we create",
     ],
     cta: "Talk about outcomes",
   },
@@ -91,14 +91,19 @@ export function Pricing() {
                 <div className="mt-1 text-xs text-muted-foreground">{p.audience}</div>
 
                 <div className="mt-5 flex items-baseline gap-1.5">
-                  <span className="font-display text-4xl tracking-tight tabular-nums">
-                    £{p.monthlyK}k
-                  </span>
-                  <span className="text-sm text-muted-foreground">/ month</span>
+                  {p.monthlyK ? (
+                    <>
+                      <span className="font-display text-4xl tracking-tight tabular-nums">
+                        £{p.monthlyK}k
+                      </span>
+                      <span className="text-sm text-muted-foreground">/ month</span>
+                    </>
+                  ) : (
+                    <span className="font-display text-4xl tracking-tight">{p.price}</span>
+                  )}
                 </div>
                 <div className="mt-1 text-xs text-muted-foreground">
-                  £{p.monthlyK * 12}k a year
-                  {p.bonus ? ` ${p.bonus}` : ""}
+                  {p.monthlyK ? `£${p.monthlyK * 12}k a year` : p.priceNote}
                 </div>
 
                 <p className="mt-5 text-sm text-foreground/90 leading-relaxed">{p.summary}</p>
