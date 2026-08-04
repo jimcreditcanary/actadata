@@ -391,67 +391,77 @@ export function FlowDiagram() {
             </g>
           ))}
         </svg>
-
-        {/* The outlined cells need naming, or they read as decoration. */}
-        <div className="mt-4 flex flex-wrap items-center gap-x-7 gap-y-2 text-xs text-muted-foreground">
-          <span className="flex items-center gap-2">
-            <svg width="12" height="12" aria-hidden className="shrink-0">
-              <rect
-                x="0.6"
-                y="0.6"
-                width="10.8"
-                height="10.8"
-                rx="2"
-                fill="none"
-                stroke={LILAC}
-                strokeWidth="1.2"
-                strokeOpacity="0.75"
-              />
-            </svg>
-            Personal data obscured at ingest — the layer holds none by design
-          </span>
-          <span className="flex items-center gap-2">
-            <span
-              aria-hidden
-              className="h-3 w-3 shrink-0 rounded-[2px]"
-              style={{ background: AMBER, opacity: 0.8 }}
-            />
-            The one exception worth your attention
-          </span>
-        </div>
       </div>
 
-      {/* Stage captions — real selectable text outside the SVG, and the whole
-          mobile experience on their own once the diagram is hidden below md. */}
-      <div className="mt-8 grid grid-cols-1 md:grid-cols-4 gap-6">
+      {/*
+        Captions sit under the stage they describe — column widths are set in
+        globals.css (.flow-captions) from the midpoints between stage centres,
+        because the four stages are not evenly spaced across the SVG.
+
+        The CLEAN / MODEL / ALERT / ACT label lives in the SVG on desktop, so it
+        is md:hidden here to avoid printing each title twice. Below md the SVG is
+        gone, so the label has to come back or the paragraphs lose their headings.
+      */}
+      <div className="mt-6 grid grid-cols-1 gap-7 md:gap-5 flow-captions">
         {[
           {
             n: "01",
-            t: "Clean",
-            d: "Every record from every system — shops, payments, ad platforms, CRM, ops, the spreadsheets and the legacy BI nobody trusts. Deduplicated, reconciled, and personal data obscured on the way in.",
+            label: "Clean",
+            d: "Every system in, deduplicated and reconciled.",
+            key: "pii" as const,
+            keyText: "Personal data obscured at ingest",
           },
           {
             n: "02",
-            t: "Model",
-            d: "Modelled once in BigQuery on the Activity Schema, with dbt and CI/CD under it. One definition of every number — and no personal data in it, by design.",
+            label: "Model",
+            d: "Modelled once in BigQuery, dbt and CI/CD under it. One definition of every number, and no personal data in it.",
           },
           {
             n: "03",
-            t: "Alert",
-            d: "A short, timely pack — and an exception raised when something actually needs you, instead of a dashboard nobody opens.",
+            label: "Alert",
+            d: "A short, timely pack — not a dashboard nobody opens.",
+            key: "amber" as const,
+            keyText: "The one exception that needs you",
           },
           {
             n: "04",
-            t: "Act",
-            d: "Agents run the workflow off the back of it, so the exception gets worked — not just noticed.",
+            label: "Act",
+            d: "Agents work the exception off the back of it, rather than just noticing it.",
           },
         ].map(s => (
           <div key={s.n}>
-            <div className="text-[11px] font-medium uppercase tracking-[0.2em] text-electric">
-              {s.n}
+            {/* Mobile-only heading — the SVG carries it on desktop. */}
+            <div className="md:hidden text-[11px] font-medium uppercase tracking-[0.2em] text-electric">
+              {s.n} · {s.label}
             </div>
-            <div className="mt-2 font-semibold tracking-tight">{s.t}</div>
-            <p className="mt-1.5 text-sm text-muted-foreground leading-relaxed">{s.d}</p>
+            <p className="mt-2 md:mt-0 text-sm text-muted-foreground leading-relaxed">{s.d}</p>
+
+            {s.key && (
+              <p className="mt-2.5 flex items-start gap-2 text-xs text-muted-foreground">
+                {s.key === "pii" ? (
+                  <svg width="12" height="12" aria-hidden className="mt-0.5 shrink-0">
+                    <rect
+                      x="0.6"
+                      y="0.6"
+                      width="10.8"
+                      height="10.8"
+                      rx="2"
+                      fill="none"
+                      stroke={LILAC}
+                      strokeWidth="1.2"
+                      strokeOpacity="0.75"
+                    />
+                  </svg>
+                ) : (
+                  <span
+                    aria-hidden
+                    className="mt-0.5 h-3 w-3 shrink-0 rounded-[2px]"
+                    style={{ background: AMBER, opacity: 0.8 }}
+                  />
+                )}
+                {s.keyText}
+              </p>
+            )}
           </div>
         ))}
       </div>
