@@ -123,6 +123,14 @@
   .marquee-track, .shimmer::after {
     animation: none !important;
   }
+  /* Staggered nav reveal: drop the cascade and the blur, keep the state change
+     instant so the links still appear — just without the motion. */
+  .nav-stagger > a {
+    transition: none !important;
+    transition-delay: 0ms !important;
+    filter: none !important;
+    transform: none !important;
+  }
 }
 
 /* Faint film grain — adds tactile depth to the hero. SVG noise inlined. */
