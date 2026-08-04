@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { RotatingHero } from "@/components/rotating-hero";
 import { entryMonthlyK } from "@/lib/economics";
 
 export function Hero() {
@@ -56,24 +57,22 @@ export function Hero() {
 
       {/* ---- HERO CONTENT ---- */}
       <div className="container relative pt-28 pb-32 md:pt-36 md:pb-40">
-        <h1 className="font-display max-w-5xl text-5xl md:text-7xl lg:text-[88px] tracking-tight leading-[1.04]">
-          Your entire data function.{" "}
-          <span className="text-electric">Built, handed over, done.</span>
-        </h1>
-        <p className="mt-7 max-w-2xl text-lg md:text-xl text-muted-foreground leading-relaxed">
-          Acta builds the data capability your consumer business actually needs —
-          BigQuery warehouse, pipelines, metric trees, board-grade reporting and
-          Claude wired in for real self-service — in months, not years. You own
-          the output.
-        </p>
-        <div className="mt-9 flex flex-wrap items-center gap-3">
-          <Button asChild variant="electric" size="lg">
-            <a href="#summary">See how it works →</a>
-          </Button>
-          <Button asChild variant="outline" size="lg">
-            <a href="#contact">Talk to us</a>
-          </Button>
-        </div>
+        <RotatingHero>
+          <p className="mt-7 max-w-2xl text-lg md:text-xl text-muted-foreground leading-relaxed">
+            Acta builds the data capability your consumer business actually needs —
+            BigQuery warehouse, pipelines, metric trees, board-grade reporting and
+            Claude wired in for real self-service — in months, not years. You own
+            the output.
+          </p>
+          <div className="mt-9 flex flex-wrap items-center gap-3">
+            <Button asChild variant="electric" size="lg">
+              <a href="#summary">See how it works →</a>
+            </Button>
+            <Button asChild variant="outline" size="lg">
+              <a href="#contact">Talk to us</a>
+            </Button>
+          </div>
+        </RotatingHero>
 
         <div className="mt-14 grid grid-cols-2 md:grid-cols-4 gap-3 max-w-3xl">
           {[

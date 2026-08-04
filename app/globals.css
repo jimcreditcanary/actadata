@@ -24,6 +24,9 @@
     --input: 225 30% 18%;
     --ring: 270 91% 65%;
     --radius: 0.85rem;
+    /* Hero eyebrow — deliberately lighter and cooler than --muted-foreground
+       so it registers as copy rather than chrome. #a8a1d0 equivalent. */
+    --hero-eyebrow: 249 33% 72%;
   }
   * { @apply border-border; }
   html {
