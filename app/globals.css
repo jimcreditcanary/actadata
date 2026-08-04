@@ -120,7 +120,8 @@
 
 @media (prefers-reduced-motion: reduce) {
   .animate-aurora-a, .animate-aurora-b, .animate-aurora-c,
-  .marquee-track, .shimmer::after, .flow-dash {
+  .marquee-track, .shimmer::after,
+  .blk-flick, .blk-flash, .blk-pulse {
     animation: none !important;
   }
   /* Staggered nav reveal: drop the cascade and the blur, keep the state change
@@ -133,13 +134,26 @@
   }
 }
 
-/* Flow diagram — dashes travel in the direction the data moves. */
-@keyframes flow-dash {
-  to { stroke-dashoffset: -100; }
+/* Flow diagram — opacity-only animations, so nothing can shift layout.
+   Cells breathe or flash as records land; a bright pulse walks each block
+   chain out to the reports and agents. Per-cell timing comes from inline
+   --o / --o2 custom properties. */
+@keyframes blk-flick {
+  0%, 100% { opacity: var(--o); }
+  50%      { opacity: var(--o2); }
 }
-.flow-dash {
-  animation: flow-dash 6s linear infinite;
+@keyframes blk-flash {
+  0%, 72%, 100% { opacity: var(--o); }
+  78%           { opacity: var(--o2); }
+  86%           { opacity: var(--o); }
 }
+@keyframes blk-pulse {
+  0%        { opacity: var(--o2); }
+  22%, 100% { opacity: var(--o); }
+}
+.blk-flick { animation-name: blk-flick; animation-timing-function: ease-in-out; animation-iteration-count: infinite; }
+.blk-flash { animation-name: blk-flash; animation-timing-function: ease-out;    animation-iteration-count: infinite; }
+.blk-pulse { animation-name: blk-pulse; animation-timing-function: linear;      animation-iteration-count: infinite; }
 
 /* Faint film grain — adds tactile depth to the hero. SVG noise inlined. */
 .bg-grain {
