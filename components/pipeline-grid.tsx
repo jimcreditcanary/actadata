@@ -3,8 +3,9 @@
  *
  * This is the same block motif as the header mosaic, but here every cell means
  * something: a clean run, a retried run, or today's run in flight. That is the
- * whole reason it belongs on the page — it evidences "refreshed daily" and
- * "idempotent pipelines" rather than asserting them.
+ * whole reason it belongs on the page — it evidences the real-time and
+ * idempotent-pipeline claims rather than asserting them. Cells are a daily
+ * rollup of health; the pipelines themselves run continuously.
  *
  * The data is illustrative and deterministic (seeded, not random) so server and
  * client agree on render. The surrounding card is labelled as illustrative.

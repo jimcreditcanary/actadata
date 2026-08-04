@@ -203,10 +203,10 @@ export function SummaryPageDemo() {
         <div className="max-w-3xl">
           <Eyebrow accent className="mb-5">The Summary Page</Eyebrow>
           <h2 className="font-display text-4xl md:text-5xl tracking-tight leading-[1.05]">
-            One page. The whole business. <span className="text-electric">Refreshed daily.</span>
+            One page. The whole business. <span className="text-electric">In real time.</span>
           </h2>
           <p className="mt-5 text-lg text-muted-foreground">
-            One trading-pack-grade view of how the business actually moved this week —
+            One trading-pack-grade view of how the business is moving right now —
             built for your vertical, tied to the metric tree, ready for the boardroom.
             It answers the question your C-suite was going to ask before they ask it.
           </p>
@@ -231,7 +231,7 @@ export function SummaryPageDemo() {
                     </div>
                     <div className="flex items-center gap-2 text-xs text-muted-foreground">
                       <span className="text-[11px] uppercase tracking-[0.16em]">Illustrative</span>
-                      <span>Refreshed 06:00 daily</span>
+                      <span>Live · updated continuously</span>
                     </div>
                   </div>
 

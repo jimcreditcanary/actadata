@@ -27,7 +27,7 @@ const tiles = [
     icon: LayoutDashboard,
     title: "The Summary Page",
     badge: "Hero output",
-    blurb: "One trading-pack-grade page that answers the C-suite question before it gets asked. Built for boardrooms, refreshed daily.",
+    blurb: "One trading-pack-grade page that answers the C-suite question before it gets asked. Built for boardrooms, updated in real time.",
     featured: true,
   },
   {

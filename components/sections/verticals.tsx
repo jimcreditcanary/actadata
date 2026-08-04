@@ -15,9 +15,9 @@ const verticals = [
     builds: [
       "Unified order-line warehouse with cleaned promo, returns and COGS attribution",
       "True margin metric tree by SKU, channel, customer segment",
-      "Daily Summary Page tuned for the trading meeting",
+      "Live Summary Page tuned for the trading meeting",
     ],
-    output: "A daily trading pack the buying team trusts more than the spreadsheet.",
+    output: "A live trading pack the buying team trusts more than the spreadsheet.",
   },
   {
     id: "credit",
@@ -47,7 +47,7 @@ const verticals = [
       "Funnel and LTV by panel, source, claim type",
       "Shared WIP and pipeline view for partners and finance",
     ],
-    output: "A weekly partner pack that ends the 'whose number is right?' debate.",
+    output: "A partner pack that is current every time they open it, ending the 'whose number is right?' debate.",
   },
   {
     id: "services",

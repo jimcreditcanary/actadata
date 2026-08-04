@@ -22,7 +22,7 @@ const plans = [
       "BigQuery warehouse and pipelines, deployed by CI/CD",
       "Business mapping and your metric tree",
       "Reporting suite for finance, marketing, ops and risk",
-      "The Summary Page, refreshed daily",
+      "The Summary Page, live",
     ],
     cta: "Start here",
   },
