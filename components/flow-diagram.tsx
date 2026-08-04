@@ -38,6 +38,14 @@ const REPORT_X = 660;
 const AGENT_X = 930;
 const MID = 156;
 
+/**
+ * How far across the grid PII survives. Past this point no cell carries a PII
+ * slot, because personal data is removed at ingest — the layer holds none by
+ * design. This is the same commitment made in the Stack section (non-PII read
+ * access is all we ask for) and in the privacy notice.
+ */
+const PII_CLEARED_AT = 0.62;
+
 const CELL = 11;
 const PITCH = CELL + 4;
 const GRID_X0 = 8;
@@ -125,12 +133,30 @@ function BackGrid() {
       const x = GRID_X0 + c * PITCH;
       const y = GRID_Y0 + r * PITCH;
 
-      let fill = hex(lerp(band, VIOLET, Math.min(1, t * 1.35)));
+      const fill = hex(lerp(band, VIOLET, Math.min(1, t * 1.35)));
       const jitter = (((r * 7 + c * 13) % 11) - 5) / 100;
-      let op = Math.max(0.1, Math.min(0.92, 0.3 + t * 0.55 + jitter));
-      if ((r * 5 + c * 3) % 53 === 0 && t > 0.4) {
-        fill = LILAC;
-        op = 0.95;
+      const op = Math.max(0.1, Math.min(0.92, 0.3 + t * 0.55 + jitter));
+
+      // PII slots: personal data is stripped at ingest, so these render as empty
+      // outlined cells — a hole where the field was — and they only exist in the
+      // raw left-hand columns. Nothing past PII_CLEARED_AT carries one, which is
+      // the point: by the time data reaches the layer there is none left.
+      if ((r * 5 + c * 3) % 31 === 0 && t < PII_CLEARED_AT) {
+        cells.push(
+          <rect
+            key={`${r}-${c}`}
+            x={x}
+            y={y}
+            width={CELL}
+            height={CELL}
+            rx="2"
+            fill="none"
+            stroke={LILAC}
+            strokeWidth="1.2"
+            strokeOpacity="0.75"
+          />
+        );
+        continue;
       }
 
       // Deterministic hash decides which cells move. Not all of them: a fully
@@ -184,7 +210,7 @@ export function FlowDiagram() {
           viewBox={`0 0 ${VB_W} ${VB_H}`}
           className="w-full min-w-[900px]"
           role="img"
-          aria-label="A complete grid of records from three source systems blends to one colour, passes through a single data layer, and streams out as blocks to four reports — one flagged as needing attention — and on to three autonomous agent workflows."
+          aria-label="A complete grid of records from three source systems blends to one colour as personal data is stripped out, passes through a single data layer holding no personal information, and streams out as blocks to four reports — one flagged as needing attention — and on to three autonomous agent workflows."
         >
           <defs>
             <linearGradient id="flow-layer" x1="0" y1="0" x2="0" y2="1">
@@ -321,6 +347,34 @@ export function FlowDiagram() {
             );
           })}
         </svg>
+
+        {/* The outlined cells need naming, or they read as decoration. */}
+        <div className="mt-4 flex flex-wrap items-center gap-x-7 gap-y-2 text-xs text-muted-foreground">
+          <span className="flex items-center gap-2">
+            <svg width="12" height="12" aria-hidden className="shrink-0">
+              <rect
+                x="0.6"
+                y="0.6"
+                width="10.8"
+                height="10.8"
+                rx="2"
+                fill="none"
+                stroke={LILAC}
+                strokeWidth="1.2"
+                strokeOpacity="0.75"
+              />
+            </svg>
+            Personal data, stripped at ingest — the layer holds none by design
+          </span>
+          <span className="flex items-center gap-2">
+            <span
+              aria-hidden
+              className="h-3 w-3 shrink-0 rounded-[2px]"
+              style={{ background: AMBER, opacity: 0.8 }}
+            />
+            The one exception worth your attention
+          </span>
+        </div>
       </div>
 
       {/* Stage captions — real selectable text outside the SVG, and the whole
@@ -335,7 +389,7 @@ export function FlowDiagram() {
           {
             n: "02",
             t: "One data layer",
-            d: "Modelled once in BigQuery on the Activity Schema. One definition of every number.",
+            d: "Modelled once in BigQuery on the Activity Schema. One definition of every number — and no personal data in it, by design.",
           },
           {
             n: "03",
