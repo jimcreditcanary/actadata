@@ -16,7 +16,19 @@ const CLAUSES = [
   "No hires. No re-platform.",
 ];
 
-const INTERVAL_MS = 4500;
+/**
+ * Dwell per clause. Was 4500ms (the original brief's figure), which meant a
+ * 22.5s cycle — most visitors saw one clause and left. 3000ms gives a 15s cycle
+ * and reads as alive without being distracting.
+ */
+const INTERVAL_MS = 3000;
+
+/**
+ * Crossfade. Set inline, NOT via duration-[450ms]: that arbitrary Tailwind class
+ * silently failed to generate, leaving the crossfade at the 150ms default for
+ * the life of the component. Same trap as the nav stagger.
+ */
+const FADE_MS = 450;
 
 /**
  * Hero headline with one crossfading clause.
@@ -93,8 +105,8 @@ export function RotatingHero({ children }: { children?: ReactNode }) {
           {CLAUSES.map((clause, i) => (
             <span
               key={clause}
-              className="col-start-1 row-start-1 text-electric transition-opacity duration-[450ms] ease-out motion-reduce:transition-none"
-              style={{ opacity: i === index ? 1 : 0 }}
+              className="col-start-1 row-start-1 text-electric transition-opacity ease-out motion-reduce:transition-none"
+              style={{ opacity: i === index ? 1 : 0, transitionDuration: `${FADE_MS}ms` }}
             >
               {clause}
             </span>
