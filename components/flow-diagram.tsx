@@ -28,14 +28,17 @@ const BANDS: RGB[] = [
   [0xd9, 0x46, 0xef], // magenta
 ];
 
-const VB_W = 1100;
-const VB_H = 320;
+const VB_W = 1000;
+/** Extra height over the 292px content: room for the stage labels. */
+const VB_H = 336;
 const LAYER_X = 400;
 const LAYER_Y = 28;
 const LAYER_W = 26;
 const LAYER_H = 256;
-const REPORT_X = 660;
-const AGENT_X = 930;
+/** Pulled in from 660/930 — the layer-to-reports void was the emptiest
+ * part of the diagram at 234px. Now 174px. */
+const REPORT_X = 600;
+const AGENT_X = 860;
 const MID = 156;
 
 /**
@@ -313,7 +316,10 @@ export function FlowDiagram() {
 
           {/* ---- STAGE 4: agents, fed by chains of blocks ---- */}
           {[0, 1, 2].map(i => {
-            const y = 95 + i * 75;
+            // 60/156/252 spans 43-269, close to the reports' 34-292 and the
+            // grid's 24-290. At 95/170/245 the agents column was 108px shorter
+            // than everything else and the right side floated.
+            const y = 60 + i * 96;
             return (
               <g key={i}>
                 <BlockChain
@@ -352,6 +358,38 @@ export function FlowDiagram() {
               </g>
             );
           })}
+          {/* ---- stage labels, anchored under the thing they name ---- */}
+          {[
+            { n: "01", label: "CLEAN", cx: 186 },
+            { n: "02", label: "MODEL", cx: 413 },
+            { n: "03", label: "ALERT", cx: 660 },
+            { n: "04", label: "ACT", cx: 913 },
+          ].map(st => (
+            <g key={st.n}>
+              <text
+                x={st.cx}
+                y="318"
+                textAnchor="middle"
+                fill={hex(VIOLET)}
+                fontSize="10"
+                letterSpacing="0.22em"
+                opacity="0.7"
+              >
+                {st.n}
+              </text>
+              <text
+                x={st.cx}
+                y="333"
+                textAnchor="middle"
+                fill="#C9D2E4"
+                fontSize="12.5"
+                letterSpacing="0.22em"
+                fontWeight="600"
+              >
+                {st.label}
+              </text>
+            </g>
+          ))}
         </svg>
 
         {/* The outlined cells need naming, or they read as decoration. */}
@@ -370,7 +408,7 @@ export function FlowDiagram() {
                 strokeOpacity="0.75"
               />
             </svg>
-            Personal data, stripped at ingest — the layer holds none by design
+            Personal data obscured at ingest — the layer holds none by design
           </span>
           <span className="flex items-center gap-2">
             <span
@@ -389,23 +427,23 @@ export function FlowDiagram() {
         {[
           {
             n: "01",
-            t: "Different systems in",
-            d: "Every record from every system — shops, payments, ad platforms, CRM, ops, the spreadsheets and the legacy BI nobody trusts.",
+            t: "Clean",
+            d: "Every record from every system — shops, payments, ad platforms, CRM, ops, the spreadsheets and the legacy BI nobody trusts. Deduplicated, reconciled, and personal data obscured on the way in.",
           },
           {
             n: "02",
-            t: "One data layer",
-            d: "Modelled once in BigQuery on the Activity Schema. One definition of every number — and no personal data in it, by design.",
+            t: "Model",
+            d: "Modelled once in BigQuery on the Activity Schema, with dbt and CI/CD under it. One definition of every number — and no personal data in it, by design.",
           },
           {
             n: "03",
-            t: "Only what matters",
-            d: "A short, timely pack — and an exception raised when something actually needs you.",
+            t: "Alert",
+            d: "A short, timely pack — and an exception raised when something actually needs you, instead of a dashboard nobody opens.",
           },
           {
             n: "04",
-            t: "Agents that act",
-            d: "Workflows triggered off the back of it, so the exception gets worked, not just noticed.",
+            t: "Act",
+            d: "Agents run the workflow off the back of it, so the exception gets worked — not just noticed.",
           },
         ].map(s => (
           <div key={s.n}>
