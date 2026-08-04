@@ -66,7 +66,7 @@ export function Hero() {
           </p>
           <div className="mt-9 flex flex-wrap items-center gap-3">
             <Button asChild variant="electric" size="lg">
-              <a href="#summary">See how it works →</a>
+              <a href="#how">See how it works →</a>
             </Button>
             <Button asChild variant="outline" size="lg">
               <a href="#contact">Talk to us</a>

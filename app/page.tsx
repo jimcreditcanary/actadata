@@ -1,4 +1,5 @@
 import { Hero } from "@/components/sections/hero";
+import { HowItWorks } from "@/components/sections/how-it-works";
 import { Stack } from "@/components/sections/stack";
 import { Crew } from "@/components/sections/crew";
 import { Problem } from "@/components/sections/problem";
@@ -13,6 +14,7 @@ export default function Page() {
   return (
     <>
       <Hero />
+      <HowItWorks />
       <Stack />
       <Crew />
       <Problem />

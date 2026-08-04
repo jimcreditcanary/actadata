@@ -120,7 +120,7 @@
 
 @media (prefers-reduced-motion: reduce) {
   .animate-aurora-a, .animate-aurora-b, .animate-aurora-c,
-  .marquee-track, .shimmer::after {
+  .marquee-track, .shimmer::after, .flow-dash {
     animation: none !important;
   }
   /* Staggered nav reveal: drop the cascade and the blur, keep the state change
@@ -131,6 +131,14 @@
     filter: none !important;
     transform: none !important;
   }
+}
+
+/* Flow diagram — dashes travel in the direction the data moves. */
+@keyframes flow-dash {
+  to { stroke-dashoffset: -100; }
+}
+.flow-dash {
+  animation: flow-dash 6s linear infinite;
 }
 
 /* Faint film grain — adds tactile depth to the hero. SVG noise inlined. */
