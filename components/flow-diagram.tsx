@@ -50,7 +50,13 @@ const CELL = 11;
 const PITCH = CELL + 4;
 const GRID_X0 = 8;
 const GRID_Y0 = 24;
-const COLS = 26;
+/**
+ * 24 columns leaves a 36px gap (~2.4 cell widths) between the grid's right edge
+ * and the layer. The grid previously butted up against it with 6px clearance,
+ * which made the left half read as one heavy mass; the breathing room lets the
+ * layer stand as its own object.
+ */
+const COLS = 24;
 const ROWS = 18;
 
 const hex = ([r, g, b]: RGB) =>
