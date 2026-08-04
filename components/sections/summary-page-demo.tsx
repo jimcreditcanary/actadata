@@ -3,6 +3,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowDown, ArrowUp } from "lucide-react";
 import { Eyebrow } from "@/components/eyebrow";
+import { PipelineGrid } from "@/components/pipeline-grid";
 import {
   ResponsiveContainer, LineChart, Line, AreaChart, Area,
   XAxis, YAxis, Tooltip, CartesianGrid,
@@ -240,6 +241,10 @@ export function SummaryPageDemo() {
 
                   <div className="mt-4">
                     <MainChart data={v.trend} label={v.trendLabel} />
+                  </div>
+
+                  <div className="mt-4">
+                    <PipelineGrid />
                   </div>
                 </div>
               </TabsContent>
