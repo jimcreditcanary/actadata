@@ -3,7 +3,7 @@ import { FlowDiagram } from "@/components/flow-diagram";
 
 export function HowItWorks() {
   return (
-    <section id="how" className="relative py-24 md:py-32 border-t border-white/[0.04]">
+    <section id="how" className="relative py-20 md:py-24 border-t border-white/[0.04]">
       <div className="container">
         <div className="max-w-3xl">
           <Eyebrow className="mb-5">How it works</Eyebrow>
@@ -18,7 +18,7 @@ export function HowItWorks() {
           </p>
         </div>
 
-        <div className="mt-14">
+        <div className="mt-10">
           <FlowDiagram />
         </div>
       </div>
