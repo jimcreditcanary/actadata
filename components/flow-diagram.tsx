@@ -419,9 +419,9 @@ export function FlowDiagram() {
           {
             n: "03",
             label: "Alert",
-            d: "A short, timely pack — not a dashboard nobody opens.",
+            d: "A conscious, real-time view of the business — focused on the next best action.",
             key: "amber" as const,
-            keyText: "The one exception that needs you",
+            keyText: "The one thing that needs you now",
           },
           {
             n: "04",
