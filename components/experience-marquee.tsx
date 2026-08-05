@@ -8,9 +8,10 @@
  * logo is reproducing someone's asset. If the real files arrive with permission,
  * swap each <span> for an <Image /> and nothing else changes.
  *
- * The caption underneath is not decoration — it says these are prior roles and
- * engagements rather than Acta Data client relationships, which is the honest
- * framing and the one that keeps the claim defensible.
+ * The caption underneath is not decoration — "prior roles and engagements, as
+ * employees and as consultants" is what keeps the claim accurate, since several of
+ * these were employer or agency relationships rather than Acta Data engagements.
+ * Don't drop that qualification.
  */
 const ROW_ONE = [
   "P&G",
@@ -75,8 +76,7 @@ export function ExperienceMarquee() {
       </div>
       <p className="mt-6 text-xs text-muted-foreground">
         Brands our team has worked with or advised, in prior roles and engagements — as
-        employees, and as consultants. Shown as experience, not as Acta Data client
-        relationships.
+        employees, and as consultants.
       </p>
     </div>
   );
