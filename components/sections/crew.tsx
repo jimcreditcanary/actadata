@@ -1,6 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { actaFirstOutputWeeks } from "@/lib/economics";
 import { Eyebrow } from "@/components/eyebrow";
+import { ExperienceMarquee } from "@/components/experience-marquee";
 
 const stats = [
   { figure: "Decades", label: "Of hands-on data and AI experience" },
@@ -39,6 +40,34 @@ Decades of data and AI experience.{" "}
               </CardContent>
             </Card>
           ))}
+        </div>
+
+        {/* Where we've worked — the argument for why SME judgement is the edge,
+            evidenced by the brands that judgement was formed in. */}
+        <div className="mt-5 rounded-2xl border border-white/[0.06] bg-card/50 backdrop-blur p-6 md:p-10">
+          <div className="max-w-3xl">
+            <div className="text-[11px] uppercase tracking-[0.18em] text-electric">
+              Where we&apos;ve worked
+            </div>
+            <h3 className="mt-3 text-2xl md:text-3xl font-semibold tracking-tight leading-tight">
+              Business judgement is the edge AI cannot fake.
+            </h3>
+            <p className="mt-4 text-muted-foreground leading-relaxed">
+              Every business can buy the same models now. What separates the ones that get
+              value from them is knowing which decisions actually move the number — and that
+              only comes from having run things. We have informed strategy through operations
+              and data systems in some of the biggest brands in the country and in
+              founder-led SMEs, from inside as operators and alongside as consultants.
+            </p>
+            <p className="mt-4 text-muted-foreground leading-relaxed">
+              That is what we bring to the new wave of intelligence: not just the pipes, but
+              the judgement about where to point them.
+            </p>
+          </div>
+
+          <div className="mt-9">
+            <ExperienceMarquee />
+          </div>
         </div>
 
         <div className="mt-5 rounded-2xl border border-white/[0.06] bg-card/50 backdrop-blur p-6 md:p-10">
