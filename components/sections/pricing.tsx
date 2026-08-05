@@ -34,9 +34,9 @@ const plans = [
     features: [
       "Everything in BI Only",
       "Claude self-service analytics in your own enterprise account",
-      "PII-restricted by design — the model never sees what it shouldn't",
+      "Personal data stays out — the model never sees what it shouldn't",
       "Answers drawn from the metric tree, not guessed",
-      "Guardrails and evals your risk team can sign off",
+      "Tested against real questions, with limits your risk team can sign off",
     ],
     cta: "Add Claude",
     featured: true,

@@ -35,7 +35,7 @@ const verticals = [
     builds: [
       "Application-to-funded-to-collections single timeline per customer",
       "Vintage cohorts, roll-rate matrices, CAC payback by channel",
-      "Regulator-grade reporting harness with the lineage to back it",
+      "Regulator-ready reporting, with a full audit trail behind every number",
     ],
     output: "One number for net new contribution — agreed by risk, finance and growth.",
   },
@@ -95,7 +95,7 @@ const verticals = [
       "No activation or retention signal early enough to act on",
     ],
     builds: [
-      "Immutable product event history joined to billing and CRM",
+      "Every product event recorded once, joined to billing and CRM",
       "Activation, expansion, churn and CAC payback from one definition",
       "An investor-ready pack that regenerates itself",
     ],

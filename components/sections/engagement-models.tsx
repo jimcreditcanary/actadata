@@ -15,21 +15,21 @@ const models = [
     name: "BI Takeover",
     duration: "Migration",
     blurb:
-      "A tired stack and a department that can't get ahead of it. We take the whole thing over and convert it into something AI-ready, without the lights going out on the way.",
+      "A tired setup and a team that can't get ahead of it. We take the whole thing over and turn it into something AI can work with, without the lights going out on the way.",
     tier: "BI Only and up",
   },
   {
     name: "Claude Enterprise Onboarding",
     duration: "Safety first",
     blurb:
-      "Claude into your own enterprise account, properly: access boundaries, guardrails, evals and a data policy your risk and compliance teams will actually sign.",
+      "Claude in your own enterprise account, done properly: who can see what, limits on what it can do, testing against real questions, and a data policy your risk and compliance teams will actually sign.",
     tier: "BI + Claude and up",
   },
   {
     name: "AI Readiness",
     duration: "Activation",
     blurb:
-      "Agent-driven operational pipelines with a master agent orchestrating them. Your data stops being something you report on and starts being something that does the work.",
+      "Agents that run real operational work, with one agent coordinating the rest. Your data stops being something you report on and starts being something that does the work.",
     tier: "Enterprise",
   },
 ];

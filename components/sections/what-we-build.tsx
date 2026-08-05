@@ -11,12 +11,12 @@ const tiles = [
   {
     icon: Cloud,
     title: "BigQuery Warehouse & Pipelines",
-    blurb: "BigQuery as the back end and services on Cloud Run, inside your own secure, scalable environment. Idempotent pipelines, deployed by CI/CD — not hand-built in a console.",
+    blurb: "BigQuery as the back end and services on Cloud Run, inside your own secure, scalable environment. Pipelines that can re-run safely without double-counting, deployed automatically rather than hand-built in a console.",
   },
   {
     icon: GitBranch,
     title: "Business Mapping & Metric Trees",
-    blurb: "We map how revenue actually moves through your business, then build the metric tree your operators can argue with — and settle arguments from.",
+    blurb: "We map how revenue actually moves through your business, then build the metric tree — the agreed map of how every number rolls up — that your operators can argue with, and settle arguments from.",
   },
   {
     icon: LineChart,
@@ -48,9 +48,9 @@ export function WhatWeBuild() {
               Six capabilities. One coherent data function.
             </h2>
             <p className="mt-5 text-lg text-muted-foreground">
-              Built on immutable event history in BigQuery — every event landed once
-              and never overwritten, which makes every later question (analytics, AI,
-              attribution) cheaper to answer.
+              Built on a full event history in BigQuery — everything recorded once and
+              never edited afterwards, which makes every later question cheaper to
+              answer, whether that is a report, an attribution model or an AI one.
             </p>
           </div>
         </div>

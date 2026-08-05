@@ -3,7 +3,7 @@ import { actaFirstOutputWeeks } from "@/lib/economics";
 import { Eyebrow } from "@/components/eyebrow";
 
 const stats = [
-  { figure: "100+", label: "Years of combined data and AI experience" },
+  { figure: "Decades", label: "Of hands-on data and AI experience" },
   { figure: actaFirstOutputWeeks, label: "Week to your first real report" },
   { figure: "4", label: "C-suite disciplines: marketing, ops, tech, product" },
   { figure: "0", label: "New hires for you to make or manage" },
@@ -16,7 +16,7 @@ export function Crew() {
         <div className="max-w-3xl">
           <Eyebrow className="mb-5">The crew</Eyebrow>
           <h2 className="font-display text-4xl md:text-5xl tracking-tight leading-[1.05]">
-A hundred years of data and AI experience.{" "}
+Decades of data and AI experience.{" "}
             <span className="text-electric">Pointed at your P&amp;L.</span>
           </h2>
           <p className="mt-5 text-lg text-muted-foreground">

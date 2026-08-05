@@ -59,7 +59,7 @@ export function Hero() {
       <div className="container relative pt-28 pb-32 md:pt-36 md:pb-40">
         <RotatingHero>
           <p className="mt-7 max-w-2xl text-lg md:text-xl text-muted-foreground leading-relaxed">
-            Timely data, landed once as immutable events, in a single source your
+            Timely data, recorded once and never rewritten, in a single source your
             whole business agrees on — and the shape AI actually works with. All on
             Google, in your own secure, scalable environment. Live in weeks, not years —
             handed over to you, or run by us.

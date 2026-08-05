@@ -76,8 +76,8 @@ export function PipelineGrid() {
       </div>
 
       <p className="mt-4 text-[11px] text-muted-foreground">
-        Retries are expected and safe — pipelines are idempotent, so a re-run produces the
-        same numbers rather than double-counting.
+        Retries are expected and safe: a pipeline can re-run without double-counting, so it
+        produces the same numbers every time.
       </p>
     </div>
   );

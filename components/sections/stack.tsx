@@ -9,13 +9,13 @@ const pillars = [
     icon: Cloud,
     title: "Google, end to end",
     blurb:
-      "BigQuery as the back end, services on Cloud Run, all inside your own secure, scalable environment. One vendor, one bill, no sprawl — and everything deployed by CI/CD rather than hand-built in a console.",
+      "BigQuery as the back end, services on Cloud Run, all inside your own secure, scalable environment. One vendor, one bill, no sprawl — and everything deployed automatically from code, not clicked together by hand.",
   },
   {
     icon: Layers,
     title: "Immutable event history",
     blurb:
-      "Every event landed once and never overwritten, so the past cannot silently change under you. It is the single source the reporting reads from — and the shape AI reasons over best.",
+      "Everything that happens gets recorded once and never edited afterwards, so last month's numbers cannot quietly change. It is the single source every report reads from — and the shape AI works with best.",
   },
   {
     icon: Sparkles,
@@ -43,11 +43,12 @@ Google, BigQuery and Claude.{" "}
             <span className="text-electric">Chosen once, so you never re-platform.</span>
           </h2>
           <p className="mt-5 text-lg text-muted-foreground">
-            We don&apos;t run a vendor bake-off and bill you for the deliberation. One
-            Google stack, delivered end to end — warehouse, BI, tracking and
-            decisioning — built on immutable event history, with Claude wired in so
-            your team can ask their own questions. Integrations are the only part that
-            varies, because they depend on what your systems expose.
+            We don&apos;t run a vendor bake-off and bill you for the deliberation. We picked
+            this stack because it works, it scales with you, and it lets us start in days
+            rather than months. One Google stack end to end — warehouse, BI, tracking and
+            decisioning — with Claude wired in so your team can ask their own questions.
+            Connecting your systems is the only part that varies, because that depends on
+            what each one lets us read.
           </p>
         </div>
 
@@ -102,13 +103,13 @@ Google, BigQuery and Claude.{" "}
               </h3>
               <p className="mt-4 text-sm text-muted-foreground leading-relaxed">
                 No discovery phase to sit through, no procurement marathon. Give us
-                non-PII read access and we start — your first report inside a week.
+                read access with personal data excluded, and we start — your first report inside a week.
               </p>
               <div className="mt-6 grid grid-cols-2 gap-x-6 gap-y-5">
                 {[
                   ["Kick-off", "This month"],
                   ["Year-1 cost", `From £${entryYearK}k`],
-                  ["We need", "Non-PII read access"],
+                  ["We need", "Read access, no personal data"],
                   ["You keep", "The whole environment"],
                 ].map(([k, v]) => (
                   <div key={k}>

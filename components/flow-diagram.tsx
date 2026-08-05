@@ -414,7 +414,7 @@ export function FlowDiagram() {
           {
             n: "02",
             label: "Model",
-            d: "Landed once in BigQuery as immutable events, deployed by CI/CD. One definition of every number, and no personal data in it.",
+            d: "Recorded once in BigQuery and never rewritten. One definition of every number, and no personal data in it.",
           },
           {
             n: "03",
