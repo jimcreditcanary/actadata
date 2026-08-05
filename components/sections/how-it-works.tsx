@@ -13,8 +13,8 @@ export function HowItWorks() {
           </h2>
           <p className="mt-5 text-lg text-muted-foreground">
             Most businesses have the data and none of the leverage — a dozen systems, none of
-            them agreeing. We collapse them into one modelled layer, and everything after that
-            gets cheap: the reporting, the exceptions, the agents.
+            them agreeing. We land it once as immutable events in a single source, and
+            everything after that gets cheap: the reporting, the exceptions, the agents.
           </p>
         </div>
 

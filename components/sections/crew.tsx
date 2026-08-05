@@ -5,7 +5,7 @@ import { Eyebrow } from "@/components/eyebrow";
 const stats = [
   { figure: "100+", label: "Years of combined data and AI experience" },
   { figure: actaFirstOutputWeeks, label: "Week to your first real report" },
-  { figure: "1", label: "Stack, chosen once — no vendor bake-off" },
+  { figure: "4", label: "C-suite disciplines: marketing, ops, tech, product" },
   { figure: "0", label: "New hires for you to make or manage" },
 ];
 
@@ -16,14 +16,15 @@ export function Crew() {
         <div className="max-w-3xl">
           <Eyebrow className="mb-5">The crew</Eyebrow>
           <h2 className="font-display text-4xl md:text-5xl tracking-tight leading-[1.05]">
-            A hundred years of data and AI experience.{" "}
+A hundred years of data and AI experience.{" "}
             <span className="text-electric">Pointed at your P&amp;L.</span>
           </h2>
           <p className="mt-5 text-lg text-muted-foreground">
-            Our team has run these businesses, not just advised them. You feel the
-            difference in week one: we find the handful of numbers that actually move
-            your outcome, and ship them. A real report in days — not a discovery deck
-            in six months.
+            We are data and AI people who have held C-suite positions across marketing,
+            operations, technology and product — so we have sat on your side of the table
+            and owned the number, not just reported it. You feel it in week one: we find
+            the handful of numbers that actually move your outcome, and ship them. A real
+            report in days, not a discovery deck in six months.
           </p>
         </div>
 
@@ -49,6 +50,10 @@ export function Crew() {
               <h3 className="mt-3 text-2xl md:text-3xl font-semibold tracking-tight leading-tight">
                 Analytics that do something — not analytics you read.
               </h3>
+              <p className="mt-4 text-sm text-muted-foreground leading-relaxed">
+                Where this really bites is the mid-market: enough complexity to need a
+                data function, not enough scale to justify five hires for it.
+              </p>
             </div>
             <div className="space-y-4 text-muted-foreground leading-relaxed">
               <p>

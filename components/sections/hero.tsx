@@ -59,10 +59,10 @@ export function Hero() {
       <div className="container relative pt-28 pb-32 md:pt-36 md:pb-40">
         <RotatingHero>
           <p className="mt-7 max-w-2xl text-lg md:text-xl text-muted-foreground leading-relaxed">
-            Acta builds the data capability your consumer business actually needs —
-            BigQuery warehouse, pipelines, metric trees, board-grade reporting and
-            Claude wired in for real self-service — in months, not years. You own
-            the output.
+            Timely data, landed once as immutable events, in a single source your
+            whole business agrees on — and the shape AI actually works with. All on
+            Google, in your own secure VPC, handed over or run by us. Live in weeks,
+            not years.
           </p>
           <div className="mt-9 flex flex-wrap items-center gap-3">
             <Button asChild variant="electric" size="lg">

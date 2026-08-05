@@ -6,7 +6,7 @@ import { ImageResponse } from "next/og";
  */
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
-export const alt = "Acta Data — Your entire data function. Built, handed over, done.";
+export const alt = "Acta Data — The data layer AI needs.";
 
 export default function OpengraphImage() {
   return new ImageResponse(
@@ -47,12 +47,12 @@ export default function OpengraphImage() {
             letterSpacing: -2,
           }}
         >
-          <span>Your entire data function.</span>
-          <span style={{ color: "#A855F7" }}>Built, handed over, done.</span>
+          <span>The data layer</span>
+          <span style={{ color: "#A855F7" }}>AI needs.</span>
         </div>
 
         <div style={{ display: "flex", fontSize: 28, color: "rgba(242,244,248,0.7)" }}>
-          Data &amp; AI consultancy for consumer businesses
+          Timely data, one source, agents that act — all on Google
         </div>
       </div>
     ),

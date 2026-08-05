@@ -18,9 +18,9 @@ const plans = [
     monthlyK: tiers.biOnly.monthlyK,
     summary: "The whole BI function, live and yours.",
     features: [
-      "Every source that matters, landed and scheduled",
-      "BigQuery warehouse and pipelines, deployed by CI/CD",
-      "Business mapping and your metric tree",
+      "Every source that matters, connected however it exposes itself",
+      "BigQuery back end and Cloud Run services in your own secure VPC",
+      "Immutable event history, business mapping and your metric tree",
       "Reporting suite for finance, marketing, ops and risk",
       "The Summary Page, live",
     ],

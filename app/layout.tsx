@@ -13,9 +13,9 @@ const archivoBlack = Archivo_Black({
 });
 
 export const metadata: Metadata = {
-  title: "Acta Data — Your entire data function. Built, handed over, done.",
+  title: "Acta Data — The data layer AI needs. Built, handed over, done.",
   description:
-    "Acta Data builds the data and AI capability your consumer business needs — integrations, warehouse, ETL, metric trees, board-grade reporting, LLM readiness — in months, not years.",
+    "Acta Data builds the data layer AI needs: timely data landed once as immutable events in BigQuery, inside your own secure Google VPC, with Claude wired in for real self-service. Live in weeks, not years.",
   metadataBase: new URL("https://www.actadata.co.uk"),
   alternates: { canonical: "/" },
   icons: {
@@ -26,9 +26,9 @@ export const metadata: Metadata = {
     shortcut: "/favicon.ico",
   },
   openGraph: {
-    title: "Acta Data — Your entire data function. Built, handed over, done.",
+    title: "Acta Data — The data layer AI needs. Built, handed over, done.",
     description:
-      "Acta Data builds the data and AI capability your consumer business needs — in months, not years.",
+      "Timely data, landed once as immutable events in a single source AI can work with. All on Google, in your own VPC.",
     url: "/",
     siteName: "Acta Data",
     locale: "en_GB",
@@ -36,9 +36,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Acta Data — Your entire data function. Built, handed over, done.",
+    title: "Acta Data — The data layer AI needs. Built, handed over, done.",
     description:
-      "Acta Data builds the data and AI capability your consumer business needs — in months, not years.",
+      "Timely data, landed once as immutable events in a single source AI can work with. All on Google, in your own VPC.",
   },
 };
 

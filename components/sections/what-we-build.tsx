@@ -6,12 +6,12 @@ const tiles = [
   {
     icon: Database,
     title: "Integrations & Data Sources",
-    blurb: "Every system that matters — Shopify, Stripe, ad platforms, CRMs, ops tooling — landed in one place, on a schedule you can trust.",
+    blurb: "Every system that matters, landed in one place. How we connect is source-dependent — API, export, replica or event stream, whatever yours exposes.",
   },
   {
     icon: Cloud,
-    title: "BigQuery Warehouse & ETL",
-    blurb: "A low-maintenance warehouse with idempotent pipelines. BigQuery and dbt, deployed by CI/CD — not hand-built in a console.",
+    title: "BigQuery Warehouse & Pipelines",
+    blurb: "BigQuery as the back end and services on Cloud Run, inside your own secure VPC. Idempotent pipelines, deployed by CI/CD — not hand-built in a console.",
   },
   {
     icon: GitBranch,
@@ -48,8 +48,9 @@ export function WhatWeBuild() {
               Six capabilities. One coherent data function.
             </h2>
             <p className="mt-5 text-lg text-muted-foreground">
-              Built on the Activity Schema in BigQuery — a foundation that makes every
-              later question (analytics, AI, attribution) cheaper to answer.
+              Built on immutable event history in BigQuery — every event landed once
+              and never overwritten, which makes every later question (analytics, AI,
+              attribution) cheaper to answer.
             </p>
           </div>
         </div>

@@ -1,21 +1,21 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Cloud, GitBranch, Sparkles } from "lucide-react";
+import { Cloud, Layers, Sparkles } from "lucide-react";
 import { entryYearK } from "@/lib/economics";
 import { Eyebrow } from "@/components/eyebrow";
 
 const pillars = [
   {
     icon: Cloud,
-    title: "Google Cloud and BigQuery",
+    title: "Google, end to end",
     blurb:
-      "One warehouse, one bill, no vendor sprawl. BigQuery takes you from your first table to your whole business without a re-platform, and everything else plugs into it.",
+      "BigQuery as the back end, services on Cloud Run, all inside your own secure VPC. One vendor, one bill, no sprawl — and everything deployed by CI/CD rather than hand-built in a console.",
   },
   {
-    icon: GitBranch,
-    title: "CI/CD from the first commit",
+    icon: Layers,
+    title: "Immutable event history",
     blurb:
-      "Every model, pipeline and dashboard is version-controlled, tested and deployed automatically. Nothing is hand-built in a console, so nothing breaks quietly after we hand it over.",
+      "Every event landed once and never overwritten, so the past cannot silently change under you. It is the single source the reporting reads from — and the shape AI reasons over best.",
   },
   {
     icon: Sparkles,
@@ -39,14 +39,15 @@ export function Stack() {
         <div className="max-w-3xl">
           <Eyebrow accent className="mb-5">The stack</Eyebrow>
           <h2 className="font-display text-4xl md:text-5xl tracking-tight leading-[1.05]">
-            Google, BigQuery and Claude.{" "}
+Google, BigQuery and Claude.{" "}
             <span className="text-electric">Chosen once, so you never re-platform.</span>
           </h2>
           <p className="mt-5 text-lg text-muted-foreground">
             We don&apos;t run a vendor bake-off and bill you for the deliberation. One
-            stack, deployed by CI/CD, delivered end to end — warehouse, BI, tracking
-            and decisioning — with Claude wired in so your team can ask their own
-            questions.
+            Google stack, delivered end to end — warehouse, BI, tracking and
+            decisioning — built on immutable event history, with Claude wired in so
+            your team can ask their own questions. Integrations are the only part that
+            varies, because they depend on what your systems expose.
           </p>
         </div>
 
@@ -107,7 +108,7 @@ export function Stack() {
                   ["Kick-off", "This month"],
                   ["Year-1 cost", `From £${entryYearK}k`],
                   ["We need", "Non-PII read access"],
-                  ["You keep", "Every asset we build"],
+                  ["You keep", "The whole VPC"],
                 ].map(([k, v]) => (
                   <div key={k}>
                     <div className="text-[11px] uppercase tracking-[0.18em] text-muted-foreground">{k}</div>
