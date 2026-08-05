@@ -13,7 +13,7 @@ const pillars = [
   },
   {
     icon: Layers,
-    title: "Immutable event history",
+    title: "Recorded once, never rewritten",
     blurb:
       "Everything that happens gets recorded once and never edited afterwards, so last month's numbers cannot quietly change. It is the single source every report reads from — and the shape AI works with best.",
   },

@@ -8,10 +8,17 @@ const HEADLINE = ["The data layer", "AI needs."];
  * Order matters — clause 1 renders first on load and is the one most visitors
  * see. It is also the clause baked into the <h1> for screen readers and SEO.
  */
+/**
+ * Three clauses, each of which completes "The data layer AI needs..." as an
+ * attribute of the offer. Two were dropped for changing the subject rather than
+ * describing the layer: "Then agents that act on it." and "A customer experience
+ * that adapts."
+ *
+ * Clause 1 is also the one baked into the <h1> for screen readers and SEO, so
+ * order still matters.
+ */
 const CLAUSES = [
-  "Then agents that act on it.",
   "Insight your operators trust.",
-  "A customer experience that adapts.",
   "Live in weeks, not years.",
   "No hires. No re-platform.",
 ];
@@ -24,11 +31,17 @@ const CLAUSES = [
 const INTERVAL_MS = 3000;
 
 /**
- * Crossfade. Set inline, NOT via duration-[450ms]: that arbitrary Tailwind class
- * silently failed to generate, leaving the crossfade at the 150ms default for
- * the life of the component. Same trap as the nav stagger.
+ * The swap is sequential, not a crossfade: the outgoing clause fades out first,
+ * then the incoming one fades in after it has cleared. A true crossfade means
+ * both are partly visible at once, and at this type size the glyphs overlap into
+ * a double-exposure — very obvious on mobile.
+ *
+ * Durations are set inline, NOT via duration-[Nms]: that arbitrary Tailwind class
+ * silently fails to generate in this repo, which left the fade at the 150ms
+ * default for the life of the component. Same trap as the nav stagger.
  */
-const FADE_MS = 450;
+const FADE_OUT_MS = 200;
+const FADE_IN_MS = 260;
 
 /**
  * Hero headline with one crossfading clause.
@@ -75,12 +88,12 @@ export function RotatingHero({ children }: { children?: ReactNode }) {
   }, [reduced, paused, hidden]);
 
   return (
-    // Subhead and CTAs come through as children so that hovering or focusing
-    // anything in the hero — a CTA included — pauses the rotation. Capture-phase
-    // focus handlers are what make keyboard focus on a button count.
+    // Focus handlers stay on the whole block, in capture phase, so tabbing to a
+    // CTA pauses the rotation. Hover-pause does NOT live here: this wrapper spans
+    // the entire hero, so any cursor resting in the top-left of the page — which
+    // is most of them — froze the rotation indefinitely. Hover-pause is on the
+    // clause itself instead, where it means "let me finish reading this".
     <div
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
       onFocusCapture={() => setPaused(true)}
       onBlurCapture={() => setPaused(false)}
     >
@@ -101,16 +114,29 @@ export function RotatingHero({ children }: { children?: ReactNode }) {
 
         <span className="sr-only"> {CLAUSES[0]}</span>
 
-        <span aria-hidden="true" className="grid">
-          {CLAUSES.map((clause, i) => (
-            <span
-              key={clause}
-              className="col-start-1 row-start-1 text-electric transition-opacity ease-out motion-reduce:transition-none"
-              style={{ opacity: i === index ? 1 : 0, transitionDuration: `${FADE_MS}ms` }}
-            >
-              {clause}
-            </span>
-          ))}
+        <span
+          aria-hidden="true"
+          className="grid"
+          onMouseEnter={() => setPaused(true)}
+          onMouseLeave={() => setPaused(false)}
+        >
+          {CLAUSES.map((clause, i) => {
+            const active = i === index;
+            return (
+              <span
+                key={clause}
+                className="col-start-1 row-start-1 text-electric transition-opacity ease-out motion-reduce:transition-none"
+                style={{
+                  opacity: active ? 1 : 0,
+                  transitionDuration: `${active ? FADE_IN_MS : FADE_OUT_MS}ms`,
+                  // The incoming clause waits for the outgoing one to clear.
+                  transitionDelay: active ? `${FADE_OUT_MS}ms` : "0ms",
+                }}
+              >
+                {clause}
+              </span>
+            );
+          })}
         </span>
       </h1>
 

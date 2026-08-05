@@ -20,7 +20,7 @@ const plans = [
     features: [
       "Every source that matters, connected however it exposes itself",
       "BigQuery back end and Cloud Run services in your own secure, scalable environment",
-      "Immutable event history, business mapping and your metric tree",
+      "A full event history, business mapping and your metric tree",
       "Reporting suite for finance, marketing, ops and risk",
       "The Summary Page, live",
     ],
