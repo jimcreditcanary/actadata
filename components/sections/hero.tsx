@@ -61,8 +61,8 @@ export function Hero() {
           <p className="mt-7 max-w-2xl text-lg md:text-xl text-muted-foreground leading-relaxed">
             Timely data, landed once as immutable events, in a single source your
             whole business agrees on — and the shape AI actually works with. All on
-            Google, in your own secure VPC, handed over or run by us. Live in weeks,
-            not years.
+            Google, in your own secure, scalable environment. Live in weeks, not years —
+            handed over to you, or run by us.
           </p>
           <div className="mt-9 flex flex-wrap items-center gap-3">
             <Button asChild variant="electric" size="lg">

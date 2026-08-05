@@ -9,7 +9,7 @@ const pillars = [
     icon: Cloud,
     title: "Google, end to end",
     blurb:
-      "BigQuery as the back end, services on Cloud Run, all inside your own secure VPC. One vendor, one bill, no sprawl — and everything deployed by CI/CD rather than hand-built in a console.",
+      "BigQuery as the back end, services on Cloud Run, all inside your own secure, scalable environment. One vendor, one bill, no sprawl — and everything deployed by CI/CD rather than hand-built in a console.",
   },
   {
     icon: Layers,
@@ -85,8 +85,9 @@ Google, BigQuery and Claude.{" "}
               </ul>
               <p className="mt-5 text-sm text-foreground/90 leading-relaxed">
                 In their place: BI delivery, tracking and decisioning, end to end, for
-                less than half a senior data hire. We build it and hand it over, or we
-                stay on and wire in new data as it arrives.
+                less than half a senior data hire. The whole environment is Terraformed,
+                so it hands over cleanly — or we keep running it and wire in new sources
+                as they arrive. Your call, not a contract term.
               </p>
             </CardContent>
           </Card>
@@ -108,7 +109,7 @@ Google, BigQuery and Claude.{" "}
                   ["Kick-off", "This month"],
                   ["Year-1 cost", `From £${entryYearK}k`],
                   ["We need", "Non-PII read access"],
-                  ["You keep", "The whole VPC"],
+                  ["You keep", "The whole environment"],
                 ].map(([k, v]) => (
                   <div key={k}>
                     <div className="text-[11px] uppercase tracking-[0.18em] text-muted-foreground">{k}</div>

@@ -19,7 +19,7 @@ const plans = [
     summary: "The whole BI function, live and yours.",
     features: [
       "Every source that matters, connected however it exposes itself",
-      "BigQuery back end and Cloud Run services in your own secure VPC",
+      "BigQuery back end and Cloud Run services in your own secure, scalable environment",
       "Immutable event history, business mapping and your metric tree",
       "Reporting suite for finance, marketing, ops and risk",
       "The Summary Page, live",
@@ -127,38 +127,65 @@ export function Pricing() {
           ))}
         </div>
 
-        {/* After the build */}
+        {/* After the build — deliberately open. Nobody signs a 12-month build
+            without knowing what month 13 looks like. */}
         <div className="mt-5 rounded-2xl border border-white/[0.06] bg-card/40 backdrop-blur p-7 md:p-9">
-          <div className="grid md:grid-cols-3 gap-8 md:gap-6 items-center">
-            <div className="md:col-span-2">
-              <Eyebrow className="mb-4">After 12 months</Eyebrow>
-              <p className="text-lg text-muted-foreground max-w-2xl">
-                Walk away and keep the lot — the warehouse, the code, the dashboards, the
-                agents. Or keep us on for supported maintenance at{" "}
-                <span className="text-foreground font-medium">
-                  £{maintenanceMonthlyK}k a month
-                </span>
-                , wiring in new data as it arrives. No exit fee either way.
-              </p>
-            </div>
-            <div className="grid grid-cols-2 gap-3">
-              <div className="rounded-xl border border-white/[0.06] bg-navy-100/60 p-4">
-                <div className="text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
-                  Walk away
+          <div className="max-w-3xl">
+            <Eyebrow className="mb-4">After 12 months</Eyebrow>
+            <h3 className="text-2xl md:text-3xl font-semibold tracking-tight leading-tight">
+              It&apos;s yours. What happens next is up to you.
+            </h3>
+            <p className="mt-4 text-muted-foreground">
+              A structured handover either way: everything is Terraformed and
+              version-controlled, so what you inherit is infrastructure as code — not a
+              machine only we know how to restart. Then pick as much or as little ongoing
+              help as you want.
+            </p>
+          </div>
+
+          <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {[
+              {
+                t: "Structured handover",
+                price: "Included",
+                d: "Terraformed infrastructure, all code, documentation and walkthroughs. You could rebuild it from scratch without us.",
+              },
+              {
+                t: "Keep it running",
+                price: `£${maintenanceMonthlyK}k / month`,
+                d: "Monitoring, fixes and upgrades so nothing falls over. Cancel whenever — there is no exit fee.",
+                featured: true,
+              },
+              {
+                t: "New datasets & builds",
+                price: "Per project",
+                d: "New sources, new models, new reporting. Scoped and quoted when you want them, not bundled in up front.",
+              },
+              {
+                t: "Training",
+                price: "On request",
+                d: "Packages for analysts and operators, so your team runs it confidently rather than depending on us.",
+              },
+            ].map(o => (
+              <div
+                key={o.t}
+                className={`rounded-xl p-5 ${
+                  o.featured
+                    ? "border border-electric/30 bg-electric/[0.06]"
+                    : "border border-white/[0.06] bg-navy-100/50"
+                }`}
+              >
+                <div
+                  className={`text-[11px] uppercase tracking-[0.18em] ${
+                    o.featured ? "text-electric" : "text-muted-foreground"
+                  }`}
+                >
+                  {o.t}
                 </div>
-                <div className="mt-2 text-2xl font-semibold tabular-nums">£0</div>
-                <div className="mt-1 text-xs text-muted-foreground">you keep everything</div>
+                <div className="mt-2 text-lg font-semibold tracking-tight">{o.price}</div>
+                <p className="mt-2 text-xs text-muted-foreground leading-relaxed">{o.d}</p>
               </div>
-              <div className="rounded-xl border border-electric/30 bg-electric/[0.06] p-4">
-                <div className="text-[11px] uppercase tracking-[0.18em] text-electric">
-                  Supported
-                </div>
-                <div className="mt-2 text-2xl font-semibold tabular-nums">
-                  £{maintenanceMonthlyK}k
-                </div>
-                <div className="mt-1 text-xs text-muted-foreground">per month, ongoing</div>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
 

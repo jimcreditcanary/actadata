@@ -11,7 +11,7 @@ const tiles = [
   {
     icon: Cloud,
     title: "BigQuery Warehouse & Pipelines",
-    blurb: "BigQuery as the back end and services on Cloud Run, inside your own secure VPC. Idempotent pipelines, deployed by CI/CD — not hand-built in a console.",
+    blurb: "BigQuery as the back end and services on Cloud Run, inside your own secure, scalable environment. Idempotent pipelines, deployed by CI/CD — not hand-built in a console.",
   },
   {
     icon: GitBranch,

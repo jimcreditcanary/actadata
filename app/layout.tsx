@@ -15,7 +15,7 @@ const archivoBlack = Archivo_Black({
 export const metadata: Metadata = {
   title: "Acta Data — The data layer AI needs. Built, handed over, done.",
   description:
-    "Acta Data builds the data layer AI needs: timely data landed once as immutable events in BigQuery, inside your own secure Google VPC, with Claude wired in for real self-service. Live in weeks, not years.",
+    "Acta Data builds the data layer AI needs: timely data landed once as immutable events in BigQuery, inside your own secure, scalable Google environment, with Claude wired in for real self-service. Live in weeks, not years.",
   metadataBase: new URL("https://www.actadata.co.uk"),
   alternates: { canonical: "/" },
   icons: {
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Acta Data — The data layer AI needs. Built, handed over, done.",
     description:
-      "Timely data, landed once as immutable events in a single source AI can work with. All on Google, in your own VPC.",
+      "Timely data, landed once as immutable events in a single source AI can work with. All on Google, in your own secure, scalable environment.",
     url: "/",
     siteName: "Acta Data",
     locale: "en_GB",
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Acta Data — The data layer AI needs. Built, handed over, done.",
     description:
-      "Timely data, landed once as immutable events in a single source AI can work with. All on Google, in your own VPC.",
+      "Timely data, landed once as immutable events in a single source AI can work with. All on Google, in your own secure, scalable environment.",
   },
 };
 
