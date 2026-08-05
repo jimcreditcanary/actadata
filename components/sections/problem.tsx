@@ -82,7 +82,7 @@ export function Problem() {
                   ["Year-1 cost", `From £${entryYearK}k`],
                   ["First output", actaTimeToFirstOutput],
                   ["Headcount risk", "Zero"],
-                  ["Stack", "Google · BigQuery · Claude"],
+                  ["Stack", "BigQuery · shadcn · Claude"],
                   ["Exit", "Hand over, embed, or stay on"],
                 ].map(([k, v]) => (
                   <div key={k}>

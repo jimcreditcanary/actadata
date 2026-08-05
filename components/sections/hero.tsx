@@ -77,7 +77,7 @@ export function Hero() {
         <div className="mt-14 grid grid-cols-2 md:grid-cols-4 gap-3 max-w-3xl">
           {[
             ["Start", "Immediately"],
-            ["Stack", "Google · BigQuery · Claude"],
+            ["Stack", "BigQuery · shadcn · Claude"],
             ["Cost", `From £${entryMonthlyK}k / month`],
             ["Ownership", "100% yours"],
           ].map(([k, v]) => (

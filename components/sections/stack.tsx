@@ -1,27 +1,35 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Cloud, Layers, Sparkles } from "lucide-react";
+import { Database, LayoutDashboard, Sparkles } from "lucide-react";
 import { entryYearK } from "@/lib/economics";
 import { Eyebrow } from "@/components/eyebrow";
 
+/**
+ * Three parts, one line each. The plain-English gloss is the point: most buyers
+ * do not need to know what a warehouse is, they need to know where their data
+ * lives, what they look at, and who they ask.
+ */
 const pillars = [
   {
-    icon: Cloud,
-    title: "Google, end to end",
+    icon: Database,
+    title: "Google BigQuery",
+    plain: "Where your data lives.",
     blurb:
-      "BigQuery as the back end, services on Cloud Run, all inside your own secure, scalable environment. One vendor, one bill, no sprawl — and everything deployed automatically from code, not clicked together by hand.",
+      "One place for everything, run by Google so it scales without you thinking about it. Everything is recorded once and never rewritten, so last month's numbers cannot quietly change — and it sits in your own secure environment, not ours.",
   },
   {
-    icon: Layers,
-    title: "Recorded once, never rewritten",
+    icon: LayoutDashboard,
+    title: "shadcn",
+    plain: "What you look at.",
     blurb:
-      "Everything that happens gets recorded once and never edited afterwards, so last month's numbers cannot quietly change. It is the single source every report reads from — and the shape AI works with best.",
+      "Fast, clean dashboards and reports in your own brand — the same toolkit this website is built with. It is code you own, not a licence you rent, so nobody can put the price up or switch it off.",
   },
   {
     icon: Sparkles,
-    title: "Claude, in your own account",
+    title: "Claude",
+    plain: "Who you ask.",
     blurb:
-      "Self-service analytics that people actually use: your team asks in plain English and gets an answer from the warehouse. Your Anthropic account, your data boundary, your controls.",
+      "Ask a question in plain English and get an answer from your own data. It runs in your own Claude account, so your data stays inside your boundary and your controls.",
   },
 ];
 
@@ -39,28 +47,28 @@ export function Stack() {
         <div className="max-w-3xl">
           <Eyebrow accent className="mb-5">The stack</Eyebrow>
           <h2 className="font-display text-4xl md:text-5xl tracking-tight leading-[1.05]">
-Google, BigQuery and Claude.{" "}
-            <span className="text-electric">Chosen once, so you never re-platform.</span>
+Three things.{" "}
+            <span className="text-electric">That&apos;s the whole stack.</span>
           </h2>
           <p className="mt-5 text-lg text-muted-foreground">
-            We don&apos;t run a vendor bake-off and bill you for the deliberation. We picked
-            this stack because it works, it scales with you, and it lets us start in days
-            rather than months. One Google stack end to end — warehouse, BI, tracking and
-            decisioning — with Claude wired in so your team can ask their own questions.
-            Connecting your systems is the only part that varies, because that depends on
-            what each one lets us read.
+            BigQuery is where your data lives. shadcn is what you look at. Claude is who
+            you ask. That is the whole thing — no vendor bake-off, no sprawl, nothing you
+            have to re-platform later. We picked it because it works, it scales with you,
+            and it lets us start in days rather than months. Connecting your own systems is
+            the only part that varies, because that depends on what each one lets us read.
           </p>
         </div>
 
         <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-5">
-          {pillars.map(({ icon: Icon, title, blurb }) => (
+          {pillars.map(({ icon: Icon, title, plain, blurb }) => (
             <Card key={title} className="p-6 transition-colors hover:border-electric/30">
               <CardContent className="p-0">
                 <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-electric/15 text-electric">
                   <Icon className="h-5 w-5" />
                 </div>
                 <h3 className="mt-5 text-lg font-semibold tracking-tight">{title}</h3>
-                <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{blurb}</p>
+                <p className="mt-1 text-sm font-medium text-electric">{plain}</p>
+                <p className="mt-2.5 text-sm text-muted-foreground leading-relaxed">{blurb}</p>
               </CardContent>
             </Card>
           ))}
