@@ -10,7 +10,7 @@ const tiles = [
   },
   {
     icon: Cloud,
-    title: "BigQuery Warehouse & Pipelines",
+    title: "Data Pipelines & Data Layer",
     blurb: "BigQuery as the back end and services on Cloud Run, inside your own secure, scalable environment. Where a system only stores its current state, we rebuild the history behind it, so you get a timeline instead of a snapshot.",
   },
   {
