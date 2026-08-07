@@ -157,11 +157,11 @@
 
 /* Flow-diagram captions: the four stages are NOT evenly spaced across the SVG,
    so equal columns would leave each paragraph off its stage. Widths are the
-   midpoints between stage centres (186, 413, 660, 913 of 1000), in fr so the
+   midpoints between stage centres (156, 376, 620, 893 of 1000), in fr so the
    grid gap comes out of the columns rather than overflowing. */
 @media (min-width: 768px) {
   .flow-captions {
-    grid-template-columns: 299.5fr 237.0fr 250.0fr 213.5fr;
+    grid-template-columns: 266fr 232fr 258.5fr 243.5fr;
   }
 }
 

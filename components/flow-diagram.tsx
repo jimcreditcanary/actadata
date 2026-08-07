@@ -31,14 +31,14 @@ const BANDS: RGB[] = [
 const VB_W = 1000;
 /** Extra height over the 292px content: room for the stage labels. */
 const VB_H = 336;
-const LAYER_X = 400;
+const LAYER_X = 360;
 const LAYER_Y = 28;
-const LAYER_W = 26;
+const LAYER_W = 32;
 const LAYER_H = 256;
 /** Pulled in from 660/930 — the layer-to-reports void was the emptiest
  * part of the diagram at 234px. Now 174px. */
-const REPORT_X = 600;
-const AGENT_X = 860;
+const REPORT_X = 540;
+const AGENT_X = 830;
 const MID = 156;
 
 /**
@@ -54,12 +54,11 @@ const PITCH = CELL + 4;
 const GRID_X0 = 8;
 const GRID_Y0 = 24;
 /**
- * 24 columns leaves a 36px gap (~2.4 cell widths) between the grid's right edge
- * and the layer. The grid previously butted up against it with 6px clearance,
- * which made the left half read as one heavy mass; the breathing room lets the
- * layer stand as its own object.
+ * 20 columns. The grid was carrying roughly 70% of the visual weight of the
+ * whole diagram; at 20 it ends at x=304 against the layer at 360, and the width
+ * freed up goes to the reports and agents so all four zones read as peers.
  */
-const COLS = 24;
+const COLS = 20;
 const ROWS = 18;
 
 const hex = ([r, g, b]: RGB) =>
@@ -249,10 +248,10 @@ export function FlowDiagram() {
           {Array.from({ length: 10 }, (_, i) => (
             <rect
               key={i}
-              x={LAYER_X + 7}
+              x={LAYER_X + 9}
               y={42 + i * 24}
-              width="12"
-              height="12"
+              width="14"
+              height="14"
               rx="2"
               fill="#0A1020"
               opacity="0.55"
@@ -261,7 +260,7 @@ export function FlowDiagram() {
 
           {/* ---- STAGE 3: reports, fed by chains of blocks ---- */}
           {[0, 1, 2, 3].map(i => {
-            const y = 52 + i * 74;
+            const y = 54 + i * 70;
             const flagged = i === 2;
             const colour = flagged ? AMBER : hex(VIOLET);
             return (
@@ -272,27 +271,28 @@ export function FlowDiagram() {
                   c2={[REPORT_X - 110, y]}
                   to={[REPORT_X - 10, y]}
                   colour={colour}
-                  n={15}
+                  n={18}
                   dur={3.2}
+                  size={8}
                 />
                 <rect
                   x={REPORT_X}
-                  y={y - 18}
-                  width="120"
-                  height="36"
-                  rx="8"
+                  y={y - 22}
+                  width="160"
+                  height="44"
+                  rx="9"
                   fill="rgba(168,85,247,0.08)"
                   stroke={colour}
                   strokeOpacity={flagged ? 0.8 : 0.35}
                   strokeWidth="1"
                 />
-                {[0, 1, 2, 3, 4].map(b => (
+                {[0, 1, 2, 3, 4, 5].map(b => (
                   <rect
                     key={b}
-                    x={REPORT_X + 14 + b * 19}
-                    y={y - 7 + (b % 2 === 0 ? 0 : 4)}
-                    width="12"
-                    height={b % 2 === 0 ? 14 : 10}
+                    x={REPORT_X + 16 + b * 23}
+                    y={y - 9 + (b % 2 === 0 ? 0 : 5)}
+                    width="14"
+                    height={b % 2 === 0 ? 18 : 13}
                     rx="2"
                     fill={colour}
                     opacity={flagged ? 0.7 : 0.45}
@@ -319,37 +319,37 @@ export function FlowDiagram() {
             // 60/156/252 spans 43-269, close to the reports' 34-292 and the
             // grid's 24-290. At 95/170/245 the agents column was 108px shorter
             // than everything else and the right side floated.
-            const y = 60 + i * 96;
+            const y = 70 + i * 96;
             return (
               <g key={i}>
                 <BlockChain
-                  from={[REPORT_X + 124, 200]}
-                  c1={[REPORT_X + 180, 200]}
+                  from={[REPORT_X + 164, 194]}
+                  c1={[REPORT_X + 230, 194]}
                   c2={[AGENT_X - 80, y]}
                   to={[AGENT_X - 12, y]}
                   colour={hex(VIOLET)}
-                  n={12}
+                  n={14}
                   dur={3.6}
-                  size={6}
+                  size={7}
                 />
                 <rect
                   x={AGENT_X}
-                  y={y - 17}
-                  width="34"
-                  height="34"
-                  rx="9"
+                  y={y - 22}
+                  width="44"
+                  height="44"
+                  rx="12"
                   fill="rgba(168,85,247,0.14)"
                   stroke={hex(VIOLET)}
                   strokeOpacity="0.55"
                 />
-                <circle cx={AGENT_X + 17} cy={y} r="4.5" fill={hex(VIOLET)} opacity="0.9" />
+                <circle cx={AGENT_X + 22} cy={y} r="5.5" fill={hex(VIOLET)} opacity="0.9" />
                 {[0, 1, 2].map(t => (
                   <rect
                     key={t}
-                    x={AGENT_X + 46}
-                    y={y - 11 + t * 9}
-                    width={t === 1 ? 60 : 40}
-                    height="4"
+                    x={AGENT_X + 56}
+                    y={y - 13 + t * 11}
+                    width={t === 1 ? 70 : 50}
+                    height="5"
                     rx="2"
                     fill={hex(VIOLET)}
                     opacity="0.3"
@@ -360,10 +360,10 @@ export function FlowDiagram() {
           })}
           {/* ---- stage labels, anchored under the thing they name ---- */}
           {[
-            { n: "01", label: "CLEAN", cx: 186 },
-            { n: "02", label: "MODEL", cx: 413 },
-            { n: "03", label: "ALERT", cx: 660 },
-            { n: "04", label: "ACT", cx: 913 },
+            { n: "01", label: "CLEAN", cx: 156 },
+            { n: "02", label: "MODEL", cx: 376 },
+            { n: "03", label: "ALERT", cx: 620 },
+            { n: "04", label: "ACT", cx: 893 },
           ].map(st => (
             <g key={st.n}>
               <text

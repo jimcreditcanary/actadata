@@ -1,28 +1,33 @@
 import { Hero } from "@/components/sections/hero";
+import { SpreadsheetTrap } from "@/components/sections/spreadsheet-trap";
 import { HowItWorks } from "@/components/sections/how-it-works";
 import { Stack } from "@/components/sections/stack";
+import { SectorTeaser } from "@/components/sections/sector-teaser";
 import { Crew } from "@/components/sections/crew";
-import { Problem } from "@/components/sections/problem";
-import { WhatWeBuild } from "@/components/sections/what-we-build";
-import { SummaryPageDemo } from "@/components/sections/summary-page-demo";
-import { EngagementModels } from "@/components/sections/engagement-models";
-import { Verticals } from "@/components/sections/verticals";
-import { Pricing } from "@/components/sections/pricing";
+import { PricingTeaser } from "@/components/sections/pricing-teaser";
 import { ContactFooter } from "@/components/sections/contact-footer";
+import { CaseStudySection } from "@/components/case-study-cards";
+import { sortedCaseStudies } from "@/lib/case-studies";
 
+/**
+ * Home is a hub now, not the whole site. Each block ends in a route:
+ * the trap -> how it works -> the stack -> sectors -> who we are -> pricing.
+ *
+ * Depth moved to its own pages so campaigns can land on them directly:
+ * /how-it-works, /what-we-build, /sectors/[slug], /pricing, /about, /case-studies.
+ */
 export default function Page() {
   return (
     <>
       <Hero />
+      <SpreadsheetTrap />
       <HowItWorks />
       <Stack />
+      <SectorTeaser />
       <Crew />
-      <Problem />
-      <WhatWeBuild />
-      <SummaryPageDemo />
-      <EngagementModels />
-      <Verticals />
-      <Pricing />
+      {/* Renders nothing until a case study exists. */}
+      <CaseStudySection studies={sortedCaseStudies().slice(0, 2)} />
+      <PricingTeaser />
       <ContactFooter />
     </>
   );

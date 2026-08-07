@@ -1,0 +1,40 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { PageHeader } from "@/components/page-header";
+import { Button } from "@/components/ui/button";
+import { WhatWeBuild } from "@/components/sections/what-we-build";
+import { EngagementModels } from "@/components/sections/engagement-models";
+import { ContactFooter } from "@/components/sections/contact-footer";
+
+export const metadata: Metadata = {
+  title: "What we build — Acta Data",
+  description:
+    "Integrations, a BigQuery back end, metric trees, operational and risk reporting, the Summary Page, and self-service analytics with Claude.",
+  alternates: { canonical: "/what-we-build" },
+};
+
+export default function WhatWeBuildPage() {
+  return (
+    <>
+      <PageHeader
+        eyebrow="What we build"
+        title="Six capabilities."
+        accent="One coherent data function."
+        lede="Not a tool you have to staff. A working data function — the connections, the history, the metric tree, the reporting people actually open, and the AI layer on top."
+      >
+        <div className="flex flex-wrap gap-3">
+          <Button asChild variant="electric" size="lg">
+            <Link href="/contact">Talk to us →</Link>
+          </Button>
+          <Button asChild variant="outline" size="lg">
+            <Link href="/pricing">See pricing</Link>
+          </Button>
+        </div>
+      </PageHeader>
+
+      <WhatWeBuild />
+      <EngagementModels />
+      <ContactFooter />
+    </>
+  );
+}
