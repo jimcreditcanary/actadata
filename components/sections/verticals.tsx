@@ -29,13 +29,13 @@ const verticals = [
     label: "Consumer Credit",
     pains: [
       "Risk, finance and marketing each have their own version of the truth",
-      "Decisioning data locked inside bureau exports",
-      "No clean signal for collections strategy or vintage analysis",
+      "Consumer Duty evidence assembled by hand, close to the deadline",
+      "Systems hold today's position and no history, so there is no trend to report",
     ],
     builds: [
       "Application-to-funded-to-collections single timeline per customer",
-      "Vintage cohorts, roll-rate matrices, CAC payback by channel",
-      "Regulator-ready reporting, with a full audit trail behind every number",
+      "Consumer Duty outcome reporting, with a full audit trail behind every number",
+      "History rebuilt so vintage cohorts and roll rates exist at all",
     ],
     output: "One number for net new contribution — agreed by risk, finance and growth.",
   },

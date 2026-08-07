@@ -11,7 +11,7 @@ const tiles = [
   {
     icon: Cloud,
     title: "BigQuery Warehouse & Pipelines",
-    blurb: "BigQuery as the back end and services on Cloud Run, inside your own secure, scalable environment. Pipelines that can re-run safely without double-counting, deployed automatically rather than hand-built in a console.",
+    blurb: "BigQuery as the back end and services on Cloud Run, inside your own secure, scalable environment. Where a system only stores its current state, we rebuild the history behind it, so you get a timeline instead of a snapshot.",
   },
   {
     icon: GitBranch,
@@ -33,7 +33,7 @@ const tiles = [
   {
     icon: Sparkles,
     title: "Self-Service Analytics with Claude",
-    blurb: "Claude wired into your warehouse in your own enterprise account. Your operators ask in plain English; the answer comes from the metric tree, not a guess.",
+    blurb: "Claude wired into your data in your own enterprise account. Your exec team asks in plain English and gets answers straight from the metric tree — and starts spotting opportunities nobody had time to look for.",
   },
 ];
 

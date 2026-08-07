@@ -5,9 +5,9 @@ import { Eyebrow } from "@/components/eyebrow";
 const models = [
   {
     name: "From Scratch",
-    duration: "12 months",
+    duration: "Months, not years",
     blurb:
-      "New business, or you missed the BI boom and there's nothing to build on. We start from nothing — and put your first real report in front of you inside a week.",
+      "Nothing to build on, or nothing you trust. We start from zero: first real report inside a week, and a working data layer your business runs on within the first few months — regulated reporting included.",
     tier: "BI Only and up",
     featured: true,
   },

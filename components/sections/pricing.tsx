@@ -30,7 +30,7 @@ const plans = [
     name: "BI + Claude",
     audience: "Safe self-service",
     monthlyK: tiers.biClaude.monthlyK,
-    summary: "Everything above, plus your team asking their own questions.",
+    summary: "Everything above, plus your exec team answering their own questions.",
     features: [
       "Everything in BI Only",
       "Claude self-service analytics in your own enterprise account",
@@ -69,8 +69,9 @@ export function Pricing() {
             <span className="text-electric">All of them cheaper than hiring.</span>
           </h2>
           <p className="mt-5 text-lg text-muted-foreground">
-            Monthly, no lock-in, and you own everything we build as we build it. Start where
-            you are and move up when the business is ready — not when a contract says so.
+            Monthly, no lock-in, and you own everything we build as we build it. Most clients
+            start on the first tier, get the layer live, then move up as the appetite grows —
+            self-service first, agents once people trust the numbers.
           </p>
         </div>
 

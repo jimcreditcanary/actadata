@@ -15,7 +15,7 @@ const pillars = [
     title: "Google BigQuery",
     plain: "Where your data lives.",
     blurb:
-      "One place for everything, run by Google so it scales without you thinking about it. Everything is recorded once and never rewritten, so last month's numbers cannot quietly change — and it sits in your own secure environment, not ours.",
+      "One place for everything, run by Google so it scales without you thinking about it. Everything is recorded once and never rewritten, so last month's numbers cannot quietly change. And where your systems only hold today's state, we rebuild the history you never had — so you can see a trend where before there was only a snapshot.",
   },
   {
     icon: LayoutDashboard,
@@ -29,7 +29,7 @@ const pillars = [
     title: "Claude",
     plain: "Who you ask.",
     blurb:
-      "Ask a question in plain English and get an answer from your own data. It runs in your own Claude account, so your data stays inside your boundary and your controls.",
+      "Ask a question in plain English and get an answer from your own data — no analyst, no ticket, no wait. It is the COO and the FD using this directly, not just the data team. Runs in your own Claude account, so your data stays inside your boundary and your controls.",
   },
 ];
 
