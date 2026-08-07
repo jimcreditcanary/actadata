@@ -143,7 +143,7 @@ function BackGrid() {
 
       const fill = hex(lerp(band, VIOLET, Math.min(1, t * 1.35)));
       const jitter = (((r * 7 + c * 13) % 11) - 5) / 100;
-      const op = Math.max(0.1, Math.min(0.92, 0.3 + t * 0.55 + jitter));
+      const op = Math.max(0.12, Math.min(0.95, 0.34 + t * 0.6 + jitter));
 
       // PII slots: personal data is stripped at ingest, so these render as empty
       // outlined cells — a hole where the field was — and they only exist in the
@@ -229,12 +229,26 @@ export function FlowDiagram() {
               <stop offset="0%" stopColor={hex(VIOLET)} stopOpacity="0.22" />
               <stop offset="100%" stopColor={hex(VIOLET)} stopOpacity="0" />
             </radialGradient>
+
+            {/* The grid used to stop at a hard vertical edge, which is what made
+                it read as a heavy block. It now dissolves over its last quarter
+                so the mass grades into the layer's glow. */}
+            <linearGradient id="grid-fade" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stopColor="#fff" stopOpacity="1" />
+              <stop offset="62%" stopColor="#fff" stopOpacity="1" />
+              <stop offset="100%" stopColor="#fff" stopOpacity="0" />
+            </linearGradient>
+            <mask id="grid-mask" maskUnits="userSpaceOnUse" x="0" y="0" width={LAYER_X} height={VB_H}>
+              <rect x="0" y="0" width={LAYER_X} height={VB_H} fill="url(#grid-fade)" />
+            </mask>
           </defs>
 
           <ellipse cx={LAYER_X + 13} cy={MID} rx="150" ry="170" fill="url(#flow-glow)" />
 
-          {/* ---- STAGE 1: the complete back grid ---- */}
-          <BackGrid />
+          {/* ---- STAGE 1: the grid, dissolving into the layer ---- */}
+          <g mask="url(#grid-mask)">
+            <BackGrid />
+          </g>
 
           {/* ---- STAGE 2: the single data layer ---- */}
           <rect
@@ -249,7 +263,7 @@ export function FlowDiagram() {
             <rect
               key={i}
               x={LAYER_X + 9}
-              y={42 + i * 24}
+              y={LAYER_Y + (LAYER_H - (9 * 24 + 14)) / 2 + i * 24}
               width="14"
               height="14"
               rx="2"
@@ -269,7 +283,7 @@ export function FlowDiagram() {
                   from={[LAYER_X + LAYER_W + 4, MID]}
                   c1={[LAYER_X + 110, MID]}
                   c2={[REPORT_X - 110, y]}
-                  to={[REPORT_X - 10, y]}
+                  to={[REPORT_X - 12, y]}
                   colour={colour}
                   n={18}
                   dur={3.2}
@@ -300,8 +314,9 @@ export function FlowDiagram() {
                 ))}
                 {flagged && (
                   <text
-                    x={REPORT_X}
-                    y={y + 34}
+                    x={REPORT_X + 80}
+                    y={y + 38}
+                    textAnchor="middle"
                     fill={AMBER}
                     fontSize="11.5"
                     letterSpacing="0.08em"
@@ -402,7 +417,7 @@ export function FlowDiagram() {
         is md:hidden here to avoid printing each title twice. Below md the SVG is
         gone, so the label has to come back or the paragraphs lose their headings.
       */}
-      <div className="mt-6 grid grid-cols-1 gap-7 md:gap-5 flow-captions">
+      <div className="mt-7 grid grid-cols-1 gap-8 md:gap-5 flow-captions">
         {[
           {
             n: "01",
@@ -414,12 +429,12 @@ export function FlowDiagram() {
           {
             n: "02",
             label: "Model",
-            d: "Recorded once in BigQuery and never rewritten. One definition of every number, and no personal data in it.",
+            d: "Recorded once in BigQuery and never rewritten. One definition of every number.",
           },
           {
             n: "03",
             label: "Alert",
-            d: "A conscious, real-time view of the business — focused on the next best action.",
+            d: "A conscious, real-time view of the business, focused on the next best action.",
             key: "amber" as const,
             keyText: "The one thing that needs you now",
           },
@@ -429,22 +444,24 @@ export function FlowDiagram() {
             d: "Agents work the exception off the back of it, rather than just noticing it.",
           },
         ].map(s => (
-          <div key={s.n}>
-            {/* Mobile-only heading — the SVG carries it on desktop. */}
+          <div key={s.n} className="md:text-center">
+            {/* Mobile-only heading — the SVG label carries it on desktop. */}
             <div className="md:hidden text-[11px] font-medium uppercase tracking-[0.2em] text-electric">
               {s.n} · {s.label}
             </div>
-            <p className="mt-2 md:mt-0 text-sm text-muted-foreground leading-relaxed">{s.d}</p>
+            <p className="mt-2 md:mt-0 mx-auto max-w-[32ch] text-sm text-muted-foreground leading-relaxed">
+              {s.d}
+            </p>
 
             {s.key && (
-              <p className="mt-2.5 flex items-start gap-2 text-xs text-muted-foreground">
+              <p className="mt-3 flex items-center gap-2 md:justify-center text-xs text-muted-foreground">
                 {s.key === "pii" ? (
-                  <svg width="12" height="12" aria-hidden className="mt-0.5 shrink-0">
+                  <svg width="11" height="11" aria-hidden className="shrink-0">
                     <rect
                       x="0.6"
                       y="0.6"
-                      width="10.8"
-                      height="10.8"
+                      width="9.8"
+                      height="9.8"
                       rx="2"
                       fill="none"
                       stroke={LILAC}
@@ -455,7 +472,7 @@ export function FlowDiagram() {
                 ) : (
                   <span
                     aria-hidden
-                    className="mt-0.5 h-3 w-3 shrink-0 rounded-[2px]"
+                    className="h-[11px] w-[11px] shrink-0 rounded-[2px]"
                     style={{ background: AMBER, opacity: 0.8 }}
                   />
                 )}
