@@ -13,9 +13,9 @@ export function HowItWorks() {
           </h2>
           <p className="mt-5 text-lg text-muted-foreground">
             Most businesses have the data and none of the leverage — a dozen systems, none of
-            them agreeing. We record it once, in one place, in a way nothing can quietly
-            rewrite — and everything after that gets cheap: the reporting, the exceptions,
-            the agents.
+            them agreeing. We map the value stream, record every activity once in a way
+            nothing can quietly rewrite, and everything after that gets cheap: the reporting,
+            the exceptions, the agents.
           </p>
         </div>
 

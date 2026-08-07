@@ -429,7 +429,7 @@ export function FlowDiagram() {
           {
             n: "02",
             label: "Model",
-            d: "Recorded once in BigQuery and never rewritten. One definition of every number.",
+            d: "Recorded once in BigQuery and never rewritten — every activity with its cost, revenue, conversion and time.",
           },
           {
             n: "03",

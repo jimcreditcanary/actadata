@@ -8,7 +8,7 @@ import { sectorGroups, sectorsByGroup } from "@/lib/sectors";
 export const metadata: Metadata = {
   title: "Sectors — Acta Data",
   description:
-    "Data and AI delivery across consumer credit, debt management, credit unions, B2B services, wholesale, manufacturing, retail, legal, agencies, recruitment and SaaS.",
+    "Data and AI delivery across consumer credit, debt management, credit unions, B2B services, wholesale, manufacturing, retail, legal, customer service, recruitment and SaaS.",
   alternates: { canonical: "/sectors" },
 };
 

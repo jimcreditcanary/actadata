@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { FlowDiagram } from "@/components/flow-diagram";
 import { SummaryPageDemo } from "@/components/sections/summary-page-demo";
 import { Stack } from "@/components/sections/stack";
+import { ValueStream } from "@/components/sections/value-stream";
 import { ContactFooter } from "@/components/sections/contact-footer";
 
 export const metadata: Metadata = {
@@ -21,7 +22,7 @@ export default function HowItWorksPage() {
         eyebrow="How it works"
         title="Clean. Model. Alert."
         accent="Act."
-        lede="Most businesses have the data and none of the leverage — a dozen systems, none of them agreeing. We record it once, in one place, in a way nothing can quietly rewrite. Everything after that gets cheap."
+        lede="We are an operations business, not a dashboard business. We map how value moves through your company end to end, record the cost, revenue, conversion and time of every activity along it, and then show you where effort returns most."
       >
         <div className="flex flex-wrap gap-3">
           <Button asChild variant="electric" size="lg">
@@ -39,6 +40,7 @@ export default function HowItWorksPage() {
         </div>
       </section>
 
+      <ValueStream />
       <Stack />
       <SummaryPageDemo />
       <ContactFooter />

@@ -1,9 +1,12 @@
 "use client";
+import Link from "next/link";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowDown, ArrowUp } from "lucide-react";
 import { Eyebrow } from "@/components/eyebrow";
 import { PipelineGrid } from "@/components/pipeline-grid";
+import { SummaryOkrs, type Okr } from "@/components/summary-okrs";
+import { SummaryAlerts, type Alert } from "@/components/summary-alerts";
 import {
   ResponsiveContainer, LineChart, Line, AreaChart, Area,
   XAxis, YAxis, Tooltip, CartesianGrid,
@@ -23,6 +26,11 @@ type VerticalConfig = {
   kpis: KPI[];
   trendLabel: string;
   trend: { week: string; current: number; prior: number }[];
+  /** Who this page is built for — drives the alert list. */
+  persona: string;
+  okrs: Okr[];
+  alerts: Alert[];
+  queued: string[];
 };
 
 function spark(seed: number, n = 14) {
@@ -48,11 +56,23 @@ function trend(seed: number) {
 
 const verticals: VerticalConfig[] = [
   {
-    id: "retail",
-    label: "Retail",
+    id: "omni-channel-retail",
+    label: "Omni-channel Retail",
     caption: "DTC + wholesale apparel · last 7 days",
     trendLabel: "Net revenue (£k) — current vs prior 12 weeks",
     trend: trend(2),
+    persona: "COO",
+    okrs: [
+      { objective: "Grow contribution, not just revenue", result: "Contribution margin", current: "53.1%", target: "56.0%", progress: 68, pace: 74 },
+      { objective: "Cut return rate on apparel", result: "Returns as % of orders", current: "8.4%", target: "6.5%", progress: 58, pace: 55 },
+      { objective: "Win back lapsed customers", result: "Reactivated customers", current: "4,120", target: "6,000", progress: 69, pace: 66 },
+    ],
+    alerts: [
+      { title: "Margin slipping on the hero SKU", detail: "Gross margin down 3.1pts over two weeks, driven by promo depth on one line.", metric: "GM 48.2% vs 51.3%", action: "Review promo", urgent: true },
+      { title: "Returns spiking in one size", detail: "Size 12 returns at 19% against a 8% baseline. Likely a spec change.", metric: "19% vs 8%", action: "Investigate" },
+      { title: "Marketplace stock about to run dry", detail: "Two bestsellers below three days of cover at current run rate.", metric: "2.7 days cover", action: "Reorder" },
+    ],
+    queued: ["Carriage cost per order drifting up", "New customer share below plan in the South", "Supplier lead times slipping on two lines"],
     kpis: [
       { label: "Net revenue",        value: "£1.84m", delta:  6.4, spark: spark(11) },
       { label: "Orders",             value: "24,310", delta:  3.1, spark: spark(7)  },
@@ -63,11 +83,23 @@ const verticals: VerticalConfig[] = [
     ],
   },
   {
-    id: "credit",
+    id: "consumer-credit",
     label: "Consumer Credit",
     caption: "Unsecured lender · last 7 days",
     trendLabel: "Approved volume (£m) — current vs prior 12 weeks",
     trend: trend(5),
+    persona: "COO",
+    okrs: [
+      { objective: "Lend more without loosening risk", result: "Funded volume", current: "£8.9m", target: "£11.0m", progress: 81, pace: 78 },
+      { objective: "Hold arrears through growth", result: "30+ DPD", current: "2.1%", target: "under 2.5%", progress: 84, pace: 80 },
+      { objective: "Prove good customer outcomes", result: "Consumer Duty measures evidenced", current: "7", target: "9", progress: 78, pace: 83 },
+    ],
+    alerts: [
+      { title: "Affordability declines up in one channel", detail: "Broker channel declines up 6pts week on week, concentrated in one introducer.", metric: "Decline 38% vs 32%", action: "Review introducer", urgent: true },
+      { title: "Early arrears building in a cohort", detail: "The March cohort is 0.4pts worse at month 3 than the February cohort.", metric: "1.9% vs 1.5%", action: "Check cohort" },
+      { title: "Two Consumer Duty measures without evidence", detail: "Fair value and understanding have no current month data feeding them.", metric: "2 of 9 gaps", action: "Close the gap" },
+    ],
+    queued: ["CAC payback lengthening on paid search", "Roll rate 1→2 up slightly", "Manual underwriting overrides above trend"],
     kpis: [
       { label: "Apps received",  value: "11,402", delta:  8.9, spark: spark(3)  },
       { label: "Approval rate",  value: "42.6%",  delta:  1.3, spark: spark(8)  },
@@ -78,11 +110,23 @@ const verticals: VerticalConfig[] = [
     ],
   },
   {
-    id: "legal",
-    label: "Legal",
+    id: "legal-services",
+    label: "Legal Services",
     caption: "Consumer claims firm · last 7 days",
     trendLabel: "Cases opened — current vs prior 12 weeks",
     trend: trend(8),
+    persona: "Managing Partner",
+    okrs: [
+      { objective: "Grow settled case value", result: "Average settlement", current: "£1,940", target: "£2,250", progress: 72, pace: 70 },
+      { objective: "Bring cost per case down", result: "Cost per acquired case", current: "£212", target: "£180", progress: 64, pace: 72 },
+      { objective: "Shorten time to settle", result: "Median days to settle", current: "94", target: "80", progress: 61, pace: 66 },
+    ],
+    alerts: [
+      { title: "One panel is acquiring at twice the target cost", detail: "Panel C at £430 per acquired case against a £180 target, and volume is rising.", metric: "£430 vs £180", action: "Pause panel", urgent: true },
+      { title: "WIP ageing past 120 days", detail: "£1.4m of WIP is now older than 120 days, up from £0.9m.", metric: "£1.4m over 120d", action: "Review WIP" },
+      { title: "Conversion dropping at sign stage", detail: "Call-to-sign down 4.1pts since the script change.", metric: "33.1% vs 37.2%", action: "Check script" },
+    ],
+    queued: ["Fee earner utilisation below plan", "Two claim types settling below reserve", "Marketing spend up with flat enquiries"],
     kpis: [
       { label: "Cases opened",      value: "612",    delta:  4.0, spark: spark(15) },
       { label: "Conversion (call→sign)", value: "37.2%", delta:  2.6, spark: spark(12) },
@@ -93,11 +137,23 @@ const verticals: VerticalConfig[] = [
     ],
   },
   {
-    id: "services",
-    label: "Consumer Services",
-    caption: "Subscription home services · last 7 days",
+    id: "saas-startups",
+    label: "SaaS & Startups",
+    caption: "B2B SaaS · last 7 days",
     trendLabel: "Active subscriptions (k) — current vs prior 12 weeks",
     trend: trend(11),
+    persona: "COO",
+    okrs: [
+      { objective: "Grow recurring revenue", result: "MRR", current: "£1.21m", target: "£1.40m", progress: 76, pace: 72 },
+      { objective: "Cut monthly churn", result: "Churn", current: "3.8%", target: "3.0%", progress: 63, pace: 70 },
+      { objective: "Raise first-call resolution", result: "FCR", current: "78%", target: "85%", progress: 74, pace: 76 },
+    ],
+    alerts: [
+      { title: "Churn concentrated in one plan", detail: "The mid tier is churning at 6.1% against 3.8% overall, all within 90 days of joining.", metric: "6.1% vs 3.8%", action: "Review onboarding", urgent: true },
+      { title: "Engineer no-shows driving cancellations", detail: "Missed appointments up 40% in one region this month.", metric: "+40% region 3", action: "Escalate" },
+      { title: "Contact centre wait times climbing", detail: "Average wait 4m12s against a 2m target, worst on Mondays.", metric: "4m12s vs 2m", action: "Rebalance rota" },
+    ],
+    queued: ["ARPU flat despite the price change", "NPS dipping in one region", "Field first-time-fix below target"],
     kpis: [
       { label: "Active subs",      value: "84.6k", delta:  2.4, spark: spark(20) },
       { label: "MRR",              value: "£1.21m", delta:  3.6, spark: spark(22) },
@@ -206,14 +262,15 @@ export function SummaryPageDemo() {
             One page. The whole business. <span className="text-electric">In real time.</span>
           </h2>
           <p className="mt-5 text-lg text-muted-foreground">
-            One trading-pack-grade view of how the business is moving right now —
-            built for your vertical, tied to the metric tree, ready for the boardroom.
-            It answers the question your C-suite was going to ask before they ask it.
+            Objectives tracked against target, and beside them the three things that
+            actually need you today — personalised to whoever is looking. Clear one and the
+            next moves up. It answers the question your C-suite was going to ask before
+            they ask it.
           </p>
         </div>
 
         <div className="mt-10">
-          <Tabs defaultValue="retail" className="w-full">
+          <Tabs defaultValue="omni-channel-retail" className="w-full">
             <TabsList className="flex-wrap h-auto">
               {verticals.map(v => (
                 <TabsTrigger key={v.id} value={v.id} className="px-4">{v.label}</TabsTrigger>
@@ -239,19 +296,34 @@ export function SummaryPageDemo() {
                     {v.kpis.map(k => <KpiTile key={k.label} k={k} />)}
                   </div>
 
-                  <div className="mt-4">
+                  <div className="mt-4 grid gap-3 lg:grid-cols-3">
+                    <div className="lg:col-span-2">
+                      <SummaryOkrs okrs={v.okrs} />
+                    </div>
+                    <SummaryAlerts alerts={v.alerts} queued={v.queued} persona={v.persona} />
+                  </div>
+
+                  <div className="mt-3">
                     <MainChart data={v.trend} label={v.trendLabel} />
                   </div>
 
-                  <div className="mt-4">
+                  <div className="mt-3">
                     <PipelineGrid />
                   </div>
                 </div>
               </TabsContent>
             ))}
           </Tabs>
-          <div className="mt-4 text-xs text-muted-foreground">
-            Demo data shown. Live versions are wired straight to your warehouse.
+          <div className="mt-4 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2 text-xs text-muted-foreground">
+            <span>Demo data shown. Live versions are wired straight to your warehouse.</span>
+            <span>
+              Also built for debt management, credit unions, B2B services, wholesale,
+              manufacturing, customer service and recruitment —{" "}
+              <Link href="/sectors" className="text-electric hover:underline">
+                every sector
+              </Link>
+              .
+            </span>
           </div>
         </div>
       </div>

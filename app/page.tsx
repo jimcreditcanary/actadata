@@ -1,6 +1,7 @@
 import { Hero } from "@/components/sections/hero";
 import { SpreadsheetTrap } from "@/components/sections/spreadsheet-trap";
 import { HowItWorks } from "@/components/sections/how-it-works";
+import { ValueStream } from "@/components/sections/value-stream";
 import { Stack } from "@/components/sections/stack";
 import { SectorTeaser } from "@/components/sections/sector-teaser";
 import { Crew } from "@/components/sections/crew";
@@ -22,6 +23,7 @@ export default function Page() {
       <Hero />
       <SpreadsheetTrap />
       <HowItWorks />
+      <ValueStream />
       <Stack />
       <SectorTeaser />
       <Crew />
