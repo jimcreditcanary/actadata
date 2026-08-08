@@ -19,14 +19,16 @@ export type Okr = {
   pace: number;
 };
 
-const VIOLET = "#A855F7";
+/** Same RAG language as the scorecard above it, so one page speaks one dialect. */
+const GREEN = "#34D399";
 const AMBER = "#FCD34D";
+const RED = "#F87171";
 
 function status(progress: number, pace: number) {
   const delta = progress - pace;
-  if (delta >= -2) return { label: "On track", colour: VIOLET, tone: "text-electric" };
+  if (delta >= -2) return { label: "On track", colour: GREEN, tone: "text-emerald-400" };
   if (delta >= -12) return { label: "At risk", colour: AMBER, tone: "text-amber-300" };
-  return { label: "Behind", colour: AMBER, tone: "text-amber-300" };
+  return { label: "Behind", colour: RED, tone: "text-red-400" };
 }
 
 export function SummaryOkrs({ okrs }: { okrs: Okr[] }) {
@@ -41,10 +43,13 @@ export function SummaryOkrs({ okrs }: { okrs: Okr[] }) {
         </div>
         <div className="flex items-center gap-4 text-[11px] text-muted-foreground">
           <span className="flex items-center gap-1.5">
-            <span className="h-2 w-2 rounded-[2px]" style={{ background: VIOLET }} /> On track
+            <span className="h-2 w-2 rounded-full" style={{ background: GREEN }} /> On track
           </span>
           <span className="flex items-center gap-1.5">
-            <span className="h-2 w-2 rounded-[2px]" style={{ background: AMBER }} /> At risk
+            <span className="h-2 w-2 rounded-full" style={{ background: AMBER }} /> At risk
+          </span>
+          <span className="flex items-center gap-1.5">
+            <span className="h-2 w-2 rounded-full" style={{ background: RED }} /> Behind
           </span>
           <span className="flex items-center gap-1.5">
             <span className="h-3 w-px bg-white/45" /> Pace
