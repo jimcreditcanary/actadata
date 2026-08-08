@@ -66,6 +66,9 @@ export const organisation = {
     "Consumer Duty reporting",
     "IFRS 9 and credit risk reporting",
     "AI agents in operations",
+    "Institutional memory and knowledge retention",
+    "Policy-aligned recommendation engines",
+    "Next best action",
     "Claude for self-service analytics",
     "Value stream mapping",
   ],
@@ -222,6 +225,10 @@ export const faqs: { q: string; a: string }[] = [
   {
     q: "Can you take over an existing BI or reporting setup?",
     a: "Yes. Taking over reporting somebody else built is one of the most common ways engagements start — usually when the manual reconciliation behind it has become the bottleneck, or when the person who understood the workbooks has left.",
+  },
+  {
+    q: "What do you mean by a second brain?",
+    a: "A layer that remembers everything the business has done — every activity, every decision, and what happened next — and can be asked about it in real time. For an individual it answers what they would otherwise have to ask the colleague who has been there fifteen years. For the business it means that judgement stops living in a handful of heads: when somebody resigns the reasoning stays behind, and when somebody joins they start with the whole history. Recommendations are generated inside your own policy rather than filtered afterwards, the priors come from decisions your business has actually made rather than from industry averages, and every recommendation is scored against what happened next so the following one is better.",
   },
   {
     q: "What is the Summary Page?",

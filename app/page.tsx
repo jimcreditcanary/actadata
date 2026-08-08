@@ -3,6 +3,7 @@ import { ExperienceStrip } from "@/components/sections/experience-strip";
 import { SpreadsheetTrap } from "@/components/sections/spreadsheet-trap";
 import { HowItWorks } from "@/components/sections/how-it-works";
 import { SummaryPageDemo } from "@/components/sections/summary-page-demo";
+import { SecondBrain } from "@/components/sections/second-brain";
 import { SectorTeaser } from "@/components/sections/sector-teaser";
 import { HowWeWork } from "@/components/sections/how-we-work";
 import { PricingTeaser } from "@/components/sections/pricing-teaser";
@@ -49,6 +50,7 @@ export default function Page() {
       <SpreadsheetTrap />
       <HowItWorks />
       <SummaryPageDemo />
+      <SecondBrain compact />
       <SectorTeaser />
       <HowWeWork compact />
       {/* Renders nothing if there is nothing published. */}

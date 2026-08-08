@@ -35,6 +35,7 @@ Acta Data Ltd is registered in England & Wales, company number 14182372, ICO reg
 - **The stack, in plain terms**: Google BigQuery is where the data lives, shadcn is what you look at, Claude is who you ask. All Google underneath, inside the client's own secure VPC.
 - **The model**: every activity is recorded once and never rewritten, carrying four atomic units — cost, revenue, conversion and time — plus its business context. That is what makes value-stream leaks visible and what makes the data usable by AI.
 - **Who it is for**: mid-market and SME operators with enough operational complexity to need a data function and not enough scale to justify five hires for one.
+- **The second brain**: the layer keeps every activity, every decision and what happened next, so it can be asked in real time — by an individual, or on behalf of the business. Recommendations are generated inside the client's own encoded policy rather than filtered afterwards, the decisioning priors are learned from decisions that business has actually made rather than from industry averages, and each recommendation is scored against the outcome so the next is better. This is what stops institutional judgement leaving when a person does.
 - **The team**: data and AI people who have held C-suite positions across marketing, operations, technology and product.
 
 ## Pricing

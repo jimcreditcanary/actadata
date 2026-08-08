@@ -4,6 +4,7 @@ import { PageHeader } from "@/components/page-header";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { Button } from "@/components/ui/button";
 import { WhatWeBuild } from "@/components/sections/what-we-build";
+import { SecondBrain } from "@/components/sections/second-brain";
 import { EngagementModels } from "@/components/sections/engagement-models";
 import { ContactFooter } from "@/components/sections/contact-footer";
 
@@ -35,6 +36,7 @@ export default function WhatWeBuildPage() {
       </PageHeader>
 
       <WhatWeBuild />
+      <SecondBrain />
       <EngagementModels />
       <ContactFooter />
     </>
