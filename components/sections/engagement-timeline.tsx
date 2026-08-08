@@ -40,7 +40,7 @@ const stages = [
     when: "After twelve months",
     what: "You take the keys",
     detail:
-      `A structured handover: everything Terraformed, the models documented, your team already running it. You can walk away, keep us on for £${maintenanceMonthlyK}k a month so nothing falls over, or agree new datasets and training as projects. We expect you to be self-sufficient well before this point.`,
+      `A structured handover: everything Terraformed, the models documented, your team already running it. You can walk away, keep us on for £${maintenanceMonthlyK}k a month on a rolling contract so nothing falls over, or agree new datasets and training as projects. We expect you to be self-sufficient well before this point.`,
   },
 ];
 

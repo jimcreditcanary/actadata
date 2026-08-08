@@ -229,7 +229,7 @@ export function Pricing() {
               {
                 t: "Keep it running",
                 price: `£${maintenanceMonthlyK}k / month`,
-                d: "Monitoring, fixes and upgrades so nothing falls over. Cancel whenever — there is no exit fee.",
+                d: "A rolling monthly contract: monitoring, fixes and upgrades so nothing falls over. Cancel whenever — no notice period, no exit fee.",
                 featured: true,
               },
               {

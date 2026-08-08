@@ -159,7 +159,7 @@ export const service = {
         "@type": "Offer",
         name: "Post-handover maintenance",
         description:
-          "Optional after the twelve-month build, so nothing falls over. Additional datasets and training packages are agreed as projects.",
+          "Optional after the twelve-month build, on a rolling monthly contract with no notice period: monitoring, fixes and upgrades so nothing falls over. Additional datasets and training packages are agreed as projects.",
         priceSpecification: {
           "@type": "UnitPriceSpecification",
           price: maintenanceMonthlyK * 1000,
@@ -187,7 +187,7 @@ export const faqs: { q: string; a: string }[] = [
   },
   {
     q: "How much does it cost?",
-    a: `Four options, priced by how much of the business is in scope. Discovery is a £${discoveryOneOffK}k one-off: the value stream map, the AI readiness review, the watch-outs and a build plan you own and can hand to anyone — there is no obligation to use us afterwards — and if you do go ahead with a build, the whole £${discoveryOneOffK}k is credited against it. Solving one area, usually operations, is £${entryYearK}k a year, billed monthly at £${entryMonthlyK}k. Mapping the whole business, with safe PII-restricted self-service analytics through Claude, is £${wholeBusinessYearK}k a year at £${wholeBusinessMonthlyK}k a month. Enterprise adds autonomous agents and is priced against the outcome it delivers rather than from a list. After the twelve-month build you can walk away, or keep us on for £${maintenanceMonthlyK}k a month so nothing falls over. For scale, one area a year is less than half a fully-loaded senior data hire at around £${seniorHireLoadedK}k.`,
+    a: `Four options, priced by how much of the business is in scope. Discovery is a £${discoveryOneOffK}k one-off: the value stream map, the AI readiness review, the watch-outs and a build plan you own and can hand to anyone — there is no obligation to use us afterwards — and if you do go ahead with a build, the whole £${discoveryOneOffK}k is credited against it. Solving one area, usually operations, is £${entryYearK}k a year, billed monthly at £${entryMonthlyK}k. Mapping the whole business, with safe PII-restricted self-service analytics through Claude, is £${wholeBusinessYearK}k a year at £${wholeBusinessMonthlyK}k a month. Enterprise adds autonomous agents and is priced against the outcome it delivers rather than from a list. After the twelve-month build you can walk away, or keep us on for £${maintenanceMonthlyK}k a month on a rolling monthly contract so nothing falls over. For scale, one area a year is less than half a fully-loaded senior data hire at around £${seniorHireLoadedK}k.`,
   },
   {
     q: "Can we just buy the strategy and build it ourselves?",

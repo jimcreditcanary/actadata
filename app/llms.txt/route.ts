@@ -45,7 +45,7 @@ Priced by how much of the business is in scope, not by feature tier.
 - **One area — £${entryYearK}k per year (£${entryMonthlyK}k per month).** A single problem solved end to end, usually operations: sources connected, full event history in BigQuery, metric tree and a live Summary Page for that area.
 - **Whole business — £${wholeBusinessYearK}k per year (£${wholeBusinessMonthlyK}k per month).** Every value stream on one layer with one set of definitions, the full reporting suite including regulated reporting, plus safe PII-restricted self-service analytics through Claude.
 - **Enterprise — priced against the outcome delivered.** Adds autonomous agents running operational workflows.
-- **After the twelve-month build:** walk away, or optional maintenance at £${maintenanceMonthlyK}k per month. Additional datasets and training packages are agreed per project.
+- **After the twelve-month build:** walk away, or optional maintenance at £${maintenanceMonthlyK}k per month on a rolling monthly contract with no notice period. Additional datasets and training packages are agreed per project.
 
 ## Pages
 

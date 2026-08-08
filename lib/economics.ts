@@ -60,8 +60,12 @@ export const entryYearK = entryMonthlyK * 12;
 export const wholeBusinessMonthlyK = tiers.wholeBusiness.monthlyK;
 export const wholeBusinessYearK = wholeBusinessMonthlyK * 12;
 
-/** After the 12-month build: walk away, or keep us on for support. */
-export const maintenanceMonthlyK = 1;
+/**
+ * After the 12-month build: walk away, or keep us on for support. A rolling
+ * monthly contract, not a tie-in. £1k did not cover a real support commitment
+ * and priced the whole relationship down with it.
+ */
+export const maintenanceMonthlyK = 2;
 
 /**
  * The senior data hire Foundations is measured against — the Data Lead line
