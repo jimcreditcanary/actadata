@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { PageHeader } from "@/components/page-header";
 import { Crew } from "@/components/sections/crew";
+import { HowWeWork } from "@/components/sections/how-we-work";
 import { ContactFooter } from "@/components/sections/contact-footer";
 
 export const metadata: Metadata = {
@@ -17,9 +18,10 @@ export default function AboutPage() {
         eyebrow="About"
         title="Operators first."
         accent="Data people second."
-        lede="We have run these businesses, not just advised them. That is what lets us find the handful of numbers that move your outcome instead of instrumenting everything and hoping."
+        lede="We have run these businesses, not just advised them. Open about what we find, at the front edge of what AI can actually do, and working towards the point where you no longer need us."
       />
       <Crew />
+      <HowWeWork />
       <ContactFooter />
     </>
   );
