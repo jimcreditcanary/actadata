@@ -35,7 +35,7 @@ const units = [
 
 export function ValueStream() {
   return (
-    <section id="value-stream" className="relative py-24 md:py-32 border-t border-white/[0.04]">
+    <section id="value-stream" className="relative py-16 md:py-32 border-t border-white/[0.04]">
       <div className="container">
         <div className="max-w-3xl">
           <Eyebrow accent className="mb-5">Operations, not dashboards</Eyebrow>
@@ -51,7 +51,7 @@ export function ValueStream() {
           </p>
         </div>
 
-        <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="mt-12 grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
           {units.map((u, i) => (
             <div
               key={u.unit}

@@ -24,6 +24,7 @@ const links: { href: string; label: string; needsCaseStudies?: boolean; needsPos
   { href: "/case-studies", label: "Case studies", needsCaseStudies: true },
   { href: "/blog", label: "Writing", needsPosts: true },
   { href: "/pricing", label: "Pricing" },
+  { href: "/faq", label: "FAQ" },
   { href: "/about", label: "About" },
 ];
 

@@ -93,7 +93,7 @@ export function PostSection({
   if (posts.length === 0) return null;
 
   return (
-    <section className="relative py-24 md:py-28 border-t border-white/[0.04]">
+    <section className="relative py-16 md:py-28 border-t border-white/[0.04]">
       <div className="container">
         <div className="max-w-3xl">
           <Eyebrow className="mb-5">{heading}</Eyebrow>

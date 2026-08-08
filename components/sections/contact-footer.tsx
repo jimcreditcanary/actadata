@@ -6,7 +6,7 @@ import { Eyebrow } from "@/components/eyebrow";
 export function ContactFooter() {
   return (
     <>
-      <section id="contact" className="relative py-24 md:py-32 border-t border-white/[0.04]">
+      <section id="contact" className="relative py-16 md:py-32 border-t border-white/[0.04]">
         <div className="container">
           <div className="mx-auto max-w-3xl text-center">
             <Eyebrow accent className="mb-6">Let&apos;s talk</Eyebrow>
@@ -42,6 +42,7 @@ export function ContactFooter() {
             </div>
             <div className="pt-2 flex flex-wrap gap-x-4 gap-y-1 md:justify-end text-xs">
               <a href="/blog" className="hover:text-foreground transition-colors">Writing</a>
+              <a href="/faq" className="hover:text-foreground transition-colors">FAQ</a>
               <a href="/privacy" className="hover:text-foreground transition-colors">Privacy notice</a>
               <a
                 href="mailto:info@actadata.co.uk"

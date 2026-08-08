@@ -8,6 +8,8 @@ import { PostCards } from "@/components/post-cards";
 import { ContactFooter } from "@/components/sections/contact-footer";
 import { allPosts, getPost, posts, formatDate, KIND_LABEL, type PostBlock } from "@/lib/posts";
 import { getSector } from "@/lib/sectors";
+import { JsonLd } from "@/components/json-ld";
+import { graph, breadcrumbs, ORG_ID, SITE } from "@/lib/seo";
 
 export function generateStaticParams() {
   return posts.map(p => ({ slug: p.slug }));
@@ -22,7 +24,7 @@ export async function generateMetadata({
   const post = getPost(slug);
   if (!post) return {};
   return {
-    title: `${post.title} — Acta Data`,
+    title: post.title,
     description: post.excerpt,
     alternates: { canonical: `/blog/${post.slug}` },
     openGraph: {
@@ -91,8 +93,44 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
     .filter(p => p.slug !== post.slug)
     .slice(0, 3);
 
+  /* A case study is an Article; an insight is a BlogPosting. Both carry the
+     author, the dates and the publisher, which is what makes a piece quotable
+     with attribution rather than an anonymous page. */
+  const words = [post.excerpt, ...post.body.map(b => ("text" in b ? b.text : b.items.join(" ")))]
+    .join(" ")
+    .split(/\s+/).length;
+
   return (
     <>
+      <JsonLd
+        data={graph(
+          {
+            "@type": isStudy ? "Article" : "BlogPosting",
+            "@id": `${SITE}/blog/${post.slug}#article`,
+            headline: post.title,
+            description: post.excerpt,
+            url: `${SITE}/blog/${post.slug}`,
+            datePublished: post.published,
+            dateModified: post.published,
+            inLanguage: "en-GB",
+            wordCount: words,
+            timeRequired: `PT${post.readingMinutes}M`,
+            articleSection: KIND_LABEL[post.kind],
+            author: post.author
+              ? { "@type": "Person", name: post.author, worksFor: { "@id": ORG_ID } }
+              : { "@id": ORG_ID },
+            publisher: { "@id": ORG_ID },
+            image: `${SITE}/opengraph-image`,
+            mainEntityOfPage: { "@type": "WebPage", "@id": `${SITE}/blog/${post.slug}` },
+            about: sector ? { "@type": "Thing", name: sector.label } : undefined,
+          },
+          breadcrumbs([
+            { name: "Writing", path: "/blog" },
+            { name: post.title, path: `/blog/${post.slug}` },
+          ])
+        )}
+      />
+
       <PageHeader
         eyebrow={isStudy && post.client ? post.client : KIND_LABEL[post.kind]}
         title={post.title}
@@ -127,7 +165,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
         </section>
       )}
 
-      <article className="py-20 md:py-24">
+      <article className="py-14 md:py-24">
         {/* Left-aligned to the same axis as the PageHeader above. A centred
             measure column here put the first paragraph 250px right of the H1. */}
         <div className="container">
@@ -186,7 +224,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
       </article>
 
       {more.length > 0 && (
-        <section className="py-20 md:py-24 border-t border-white/[0.04]">
+        <section className="py-14 md:py-24 border-t border-white/[0.04]">
           <div className="container">
             <Eyebrow className="mb-8">Keep reading</Eyebrow>
             <PostCards posts={more} columns={more.length >= 3 ? 3 : 2} />

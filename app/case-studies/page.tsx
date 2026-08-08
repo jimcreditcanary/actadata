@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { PageHeader } from "@/components/page-header";
+import { Breadcrumbs } from "@/components/breadcrumbs";
 import { PostCards } from "@/components/post-cards";
 import { ContactFooter } from "@/components/sections/contact-footer";
 import { caseStudies, insights } from "@/lib/posts";
 
 export const metadata: Metadata = {
-  title: "Case studies — Acta Data",
+  title: "Case studies",
   description:
     "Delivered work written up properly — the situation, what we built, and the numbers afterwards. Consumer credit, debt management, credit unions, B2B and more.",
   alternates: { canonical: "/case-studies" },
@@ -23,6 +24,7 @@ export default function CaseStudiesPage() {
 
   return (
     <>
+      <Breadcrumbs trail={[{name: "Case studies",path: "/case-studies"}]} />
       <PageHeader
         eyebrow="Case studies"
         title="What we built,"
@@ -30,7 +32,7 @@ export default function CaseStudiesPage() {
         lede="Written up properly: the situation, the work, and the numbers afterwards."
       />
 
-      <section className="py-20 md:py-24">
+      <section className="py-14 md:py-24">
         <div className="container">
           {studies.length > 0 ? (
             <PostCards posts={studies} columns={studies.length >= 3 ? 3 : 2} headingLevel={2} />

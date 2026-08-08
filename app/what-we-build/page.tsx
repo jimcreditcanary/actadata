@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { PageHeader } from "@/components/page-header";
+import { Breadcrumbs } from "@/components/breadcrumbs";
 import { Button } from "@/components/ui/button";
 import { WhatWeBuild } from "@/components/sections/what-we-build";
 import { EngagementModels } from "@/components/sections/engagement-models";
 import { ContactFooter } from "@/components/sections/contact-footer";
 
 export const metadata: Metadata = {
-  title: "What we build — Acta Data",
+  title: "What we build: a working data function, no hires",
   description:
     "Integrations, a BigQuery back end, metric trees, operational and risk reporting, the Summary Page, and self-service analytics with Claude.",
   alternates: { canonical: "/what-we-build" },
@@ -16,6 +17,7 @@ export const metadata: Metadata = {
 export default function WhatWeBuildPage() {
   return (
     <>
+      <Breadcrumbs trail={[{name: "What we build",path: "/what-we-build"}]} />
       <PageHeader
         eyebrow="What we build"
         title="A working data function."

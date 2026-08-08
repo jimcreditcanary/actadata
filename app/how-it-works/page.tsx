@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { PageHeader } from "@/components/page-header";
+import { Breadcrumbs } from "@/components/breadcrumbs";
 import { Button } from "@/components/ui/button";
 import { FlowDiagram } from "@/components/flow-diagram";
 import { SummaryPageDemo } from "@/components/sections/summary-page-demo";
@@ -10,7 +11,7 @@ import { EngagementTimeline } from "@/components/sections/engagement-timeline";
 import { ContactFooter } from "@/components/sections/contact-footer";
 
 export const metadata: Metadata = {
-  title: "How it works — Acta Data",
+  title: "How it works: a BigQuery data layer, live in weeks",
   description:
     "Clean, model, alert, act. How we take every system you own into one place, then put reporting, exceptions and agents on top of it.",
   alternates: { canonical: "/how-it-works" },
@@ -19,6 +20,7 @@ export const metadata: Metadata = {
 export default function HowItWorksPage() {
   return (
     <>
+      <Breadcrumbs trail={[{name: "How it works",path: "/how-it-works"}]} />
       <PageHeader
         eyebrow="How it works"
         title="Clean. Model. Alert."
@@ -35,7 +37,7 @@ export default function HowItWorksPage() {
         </div>
       </PageHeader>
 
-      <section className="py-20 md:py-24">
+      <section className="py-14 md:py-24">
         <div className="container">
           <FlowDiagram />
         </div>

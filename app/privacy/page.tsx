@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Eyebrow } from "@/components/eyebrow";
 
 export const metadata: Metadata = {
-  title: "Privacy notice — Acta Data",
+  title: "Privacy notice",
   description:
     "How Acta Data Ltd handles personal data: what this website collects, what happens when you email us, and your rights.",
   alternates: { canonical: "/privacy" },

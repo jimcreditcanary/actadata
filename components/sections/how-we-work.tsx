@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Eyebrow } from "@/components/eyebrow";
 
 /**
@@ -31,9 +32,20 @@ const principles = [
   },
 ];
 
-export function HowWeWork() {
+/**
+ * `compact` is the home-page rendering: the four principle titles, which are
+ * punchy enough to carry the ethos on their own, and the panel headline. The
+ * paragraphs and the full argument stay on /about. In full it was 2,153px of a
+ * phone screen — the titles do most of that work in a quarter of the space.
+ */
+export function HowWeWork({ compact = false }: { compact?: boolean }) {
   return (
-    <section id="how-we-work" className="relative py-24 md:py-32 border-t border-white/[0.04]">
+    <section
+      id="how-we-work"
+      className={`relative border-t border-white/[0.04] ${
+        compact ? "py-16 md:py-24" : "py-16 md:py-32"
+      }`}
+    >
       <div className="container">
         <div className="max-w-3xl">
           <Eyebrow accent className="mb-5">How we work</Eyebrow>
@@ -48,6 +60,33 @@ export function HowWeWork() {
           </p>
         </div>
 
+        {compact ? (
+          <>
+            <ul className="mt-9 grid gap-x-10 gap-y-4 sm:grid-cols-2">
+              {principles.map(p => (
+                <li key={p.n} className="flex gap-4 items-baseline">
+                  <span className="shrink-0 font-display text-sm tabular-nums text-electric/50">
+                    {p.n}
+                  </span>
+                  <span className="text-lg font-semibold tracking-tight leading-snug">{p.t}</span>
+                </li>
+              ))}
+            </ul>
+            <div className="mt-10 rounded-2xl border border-electric/25 bg-gradient-to-b from-electric/[0.07] to-transparent p-6 md:p-8 glow-ring">
+              <h3 className="text-xl md:text-2xl font-semibold tracking-tight leading-tight">
+                Quality data first. Then the agents.{" "}
+                <span className="text-electric">Then your people where it counts.</span>
+              </h3>
+              <Link
+                href="/about#how-we-work"
+                className="mt-4 inline-block text-sm text-electric hover:underline"
+              >
+                How we work, in full &rarr;
+              </Link>
+            </div>
+          </>
+        ) : (
+          <>
         <div className="mt-12 grid gap-x-10 gap-y-9 md:grid-cols-2">
           {principles.map(p => (
             <div key={p.n} className="flex gap-5">
@@ -85,6 +124,8 @@ export function HowWeWork() {
             </div>
           </div>
         </div>
+          </>
+        )}
       </div>
     </section>
   );

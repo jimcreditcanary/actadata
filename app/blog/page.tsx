@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { PageHeader } from "@/components/page-header";
+import { Breadcrumbs } from "@/components/breadcrumbs";
 import { PostCards } from "@/components/post-cards";
 import { ContactFooter } from "@/components/sections/contact-footer";
 import { allPosts, caseStudies, insights } from "@/lib/posts";
 
 export const metadata: Metadata = {
-  title: "Writing — Acta Data",
+  title: "Writing: case studies and data & AI insight",
   description:
     "Case studies and thought leadership on operational data, event tracking and putting AI agents into a live business.",
   alternates: { canonical: "/blog" },
@@ -25,6 +26,7 @@ export default function BlogPage() {
 
   return (
     <>
+      <Breadcrumbs trail={[{name: "Writing",path: "/blog"}]} />
       <PageHeader
         eyebrow="Writing"
         title="What we've built,"
@@ -32,7 +34,7 @@ export default function BlogPage() {
         lede="Case studies with the numbers in them, and the arguments behind how we build. No gated PDFs."
       />
 
-      <section className="py-20 md:py-24">
+      <section className="py-14 md:py-24">
         <div className="container">
           {all.length === 0 ? (
             <div className="max-w-2xl">

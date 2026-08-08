@@ -10,6 +10,8 @@ import { PostSection } from "@/components/post-cards";
 import { sectors, getSector } from "@/lib/sectors";
 import { postsForSector } from "@/lib/posts";
 import { entryMonthlyK } from "@/lib/economics";
+import { JsonLd } from "@/components/json-ld";
+import { graph, breadcrumbs, ORG_ID, SITE } from "@/lib/seo";
 
 /** One static page per sector, so each can be landed on and advertised directly. */
 export function generateStaticParams() {
@@ -29,7 +31,7 @@ export async function generateMetadata({
      sector page into the range Google will actually render. */
   const description = `${sector.tagline} ${sector.intro}`.slice(0, 158).trim();
   return {
-    title: `${sector.label} data & AI — Acta Data`,
+    title: `${sector.label} data & AI`,
     description,
     alternates: { canonical: `/sectors/${sector.slug}` },
   };
@@ -45,6 +47,36 @@ export default async function SectorPage({ params }: { params: Promise<{ slug: s
 
   return (
     <>
+      {/* Per-sector Service, so "who does data work for credit unions" has a
+          machine-readable answer naming the sector and the deliverables. */}
+      <JsonLd
+        data={graph(
+          {
+            "@type": "Service",
+            "@id": `${SITE}/sectors/${sector.slug}#service`,
+            name: `Data and AI for ${sector.label.toLowerCase()}`,
+            serviceType: "Data and AI consultancy",
+            description: `${sector.tagline} ${sector.intro}`,
+            provider: { "@id": ORG_ID },
+            areaServed: { "@type": "Country", name: "United Kingdom" },
+            audience: { "@type": "BusinessAudience", audienceType: sector.label },
+            url: `${SITE}/sectors/${sector.slug}`,
+            hasOfferCatalog: {
+              "@type": "OfferCatalog",
+              name: `What we build for ${sector.label.toLowerCase()}`,
+              itemListElement: sector.builds.map(b => ({
+                "@type": "Offer",
+                itemOffered: { "@type": "Service", name: b },
+              })),
+            },
+          },
+          breadcrumbs([
+            { name: "Sectors", path: "/sectors" },
+            { name: sector.label, path: `/sectors/${sector.slug}` },
+          ])
+        )}
+      />
+
       {/* Label is the H1; the tagline is the lede. Running them together made a
           four-line purple headline nobody would read. */}
       <PageHeader eyebrow={sector.group} title={sector.label} lede={sector.tagline}>
@@ -60,7 +92,7 @@ export default async function SectorPage({ params }: { params: Promise<{ slug: s
       </PageHeader>
 
       {/* The metrics this sector argues about */}
-      <section className="py-16 md:py-20 border-b border-white/[0.04]">
+      <section className="py-12 md:py-20 border-b border-white/[0.04]">
         <div className="container">
           <Eyebrow as="h2" className="mb-5">The numbers that matter here</Eyebrow>
           <div className="flex flex-wrap gap-2.5">
@@ -77,7 +109,7 @@ export default async function SectorPage({ params }: { params: Promise<{ slug: s
       </section>
 
       {/* Pains / builds / outcome */}
-      <section className="py-20 md:py-24">
+      <section className="py-14 md:py-24">
         <div className="container">
           <Eyebrow as="h2" className="mb-8">What we do about it</Eyebrow>
           <div className="grid gap-5 lg:grid-cols-3">
@@ -132,7 +164,7 @@ export default async function SectorPage({ params }: { params: Promise<{ slug: s
       />
 
       {/* Cross-links, so a landing page is a route into the site rather than a dead end */}
-      <section className="py-20 md:py-24 border-t border-white/[0.04]">
+      <section className="py-14 md:py-24 border-t border-white/[0.04]">
         <div className="container">
           <Eyebrow as="h2" className="mb-6">Other sectors</Eyebrow>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">

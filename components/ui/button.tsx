@@ -10,7 +10,9 @@ const buttonVariants = cva(
       variant: {
         default: "bg-primary text-primary-foreground hover:bg-primary/90",
         destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90",
-        outline: "border border-input bg-transparent hover:bg-accent hover:text-accent-foreground",
+        /* border-input (rgb(32,39,60)) disappears against the hero's purple glow —
+           on a phone the secondary CTA read as a half-drawn box. */
+        outline: "border border-white/[0.16] bg-transparent hover:bg-accent hover:text-accent-foreground hover:border-white/25",
         secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",

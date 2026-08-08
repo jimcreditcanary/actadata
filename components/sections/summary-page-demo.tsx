@@ -1,16 +1,13 @@
 "use client";
 import Link from "next/link";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Card, CardContent } from "@/components/ui/card";
 import { Eyebrow } from "@/components/eyebrow";
 import { PipelineGrid } from "@/components/pipeline-grid";
 import { SummaryScorecard } from "@/components/summary-scorecard";
 import { SummaryOkrs } from "@/components/summary-okrs";
 import { SummaryAlerts } from "@/components/summary-alerts";
-import { summaryExamples, type SummaryExample } from "@/lib/summary-examples";
-import {
-  ResponsiveContainer, AreaChart, Area, XAxis, YAxis, Tooltip, CartesianGrid,
-} from "recharts";
+import { SummaryTrend } from "@/components/summary-trend";
+import { summaryExamples } from "@/lib/summary-examples";
 
 /**
  * The Summary Page mock. Content lives in lib/summary-examples.ts so this file
@@ -18,59 +15,10 @@ import {
  * scorecard (whole business), objectives (against pace), alerts (what needs you),
  * then the trend and the pipeline health behind it all.
  *
- * Per-metric sparklines are hand-rolled SVG in SummaryScorecard rather than
- * recharts — eight charts per tab would have been a lot of JS for a 60px line.
+ * Every chart here is hand-rolled SVG — the sparklines in SummaryScorecard and
+ * the trend in SummaryTrend. There is no charting library in the bundle at all,
+ * which is worth roughly 90kB of JavaScript on this page.
  */
-function MainChart({ data, label }: { data: SummaryExample["trend"]; label: string }) {
-  return (
-    <Card className="p-5 flex-1 flex flex-col">
-      <CardContent className="p-0 flex flex-1 flex-col">
-        <div className="flex flex-wrap items-center justify-between gap-3 mb-3">
-          <div>
-            <div className="text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
-              {label}
-            </div>
-            <div className="text-sm text-foreground mt-0.5">12-week trailing window</div>
-          </div>
-          <div className="flex items-center gap-3 text-xs text-muted-foreground">
-            <span className="flex items-center gap-1.5">
-              <span className="h-1.5 w-3 rounded bg-electric" /> Current
-            </span>
-            <span className="flex items-center gap-1.5">
-              <span className="h-1.5 w-3 rounded bg-white/30" /> Prior 12 weeks
-            </span>
-          </div>
-        </div>
-        <div className="h-56 flex-1 min-h-[14rem]">
-          <ResponsiveContainer width="100%" height="100%">
-            <AreaChart data={data} margin={{ top: 5, right: 8, left: -16, bottom: 0 }}>
-              <defs>
-                <linearGradient id="curr" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor="#A855F7" stopOpacity={0.45} />
-                  <stop offset="100%" stopColor="#A855F7" stopOpacity={0} />
-                </linearGradient>
-              </defs>
-              <CartesianGrid stroke="rgba(255,255,255,0.06)" vertical={false} />
-              <XAxis dataKey="week" stroke="rgba(255,255,255,0.45)" fontSize={11} tickLine={false} axisLine={false} />
-              <YAxis stroke="rgba(255,255,255,0.45)" fontSize={11} tickLine={false} axisLine={false} width={36} />
-              <Tooltip
-                contentStyle={{
-                  background: "#0A1828",
-                  border: "1px solid rgba(255,255,255,0.08)",
-                  borderRadius: 8,
-                  fontSize: 12,
-                }}
-                labelStyle={{ color: "rgba(255,255,255,0.7)" }}
-              />
-              <Area type="monotone" dataKey="prior" stroke="rgba(255,255,255,0.35)" strokeDasharray="4 4" fill="transparent" strokeWidth={1.5} />
-              <Area type="monotone" dataKey="current" stroke="#A855F7" fill="url(#curr)" strokeWidth={2.2} />
-            </AreaChart>
-          </ResponsiveContainer>
-        </div>
-      </CardContent>
-    </Card>
-  );
-}
 
 /**
  * `showPipelineHealth` is off on the home page and on for /how-it-works.
@@ -81,7 +29,7 @@ function MainChart({ data, label }: { data: SummaryExample["trend"]; label: stri
  */
 export function SummaryPageDemo({ showPipelineHealth = false }: { showPipelineHealth?: boolean }) {
   return (
-    <section id="summary" className="relative py-24 md:py-32 border-t border-white/[0.04]">
+    <section id="summary" className="relative py-16 md:py-32 border-t border-white/[0.04]">
       <div className="container">
         <div className="max-w-3xl">
           <Eyebrow accent className="mb-5">The Summary Page</Eyebrow>
@@ -134,7 +82,7 @@ export function SummaryPageDemo({ showPipelineHealth = false }: { showPipelineHe
                   <div className="mt-3 grid gap-3 lg:grid-cols-3 items-stretch">
                     <div className="lg:col-span-2 flex flex-col gap-3">
                       <SummaryOkrs okrs={v.okrs} />
-                      <MainChart data={v.trend} label={v.trendLabel} />
+                      <SummaryTrend data={v.trend} label={v.trendLabel} />
                     </div>
                     <SummaryAlerts alerts={v.alerts} queued={v.queued} persona={v.persona} />
                   </div>

@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { PageHeader } from "@/components/page-header";
+import { Breadcrumbs } from "@/components/breadcrumbs";
 import { Eyebrow } from "@/components/eyebrow";
 import { ContactFooter } from "@/components/sections/contact-footer";
 import { sectorGroups, sectorsByGroup } from "@/lib/sectors";
 
 export const metadata: Metadata = {
-  title: "Sectors — Acta Data",
+  title: "Sectors: consumer credit, debt, credit unions & more",
   description:
     "Data and AI delivery across consumer credit, debt management, credit unions, B2B services, wholesale, manufacturing, retail, legal, customer service, recruitment and SaaS.",
   alternates: { canonical: "/sectors" },
@@ -15,6 +16,7 @@ export const metadata: Metadata = {
 export default function SectorsPage() {
   return (
     <>
+      <Breadcrumbs trail={[{name: "Sectors",path: "/sectors"}]} />
       <PageHeader
         eyebrow="Sectors"
         title="We already know your value streams."
@@ -22,7 +24,7 @@ export default function SectorsPage() {
         lede="Every sector argues about different numbers. We have built the layer underneath those arguments before, which is why we can start with your metrics rather than a discovery phase."
       />
 
-      <section className="py-20 md:py-24">
+      <section className="py-14 md:py-24">
         <div className="container space-y-16">
           {sectorGroups.map(group => (
             <div key={group}>
