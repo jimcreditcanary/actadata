@@ -42,7 +42,7 @@ export default function HowItWorksPage() {
 
       <ValueStream />
       <Stack />
-      <SummaryPageDemo />
+      <SummaryPageDemo showPipelineHealth />
       <ContactFooter />
     </>
   );

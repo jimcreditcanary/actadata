@@ -72,7 +72,14 @@ function MainChart({ data, label }: { data: SummaryExample["trend"]; label: stri
   );
 }
 
-export function SummaryPageDemo() {
+/**
+ * `showPipelineHealth` is off on the home page and on for /how-it-works.
+ * The pipeline grid is the only thing that evidences the "live, always on"
+ * claim, so it earns its place where the plumbing is the subject — but on the
+ * home page the buyer wants the scorecard, the objectives and the alerts, and
+ * an internal ops view is the least valuable block per pixel there.
+ */
+export function SummaryPageDemo({ showPipelineHealth = false }: { showPipelineHealth?: boolean }) {
   return (
     <section id="summary" className="relative py-24 md:py-32 border-t border-white/[0.04]">
       <div className="container">
@@ -132,9 +139,11 @@ export function SummaryPageDemo() {
                     <SummaryAlerts alerts={v.alerts} queued={v.queued} persona={v.persona} />
                   </div>
 
-                  <div className="mt-3">
-                    <PipelineGrid />
-                  </div>
+                  {showPipelineHealth && (
+                    <div className="mt-3">
+                      <PipelineGrid />
+                    </div>
+                  )}
                 </div>
               </TabsContent>
             ))}
