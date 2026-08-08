@@ -21,17 +21,30 @@ const VIOLET: RGB = [0xa8, 0x55, 0xf7];
 const AMBER = "#FCD34D";
 const LILAC = "#DDD6FE";
 
-/** Source hues, deliberately close to violet so the effect stays subtle. */
+/**
+ * Three source hues, pushed further apart than the first attempt — the point of
+ * the stage is that separate systems arrive separately, and a near-violet trio
+ * read as one field. Still all in the violet family so the palette holds.
+ */
 const BANDS: RGB[] = [
-  [0x63, 0x66, 0xf1], // indigo
-  [0xa8, 0x55, 0xf7], // violet — the middle band is already home
-  [0xd9, 0x46, 0xef], // magenta
+  [0x4f, 0x46, 0xe5], // indigo
+  [0xa8, 0x55, 0xf7], // violet
+  [0xe8, 0x35, 0xd8], // magenta
 ];
+
+/** Vertical gutter between bands, so three sources read as three groups. */
+const BAND_GUTTER = 6;
+const BAND_ROWS = 6;
 
 const VB_W = 1000;
 /** Extra height over the 292px content: room for the stage labels. */
 const VB_H = 336;
-const LAYER_X = 360;
+/**
+ * Centred between the grid's right edge (313) and the reports (540): 97px of
+ * clearance on the left, 98px on the right. It previously sat at 360, which put
+ * it three times closer to the grid than to the reports.
+ */
+const LAYER_X = 410;
 const LAYER_Y = 28;
 const LAYER_W = 32;
 const LAYER_H = 256;
@@ -50,7 +63,7 @@ const MID = 156;
 const PII_CLEARED_AT = 0.62;
 
 const CELL = 11;
-const PITCH = CELL + 4;
+const PITCH = CELL + 3;
 const GRID_X0 = 8;
 const GRID_Y0 = 24;
 /**
@@ -58,8 +71,17 @@ const GRID_Y0 = 24;
  * whole diagram; at 20 it ends at x=304 against the layer at 360, and the width
  * freed up goes to the reports and agents so all four zones read as peers.
  */
-const COLS = 20;
+const COLS = 22;
 const ROWS = 18;
+
+/** Row y, including the gutter that separates each band of sources. */
+const rowY = (r: number) => GRID_Y0 + r * PITCH + Math.floor(r / BAND_ROWS) * BAND_GUTTER;
+
+/** Vertical centre of a band, where its feed stream leaves the grid. */
+const bandCentre = (b: number) =>
+  (rowY(b * BAND_ROWS) + rowY(b * BAND_ROWS + BAND_ROWS - 1) + CELL) / 2;
+
+const GRID_RIGHT = GRID_X0 + (COLS - 1) * PITCH + CELL;
 
 const hex = ([r, g, b]: RGB) =>
   "#" + [r, g, b].map(v => v.toString(16).padStart(2, "0")).join("");
@@ -132,16 +154,72 @@ function BlockChain({
   );
 }
 
+/**
+ * A short chain from one band's exit point into the layer. Blocks carry the
+ * band colour at the start and violet by the end, so the colour change happens
+ * in flight — the distillation is visible as movement, not just as a gradient
+ * across the grid.
+ */
+function FeedStream({
+  from,
+  to,
+  band,
+  n,
+  dur,
+  delay,
+}: {
+  from: Point;
+  to: Point;
+  band: RGB;
+  n: number;
+  dur: number;
+  delay: number;
+}) {
+  const c1: Point = [from[0] + (to[0] - from[0]) * 0.55, from[1]];
+  const c2: Point = [to[0] - (to[0] - from[0]) * 0.35, to[1]];
+  return (
+    <>
+      {Array.from({ length: n }, (_, i) => {
+        const u = (i + 0.5) / n;
+        const [x, y] = bezier(from, c1, c2, to, u);
+        const size = 9 - u * 3.5;
+        return (
+          <rect
+            key={i}
+            className="blk-pulse"
+            x={+(x - size / 2).toFixed(1)}
+            y={+(y - size / 2).toFixed(1)}
+            width={+size.toFixed(1)}
+            height={+size.toFixed(1)}
+            rx="1.5"
+            fill={hex(lerp(band, VIOLET, Math.min(1, u * 1.3)))}
+            style={{
+              ["--o" as string]: 0.38,
+              ["--o2" as string]: 1,
+              animationDuration: `${dur}s`,
+              animationDelay: `${(delay - dur * (1 - i / n)).toFixed(2)}s`,
+            }}
+          />
+        );
+      })}
+    </>
+  );
+}
+
 function BackGrid() {
   const cells = [];
   for (let r = 0; r < ROWS; r++) {
-    const band = BANDS[Math.floor(r / 6) % BANDS.length];
+    const band = BANDS[Math.floor(r / BAND_ROWS) % BANDS.length];
     for (let c = 0; c < COLS; c++) {
       const t = c / (COLS - 1);
       const x = GRID_X0 + c * PITCH;
-      const y = GRID_Y0 + r * PITCH;
+      const y = rowY(r);
 
-      const fill = hex(lerp(band, VIOLET, Math.min(1, t * 1.35)));
+      // Hold the source colour for the first third, then resolve to violet by
+      // 85% across. Blending from the very first column made the three sources
+      // look like one field, which is the opposite of the point.
+      const mix = Math.max(0, Math.min(1, (t - 0.35) / 0.5));
+      const fill = hex(lerp(band, VIOLET, mix));
       const jitter = (((r * 7 + c * 13) % 11) - 5) / 100;
       const op = Math.max(0.12, Math.min(0.95, 0.34 + t * 0.6 + jitter));
 
@@ -235,20 +313,39 @@ export function FlowDiagram() {
                 so the mass grades into the layer's glow. */}
             <linearGradient id="grid-fade" x1="0" y1="0" x2="1" y2="0">
               <stop offset="0%" stopColor="#fff" stopOpacity="1" />
-              <stop offset="62%" stopColor="#fff" stopOpacity="1" />
+              <stop offset="70%" stopColor="#fff" stopOpacity="1" />
               <stop offset="100%" stopColor="#fff" stopOpacity="0" />
             </linearGradient>
-            <mask id="grid-mask" maskUnits="userSpaceOnUse" x="0" y="0" width={LAYER_X} height={VB_H}>
-              <rect x="0" y="0" width={LAYER_X} height={VB_H} fill="url(#grid-fade)" />
+            <mask id="grid-mask" maskUnits="userSpaceOnUse" x="0" y="0" width={GRID_RIGHT + 8} height={VB_H}>
+              <rect x="0" y="0" width={GRID_RIGHT + 8} height={VB_H} fill="url(#grid-fade)" />
             </mask>
           </defs>
 
-          <ellipse cx={LAYER_X + 13} cy={MID} rx="150" ry="170" fill="url(#flow-glow)" />
+          <ellipse cx={LAYER_X + LAYER_W / 2} cy={MID} rx="150" ry="170" fill="url(#flow-glow)" />
 
           {/* ---- STAGE 1: the grid, dissolving into the layer ---- */}
           <g mask="url(#grid-mask)">
             <BackGrid />
           </g>
+
+          {/* Three feeds converging on the layer — this is the distillation, and
+              the only place the diagram shows many-becoming-one as motion rather
+              than as a gradient. Each chain carries its source colour and turns
+              violet as it arrives. */}
+          {BANDS.map((band, b) => {
+            const from: Point = [GRID_RIGHT - 42, bandCentre(b)];
+            return (
+              <FeedStream
+                key={b}
+                from={from}
+                to={[LAYER_X - 3, MID]}
+                band={band}
+                n={14}
+                dur={2.6}
+                delay={b * -0.8}
+              />
+            );
+          })}
 
           {/* ---- STAGE 2: the single data layer ---- */}
           <rect
@@ -375,8 +472,8 @@ export function FlowDiagram() {
           })}
           {/* ---- stage labels, anchored under the thing they name ---- */}
           {[
-            { n: "01", label: "CLEAN", cx: 156 },
-            { n: "02", label: "MODEL", cx: 376 },
+            { n: "01", label: "CLEAN", cx: 160 },
+            { n: "02", label: "MODEL", cx: 426 },
             { n: "03", label: "ALERT", cx: 620 },
             { n: "04", label: "ACT", cx: 893 },
           ].map(st => (
