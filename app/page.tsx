@@ -6,6 +6,7 @@ import { Stack } from "@/components/sections/stack";
 import { SummaryPageDemo } from "@/components/sections/summary-page-demo";
 import { SectorTeaser } from "@/components/sections/sector-teaser";
 import { Crew } from "@/components/sections/crew";
+import { HowWeWork } from "@/components/sections/how-we-work";
 import { PricingTeaser } from "@/components/sections/pricing-teaser";
 import { ContactFooter } from "@/components/sections/contact-footer";
 import { CaseStudySection } from "@/components/case-study-cards";
@@ -33,6 +34,7 @@ export default function Page() {
       <SummaryPageDemo />
       <SectorTeaser />
       <Crew />
+      <HowWeWork />
       {/* Renders nothing until a case study exists. */}
       <CaseStudySection studies={sortedCaseStudies().slice(0, 2)} />
       <PricingTeaser />

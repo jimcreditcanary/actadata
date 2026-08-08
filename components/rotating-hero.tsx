@@ -15,7 +15,9 @@ const HEADLINE = ["The data layer", "AI needs."];
  * that adapts."
  *
  * "Yours, handed over, done." lands last on purpose — ownership is the closing
- * argument, not the opening one. It also took the eyebrow's old line, so the
+ * argument, not the opening one. "No black boxes. No lock-in." carries the ethos
+ * from /about into the hero, and sits away from "No hires. No re-platform." so
+ * the two "No..." lines never run back to back. It also took the eyebrow's old line, so the
  * eyebrow now carries the positioning instead of repeating the same phrase
  * directly above it.
  *
@@ -24,6 +26,7 @@ const HEADLINE = ["The data layer", "AI needs."];
  */
 const CLAUSES = [
   "Insight your operators trust.",
+  "No black boxes. No lock-in.",
   "Live in weeks, not years.",
   "No hires. No re-platform.",
   "Yours, handed over, done.",
