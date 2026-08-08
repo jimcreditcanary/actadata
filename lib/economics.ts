@@ -21,20 +21,35 @@ export const baseSalaryK = inHouseTeam.reduce((sum, r) => sum + r.salaryK, 0);
 export const inHouseYearOneK = Math.round(baseSalaryK * loadingMultiplier);
 
 /**
- * Three tiers, priced monthly. Annual figures are derived, never typed twice.
- *   1. BI Only        — SME, the whole BI kit live
- *   2. BI + Claude    — adds safe, PII-restricted self-service analytics
- *   3. Enterprise     — adds autonomous agents, plus an outcome bonus
+ * Four tiers, priced by SCOPE rather than by product name.
+ *
+ * Naming them after what you got ("BI Only", "BI + Claude") made the ladder read
+ * as a feature list, and left nothing for a buyer who is not ready to commit to a
+ * year. Naming them after how much of the business is in scope answers the
+ * question they are actually asking:
+ *   1. Discovery       — one-off. The map, the readiness review, the plan. Yours
+ *                        to act on with or without us.
+ *   2. One area        — a single problem solved end to end, e.g. operations
+ *   3. Whole business  — every value stream mapped, plus self-service analytics
+ *   4. Enterprise      — autonomous agents, priced against the outcome
+ *
+ * Tiers 2 and 3 are billed monthly; the annual figure is the headline because
+ * that is the number a board approves. Both are derived, never typed twice.
  */
 export const tiers = {
-  biOnly: { monthlyK: 5 },
-  biClaude: { monthlyK: 10 },
+  /** No twelve-month commitment. A deliverable, not a retainer. */
+  discovery: { oneOffK: 15 },
+  oneArea: { monthlyK: 5 },
+  wholeBusiness: { monthlyK: 10 },
   /** No list price: scoped and priced against the outcome it delivers. */
   enterprise: { price: "Let's talk", note: "Outcome-driven pricing" },
 } as const;
 
-export const entryMonthlyK = tiers.biOnly.monthlyK;
+export const discoveryOneOffK = tiers.discovery.oneOffK;
+export const entryMonthlyK = tiers.oneArea.monthlyK;
 export const entryYearK = entryMonthlyK * 12;
+export const wholeBusinessMonthlyK = tiers.wholeBusiness.monthlyK;
+export const wholeBusinessYearK = wholeBusinessMonthlyK * 12;
 
 /** After the 12-month build: walk away, or keep us on for support. */
 export const maintenanceMonthlyK = 1;

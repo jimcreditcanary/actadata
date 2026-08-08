@@ -1,4 +1,13 @@
-import { tiers, entryMonthlyK, maintenanceMonthlyK } from "@/lib/economics";
+import {
+  tiers,
+  discoveryOneOffK,
+  entryYearK,
+  entryMonthlyK,
+  wholeBusinessYearK,
+  wholeBusinessMonthlyK,
+  maintenanceMonthlyK,
+  seniorHireLoadedK,
+} from "@/lib/economics";
 import { sectors } from "@/lib/sectors";
 
 /**
@@ -94,32 +103,44 @@ export const service = {
     "A working data function without hiring one: every source landed in your own Google BigQuery environment as immutable events, a modelled metric layer, board and regulatory reporting, a Summary Page balanced scorecard, safe self-service analytics through Claude, and AI agents on the repetitive operational work. Handed over Terraformed inside twelve months.",
   offers: {
     "@type": "OfferCatalog",
-    name: "Monthly tiers",
+    name: "Tiers, priced by scope",
     itemListElement: [
       {
         "@type": "Offer",
-        name: "BI Only",
+        name: "Discovery — value stream map and AI readiness review",
         description:
-          "The whole BI kit live on your own Google environment: sources connected, event history, modelled metrics and the reporting people actually open.",
+          "One-off engagement, no commitment. Your value streams mapped end to end, the value leaks quantified, an assessment of what your data can support today, the watch-outs before you point AI at it, and a build plan and strategy you own outright and can hand to anyone.",
         priceSpecification: {
           "@type": "UnitPriceSpecification",
-          price: tiers.biOnly.monthlyK * 1000,
+          price: discoveryOneOffK * 1000,
           priceCurrency: "GBP",
-          billingDuration: "P1M",
-          unitText: "per month",
+          unitText: "one-off",
         },
       },
       {
         "@type": "Offer",
-        name: "BI + Claude",
+        name: "One area — a single problem solved end to end",
         description:
-          "Adds safe, PII-restricted self-service analytics through Claude, so your team ask their own questions of the layer.",
+          "One value stream, usually operations, built end to end in your own Google environment: sources connected, full event history, metric tree and the Summary Page live for that area.",
         priceSpecification: {
           "@type": "UnitPriceSpecification",
-          price: tiers.biClaude.monthlyK * 1000,
+          price: entryMonthlyK * 1000,
           priceCurrency: "GBP",
           billingDuration: "P1M",
-          unitText: "per month",
+          unitText: "per month, " + entryYearK + "k per year",
+        },
+      },
+      {
+        "@type": "Offer",
+        name: "Whole business — every value stream, plus self-service analytics",
+        description:
+          "Every value stream in the business on one layer with one set of definitions, the full reporting suite including regulated reporting, and safe PII-restricted self-service analytics through Claude in your own enterprise account.",
+        priceSpecification: {
+          "@type": "UnitPriceSpecification",
+          price: wholeBusinessMonthlyK * 1000,
+          priceCurrency: "GBP",
+          billingDuration: "P1M",
+          unitText: "per month, " + wholeBusinessYearK + "k per year",
         },
       },
       {
@@ -165,7 +186,11 @@ export const faqs: { q: string; a: string }[] = [
   },
   {
     q: "How much does it cost?",
-    a: `Three monthly tiers. BI Only is £${tiers.biOnly.monthlyK}k a month and gives you the whole BI kit live. BI + Claude is £${tiers.biClaude.monthlyK}k a month and adds safe, PII-restricted self-service analytics. Enterprise adds autonomous agents and is priced against the outcome it delivers rather than from a list. After the twelve-month build you can walk away, or keep us on for £${maintenanceMonthlyK}k a month so nothing falls over. Year one starts from £${entryMonthlyK * 12}k, which is less than half a loaded senior data hire.`,
+    a: `Four options, priced by how much of the business is in scope. Discovery is a £${discoveryOneOffK}k one-off: the value stream map, the AI readiness review, the watch-outs and a build plan you own and can hand to anyone — there is no obligation to use us afterwards. Solving one area, usually operations, is £${entryYearK}k a year, billed monthly at £${entryMonthlyK}k. Mapping the whole business, with safe PII-restricted self-service analytics through Claude, is £${wholeBusinessYearK}k a year at £${wholeBusinessMonthlyK}k a month. Enterprise adds autonomous agents and is priced against the outcome it delivers rather than from a list. After the twelve-month build you can walk away, or keep us on for £${maintenanceMonthlyK}k a month so nothing falls over. For scale, one area a year is less than half a fully-loaded senior data hire at around £${seniorHireLoadedK}k.`,
+  },
+  {
+    q: "Can we just buy the strategy and build it ourselves?",
+    a: `Yes, and the Discovery tier exists for exactly that. For £${discoveryOneOffK}k you get your value streams mapped, the leaks quantified, an honest read on whether your data can support AI yet, the watch-outs, and a prioritised build plan. It is written to be acted on by somebody else — your own team, or another supplier. No proprietary format, no dependency, and nothing held back to protect a follow-on sale.`,
   },
   {
     q: "How long before we see something?",

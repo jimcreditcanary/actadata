@@ -1,15 +1,17 @@
 import Link from "next/link";
 import { Eyebrow } from "@/components/eyebrow";
 import { Button } from "@/components/ui/button";
-import { tiers, entryYearK, seniorHireLoadedK } from "@/lib/economics";
+import { tiers, discoveryOneOffK, entryYearK, wholeBusinessYearK, seniorHireLoadedK } from "@/lib/economics";
 
 /**
  * Compact pricing on the home page — the numbers are the hook, the detail lives
- * on /pricing. Two real prices sit here so nobody has to call to self-qualify.
+ * on /pricing. Three real prices sit here so nobody has to call to self-qualify,
+ * and the £15k map is first because it is the easiest yes on the page.
  */
 const rows = [
-  { name: "BI Only", who: "For SMEs", price: `£${tiers.biOnly.monthlyK}k / month` },
-  { name: "BI + Claude", who: "Safe self-service", price: `£${tiers.biClaude.monthlyK}k / month`, featured: true },
+  { name: "Discovery", who: "The map, yours to act on", price: `£${discoveryOneOffK}k one-off` },
+  { name: "One area", who: "A single problem, solved", price: `£${entryYearK}k a year` },
+  { name: "Whole business", who: "Every value stream + self-service", price: `£${wholeBusinessYearK}k a year`, featured: true },
   { name: "Enterprise", who: "Autonomous agents", price: tiers.enterprise.price },
 ];
 
@@ -21,13 +23,14 @@ export function PricingTeaser() {
           <div>
             <Eyebrow className="mb-5">Pricing</Eyebrow>
             <h2 className="font-display text-4xl md:text-5xl tracking-tight leading-[1.05]">
-              Three tiers.{" "}
+              Four ways in.{" "}
               <span className="text-electric">All cheaper than hiring.</span>
             </h2>
             <p className="mt-5 text-lg text-muted-foreground">
-              The entry tier is £{entryYearK}k a year — less than half of one fully-loaded
-              senior data hire (~£{seniorHireLoadedK}k). Monthly, no lock-in, and you own
-              everything we build as we build it.
+              Start with a £{discoveryOneOffK}k map you can take away and build yourself, or
+              solve one area for £{entryYearK}k a year — less than half of one fully-loaded
+              senior data hire (~£{seniorHireLoadedK}k). No lock-in, and you own everything we
+              build as we build it.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Button asChild variant="electric" size="lg">

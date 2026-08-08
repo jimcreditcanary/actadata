@@ -5,40 +5,72 @@ import {
   inHouseYearOneK,
   inHouseTimeToFirstOutput,
   tiers,
+  discoveryOneOffK,
   entryYearK,
+  entryMonthlyK,
+  wholeBusinessYearK,
+  wholeBusinessMonthlyK,
   maintenanceMonthlyK,
   seniorHireLoadedK,
   headcount,
 } from "@/lib/economics";
 
+/**
+ * Priced by scope, and the annual figure is the headline — £60k and £120k are the
+ * numbers a board signs off, where "£5k a month" reads as a subscription nobody
+ * has to think about.
+ *
+ * The Discovery tier is styled differently on purpose. It is the only one that
+ * does not ask for a year, and its whole pitch is that you can take the output
+ * and do it yourself — so it gets a dashed frame that reads as detachable rather
+ * than as the cheap seat in a subscription ladder.
+ */
 const plans = [
   {
-    name: "BI Only",
-    audience: "For SMEs",
-    monthlyK: tiers.biOnly.monthlyK,
-    summary: "The whole BI function, live and yours.",
+    name: "Discovery",
+    audience: "Value stream map + AI readiness",
+    priceK: discoveryOneOffK,
+    priceNote: "One-off. No commitment.",
+    diy: true,
+    summary: "The map, the plan and the watch-outs. Then do it yourself, or don't.",
     features: [
-      "Every source that matters, connected however it exposes itself",
-      "BigQuery back end and Cloud Run services in your own secure, scalable environment",
-      "A full event history, business mapping and your metric tree",
-      "Reporting suite for finance, marketing, ops and risk",
-      "The Summary Page, live",
+      "Your value streams mapped end to end — where cost, revenue, conversion and time actually go",
+      "Where the value leaks, quantified, and what fixing each one is worth",
+      "AI readiness: what your data can support today, and what it cannot",
+      "The watch-outs — where AI will embarrass you if you point it at this as-is",
+      "A build plan and strategy you own outright, whoever you hand it to",
     ],
-    cta: "Start here",
+    cta: "Start with the map",
   },
   {
-    name: "BI + Claude",
-    audience: "Safe self-service",
-    monthlyK: tiers.biClaude.monthlyK,
-    summary: "Everything above, plus your exec team answering their own questions.",
+    name: "One area",
+    audience: "A single problem, solved",
+    priceK: entryYearK,
+    monthlyK: entryMonthlyK,
+    summary: "Pick the area that hurts — usually operations — and we finish it.",
     features: [
-      "Everything in BI Only",
+      "One value stream, built end to end rather than half-covered everywhere",
+      "Every source it touches connected, however it exposes itself",
+      "BigQuery and Cloud Run in your own secure, scalable Google environment",
+      "Full event history, business mapping and the metric tree for that area",
+      "The Summary Page, live, for the part of the business you chose",
+    ],
+    cta: "Solve one area",
+  },
+  {
+    name: "Whole business",
+    audience: "Every value stream, plus self-service",
+    priceK: wholeBusinessYearK,
+    monthlyK: wholeBusinessMonthlyK,
+    summary: "The whole company mapped, and your exec team answering their own questions.",
+    features: [
+      "Every value stream in the business, on one layer with one set of definitions",
+      "Reporting suite for finance, marketing, ops and risk — regulated reporting included",
       "Claude self-service analytics in your own enterprise account",
       "Personal data stays out — the model never sees what it shouldn't",
-      "Answers drawn from the metric tree, not guessed",
-      "Tested against real questions, with limits your risk team can sign off",
+      "Answers drawn from the metric tree, with limits your risk team can sign off",
     ],
-    cta: "Add Claude",
+    cta: "Map the business",
     featured: true,
   },
   {
@@ -48,10 +80,10 @@ const plans = [
     priceNote: tiers.enterprise.note,
     summary: "Everything above, plus agents that do the work.",
     features: [
-      "Everything in BI + Claude",
-      "Autonomous agents running operational workflows",
-      "Organisational optimisation, by operators who do it for a living",
+      "Everything in Whole business",
+      "Autonomous agents running real operational workflows",
       "Exceptions routed and escalated without a human chasing them",
+      "Organisational optimisation, by operators who do it for a living",
       "Priced against the outcome — we share the upside we create",
     ],
     cta: "Talk about outcomes",
@@ -65,46 +97,56 @@ export function Pricing() {
         <div className="max-w-3xl">
           <Eyebrow className="mb-5">Pricing</Eyebrow>
           <h2 className="font-display text-4xl md:text-5xl tracking-tight leading-[1.05]">
-            Three tiers.{" "}
+            Four ways in.{" "}
             <span className="text-electric">All of them cheaper than hiring.</span>
           </h2>
           <p className="mt-5 text-lg text-muted-foreground">
-            Monthly, no lock-in, and you own everything we build as we build it. Most clients
-            start on the first tier, get the layer live, then move up as the appetite grows —
-            self-service first, agents once people trust the numbers.
+            Priced by how much of the business is in scope, not by which features you unlock.
+            Start with the map if you want to think about it first, solve one area if something
+            specific is hurting, or map the whole company. You own everything we build as we
+            build it.
           </p>
         </div>
 
-        <div className="mt-12 grid lg:grid-cols-3 gap-5 items-stretch">
+        <div className="mt-12 grid md:grid-cols-2 xl:grid-cols-4 gap-5 items-stretch">
           {plans.map(p => (
             <div key={p.name} className="relative">
               {p.featured && (
                 <div className="absolute -inset-px rounded-2xl bg-gradient-to-b from-electric/40 to-transparent opacity-60 blur-xl pointer-events-none" />
               )}
               <div
-                className={`relative h-full rounded-2xl p-7 md:p-8 flex flex-col backdrop-blur ${
+                className={`relative h-full rounded-2xl p-7 flex flex-col backdrop-blur ${
                   p.featured
                     ? "border border-electric/30 bg-gradient-to-b from-electric/[0.07] to-transparent glow-ring"
-                    : "border border-white/[0.08] bg-card/50"
+                    : p.diy
+                      ? "border border-dashed border-white/[0.18] bg-navy-100/30"
+                      : "border border-white/[0.08] bg-card/50"
                 }`}
               >
-                <Eyebrow accent={p.featured}>{p.name}</Eyebrow>
+                <div className="flex items-start justify-between gap-2">
+                  <Eyebrow accent={p.featured}>{p.name}</Eyebrow>
+                  {p.diy && (
+                    <span className="shrink-0 rounded border border-white/[0.18] px-1.5 py-0.5 text-[10px] uppercase tracking-[0.16em] text-muted-foreground">
+                      DIY
+                    </span>
+                  )}
+                </div>
                 <div className="mt-1 text-xs text-muted-foreground">{p.audience}</div>
 
                 <div className="mt-5 flex items-baseline gap-1.5">
-                  {p.monthlyK ? (
+                  {p.priceK ? (
                     <>
                       <span className="font-display text-4xl tracking-tight tabular-nums">
-                        £{p.monthlyK}k
+                        £{p.priceK}k
                       </span>
-                      <span className="text-sm text-muted-foreground">/ month</span>
+                      {p.monthlyK && <span className="text-sm text-muted-foreground">a year</span>}
                     </>
                   ) : (
                     <span className="font-display text-4xl tracking-tight">{p.price}</span>
                   )}
                 </div>
                 <div className="mt-1 text-xs text-muted-foreground">
-                  {p.monthlyK ? `£${p.monthlyK * 12}k a year` : p.priceNote}
+                  {p.monthlyK ? `Billed monthly at £${p.monthlyK}k` : p.priceNote}
                 </div>
 
                 <p className="mt-5 text-sm text-foreground/90 leading-relaxed">{p.summary}</p>
@@ -126,6 +168,32 @@ export function Pricing() {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* The DIY promise, said out loud. A discovery engagement that quietly
+            assumes you will buy the build is a sales tactic; this one does not. */}
+        <div className="mt-5 rounded-2xl border border-dashed border-white/[0.18] bg-navy-100/30 p-7 md:p-9">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-14 items-start">
+            <div>
+              <Eyebrow className="mb-4">Do it yourself</Eyebrow>
+              <h3 className="text-2xl md:text-3xl font-semibold tracking-tight leading-tight">
+                £{discoveryOneOffK}k, and you never have to speak to us again.
+              </h3>
+            </div>
+            <div className="space-y-4 text-muted-foreground leading-relaxed">
+              <p>
+                The Discovery report is written to be acted on by somebody else. It names the
+                value leaks, what each one is worth, the order to fix them in, and where your
+                data is not yet good enough to put AI anywhere near it. No dependency, no
+                proprietary format, nothing held back for the follow-on sale.
+              </p>
+              <p>
+                Take it to your own team, take it to another supplier, or sit on it for a year.
+                If you do come back, you already know exactly what you are buying — and so do
+                we, which is why the build starts in week one rather than in discovery.
+              </p>
+            </div>
+          </div>
         </div>
 
         {/* After the build — deliberately open. Nobody signs a 12-month build
@@ -191,10 +259,11 @@ export function Pricing() {
         </div>
 
         <p className="mt-8 text-center text-sm text-muted-foreground">
-          For context: the entry tier is £{entryYearK}k a year — less than half of one
-          fully-loaded senior data hire (~£{seniorHireLoadedK}k), and around a ninth of the{" "}
-          {headcount}-person team you&apos;d otherwise build, which still takes{" "}
-          {inHouseTimeToFirstOutput} to produce anything useful (~£{inHouseYearOneK}k a year).
+          For context: solving one area is £{entryYearK}k a year — less than half of one
+          fully-loaded senior data hire (~£{seniorHireLoadedK}k), and mapping the whole business
+          at £{wholeBusinessYearK}k is around a quarter of the {headcount}-person team you&apos;d
+          otherwise build, which still takes {inHouseTimeToFirstOutput} to produce anything
+          useful (~£{inHouseYearOneK}k a year).
         </p>
       </div>
     </section>

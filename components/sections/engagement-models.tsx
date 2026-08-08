@@ -8,7 +8,7 @@ const models = [
     duration: "Months, not years",
     blurb:
       "Nothing to build on, or nothing you trust. We start from zero: first real report inside a week, and a working data layer your business runs on within the first few months — regulated reporting included.",
-    tier: "BI Only and up",
+    tier: "One area and up",
     featured: true,
   },
   {
@@ -16,18 +16,18 @@ const models = [
     duration: "Migration",
     blurb:
       "A tired setup and a team that can't get ahead of it. We take the whole thing over and turn it into something AI can work with, without the lights going out on the way.",
-    tier: "BI Only and up",
+    tier: "One area and up",
   },
   {
     name: "Claude Enterprise Onboarding",
     duration: "Safety first",
     blurb:
       "Claude in your own enterprise account, done properly: who can see what, limits on what it can do, testing against real questions, and a data policy your risk and compliance teams will actually sign.",
-    tier: "BI + Claude and up",
+    tier: "Whole business and up",
   },
   {
-    name: "AI Readiness",
-    duration: "Activation",
+    name: "Agent Activation",
+    duration: "Operational AI",
     blurb:
       "Agents that run real operational work, with one agent coordinating the rest. Your data stops being something you report on and starts being something that does the work.",
     tier: "Enterprise",

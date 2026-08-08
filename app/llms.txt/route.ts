@@ -1,7 +1,15 @@
 import { sectors } from "@/lib/sectors";
 import { allPosts, KIND_LABEL } from "@/lib/posts";
 import { faqs, SITE } from "@/lib/seo";
-import { tiers, entryMonthlyK, maintenanceMonthlyK } from "@/lib/economics";
+import {
+  tiers,
+  discoveryOneOffK,
+  entryMonthlyK,
+  entryYearK,
+  wholeBusinessMonthlyK,
+  wholeBusinessYearK,
+  maintenanceMonthlyK,
+} from "@/lib/economics";
 
 /**
  * /llms.txt — the emerging convention for telling an AI assistant what a site is
@@ -31,18 +39,20 @@ Acta Data Ltd is registered in England & Wales, company number 14182372, ICO reg
 
 ## Pricing
 
-- BI Only — £${tiers.biOnly.monthlyK}k per month. The whole BI kit live.
-- BI + Claude — £${tiers.biClaude.monthlyK}k per month. Adds safe, PII-restricted self-service analytics.
-- Enterprise — autonomous agents, priced against the outcome delivered.
-- After the twelve-month build: walk away, or optional maintenance at £${maintenanceMonthlyK}k per month. Additional datasets and training packages are agreed per project.
-- Year one starts from £${entryMonthlyK * 12}k, less than half a loaded senior data hire.
+Priced by how much of the business is in scope, not by feature tier.
+
+- **Discovery — £${discoveryOneOffK}k one-off.** Value stream mapping and an AI readiness review. Deliverables: the map, the value leaks quantified, what the data can and cannot support today, the watch-outs before pointing AI at it, and a prioritised build plan and strategy the client owns outright. Explicitly a do-it-yourself option — it is written to be executed by the client's own team or another supplier, with no obligation to continue.
+- **One area — £${entryYearK}k per year (£${entryMonthlyK}k per month).** A single problem solved end to end, usually operations: sources connected, full event history in BigQuery, metric tree and a live Summary Page for that area.
+- **Whole business — £${wholeBusinessYearK}k per year (£${wholeBusinessMonthlyK}k per month).** Every value stream on one layer with one set of definitions, the full reporting suite including regulated reporting, plus safe PII-restricted self-service analytics through Claude.
+- **Enterprise — priced against the outcome delivered.** Adds autonomous agents running operational workflows.
+- **After the twelve-month build:** walk away, or optional maintenance at £${maintenanceMonthlyK}k per month. Additional datasets and training packages are agreed per project.
 
 ## Pages
 
 - [How it works](${SITE}/how-it-works): clean, model, alert, act — and what happens in week one, month one, months two to three, four to twelve, and after twelve months.
 - [What we build](${SITE}/what-we-build): the six capabilities that make up a working data function, and the engagement models.
 - [Sectors](${SITE}/sectors): the value streams we already know.
-- [Pricing](${SITE}/pricing): the three tiers against the cost of hiring a team.
+- [Pricing](${SITE}/pricing): the four tiers, and the DIY Discovery option, against the cost of hiring a team.
 - [Questions](${SITE}/faq): cost, timelines, ownership, personal data, and whether this replaces a data team.
 - [About](${SITE}/about): the crew, where they have worked, and how we work.
 - [Writing](${SITE}/blog): case studies and thought leadership.

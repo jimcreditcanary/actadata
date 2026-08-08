@@ -4,12 +4,12 @@ import { Breadcrumbs } from "@/components/breadcrumbs";
 import { Pricing } from "@/components/sections/pricing";
 import { Problem } from "@/components/sections/problem";
 import { ContactFooter } from "@/components/sections/contact-footer";
-import { entryMonthlyK } from "@/lib/economics";
+import { discoveryOneOffK, entryYearK } from "@/lib/economics";
 
 export const metadata: Metadata = {
-  title: "Pricing: from £5k a month, cheaper than hiring",
+  title: "Pricing: £15k for the map, £60k to solve an area",
   description:
-    "Three tiers from £5k a month: BI Only, BI + Claude self-service, and Enterprise agents priced against outcomes. Monthly, no lock-in, everything yours.",
+    "Four tiers priced by scope: a £15k Discovery map you can take away and build yourself, £60k a year to solve one area, £120k to map the whole business with Claude self-service, and Enterprise agents priced against outcomes.",
   alternates: { canonical: "/pricing" },
 };
 
@@ -19,9 +19,9 @@ export default function PricingPage() {
       <Breadcrumbs trail={[{name: "Pricing",path: "/pricing"}]} />
       <PageHeader
         eyebrow="Pricing"
-        title={`From £${entryMonthlyK}k a month.`}
-        accent="Cheaper than the team you'd hire."
-        lede="Monthly, no lock-in, and you own everything we build as we build it. Start where you are and move up as the appetite grows."
+        title={`£${discoveryOneOffK}k for the map. £${entryYearK}k to solve an area.`}
+        accent="All of it cheaper than hiring."
+        lede="Priced by how much of the business is in scope, not by which features you unlock. No lock-in, and you own everything we build as we build it — including the Discovery report, which you are free to take elsewhere."
       />
       <Pricing />
       <Problem />
