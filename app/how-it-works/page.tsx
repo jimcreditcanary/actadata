@@ -6,6 +6,7 @@ import { FlowDiagram } from "@/components/flow-diagram";
 import { SummaryPageDemo } from "@/components/sections/summary-page-demo";
 import { Stack } from "@/components/sections/stack";
 import { ValueStream } from "@/components/sections/value-stream";
+import { EngagementTimeline } from "@/components/sections/engagement-timeline";
 import { ContactFooter } from "@/components/sections/contact-footer";
 
 export const metadata: Metadata = {
@@ -43,6 +44,9 @@ export default function HowItWorksPage() {
       <ValueStream />
       <Stack />
       <SummaryPageDemo showPipelineHealth />
+      {/* Sequence last: by this point the reader knows what we build, and the
+          only open question is when they get it. */}
+      <EngagementTimeline />
       <ContactFooter />
     </>
   );

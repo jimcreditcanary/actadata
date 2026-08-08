@@ -40,7 +40,8 @@ export function ContactFooter() {
               Registered office: Chester House, Lloyd Drive, Cheshire Oaks Business Park,
               Ellesmere Port, Cheshire CH65 9HQ.
             </div>
-            <div className="pt-2 flex gap-4 md:justify-end text-xs">
+            <div className="pt-2 flex flex-wrap gap-x-4 gap-y-1 md:justify-end text-xs">
+              <a href="/blog" className="hover:text-foreground transition-colors">Writing</a>
               <a href="/privacy" className="hover:text-foreground transition-colors">Privacy notice</a>
               <a
                 href="mailto:info@actadata.co.uk"

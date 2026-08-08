@@ -1,18 +1,25 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { PageHeader } from "@/components/page-header";
-import { CaseStudyCards } from "@/components/case-study-cards";
+import { PostCards } from "@/components/post-cards";
 import { ContactFooter } from "@/components/sections/contact-footer";
-import { sortedCaseStudies } from "@/lib/case-studies";
+import { caseStudies, insights } from "@/lib/posts";
 
 export const metadata: Metadata = {
   title: "Case studies — Acta Data",
-  description: "What we built, for whom, and what changed as a result.",
+  description:
+    "Delivered work written up properly — the situation, what we built, and the numbers afterwards. Consumer credit, debt management, credit unions, B2B and more.",
   alternates: { canonical: "/case-studies" },
 };
 
+/**
+ * A filtered view of the blog, not a second content store — case studies are
+ * posts, and the detail pages live at /blog/[slug]. This route exists because
+ * "case studies" is what a buyer looks for and what a sales email links to.
+ */
 export default function CaseStudiesPage() {
-  const studies = sortedCaseStudies();
+  const studies = caseStudies();
+  const pieces = insights();
 
   return (
     <>
@@ -26,10 +33,10 @@ export default function CaseStudiesPage() {
       <section className="py-20 md:py-24">
         <div className="container">
           {studies.length > 0 ? (
-            <CaseStudyCards studies={studies} />
+            <PostCards posts={studies} columns={studies.length >= 3 ? 3 : 2} headingLevel={2} />
           ) : (
             /* No placeholder cards — an empty list says so plainly and points at
-               the sector pages instead, which are full of substance. */
+               the writing and the sector pages, which are full of substance. */
             <div className="max-w-2xl">
               <p className="text-lg text-muted-foreground leading-relaxed">
                 Most of our work is under NDA. We share written case studies and references on
@@ -40,6 +47,11 @@ export default function CaseStudiesPage() {
                 <Link href="/contact" className="text-electric hover:underline">
                   Ask for a reference →
                 </Link>
+                {pieces.length > 0 && (
+                  <Link href="/blog" className="text-electric hover:underline">
+                    Read how we build →
+                  </Link>
+                )}
                 <Link href="/sectors" className="text-electric hover:underline">
                   See sector detail →
                 </Link>

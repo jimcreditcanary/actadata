@@ -4,24 +4,25 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Logo } from "@/components/logo";
 import { Button } from "@/components/ui/button";
-import { hasCaseStudies } from "@/lib/case-studies";
+import { hasCaseStudies, hasPosts } from "@/lib/posts";
 
 /**
  * Real routes now, not anchors — the site is sectioned so each area can be
  * landed on directly and linked to from campaigns.
  *
- * The case-studies link only exists when there are case studies, so an empty
- * section can never be discovered.
+ * The case-studies and writing links only exist when there is something to read,
+ * so an empty section can never be discovered.
  *
  * Links no longer hide until scroll: on a multi-page site the nav is how you get
  * around, and hiding it on every page load was costing navigation to save the
  * hero some room.
  */
-const links = [
+const links: { href: string; label: string; needsCaseStudies?: boolean; needsPosts?: boolean }[] = [
   { href: "/how-it-works", label: "How it works" },
   { href: "/what-we-build", label: "What we build" },
   { href: "/sectors", label: "Sectors" },
   { href: "/case-studies", label: "Case studies", needsCaseStudies: true },
+  { href: "/blog", label: "Writing", needsPosts: true },
   { href: "/pricing", label: "Pricing" },
   { href: "/about", label: "About" },
 ];
@@ -33,7 +34,9 @@ export function Nav() {
   // Close the mobile menu on navigation, or it stays open over the new page.
   useEffect(() => setOpen(false), [pathname]);
 
-  const visible = links.filter(l => !l.needsCaseStudies || hasCaseStudies());
+  const visible = links.filter(
+    l => (!l.needsCaseStudies || hasCaseStudies()) && (!l.needsPosts || hasPosts())
+  );
 
   return (
     <header className="fixed top-0 inset-x-0 z-40 border-b border-white/[0.06] bg-navy/70 supports-[backdrop-filter]:bg-navy/60 backdrop-blur">

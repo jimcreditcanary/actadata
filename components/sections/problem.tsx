@@ -76,7 +76,7 @@ export function Problem() {
                 <Eyebrow accent>Acta Data</Eyebrow>
                 <span className="text-xs text-muted-foreground">From day one</span>
               </div>
-              <div className="grid grid-cols-2 gap-x-6 gap-y-5">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-5">
                 {[
                   ["Start date", "This month"],
                   ["Year-1 cost", `From £${entryYearK}k`],

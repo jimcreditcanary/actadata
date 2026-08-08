@@ -113,7 +113,7 @@ Three things.{" "}
                 No discovery phase to sit through, no procurement marathon. Give us
                 read access with personal data excluded, and we start — your first report inside a week.
               </p>
-              <div className="mt-6 grid grid-cols-2 gap-x-6 gap-y-5">
+              <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-5">
                 {[
                   ["Kick-off", "This month"],
                   ["Year-1 cost", `From £${entryYearK}k`],

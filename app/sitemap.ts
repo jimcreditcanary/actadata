@@ -1,12 +1,12 @@
 import type { MetadataRoute } from "next";
 import { sectors } from "@/lib/sectors";
-import { caseStudies } from "@/lib/case-studies";
+import { posts, caseStudies } from "@/lib/posts";
 
 const BASE = "https://www.actadata.co.uk";
 
 /**
- * Generated from the same data the pages are, so a new sector or case study is
- * in the sitemap the moment it exists — no second list to forget to update.
+ * Generated from the same data the pages are, so a new sector or post is in the
+ * sitemap the moment it exists — no second list to forget to update.
  */
 export default function sitemap(): MetadataRoute.Sitemap {
   const core = [
@@ -26,18 +26,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: "monthly" as const,
   }));
 
-  const studyPages = caseStudies.map(c => ({
-    path: `/case-studies/${c.slug}`,
-    priority: 0.7,
+  const postPages = posts.map(p => ({
+    path: `/blog/${p.slug}`,
+    priority: p.kind === "case-study" ? 0.8 : 0.6,
     changeFrequency: "yearly" as const,
   }));
 
-  // Only advertise the index once there is something on it.
-  const studyIndex = caseStudies.length
+  // Only advertise an index once there is something on it.
+  const blogIndex = posts.length
+    ? [{ path: "/blog", priority: 0.8, changeFrequency: "weekly" as const }]
+    : [];
+  const studyIndex = caseStudies().length
     ? [{ path: "/case-studies", priority: 0.8, changeFrequency: "monthly" as const }]
     : [];
 
-  return [...core, ...studyIndex, ...sectorPages, ...studyPages].map(p => ({
+  return [...core, ...blogIndex, ...studyIndex, ...sectorPages, ...postPages].map(p => ({
     url: `${BASE}${p.path}`,
     changeFrequency: p.changeFrequency,
     priority: p.priority,

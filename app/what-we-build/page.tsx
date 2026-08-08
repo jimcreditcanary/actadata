@@ -18,8 +18,8 @@ export default function WhatWeBuildPage() {
     <>
       <PageHeader
         eyebrow="What we build"
-        title="Six capabilities."
-        accent="One coherent data function."
+        title="A working data function."
+        accent="Without building one."
         lede="Not a tool you have to staff. A working data function — the connections, the history, the metric tree, the reporting people actually open, and the AI layer on top."
       >
         <div className="flex flex-wrap gap-3">
