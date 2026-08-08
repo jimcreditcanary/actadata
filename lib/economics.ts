@@ -46,6 +46,15 @@ export const tiers = {
 } as const;
 
 export const discoveryOneOffK = tiers.discovery.oneOffK;
+
+/**
+ * Discovery is a down payment, not a fee: if the client goes on to a build, the
+ * whole £15k comes off it. That turns the decision from "is this worth £15k" into
+ * "do we want the map first" — and it only works as a commitment if it is stated
+ * identically everywhere, hence the constant. NOTE: no expiry is offered. If one
+ * is ever wanted, it goes here and every mention moves with it.
+ */
+export const discoveryCreditNote = "Credited in full against the build";
 export const entryMonthlyK = tiers.oneArea.monthlyK;
 export const entryYearK = entryMonthlyK * 12;
 export const wholeBusinessMonthlyK = tiers.wholeBusiness.monthlyK;

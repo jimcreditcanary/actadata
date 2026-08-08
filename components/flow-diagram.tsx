@@ -514,7 +514,14 @@ export function FlowDiagram() {
         is md:hidden here to avoid printing each title twice. Below md the SVG is
         gone, so the label has to come back or the paragraphs lose their headings.
       */}
-      <div className="mt-7 grid grid-cols-1 gap-8 md:gap-5 flow-captions">
+      {/*
+        Below md these four are the whole diagram, and as loose centred text
+        blocks with 32px gaps they read as fragments floating in space. So on
+        mobile each stage becomes a numbered card and each key fact becomes a
+        chip — every mobile-only style is reset at md, where the SVG is back and
+        the captions are supposed to sit quietly underneath it.
+      */}
+      <div className="mt-7 grid grid-cols-1 gap-3 md:gap-5 flow-captions">
         {[
           {
             n: "01",
@@ -541,17 +548,23 @@ export function FlowDiagram() {
             d: "Agents work the exception off the back of it, rather than just noticing it.",
           },
         ].map(s => (
-          <div key={s.n} className="md:text-center">
+          <div
+            key={s.n}
+            className="rounded-xl border border-white/[0.07] bg-navy-100/40 p-4 md:rounded-none md:border-0 md:bg-transparent md:p-0 md:text-center"
+          >
             {/* Mobile-only heading — the SVG label carries it on desktop. */}
-            <div className="md:hidden text-[11px] font-medium uppercase tracking-[0.2em] text-electric">
-              {s.n} · {s.label}
+            <div className="md:hidden flex items-baseline gap-2.5">
+              <span className="font-display text-sm tabular-nums text-electric/45">{s.n}</span>
+              <span className="text-[11px] font-medium uppercase tracking-[0.2em] text-electric">
+                {s.label}
+              </span>
             </div>
-            <p className="mt-2 md:mt-0 mx-auto max-w-[32ch] text-sm text-muted-foreground leading-relaxed">
+            <p className="mt-2 md:mt-0 md:mx-auto md:max-w-[32ch] text-sm text-muted-foreground leading-relaxed">
               {s.d}
             </p>
 
             {s.key && (
-              <p className="mt-3 flex items-center gap-2 md:justify-center text-xs text-muted-foreground">
+              <p className="mt-3 inline-flex items-center gap-2 rounded-lg border border-white/[0.07] bg-navy/70 px-2.5 py-1.5 text-xs text-muted-foreground md:mt-3 md:flex md:justify-center md:rounded-none md:border-0 md:bg-transparent md:px-0 md:py-0">
                 {s.key === "pii" ? (
                   <svg width="11" height="11" aria-hidden className="shrink-0">
                     <rect

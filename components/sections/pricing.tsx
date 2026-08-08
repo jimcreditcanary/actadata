@@ -6,6 +6,7 @@ import {
   inHouseTimeToFirstOutput,
   tiers,
   discoveryOneOffK,
+  discoveryCreditNote,
   entryYearK,
   entryMonthlyK,
   wholeBusinessYearK,
@@ -30,7 +31,7 @@ const plans = [
     name: "Discovery",
     audience: "Value stream map + AI readiness",
     priceK: discoveryOneOffK,
-    priceNote: "One-off. No commitment.",
+    priceNote: `One-off. ${discoveryCreditNote}.`,
     diy: true,
     summary: "The map, the plan and the watch-outs. Then do it yourself, or don't.",
     features: [
@@ -39,6 +40,7 @@ const plans = [
       "AI readiness: what your data can support today, and what it cannot",
       "The watch-outs — where AI will embarrass you if you point it at this as-is",
       "A build plan and strategy you own outright, whoever you hand it to",
+      "No obligation to continue — take the plan and run it yourself",
     ],
     cta: "Start with the map",
   },
@@ -191,6 +193,11 @@ export function Pricing() {
                 Take it to your own team, take it to another supplier, or sit on it for a year.
                 If you do come back, you already know exactly what you are buying — and so do
                 we, which is why the build starts in week one rather than in discovery.
+              </p>
+              <p className="text-foreground/90">
+                And it is a down payment rather than a sunk cost: go ahead with a build and the
+                whole £{discoveryOneOffK}k comes off it. So the only thing you are really
+                deciding is whether you want the map first.
               </p>
             </div>
           </div>

@@ -1,6 +1,7 @@
 import {
   tiers,
   discoveryOneOffK,
+  discoveryCreditNote,
   entryYearK,
   entryMonthlyK,
   wholeBusinessYearK,
@@ -109,7 +110,7 @@ export const service = {
         "@type": "Offer",
         name: "Discovery — value stream map and AI readiness review",
         description:
-          "One-off engagement, no commitment. Your value streams mapped end to end, the value leaks quantified, an assessment of what your data can support today, the watch-outs before you point AI at it, and a build plan and strategy you own outright and can hand to anyone.",
+          `One-off engagement, no commitment. Your value streams mapped end to end, the value leaks quantified, an assessment of what your data can support today, the watch-outs before you point AI at it, and a build plan and strategy you own outright and can hand to anyone. ${discoveryCreditNote} if you go on to build with us, so it acts as a down payment rather than a fee.`,
         priceSpecification: {
           "@type": "UnitPriceSpecification",
           price: discoveryOneOffK * 1000,
@@ -186,11 +187,11 @@ export const faqs: { q: string; a: string }[] = [
   },
   {
     q: "How much does it cost?",
-    a: `Four options, priced by how much of the business is in scope. Discovery is a £${discoveryOneOffK}k one-off: the value stream map, the AI readiness review, the watch-outs and a build plan you own and can hand to anyone — there is no obligation to use us afterwards. Solving one area, usually operations, is £${entryYearK}k a year, billed monthly at £${entryMonthlyK}k. Mapping the whole business, with safe PII-restricted self-service analytics through Claude, is £${wholeBusinessYearK}k a year at £${wholeBusinessMonthlyK}k a month. Enterprise adds autonomous agents and is priced against the outcome it delivers rather than from a list. After the twelve-month build you can walk away, or keep us on for £${maintenanceMonthlyK}k a month so nothing falls over. For scale, one area a year is less than half a fully-loaded senior data hire at around £${seniorHireLoadedK}k.`,
+    a: `Four options, priced by how much of the business is in scope. Discovery is a £${discoveryOneOffK}k one-off: the value stream map, the AI readiness review, the watch-outs and a build plan you own and can hand to anyone — there is no obligation to use us afterwards — and if you do go ahead with a build, the whole £${discoveryOneOffK}k is credited against it. Solving one area, usually operations, is £${entryYearK}k a year, billed monthly at £${entryMonthlyK}k. Mapping the whole business, with safe PII-restricted self-service analytics through Claude, is £${wholeBusinessYearK}k a year at £${wholeBusinessMonthlyK}k a month. Enterprise adds autonomous agents and is priced against the outcome it delivers rather than from a list. After the twelve-month build you can walk away, or keep us on for £${maintenanceMonthlyK}k a month so nothing falls over. For scale, one area a year is less than half a fully-loaded senior data hire at around £${seniorHireLoadedK}k.`,
   },
   {
     q: "Can we just buy the strategy and build it ourselves?",
-    a: `Yes, and the Discovery tier exists for exactly that. For £${discoveryOneOffK}k you get your value streams mapped, the leaks quantified, an honest read on whether your data can support AI yet, the watch-outs, and a prioritised build plan. It is written to be acted on by somebody else — your own team, or another supplier. No proprietary format, no dependency, and nothing held back to protect a follow-on sale.`,
+    a: `Yes, and the Discovery tier exists for exactly that. For £${discoveryOneOffK}k you get your value streams mapped, the leaks quantified, an honest read on whether your data can support AI yet, the watch-outs, and a prioritised build plan. It is written to be acted on by somebody else — your own team, or another supplier. No proprietary format, no dependency, and nothing held back to protect a follow-on sale. And it is a down payment rather than a sunk cost: if you do come back for the build, the whole £${discoveryOneOffK}k comes off it.`,
   },
   {
     q: "How long before we see something?",

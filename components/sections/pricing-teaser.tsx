@@ -1,7 +1,14 @@
 import Link from "next/link";
 import { Eyebrow } from "@/components/eyebrow";
 import { Button } from "@/components/ui/button";
-import { tiers, discoveryOneOffK, entryYearK, wholeBusinessYearK, seniorHireLoadedK } from "@/lib/economics";
+import {
+  tiers,
+  discoveryOneOffK,
+  discoveryCreditNote,
+  entryYearK,
+  wholeBusinessYearK,
+  seniorHireLoadedK,
+} from "@/lib/economics";
 
 /**
  * Compact pricing on the home page — the numbers are the hook, the detail lives
@@ -9,7 +16,7 @@ import { tiers, discoveryOneOffK, entryYearK, wholeBusinessYearK, seniorHireLoad
  * and the £15k map is first because it is the easiest yes on the page.
  */
 const rows = [
-  { name: "Discovery", who: "The map, yours to act on", price: `£${discoveryOneOffK}k one-off` },
+  { name: "Discovery", who: `${discoveryCreditNote} if you go ahead`, price: `£${discoveryOneOffK}k one-off` },
   { name: "One area", who: "A single problem, solved", price: `£${entryYearK}k a year` },
   { name: "Whole business", who: "Every value stream + self-service", price: `£${wholeBusinessYearK}k a year`, featured: true },
   { name: "Enterprise", who: "Autonomous agents", price: tiers.enterprise.price },
@@ -27,8 +34,8 @@ export function PricingTeaser() {
               <span className="text-electric">All cheaper than hiring.</span>
             </h2>
             <p className="mt-5 text-lg text-muted-foreground">
-              Start with a £{discoveryOneOffK}k map you can take away and build yourself, or
-              solve one area for £{entryYearK}k a year — less than half of one fully-loaded
+              Start with a £{discoveryOneOffK}k map you can take away and build yourself —
+              credited in full if you go ahead — or solve one area for £{entryYearK}k a year — less than half of one fully-loaded
               senior data hire (~£{seniorHireLoadedK}k). No lock-in, and you own everything we
               build as we build it.
             </p>
