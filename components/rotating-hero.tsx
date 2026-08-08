@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState, type ReactNode } from "react";
 
-const EYEBROW = "Built, handed over, done.";
+const EYEBROW = "Data and AI, built for operations.";
 const HEADLINE = ["The data layer", "AI needs."];
 
 /**
@@ -9,10 +9,15 @@ const HEADLINE = ["The data layer", "AI needs."];
  * see. It is also the clause baked into the <h1> for screen readers and SEO.
  */
 /**
- * Three clauses, each of which completes "The data layer AI needs..." as an
+ * Four clauses, each of which completes "The data layer AI needs..." as an
  * attribute of the offer. Two were dropped for changing the subject rather than
  * describing the layer: "Then agents that act on it." and "A customer experience
  * that adapts."
+ *
+ * "Yours, handed over, done." lands last on purpose — ownership is the closing
+ * argument, not the opening one. It also took the eyebrow's old line, so the
+ * eyebrow now carries the positioning instead of repeating the same phrase
+ * directly above it.
  *
  * Clause 1 is also the one baked into the <h1> for screen readers and SEO, so
  * order still matters.
@@ -21,6 +26,7 @@ const CLAUSES = [
   "Insight your operators trust.",
   "Live in weeks, not years.",
   "No hires. No re-platform.",
+  "Yours, handed over, done.",
 ];
 
 /**
