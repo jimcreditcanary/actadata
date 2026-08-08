@@ -1,4 +1,6 @@
 import { ImageResponse } from "next/og";
+import { readFileSync } from "fs";
+import { join } from "path";
 import { ogFonts } from "@/components/og-card";
 
 /**
@@ -8,9 +10,14 @@ import { ogFonts } from "@/components/og-card";
  * the palette or the strapline and re-download. Not linked from anywhere and not
  * in the sitemap — it exists to be fetched once and uploaded.
  *
- * LinkedIn overlays the company logo across the bottom-left of this banner on
- * desktop and crops the edges on mobile, so the left ~300px is deliberately empty
- * and nothing important goes within 28px of any edge.
+ * The wordmark sits TOP-left rather than centred in that column, because LinkedIn
+ * overlays the company logo across the BOTTOM-left of the banner on desktop — so
+ * the two would sit on top of each other anywhere lower. Below the fold of that
+ * overlay is dead space by design; nothing important goes within 28px of any edge
+ * either, since LinkedIn crops on mobile.
+ *
+ * The logo is passed to satori as a data URI. Satori only partially supports
+ * inline <svg> children, but rasterises an <img> src reliably.
  */
 export const dynamic = "force-static";
 
@@ -20,6 +27,18 @@ const INK = "#F2F4F8";
 const BANDS = ["#4F46E5", "#A855F7", "#E835D8"];
 
 export function GET() {
+  /* public/logo.svg, with its fill opacity lifted for this asset only.
+     The source mark is 50% white, which is right in the site header — a
+     deliberate step back from the headline. On a banner that gets scaled down
+     inside LinkedIn's chrome it just reads grey and unfinished, so the wordmark
+     goes to full white here. Nothing else about the file changes, and the site
+     component is untouched. */
+  const logo = readFileSync(join(process.cwd(), "public/logo.svg"), "utf8").replaceAll(
+    'fill-opacity="0.5"',
+    'fill-opacity="1"'
+  );
+  const logoSrc = `data:image/svg+xml;base64,${Buffer.from(logo).toString("base64")}`;
+
   return new ImageResponse(
     (
       <div
@@ -66,8 +85,12 @@ export function GET() {
           }}
         />
 
-        {/* Logo safe zone — LinkedIn puts the company logo here. */}
-        <div style={{ display: "flex", width: 300 }} />
+        {/* Wordmark top-left; the space beneath it is where LinkedIn drops the
+            company logo, so it stays clear. */}
+        <div style={{ display: "flex", width: 300, padding: "26px 0 0 40px" }}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={logoSrc} alt="Acta Data" width={118} height={66} />
+        </div>
 
         <div
           style={{
