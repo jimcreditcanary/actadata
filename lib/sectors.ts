@@ -20,6 +20,12 @@ export type Sector = {
   outputs: string;
   /** The metrics this sector lives or dies by. */
   metrics: string[];
+  /**
+   * Show the "you do not need to be a tech company" section on this sector page.
+   * These are the audiences most likely to assume data and AI is for somebody
+   * else — merchants, distributors, family manufacturers.
+   */
+  smeObjection?: boolean;
 };
 
 export const sectors: Sector[] = [
@@ -113,6 +119,7 @@ export const sectors: Sector[] = [
   },
   {
     slug: "wholesale",
+    smeObjection: true,
     label: "Wholesale & Distribution",
     group: "Commerce & supply",
     tagline: "Customer profitability, stock turn and true landed margin.",
@@ -135,6 +142,7 @@ export const sectors: Sector[] = [
   },
   {
     slug: "manufacturing",
+    smeObjection: true,
     label: "Manufacturing",
     group: "Commerce & supply",
     tagline: "Cost to make, yield and OEE joined to what you actually sold.",

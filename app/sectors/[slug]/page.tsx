@@ -7,6 +7,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ContactFooter } from "@/components/sections/contact-footer";
 import { PostSection } from "@/components/post-cards";
+import { NotATechCompany } from "@/components/sections/not-a-tech-company";
 import { sectors, getSector } from "@/lib/sectors";
 import { postsForSector } from "@/lib/posts";
 import { entryMonthlyK } from "@/lib/economics";
@@ -154,6 +155,10 @@ export default async function SectorPage({ params }: { params: Promise<{ slug: s
           </div>
         </div>
       </section>
+
+      {/* The audiences most likely to think this is for somebody else get the
+          objection handled in full, on the page a campaign lands them on. */}
+      {sector.smeObjection && <NotATechCompany />}
 
       {/* Renders only when something has been written about this sector. */}
       <PostSection
