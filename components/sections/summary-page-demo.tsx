@@ -23,8 +23,8 @@ import {
  */
 function MainChart({ data, label }: { data: SummaryExample["trend"]; label: string }) {
   return (
-    <Card className="p-5">
-      <CardContent className="p-0">
+    <Card className="p-5 flex-1 flex flex-col">
+      <CardContent className="p-0 flex flex-1 flex-col">
         <div className="flex flex-wrap items-center justify-between gap-3 mb-3">
           <div>
             <div className="text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
@@ -41,7 +41,7 @@ function MainChart({ data, label }: { data: SummaryExample["trend"]; label: stri
             </span>
           </div>
         </div>
-        <div className="h-56">
+        <div className="h-56 flex-1 min-h-[14rem]">
           <ResponsiveContainer width="100%" height="100%">
             <AreaChart data={data} margin={{ top: 5, right: 8, left: -16, bottom: 0 }}>
               <defs>
@@ -120,15 +120,19 @@ export function SummaryPageDemo() {
                     <SummaryScorecard metrics={v.scorecard} />
                   </div>
 
-                  <div className="mt-3 grid gap-3 lg:grid-cols-3">
-                    <div className="lg:col-span-2">
+                  {/* The OKR card is naturally about half the height of the alert
+                      queue, which left 322px of dead space beside it. Stacking the
+                      trend under the objectives fills the left column so both
+                      sides land within a few pixels of each other. */}
+                  <div className="mt-3 grid gap-3 lg:grid-cols-3 items-stretch">
+                    <div className="lg:col-span-2 flex flex-col gap-3">
                       <SummaryOkrs okrs={v.okrs} />
+                      <MainChart data={v.trend} label={v.trendLabel} />
                     </div>
                     <SummaryAlerts alerts={v.alerts} queued={v.queued} persona={v.persona} />
                   </div>
 
-                  <div className="mt-3 grid gap-3 lg:grid-cols-2">
-                    <MainChart data={v.trend} label={v.trendLabel} />
+                  <div className="mt-3">
                     <PipelineGrid />
                   </div>
                 </div>
