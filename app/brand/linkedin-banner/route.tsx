@@ -6,6 +6,15 @@ import { ogFonts } from "@/components/og-card";
 /**
  * The LinkedIn company banner, at LinkedIn's 1128×191.
  *
+ * Rendered at 2x (2256x382) rather than at LinkedIn's stated 1128x191 minimum.
+ * At exactly the minimum, any crop LinkedIn applies in its editor takes the result
+ * BELOW the minimum and the upload fails outright with "Cover image upload failed"
+ * — the black bars in that dialog are just its canvas, not a ratio mismatch. 2x
+ * gives the crop tool headroom and looks sharp on a retina screen.
+ *
+ * Every dimension below is multiplied by S, so the design is authored once at 1x
+ * and the output size is one constant.
+ *
  * A route rather than a checked-in PNG so it stays on-brand automatically: change
  * the palette or the strapline and re-download. Not linked from anywhere and not
  * in the sitemap — it exists to be fetched once and uploaded.
@@ -20,6 +29,10 @@ import { ogFonts } from "@/components/og-card";
  * inline <svg> children, but rasterises an <img> src reliably.
  */
 export const dynamic = "force-static";
+
+/** Output scale. 1 = LinkedIn's 1128x191 minimum, 2 = 2256x382. */
+const S = 2;
+const px = (n: number) => n * S;
 
 const NAVY = "#060B14";
 const ELECTRIC = "#A855F7";
@@ -54,10 +67,10 @@ export function GET() {
         <div
           style={{
             position: "absolute",
-            top: -150,
-            left: 180,
-            width: 620,
-            height: 380,
+            top: px(-150),
+            left: px(180),
+            width: px(620),
+            height: px(380),
             borderRadius: 999,
             background: "radial-gradient(circle, rgba(124,58,237,0.45) 0%, rgba(6,11,20,0) 70%)",
           }}
@@ -65,10 +78,10 @@ export function GET() {
         <div
           style={{
             position: "absolute",
-            bottom: -160,
-            right: -60,
-            width: 520,
-            height: 380,
+            bottom: px(-160),
+            right: px(-60),
+            width: px(520),
+            height: px(380),
             borderRadius: 999,
             background: "radial-gradient(circle, rgba(232,53,216,0.26) 0%, rgba(6,11,20,0) 70%)",
           }}
@@ -80,16 +93,16 @@ export function GET() {
             left: 0,
             display: "flex",
             width: "100%",
-            height: 4,
+            height: px(4),
             background: `linear-gradient(90deg, ${BANDS[0]} 0%, ${BANDS[1]} 50%, ${BANDS[2]} 100%)`,
           }}
         />
 
         {/* Wordmark top-left; the space beneath it is where LinkedIn drops the
             company logo, so it stays clear. */}
-        <div style={{ display: "flex", width: 300, padding: "26px 0 0 40px" }}>
+        <div style={{ display: "flex", width: px(300), padding: `${px(26)}px 0 0 ${px(40)}px` }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={logoSrc} alt="Acta Data" width={118} height={66} />
+          <img src={logoSrc} alt="Acta Data" width={px(118)} height={px(66)} />
         </div>
 
         <div
@@ -98,34 +111,34 @@ export function GET() {
             flex: 1,
             alignItems: "center",
             justifyContent: "space-between",
-            gap: 40,
-            padding: "28px 32px 28px 0",
+            gap: px(40),
+            padding: `${px(28)}px ${px(32)}px ${px(28)}px 0`,
           }}
         >
-          <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: px(10) }}>
             <div
               style={{
                 display: "flex",
                 fontFamily: "Archivo Black",
-                fontSize: 40,
-                letterSpacing: -1.2,
+                fontSize: px(40),
+                letterSpacing: -1.2 * S,
                 color: INK,
               }}
             >
-              The data layer <span style={{ color: ELECTRIC, marginLeft: 12 }}>AI needs.</span>
+              The data layer <span style={{ color: ELECTRIC, marginLeft: px(12) }}>AI needs.</span>
             </div>
-            <div style={{ display: "flex", fontSize: 18, color: "rgba(242,244,248,0.72)" }}>
+            <div style={{ display: "flex", fontSize: px(18), color: "rgba(242,244,248,0.72)" }}>
               Timely data, one source, agents that act — all on Google.
             </div>
-            <div style={{ display: "flex", gap: 8, marginTop: 4 }}>
+            <div style={{ display: "flex", gap: px(8), marginTop: px(4) }}>
               {["BigQuery", "shadcn", "Claude"].map(chip => (
                 <div
                   key={chip}
                   style={{
                     display: "flex",
-                    padding: "4px 12px",
-                    borderRadius: 8,
-                    fontSize: 14,
+                    padding: `${px(4)}px ${px(12)}px`,
+                    borderRadius: px(8),
+                    fontSize: px(14),
                     border: "1px solid rgba(242,244,248,0.14)",
                     background: "rgba(242,244,248,0.04)",
                     color: "rgba(242,244,248,0.8)",
@@ -137,21 +150,21 @@ export function GET() {
             </div>
           </div>
 
-          <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 14 }}>
+          <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: px(14) }}>
             {/* The distillation motif, scaled to the strip */}
-            <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-              <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+            <div style={{ display: "flex", alignItems: "center", gap: px(10) }}>
+              <div style={{ display: "flex", flexDirection: "column", gap: px(6) }}>
                 {BANDS.map((colour, band) => (
-                  <div key={colour} style={{ display: "flex", flexDirection: "column", gap: 3 }}>
+                  <div key={colour} style={{ display: "flex", flexDirection: "column", gap: px(3) }}>
                     {Array.from({ length: 3 }).map((_, row) => (
-                      <div key={row} style={{ display: "flex", gap: 3 }}>
+                      <div key={row} style={{ display: "flex", gap: px(3) }}>
                         {Array.from({ length: 7 }).map((_, col) => (
                           <div
                             key={col}
                             style={{
-                              width: 8,
-                              height: 8,
-                              borderRadius: 2,
+                              width: px(8),
+                              height: px(8),
+                              borderRadius: px(2),
                               background: colour,
                               opacity: Math.max(
                                 0.1,
@@ -168,21 +181,21 @@ export function GET() {
               <div
                 style={{
                   display: "flex",
-                  width: 10,
-                  height: 100,
-                  borderRadius: 5,
+                  width: px(10),
+                  height: px(100),
+                  borderRadius: px(5),
                   background: `linear-gradient(180deg, ${ELECTRIC} 0%, #7C3AED 100%)`,
-                  boxShadow: `0 0 26px ${ELECTRIC}`,
+                  boxShadow: `0 0 ${px(26)}px ${ELECTRIC}`,
                 }}
               />
             </div>
-            <div style={{ display: "flex", fontSize: 15, color: "rgba(242,244,248,0.6)" }}>
+            <div style={{ display: "flex", fontSize: px(15), color: "rgba(242,244,248,0.6)" }}>
               actadata.co.uk
             </div>
           </div>
         </div>
       </div>
     ),
-    { width: 1128, height: 191, fonts: ogFonts() }
+    { width: px(1128), height: px(191), fonts: ogFonts() }
   );
 }
