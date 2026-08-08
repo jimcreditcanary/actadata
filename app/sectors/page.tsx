@@ -18,7 +18,7 @@ export default function SectorsPage() {
       <PageHeader
         eyebrow="Sectors"
         title="We already know your value streams."
-        accent="Eleven of them, in detail."
+        accent="Find where yours leaks."
         lede="Every sector argues about different numbers. We have built the layer underneath those arguments before, which is why we can start with your metrics rather than a discovery phase."
       />
 
