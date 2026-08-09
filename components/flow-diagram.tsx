@@ -40,11 +40,14 @@ const VB_W = 1000;
 /** Extra height over the 292px content: room for the stage labels. */
 const VB_H = 336;
 /**
- * Centred between the grid's right edge (313) and the reports (540): 97px of
- * clearance on the left, 98px on the right. It previously sat at 360, which put
- * it three times closer to the grid than to the reports.
+ * On the lattice, at latX(29) — written literally because the lattice helpers are
+ * defined below it. Roughly centred between the grid's right edge (313) and the
+ * reports (540): 101px of clearance left, 94px right.
+ *
+ * It matters that this is a lattice column: the feeds end one column short of the
+ * bar, so a non-lattice bar left a 13px hole where the system's only gap is 3px.
  */
-const LAYER_X = 410;
+const LAYER_X = 414;
 const LAYER_Y = 28;
 const LAYER_W = 32;
 const LAYER_H = 256;
@@ -197,57 +200,97 @@ function ChainFan({
 }
 
 /**
- * One band's feed into the layer, as a staircase on the lattice.
+ * The feeds from the grid into the layer.
  *
- * This used to be a bezier starting at GRID_RIGHT - 42, which is three columns
- * INSIDE the grid, with squares shrinking 9 → 5.5px. So the feeds were drawn on
- * top of the grid's own cells at a different size and off-lattice — the overlap.
+ * Two earlier versions were wrong in opposite ways. The first was a bezier
+ * starting three columns INSIDE the grid with squares shrinking 9 → 5.5px, so it
+ * overlapped the grid's own cells at a different size. The second put three
+ * symmetric staircases onto the layer's centre row — on-lattice and tidy, but it
+ * drew a literal arrow pointing at the layer, which is a diagram of an arrow
+ * rather than of data arriving.
  *
- * Now every feed starts in the first column past the grid and steps one column
- * right per square. The outer two bands also step one row toward the centre each
- * time, so the three feeds funnel into the layer's centre line: at the last shared
- * column they occupy three adjacent rows, then only the middle one continues. That
- * convergence is the distillation, and it is now made of the same squares as
- * everything else.
+ * The insight that fixes it: the layer is a 256px-tall bar, so nothing needs to
+ * converge on its centre at all. A stream only has to reach its left edge at some
+ * height. So these are many mostly-horizontal streams leaving the grid at the row
+ * they were already on, wandering a row at a time, entering the bar wherever they
+ * happen to arrive.
+ *
+ * Movement is hash-driven, never random: Math.random would desync the server and
+ * client renders. Same seed, same picture, every time.
  */
-const FEED_START_COL = COLS;
-const FEED_COLS = 6;
+const FEED_END_COL = COLS + 6;
 
-function FeedStream({ band, b, dur, delay }: { band: RGB; b: number; dur: number; delay: number }) {
-  /* Row 0 of the connector lattice is the layer's centre. The outer bands start
-     five rows out and close one row per column; the middle band runs straight and
-     is the only one that reaches the final column. */
-  const offset = b === 0 ? -5 : b === 2 ? 5 : 0;
-  const steps = offset === 0 ? FEED_COLS : FEED_COLS - 1;
+/** Deterministic 0..1 from two integers. */
+const h2 = (a: number, b: number) => (Math.abs(a * 73856093 + b * 19349663) % 1000) / 1000;
 
-  const cells = Array.from({ length: steps }, (_, i) => ({
-    col: FEED_START_COL + i,
-    k: offset === 0 ? 0 : offset + Math.sign(-offset) * i,
-  }));
+function Feeds() {
+  /* One cell holds one square, so every stream's cells are claimed into a single
+     map before anything renders — the streams cross each other by design, and two
+     rects in a cell is the defect this whole lattice exists to prevent. */
+  const claimed = new Map<
+    string,
+    { col: number; k: number; fill: string; delay: number; dur: number }
+  >();
+
+  for (let r = 0; r < ROWS; r++) {
+    /* Every other grid row spawns a stream. All eighteen filled the corridor into
+       a solid block; nine reads as flow. */
+    if (r % 2 !== 0) continue;
+
+    const band = BANDS[Math.floor(r / BAND_ROWS) % BANDS.length];
+    /* Leave from the row the data is already on, not from a band centre. */
+    let k = Math.round((rowY(r) - MID) / PITCH);
+
+    /* Ragged left edge: streams do not all start in the same column, so the grid
+       does not look like it has a second border made of feed squares. */
+    const startCol = COLS + Math.floor(h2(r, 1) * 3);
+    const dur = 2.2 + h2(r, 7) * 1.4;
+    const delay = -h2(r, 13) * 3;
+    const span = FEED_END_COL - startCol + 1;
+
+    for (let i = 0; i < span; i++) {
+      const col = startCol + i;
+      const u = (i + 0.5) / span;
+      const key = `${col},${k}`;
+      if (!claimed.has(key)) {
+        claimed.set(key, {
+          col,
+          k,
+          fill: hex(lerp(band, VIOLET, Math.min(1, u * 1.35))),
+          delay: delay - dur * (1 - i / span),
+          dur,
+        });
+      }
+
+      /* Decide the next row. Mostly hold — that is what makes the runs read as
+         horizontal — with a gentle pull toward the middle and an occasional step
+         the other way so the field does not comb itself straight. */
+      const t = h2(col * 3 + 1, k * 5 + 2);
+      if (t < 0.34 && k !== 0) k += Math.sign(-k);
+      else if (t > 0.9 && Math.abs(k) < 9) k += t > 0.95 ? 1 : -1;
+    }
+  }
 
   return (
     <>
-      {cells.map(({ col, k }, i) => {
-        const u = (i + 0.5) / steps;
-        return (
-          <rect
-            key={col}
-            className="blk-pulse"
-            x={latX(col)}
-            y={latY(k)}
-            width={CELL}
-            height={CELL}
-            rx="2"
-            fill={hex(lerp(band, VIOLET, Math.min(1, u * 1.3)))}
-            style={{
-              ["--o" as string]: 0.38,
-              ["--o2" as string]: 1,
-              animationDuration: `${dur}s`,
-              animationDelay: `${(delay - dur * (1 - i / steps)).toFixed(2)}s`,
-            }}
-          />
-        );
-      })}
+      {[...claimed.values()].map(({ col, k, fill, delay, dur }) => (
+        <rect
+          key={`${col}-${k}`}
+          className="blk-pulse"
+          x={latX(col)}
+          y={latY(k)}
+          width={CELL}
+          height={CELL}
+          rx="2"
+          fill={fill}
+          style={{
+            ["--o" as string]: 0.34,
+            ["--o2" as string]: 1,
+            animationDuration: `${dur.toFixed(2)}s`,
+            animationDelay: `${delay.toFixed(2)}s`,
+          }}
+        />
+      ))}
     </>
   );
 }
@@ -378,9 +421,7 @@ export function FlowDiagram() {
               the only place the diagram shows many-becoming-one as motion rather
               than as a gradient. Each chain carries its source colour and turns
               violet as it arrives. */}
-          {BANDS.map((band, b) => (
-            <FeedStream key={b} band={band} b={b} dur={2.6} delay={b * -0.8} />
-          ))}
+          <Feeds />
 
           {/* ---- STAGE 2: the single data layer ---- */}
           <rect
