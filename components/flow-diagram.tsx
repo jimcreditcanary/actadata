@@ -77,10 +77,6 @@ const ROWS = 18;
 /** Row y, including the gutter that separates each band of sources. */
 const rowY = (r: number) => GRID_Y0 + r * PITCH + Math.floor(r / BAND_ROWS) * BAND_GUTTER;
 
-/** Vertical centre of a band, where its feed stream leaves the grid. */
-const bandCentre = (b: number) =>
-  (rowY(b * BAND_ROWS) + rowY(b * BAND_ROWS + BAND_ROWS - 1) + CELL) / 2;
-
 const GRID_RIGHT = GRID_X0 + (COLS - 1) * PITCH + CELL;
 
 const hex = ([r, g, b]: RGB) =>
@@ -101,103 +97,153 @@ function bezier(p0: Point, p1: Point, p2: Point, p3: Point, t: number): Point {
 }
 
 /**
- * A chain of blocks along a curve with a bright pulse walking it.
+ * ONE LATTICE.
  *
- * A block with animation-delay -x is already x into its cycle, so its NEXT
- * bright moment is (dur - x) away. For the pulse to travel outward, block i must
- * light at (i/n)·dur, hence x = dur·(1 - i/n). Getting this backwards makes the
- * pulse run inward, which is invisible in a screenshot.
+ * Every square in this diagram — grid cells, feeds, report chains, agent chains
+ * — sits on the same 14px pitch at the same 11px size. It did not used to: the
+ * chains placed continuously-positioned rects of 7, 8 and 9→5.5px along bezier
+ * curves, which is why the squares looked like two different systems and why the
+ * feeds visibly overlapped the grid's last columns.
+ *
+ * Column positions come from the grid's own origin. Row positions to the RIGHT of
+ * the grid use a uniform lattice anchored on the layer's centre line, because the
+ * grid's rowY() carries band gutters that only mean something inside the grid.
+ * Inside band 1 the two agree exactly (rowY(9) === MID), so the join is seamless.
  */
-function BlockChain({
-  from,
-  c1,
-  c2,
-  to,
-  colour,
-  n,
+const latX = (col: number) => GRID_X0 + col * PITCH;
+const latY = (k: number) => MID + k * PITCH;
+
+/** Nearest lattice column/row to an arbitrary point. */
+const snapCol = (x: number) => Math.round((x - GRID_X0) / PITCH);
+const snapRow = (y: number) => Math.round((y - MID) / PITCH);
+
+/**
+ * Samples a bezier densely, snaps each sample to the lattice, and returns the
+ * ordered unique cells.
+ *
+ * The dense-sample-then-dedupe is the whole trick. Sampling n times and snapping
+ * gives duplicates wherever the curve runs shallow — two rects stacked in one
+ * cell, which is exactly the overlap this is meant to remove — so it oversamples
+ * and drops repeats instead.
+ */
+function latticePath(from: Point, c1: Point, c2: Point, to: Point, samples = 240) {
+  const cells: { col: number; k: number }[] = [];
+  for (let i = 0; i <= samples; i++) {
+    const [x, y] = bezier(from, c1, c2, to, i / samples);
+    const col = snapCol(x);
+    const k = snapRow(y);
+    const last = cells[cells.length - 1];
+    if (!last || last.col !== col || last.k !== k) cells.push({ col, k });
+  }
+  return cells;
+}
+
+/**
+ * A fan of chains leaving one point, deduped across the whole fan.
+ *
+ * Chains in a fan share their first cells by definition — they all start at the
+ * same place — so rendering them independently stacks four rects in one cell,
+ * each with its own animation delay. That builds brightness and flickers exactly
+ * where the eye enters the stage. On a lattice a cell holds one square, full stop,
+ * so the fan is resolved before anything is drawn.
+ */
+function ChainFan({
+  chains,
   dur,
-  size = 7,
 }: {
-  from: Point;
-  c1: Point;
-  c2: Point;
-  to: Point;
-  colour: string;
-  n: number;
+  chains: { from: Point; c1: Point; c2: Point; to: Point; colour: string; priority?: number }[];
   dur: number;
-  size?: number;
 }) {
+  const claimed = new Map<
+    string,
+    { col: number; k: number; colour: string; i: number; n: number; pr: number }
+  >();
+
+  chains.forEach(ch => {
+    const cells = latticePath(ch.from, ch.c1, ch.c2, ch.to);
+    const n = cells.length;
+    cells.forEach(({ col, k }, i) => {
+      const key = `${col},${k}`;
+      const pr = ch.priority ?? 0;
+      const held = claimed.get(key);
+      /* Higher priority wins a contested cell, so the flagged amber route stays
+         unbroken where it crosses the violet ones. Ties keep the first claim. */
+      if (!held || pr > held.pr) claimed.set(key, { col, k, colour: ch.colour, i, n, pr });
+    });
+  });
+
   return (
     <>
-      {Array.from({ length: n }, (_, i) => {
-        const [x, y] = bezier(from, c1, c2, to, (i + 0.5) / n);
-        return (
-          <rect
-            key={i}
-            className="blk-pulse"
-            x={+(x - size / 2).toFixed(1)}
-            y={+(y - size / 2).toFixed(1)}
-            width={size}
-            height={size}
-            rx="1.5"
-            fill={colour}
-            style={{
-              ["--o" as string]: 0.22,
-              ["--o2" as string]: 1,
-              animationDuration: `${dur}s`,
-              animationDelay: `${(-dur * (1 - i / n)).toFixed(2)}s`,
-            }}
-          />
-        );
-      })}
+      {[...claimed.values()].map(({ col, k, colour, i, n }) => (
+        <rect
+          key={`${col}-${k}`}
+          className="blk-pulse"
+          x={latX(col)}
+          y={latY(k)}
+          width={CELL}
+          height={CELL}
+          rx="2"
+          fill={colour}
+          style={{
+            ["--o" as string]: 0.22,
+            ["--o2" as string]: 1,
+            animationDuration: `${dur}s`,
+            animationDelay: `${(-dur * (1 - i / n)).toFixed(2)}s`,
+          }}
+        />
+      ))}
     </>
   );
 }
 
 /**
- * A short chain from one band's exit point into the layer. Blocks carry the
- * band colour at the start and violet by the end, so the colour change happens
- * in flight — the distillation is visible as movement, not just as a gradient
- * across the grid.
+ * One band's feed into the layer, as a staircase on the lattice.
+ *
+ * This used to be a bezier starting at GRID_RIGHT - 42, which is three columns
+ * INSIDE the grid, with squares shrinking 9 → 5.5px. So the feeds were drawn on
+ * top of the grid's own cells at a different size and off-lattice — the overlap.
+ *
+ * Now every feed starts in the first column past the grid and steps one column
+ * right per square. The outer two bands also step one row toward the centre each
+ * time, so the three feeds funnel into the layer's centre line: at the last shared
+ * column they occupy three adjacent rows, then only the middle one continues. That
+ * convergence is the distillation, and it is now made of the same squares as
+ * everything else.
  */
-function FeedStream({
-  from,
-  to,
-  band,
-  n,
-  dur,
-  delay,
-}: {
-  from: Point;
-  to: Point;
-  band: RGB;
-  n: number;
-  dur: number;
-  delay: number;
-}) {
-  const c1: Point = [from[0] + (to[0] - from[0]) * 0.55, from[1]];
-  const c2: Point = [to[0] - (to[0] - from[0]) * 0.35, to[1]];
+const FEED_START_COL = COLS;
+const FEED_COLS = 6;
+
+function FeedStream({ band, b, dur, delay }: { band: RGB; b: number; dur: number; delay: number }) {
+  /* Row 0 of the connector lattice is the layer's centre. The outer bands start
+     five rows out and close one row per column; the middle band runs straight and
+     is the only one that reaches the final column. */
+  const offset = b === 0 ? -5 : b === 2 ? 5 : 0;
+  const steps = offset === 0 ? FEED_COLS : FEED_COLS - 1;
+
+  const cells = Array.from({ length: steps }, (_, i) => ({
+    col: FEED_START_COL + i,
+    k: offset === 0 ? 0 : offset + Math.sign(-offset) * i,
+  }));
+
   return (
     <>
-      {Array.from({ length: n }, (_, i) => {
-        const u = (i + 0.5) / n;
-        const [x, y] = bezier(from, c1, c2, to, u);
-        const size = 9 - u * 3.5;
+      {cells.map(({ col, k }, i) => {
+        const u = (i + 0.5) / steps;
         return (
           <rect
-            key={i}
+            key={col}
             className="blk-pulse"
-            x={+(x - size / 2).toFixed(1)}
-            y={+(y - size / 2).toFixed(1)}
-            width={+size.toFixed(1)}
-            height={+size.toFixed(1)}
-            rx="1.5"
+            x={latX(col)}
+            y={latY(k)}
+            width={CELL}
+            height={CELL}
+            rx="2"
             fill={hex(lerp(band, VIOLET, Math.min(1, u * 1.3)))}
             style={{
               ["--o" as string]: 0.38,
               ["--o2" as string]: 1,
               animationDuration: `${dur}s`,
-              animationDelay: `${(delay - dur * (1 - i / n)).toFixed(2)}s`,
+              animationDelay: `${(delay - dur * (1 - i / steps)).toFixed(2)}s`,
             }}
           />
         );
@@ -332,20 +378,9 @@ export function FlowDiagram() {
               the only place the diagram shows many-becoming-one as motion rather
               than as a gradient. Each chain carries its source colour and turns
               violet as it arrives. */}
-          {BANDS.map((band, b) => {
-            const from: Point = [GRID_RIGHT - 42, bandCentre(b)];
-            return (
-              <FeedStream
-                key={b}
-                from={from}
-                to={[LAYER_X - 3, MID]}
-                band={band}
-                n={14}
-                dur={2.6}
-                delay={b * -0.8}
-              />
-            );
-          })}
+          {BANDS.map((band, b) => (
+            <FeedStream key={b} band={band} b={b} dur={2.6} delay={b * -0.8} />
+          ))}
 
           {/* ---- STAGE 2: the single data layer ---- */}
           <rect
@@ -356,13 +391,13 @@ export function FlowDiagram() {
             rx="13"
             fill="url(#flow-layer)"
           />
-          {Array.from({ length: 10 }, (_, i) => (
+          {Array.from({ length: 9 }, (_, i) => (
             <rect
               key={i}
-              x={LAYER_X + 9}
-              y={LAYER_Y + (LAYER_H - (9 * 24 + 14)) / 2 + i * 24}
-              width="14"
-              height="14"
+              x={LAYER_X + Math.round((LAYER_W - CELL) / 2)}
+              y={latY(-8 + i * 2)}
+              width={CELL}
+              height={CELL}
               rx="2"
               fill="#0A1020"
               opacity="0.55"
@@ -370,22 +405,28 @@ export function FlowDiagram() {
           ))}
 
           {/* ---- STAGE 3: reports, fed by chains of blocks ---- */}
+          <ChainFan
+            dur={3.2}
+            chains={[0, 1, 2, 3].map(i => {
+              const y = 54 + i * 70;
+              const flagged = i === 2;
+              return {
+                from: [LAYER_X + LAYER_W + 4, MID] as Point,
+                c1: [LAYER_X + 110, MID] as Point,
+                c2: [REPORT_X - 110, y] as Point,
+                to: [REPORT_X - 12, y] as Point,
+                colour: flagged ? AMBER : hex(VIOLET),
+                priority: flagged ? 1 : 0,
+              };
+            })}
+          />
+
           {[0, 1, 2, 3].map(i => {
             const y = 54 + i * 70;
             const flagged = i === 2;
             const colour = flagged ? AMBER : hex(VIOLET);
             return (
               <g key={i}>
-                <BlockChain
-                  from={[LAYER_X + LAYER_W + 4, MID]}
-                  c1={[LAYER_X + 110, MID]}
-                  c2={[REPORT_X - 110, y]}
-                  to={[REPORT_X - 12, y]}
-                  colour={colour}
-                  n={18}
-                  dur={3.2}
-                  size={8}
-                />
                 <rect
                   x={REPORT_X}
                   y={y - 22}
@@ -397,12 +438,12 @@ export function FlowDiagram() {
                   strokeOpacity={flagged ? 0.8 : 0.35}
                   strokeWidth="1"
                 />
-                {[0, 1, 2, 3, 4, 5].map(b => (
+                {[0, 1, 2, 3, 4].map(b => (
                   <rect
                     key={b}
-                    x={REPORT_X + 16 + b * 23}
+                    x={latX(40 + b * 2)}
                     y={y - 9 + (b % 2 === 0 ? 0 : 5)}
-                    width="14"
+                    width={CELL}
                     height={b % 2 === 0 ? 18 : 13}
                     rx="2"
                     fill={colour}
@@ -427,6 +468,17 @@ export function FlowDiagram() {
           })}
 
           {/* ---- STAGE 4: agents, fed by chains of blocks ---- */}
+          <ChainFan
+            dur={3.6}
+            chains={[0, 1, 2].map(i => ({
+              from: [REPORT_X + 164, 194] as Point,
+              c1: [REPORT_X + 230, 194] as Point,
+              c2: [AGENT_X - 80, 70 + i * 96] as Point,
+              to: [AGENT_X - 12, 70 + i * 96] as Point,
+              colour: hex(VIOLET),
+            }))}
+          />
+
           {[0, 1, 2].map(i => {
             // 60/156/252 spans 43-269, close to the reports' 34-292 and the
             // grid's 24-290. At 95/170/245 the agents column was 108px shorter
@@ -434,16 +486,6 @@ export function FlowDiagram() {
             const y = 70 + i * 96;
             return (
               <g key={i}>
-                <BlockChain
-                  from={[REPORT_X + 164, 194]}
-                  c1={[REPORT_X + 230, 194]}
-                  c2={[AGENT_X - 80, y]}
-                  to={[AGENT_X - 12, y]}
-                  colour={hex(VIOLET)}
-                  n={14}
-                  dur={3.6}
-                  size={7}
-                />
                 <rect
                   x={AGENT_X}
                   y={y - 22}
