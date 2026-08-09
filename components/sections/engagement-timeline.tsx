@@ -48,7 +48,7 @@ export function EngagementTimeline() {
   return (
     <section
       id="timeline"
-      className="relative py-16 md:py-32 border-t border-white/[0.04]"
+      className="relative py-16 md:py-20 border-t border-white/[0.04]"
     >
       <div className="container">
         <div className="max-w-3xl">

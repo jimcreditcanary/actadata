@@ -53,7 +53,7 @@ export function SecondBrain({ compact = false }: { compact?: boolean }) {
   return (
     <section
       id="second-brain"
-      className={`relative border-t border-white/[0.04] ${compact ? "py-16 md:py-24" : "py-16 md:py-32"}`}
+      className={`relative border-t border-white/[0.04] ${compact ? "py-16 md:py-20" : "py-16 md:py-20"}`}
     >
       <div className="container">
         {/* The heading gets max-w-4xl rather than the usual 3xl: at 3xl it broke

@@ -35,7 +35,7 @@ const units = [
 
 export function ValueStream() {
   return (
-    <section id="value-stream" className="relative py-16 md:py-32 border-t border-white/[0.04]">
+    <section id="value-stream" className="relative py-16 md:py-20 border-t border-white/[0.04]">
       <div className="container">
         <div className="max-w-3xl">
           <Eyebrow accent className="mb-5">Operations, not dashboards</Eyebrow>

@@ -37,7 +37,7 @@ const workbooks = [
  */
 export function NotATechCompany({ compact = false }: { compact?: boolean }) {
   return (
-    <section id="not-a-tech-company" className="relative py-16 md:py-32 border-t border-white/[0.04]">
+    <section id="not-a-tech-company" className="relative py-16 md:py-20 border-t border-white/[0.04]">
       <div className="container">
         <div className="max-w-4xl">
           <Eyebrow accent className="mb-5">If you think this isn&apos;t for you</Eyebrow>

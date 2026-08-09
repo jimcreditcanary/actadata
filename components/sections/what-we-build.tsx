@@ -39,7 +39,7 @@ const tiles = [
 
 export function WhatWeBuild() {
   return (
-    <section id="what-we-build" className="relative py-16 md:py-32 border-t border-white/[0.04]">
+    <section id="what-we-build" className="relative py-16 md:py-20 border-t border-white/[0.04]">
       <div className="container">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
           <div className="max-w-2xl">

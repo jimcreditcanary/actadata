@@ -32,7 +32,7 @@ export default function CaseStudiesPage() {
         lede="Written up properly: the situation, the work, and the numbers afterwards."
       />
 
-      <section className="py-14 md:py-24">
+      <section className="py-14 md:py-16">
         <div className="container">
           {studies.length > 0 ? (
             <PostCards posts={studies} columns={studies.length >= 3 ? 3 : 2} headingLevel={2} />

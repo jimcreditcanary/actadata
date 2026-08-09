@@ -46,7 +46,7 @@ export default function FaqPage() {
         lede="Cost, timelines, ownership, personal data, and what happens to your team. All answered here rather than held back for a conversation."
       />
 
-      <section className="py-14 md:py-24">
+      <section className="py-14 md:py-16">
         <div className="container">
           <div className="max-w-3xl divide-y divide-white/[0.06]">
             {faqs.map(f => (

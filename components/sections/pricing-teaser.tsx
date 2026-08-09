@@ -24,7 +24,7 @@ const rows = [
 
 export function PricingTeaser() {
   return (
-    <section className="relative py-16 md:py-32 border-t border-white/[0.04]">
+    <section className="relative py-16 md:py-20 border-t border-white/[0.04]">
       <div className="container">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
           <div>

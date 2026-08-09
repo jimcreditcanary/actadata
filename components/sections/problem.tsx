@@ -13,7 +13,7 @@ import {
 
 export function Problem() {
   return (
-    <section id="problem" className="relative py-16 md:py-32">
+    <section id="problem" className="relative py-16 md:py-20">
       <div className="container">
         <div className="max-w-3xl">
           <Eyebrow className="mb-5">The problem</Eyebrow>

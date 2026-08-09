@@ -24,7 +24,7 @@ export default function SectorsPage() {
         lede="Every sector argues about different numbers. We have built the layer underneath those arguments before, which is why we can start with your metrics rather than a discovery phase."
       />
 
-      <section className="py-14 md:py-24">
+      <section className="py-14 md:py-16">
         <div className="container space-y-16">
           {sectorGroups.map(group => (
             <div key={group}>

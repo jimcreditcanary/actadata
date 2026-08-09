@@ -43,7 +43,7 @@ export function HowWeWork({ compact = false }: { compact?: boolean }) {
     <section
       id="how-we-work"
       className={`relative border-t border-white/[0.04] ${
-        compact ? "py-16 md:py-24" : "py-16 md:py-32"
+        compact ? "py-16 md:py-20" : "py-16 md:py-20"
       }`}
     >
       <div className="container">

@@ -27,7 +27,7 @@ export function PageHeader({
       </div>
       <div className="absolute inset-0 bg-terminal-grid opacity-[0.10] pointer-events-none [mask-image:radial-gradient(ellipse_at_top,black_30%,transparent_75%)]" />
 
-      <div className="container relative pt-28 pb-12 md:pt-40 md:pb-20">
+      <div className="container relative pt-28 pb-12 md:pt-32 md:pb-14">
         <Eyebrow accent className="mb-5">{eyebrow}</Eyebrow>
         <h1 className="font-display max-w-4xl text-4xl md:text-6xl tracking-tight leading-[1.06]">
           {title}

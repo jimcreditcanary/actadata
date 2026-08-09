@@ -165,7 +165,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
         </section>
       )}
 
-      <article className="py-14 md:py-24">
+      <article className="py-14 md:py-16">
         {/* Left-aligned to the same axis as the PageHeader above. A centred
             measure column here put the first paragraph 250px right of the H1. */}
         <div className="container">
@@ -224,7 +224,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
       </article>
 
       {more.length > 0 && (
-        <section className="py-14 md:py-24 border-t border-white/[0.04]">
+        <section className="py-14 md:py-16 border-t border-white/[0.04]">
           <div className="container">
             <Eyebrow className="mb-8">Keep reading</Eyebrow>
             <PostCards posts={more} columns={more.length >= 3 ? 3 : 2} />

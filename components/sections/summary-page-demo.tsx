@@ -29,7 +29,7 @@ import { summaryExamples } from "@/lib/summary-examples";
  */
 export function SummaryPageDemo({ showPipelineHealth = false }: { showPipelineHealth?: boolean }) {
   return (
-    <section id="summary" className="relative py-16 md:py-32 border-t border-white/[0.04]">
+    <section id="summary" className="relative py-16 md:py-20 border-t border-white/[0.04]">
       <div className="container">
         <div className="max-w-3xl">
           <Eyebrow accent className="mb-5">The Summary Page</Eyebrow>

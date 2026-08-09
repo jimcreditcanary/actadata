@@ -34,7 +34,7 @@ export default function BlogPage() {
         lede="Case studies with the numbers in them, and the arguments behind how we build. No gated PDFs."
       />
 
-      <section className="py-14 md:py-24">
+      <section className="py-14 md:py-16">
         <div className="container">
           {all.length === 0 ? (
             <div className="max-w-2xl">

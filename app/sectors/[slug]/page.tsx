@@ -93,7 +93,7 @@ export default async function SectorPage({ params }: { params: Promise<{ slug: s
       </PageHeader>
 
       {/* The metrics this sector argues about */}
-      <section className="py-12 md:py-20 border-b border-white/[0.04]">
+      <section className="py-12 md:py-16 border-b border-white/[0.04]">
         <div className="container">
           <Eyebrow as="h2" className="mb-5">The numbers that matter here</Eyebrow>
           <div className="flex flex-wrap gap-2.5">
@@ -110,7 +110,7 @@ export default async function SectorPage({ params }: { params: Promise<{ slug: s
       </section>
 
       {/* Pains / builds / outcome */}
-      <section className="py-14 md:py-24">
+      <section className="py-14 md:py-16">
         <div className="container">
           <Eyebrow as="h2" className="mb-8">What we do about it</Eyebrow>
           <div className="grid gap-5 lg:grid-cols-3">
@@ -169,7 +169,7 @@ export default async function SectorPage({ params }: { params: Promise<{ slug: s
       />
 
       {/* Cross-links, so a landing page is a route into the site rather than a dead end */}
-      <section className="py-14 md:py-24 border-t border-white/[0.04]">
+      <section className="py-14 md:py-16 border-t border-white/[0.04]">
         <div className="container">
           <Eyebrow as="h2" className="mb-6">Other sectors</Eyebrow>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">

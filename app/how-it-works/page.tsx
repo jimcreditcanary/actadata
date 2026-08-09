@@ -37,7 +37,7 @@ export default function HowItWorksPage() {
         </div>
       </PageHeader>
 
-      <section className="py-14 md:py-24">
+      <section className="py-14 md:py-16">
         <div className="container">
           <FlowDiagram />
         </div>
