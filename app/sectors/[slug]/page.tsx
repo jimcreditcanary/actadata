@@ -165,6 +165,23 @@ export default async function SectorPage({ params }: { params: Promise<{ slug: s
         </div>
       </section>
 
+      {/* Sector-specific narrative — written per sector, so each page carries
+          real depth and unique language rather than the shared wrapper. */}
+      <section className="py-14 md:py-16 border-t border-white/[0.04]">
+        <div className="container">
+          <div className="max-w-3xl">
+            <h2 className="font-display text-3xl md:text-4xl tracking-tight leading-[1.1]">
+              {sector.deepDive.heading}
+            </h2>
+            <div className="mt-6 space-y-5 text-muted-foreground leading-relaxed">
+              {sector.deepDive.paragraphs.map((p, i) => (
+                <p key={i}>{p}</p>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* The audiences most likely to think this is for somebody else get the
           objection handled in full, on the page a campaign lands them on. */}
       {sector.smeObjection && <NotATechCompany />}
