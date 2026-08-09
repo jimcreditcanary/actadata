@@ -1,28 +1,22 @@
 "use client";
-import { useEffect, useState, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 
 const EYEBROW = "Data and AI, built for operations.";
 const HEADLINE = ["The data layer", "AI needs."];
 
 /**
- * Order matters — clause 1 renders first on load and is the one most visitors
- * see. It is also the clause baked into the <h1> for screen readers and SEO.
- */
-/**
- * Four clauses, each of which completes "The data layer AI needs..." as an
+ * Five clauses, each of which completes "The data layer AI needs..." as an
  * attribute of the offer. Two were dropped for changing the subject rather than
  * describing the layer: "Then agents that act on it." and "A customer experience
  * that adapts."
  *
  * "Yours, handed over, done." lands last on purpose — ownership is the closing
  * argument, not the opening one. "No black boxes. No lock-in." carries the ethos
- * from /about into the hero, and sits away from "No hires. No re-platform." so
- * the two "No..." lines never run back to back. It also took the eyebrow's old line, so the
- * eyebrow now carries the positioning instead of repeating the same phrase
- * directly above it.
+ * from /about into the hero, and sits away from "No hires. No re-platform." so the
+ * two "No..." lines never run back to back.
  *
- * Clause 1 is also the one baked into the <h1> for screen readers and SEO, so
- * order still matters.
+ * Clause 1 renders first on load, is what most visitors see, and is the one baked
+ * into the <h1> for screen readers and SEO — so order matters.
  */
 const CLAUSES = [
   "Insight your operators trust.",
@@ -33,45 +27,74 @@ const CLAUSES = [
 ];
 
 /**
- * Dwell per clause. Was 4500ms (the original brief's figure), which meant a
- * 22.5s cycle — most visitors saw one clause and left. 3000ms gives a 15s cycle
- * and reads as alive without being distracting.
+ * ONE live node, whose text is swapped while it is fully transparent.
+ *
+ * The previous version stacked all five clauses in the same grid cell and
+ * animated their opacities against each other. Even sequenced out-then-in, that
+ * approach has three ways to show two clauses at once — a delayed transition
+ * interrupted by a hover-pause, a tab-away that suspends transitions mid-flight,
+ * or timer drift against the transition clock — and any of them double-exposes the
+ * glyphs. With a single node it is not a matter of timing: there is only ever one
+ * string in the DOM to paint.
+ *
+ * The swap is driven by `transitionend`, not by a timer racing it, so the text
+ * cannot change while it is even fractionally visible. A timer remains as a safety
+ * net for the cases where `transitionend` never arrives (background tab).
+ *
+ * Two details that were the actual source of the "clunky" look:
+ *
+ * 1. `will-change: opacity` promotes the clause to its own compositing layer.
+ *    Without it the browser renders text with subpixel antialiasing at opacity 1
+ *    and switches to greyscale antialiasing the moment opacity drops below 1 —
+ *    so every fade ended with a visible snap in glyph weight. On its own layer the
+ *    text is rasterised once and only composited, so the letterforms are identical
+ *    at every opacity.
+ * 2. Curves that suit each direction. The fade out is linear, so the outgoing
+ *    clause loses legibility at an even rate and is gone when it says it is —
+ *    an eased exit holds near full opacity for much of its duration and then
+ *    disappears, which reads as a cut rather than a fade. The fade in
+ *    decelerates, so it settles rather than arriving flat.
  */
-const INTERVAL_MS = 3000;
+/**
+ * Zero overlap and zero blank are mutually exclusive for a fade in one place: the
+ * incoming clause can only start once the outgoing one has reached nothing, so
+ * there is always a beat with no clause on screen. 170ms of that read as a blink,
+ * so the exit is short enough to be a beat rather than an absence — the eye barely
+ * registers 120ms — and the entrance takes its time.
+ */
+const HOLD_MS = 2600;
+const FADE_OUT_MS = 120;
+const FADE_IN_MS = 280;
+/** Only used if `transitionend` never fires. */
+const SAFETY_MS = FADE_OUT_MS + 120;
+
+const OUT_EASING = "linear";
+const IN_EASING = "cubic-bezier(0.16, 1, 0.3, 1)";
 
 /**
- * The swap is sequential, not a crossfade: the outgoing clause fades out first,
- * then the incoming one fades in after it has cleared. A true crossfade means
- * both are partly visible at once, and at this type size the glyphs overlap into
- * a double-exposure — very obvious on mobile.
+ * Hero headline with one rotating clause.
  *
- * Durations are set inline, NOT via duration-[Nms]: that arbitrary Tailwind class
- * silently fails to generate in this repo, which left the fade at the 150ms
- * default for the life of the component. Same trap as the nav stagger.
- */
-const FADE_OUT_MS = 200;
-const FADE_IN_MS = 260;
-
-/**
- * Hero headline with one crossfading clause.
- *
- * Height is reserved by layout, not measurement: every clause occupies the same
- * CSS grid cell, so the tallest one fixes the block height for good and nothing
- * below the hero can move. Only opacity animates — no transforms.
+ * Height is reserved by layout, not measurement: a hidden clone of every clause
+ * shares one CSS grid cell, so the tallest clause fixes the block height for good
+ * and nothing below the hero can ever move. The clones use `visibility: hidden`
+ * rather than `opacity: 0` — visibility never paints, so they cannot contribute a
+ * stray glyph.
  *
  * Accessibility: the <h1> contains the two grey lines plus clause 1 in a
- * visually-hidden span, and the rotating stack is aria-hidden. Without that,
+ * visually-hidden span, and the rotating block is aria-hidden. Without that,
  * screen readers read all five clauses as one run-on heading. Clause 1 is
- * therefore duplicated in the DOM by design; rendering it conditionally instead
- * would reintroduce layout shift.
+ * therefore duplicated in the DOM by design.
  *
  * With JS disabled this still renders a complete static hero showing clause 1.
  */
 export function RotatingHero({ children }: { children?: ReactNode }) {
   const [index, setIndex] = useState(0);
+  const [shown, setShown] = useState(true);
   const [paused, setPaused] = useState(false);
-  const [hidden, setHidden] = useState(false);
+  const [tabHidden, setTabHidden] = useState(false);
   const [reduced, setReduced] = useState(false);
+  /** Guards against the safety timer and transitionend both advancing. */
+  const advancing = useRef(false);
 
   useEffect(() => {
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -82,30 +105,45 @@ export function RotatingHero({ children }: { children?: ReactNode }) {
   }, []);
 
   useEffect(() => {
-    const sync = () => setHidden(document.hidden);
+    const sync = () => setTabHidden(document.hidden);
     document.addEventListener("visibilitychange", sync);
     return () => document.removeEventListener("visibilitychange", sync);
   }, []);
 
+  /* Hold, then start the fade out. Pausing only ever happens from a visible
+     clause — freezing on a blank line would be worse than not pausing at all. */
   useEffect(() => {
-    if (reduced || paused || hidden) return;
-    const id = window.setInterval(
-      () => setIndex(i => (i + 1) % CLAUSES.length),
-      INTERVAL_MS
-    );
-    return () => window.clearInterval(id);
-  }, [reduced, paused, hidden]);
+    if (!shown || reduced || paused || tabHidden) return;
+    const id = window.setTimeout(() => setShown(false), HOLD_MS);
+    return () => window.clearTimeout(id);
+  }, [shown, index, reduced, paused, tabHidden]);
+
+  const advance = () => {
+    if (advancing.current) return;
+    advancing.current = true;
+    setIndex(i => (i + 1) % CLAUSES.length);
+    setShown(true);
+  };
+
+  /* Safety net only. The real trigger is onTransitionEnd below. */
+  useEffect(() => {
+    if (shown) return;
+    const id = window.setTimeout(advance, SAFETY_MS);
+    return () => window.clearTimeout(id);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [shown]);
+
+  useEffect(() => {
+    if (shown) advancing.current = false;
+  }, [shown, index]);
 
   return (
     // Focus handlers stay on the whole block, in capture phase, so tabbing to a
     // CTA pauses the rotation. Hover-pause does NOT live here: this wrapper spans
-    // the entire hero, so any cursor resting in the top-left of the page — which
-    // is most of them — froze the rotation indefinitely. Hover-pause is on the
-    // clause itself instead, where it means "let me finish reading this".
-    <div
-      onFocusCapture={() => setPaused(true)}
-      onBlurCapture={() => setPaused(false)}
-    >
+    // the entire hero, so any cursor resting in the top-left of the page — which is
+    // most of them — froze the rotation indefinitely. Hover-pause is on the clause
+    // itself instead, where it means "let me finish reading this".
+    <div onFocusCapture={() => setPaused(true)} onBlurCapture={() => setPaused(false)}>
       <p className="mb-5 text-sm font-medium tracking-[0.04em] text-hero-eyebrow sm:text-base">
         {EYEBROW}
       </p>
@@ -129,23 +167,32 @@ export function RotatingHero({ children }: { children?: ReactNode }) {
           onMouseEnter={() => setPaused(true)}
           onMouseLeave={() => setPaused(false)}
         >
-          {CLAUSES.map((clause, i) => {
-            const active = i === index;
-            return (
-              <span
-                key={clause}
-                className="col-start-1 row-start-1 text-electric transition-opacity ease-out motion-reduce:transition-none"
-                style={{
-                  opacity: active ? 1 : 0,
-                  transitionDuration: `${active ? FADE_IN_MS : FADE_OUT_MS}ms`,
-                  // The incoming clause waits for the outgoing one to clear.
-                  transitionDelay: active ? `${FADE_OUT_MS}ms` : "0ms",
-                }}
-              >
-                {clause}
-              </span>
-            );
-          })}
+          {/* Height reservation. Never painted — visibility:hidden, not opacity. */}
+          {CLAUSES.map(clause => (
+            <span key={clause} className="col-start-1 row-start-1 invisible" aria-hidden="true">
+              {clause}
+            </span>
+          ))}
+
+          {/* The only clause that ever paints. */}
+          <span
+            className="col-start-1 row-start-1 text-electric"
+            style={{
+              opacity: reduced ? 1 : shown ? 1 : 0,
+              transitionProperty: reduced ? "none" : "opacity",
+              transitionDuration: `${shown ? FADE_IN_MS : FADE_OUT_MS}ms`,
+              transitionTimingFunction: shown ? IN_EASING : OUT_EASING,
+              // Keeps the glyphs on one compositing layer, so antialiasing does
+              // not switch mode part-way through the fade.
+              willChange: "opacity",
+            }}
+            onTransitionEnd={e => {
+              if (e.propertyName !== "opacity") return;
+              if (!shown) advance();
+            }}
+          >
+            {CLAUSES[index]}
+          </span>
         </span>
       </h1>
 
