@@ -28,6 +28,10 @@ export const SERVICE_ID = `${SITE}/#service`;
 
 const EMAIL = "info@actadata.co.uk";
 
+/** Phone in two forms: E.164 for schema and `tel:` links, human-readable for display. */
+export const PHONE_E164 = "+447749407562";
+export const PHONE_DISPLAY = "+44 7749 407562";
+
 export const organisation = {
   "@type": ["Organization", "ProfessionalService"],
   "@id": ORG_ID,
@@ -35,6 +39,7 @@ export const organisation = {
   legalName: "Acta Data Ltd",
   url: SITE,
   email: EMAIL,
+  telephone: PHONE_E164,
   logo: { "@type": "ImageObject", url: `${SITE}/opengraph-image`, width: 1200, height: 630 },
   image: `${SITE}/opengraph-image`,
   description:
@@ -54,6 +59,7 @@ export const organisation = {
      is the public, verifiable one; add the LinkedIn company page and any founder
      profiles here as they go live — each extra corroborating URL raises trust. */
   sameAs: [
+    "https://www.linkedin.com/company/acta-data/",
     "https://find-and-update.company-information.service.gov.uk/company/14182372",
   ],
   /* Company and ICO registrations, so an assistant asked "is Acta Data a real
@@ -83,6 +89,7 @@ export const organisation = {
     "@type": "ContactPoint",
     contactType: "sales",
     email: EMAIL,
+    telephone: PHONE_E164,
     areaServed: "GB",
     availableLanguage: "English",
   },

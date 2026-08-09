@@ -1,6 +1,7 @@
 import { Logo } from "@/components/logo";
 import { LeadForm } from "@/components/lead-form";
 import { Eyebrow } from "@/components/eyebrow";
+import { PHONE_DISPLAY, PHONE_E164 } from "@/lib/seo";
 
 /**
  * `hideHeading` drops the eyebrow + headline + lede, leaving just the form.
@@ -49,6 +50,12 @@ export function ContactFooter({ hideHeading = false }: { hideHeading?: boolean }
               <a href="/blog" className="hover:text-foreground transition-colors">Writing</a>
               <a href="/faq" className="hover:text-foreground transition-colors">FAQ</a>
               <a href="/privacy" className="hover:text-foreground transition-colors">Privacy notice</a>
+              <a
+                href={`tel:${PHONE_E164}`}
+                className="hover:text-foreground transition-colors"
+              >
+                {PHONE_DISPLAY}
+              </a>
               <a
                 href="mailto:info@actadata.co.uk"
                 className="hover:text-foreground transition-colors"
