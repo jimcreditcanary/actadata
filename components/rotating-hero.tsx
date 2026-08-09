@@ -159,42 +159,50 @@ export function RotatingHero({ children }: { children?: ReactNode }) {
           ))}
         </span>
 
+        {/* The one clause the heading carries for screen readers and SEO. The
+            rotating clause below is decorative and sits OUTSIDE the <h1>, so a
+            text-only extraction of the heading yields exactly
+            "The data layer AI needs. Insight your operators trust." — not the
+            five clauses plus their height-reservation clones run together. */}
         <span className="sr-only"> {CLAUSES[0]}</span>
-
-        <span
-          aria-hidden="true"
-          className="grid"
-          onMouseEnter={() => setPaused(true)}
-          onMouseLeave={() => setPaused(false)}
-        >
-          {/* Height reservation. Never painted — visibility:hidden, not opacity. */}
-          {CLAUSES.map(clause => (
-            <span key={clause} className="col-start-1 row-start-1 invisible" aria-hidden="true">
-              {clause}
-            </span>
-          ))}
-
-          {/* The only clause that ever paints. */}
-          <span
-            className="col-start-1 row-start-1 text-electric"
-            style={{
-              opacity: reduced ? 1 : shown ? 1 : 0,
-              transitionProperty: reduced ? "none" : "opacity",
-              transitionDuration: `${shown ? FADE_IN_MS : FADE_OUT_MS}ms`,
-              transitionTimingFunction: shown ? IN_EASING : OUT_EASING,
-              // Keeps the glyphs on one compositing layer, so antialiasing does
-              // not switch mode part-way through the fade.
-              willChange: "opacity",
-            }}
-            onTransitionEnd={e => {
-              if (e.propertyName !== "opacity") return;
-              if (!shown) advance();
-            }}
-          >
-            {CLAUSES[index]}
-          </span>
-        </span>
       </h1>
+
+      {/* Rotating third line — visually the close of the headline, but aria-hidden
+          and not inside the <h1> so it adds no duplicate text to the heading. It
+          repeats the h1's type styles so it reads as the same line of display. */}
+      <div
+        aria-hidden="true"
+        className="font-display max-w-5xl text-4xl leading-[1.08] tracking-[-0.02em] text-electric grid sm:text-5xl lg:text-7xl"
+        onMouseEnter={() => setPaused(true)}
+        onMouseLeave={() => setPaused(false)}
+      >
+        {/* Height reservation. Never painted — visibility:hidden, not opacity. */}
+        {CLAUSES.map(clause => (
+          <span key={clause} className="col-start-1 row-start-1 invisible">
+            {clause}
+          </span>
+        ))}
+
+        {/* The only clause that ever paints. */}
+        <span
+          className="col-start-1 row-start-1"
+          style={{
+            opacity: reduced ? 1 : shown ? 1 : 0,
+            transitionProperty: reduced ? "none" : "opacity",
+            transitionDuration: `${shown ? FADE_IN_MS : FADE_OUT_MS}ms`,
+            transitionTimingFunction: shown ? IN_EASING : OUT_EASING,
+            // Keeps the glyphs on one compositing layer, so antialiasing does
+            // not switch mode part-way through the fade.
+            willChange: "opacity",
+          }}
+          onTransitionEnd={e => {
+            if (e.propertyName !== "opacity") return;
+            if (!shown) advance();
+          }}
+        >
+          {CLAUSES[index]}
+        </span>
+      </div>
 
       {children}
     </div>

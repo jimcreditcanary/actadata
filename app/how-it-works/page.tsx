@@ -9,6 +9,8 @@ import { Stack } from "@/components/sections/stack";
 import { ValueStream } from "@/components/sections/value-stream";
 import { EngagementTimeline } from "@/components/sections/engagement-timeline";
 import { ContactFooter } from "@/components/sections/contact-footer";
+import { JsonLd } from "@/components/json-ld";
+import { graph, howItWorks } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "How it works: a BigQuery data layer, live in weeks",
@@ -21,6 +23,7 @@ export default function HowItWorksPage() {
   return (
     <>
       <Breadcrumbs trail={[{name: "How it works",path: "/how-it-works"}]} />
+      <JsonLd data={graph(howItWorks)} />
       <PageHeader
         eyebrow="How it works"
         title="Clean. Model. Alert."

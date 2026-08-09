@@ -49,6 +49,13 @@ export const organisation = {
     addressCountry: "GB",
   },
   areaServed: { "@type": "Country", name: "United Kingdom" },
+  /* External anchors for the entity, so an AI engine can triangulate that the
+     company described here is the same one it has seen elsewhere. Companies House
+     is the public, verifiable one; add the LinkedIn company page and any founder
+     profiles here as they go live — each extra corroborating URL raises trust. */
+  sameAs: [
+    "https://find-and-update.company-information.service.gov.uk/company/14182372",
+  ],
   /* Company and ICO registrations, so an assistant asked "is Acta Data a real
      registered company" has the answer in machine-readable form. */
   identifier: [
@@ -235,6 +242,52 @@ export const faqs: { q: string; a: string }[] = [
     a: "One page showing the whole business in real time: a balanced scorecard across finance, customer, operations and people with every measure against target and RAG derived from the metric tree rather than typed in, the quarter's objectives tracked against pace, and the three things that most need attention today. Clear one and the next moves up.",
   },
 ];
+
+/**
+ * The four-stage method, marked up as a HowTo so "how does Acta Data build a
+ * data layer" resolves to steps rather than prose. The step text mirrors the
+ * visible CLEAN / MODEL / ALERT / ACT captions on /how-it-works, and totalTime
+ * carries the twelve-month build the timeline below it commits to.
+ */
+export const howItWorks = {
+  "@type": "HowTo",
+  "@id": `${SITE}/how-it-works#howto`,
+  name: "How Acta Data builds your operational data layer",
+  description:
+    "Clean, model, alert, act: how Acta Data takes every system you own into one place in Google BigQuery, then puts reporting, exceptions and agents on top of it.",
+  totalTime: "P12M",
+  supply: { "@type": "HowToSupply", name: "Read access to your source systems, with personal data excluded" },
+  step: [
+    {
+      "@type": "HowToStep",
+      position: 1,
+      name: "Clean",
+      text: "Every system in, deduplicated and reconciled, with personal data obscured at ingest so none of it travels into the layer.",
+      url: `${SITE}/how-it-works#timeline`,
+    },
+    {
+      "@type": "HowToStep",
+      position: 2,
+      name: "Model",
+      text: "Recorded once in BigQuery and never rewritten — every activity carrying its cost, revenue, conversion and time, with definitions written down as code.",
+      url: `${SITE}/how-it-works#timeline`,
+    },
+    {
+      "@type": "HowToStep",
+      position: 3,
+      name: "Alert",
+      text: "A real-time view of the business focused on the next best action — the Summary Page scorecard and the one thing that needs attention now.",
+      url: `${SITE}/how-it-works#timeline`,
+    },
+    {
+      "@type": "HowToStep",
+      position: 4,
+      name: "Act",
+      text: "Agents work the exception off the back of it — chasing, flagging and routing — rather than just noticing it, keeping your people on the decisions.",
+      url: `${SITE}/how-it-works#timeline`,
+    },
+  ],
+};
 
 /** Wraps a node set as a JSON-LD @graph, which is the form crawlers prefer. */
 export const graph = (...nodes: object[]) => ({

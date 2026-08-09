@@ -7,12 +7,19 @@
  * `group` drives how they cluster on the index. `metrics` are the numbers that
  * sector argues about internally — naming them is most of the credibility.
  */
+import { entryMonthlyK, entryYearK } from "@/lib/economics";
 export type Sector = {
   slug: string;
   label: string;
   group: "Financial services" | "Commerce & supply" | "Professional services" | "Technology";
   /** One line, used on cards and as the page's sub-headline. */
   tagline: string;
+  /**
+   * A complete, self-contained meta description under ~155 characters. Written
+   * out rather than generated, because slicing tagline+intro to a fixed length
+   * cut every sector page off mid-sentence in the SERP.
+   */
+  metaDescription: string;
   /** Two or three sentences for the top of the sector page. */
   intro: string;
   pains: string[];
@@ -20,6 +27,12 @@ export type Sector = {
   outputs: string;
   /** The metrics this sector lives or dies by. */
   metrics: string[];
+  /**
+   * Three to five sector-specific questions, rendered on the page and marked up
+   * as FAQPage schema. Answers lead with a direct sentence so they are snippet-
+   * and voice-extractable, and every commitment matches the rest of the site.
+   */
+  faqs: { q: string; a: string }[];
   /**
    * Show the "you do not need to be a tech company" section on this sector page.
    * These are the audiences most likely to assume data and AI is for somebody
@@ -50,6 +63,22 @@ export const sectors: Sector[] = [
     ],
     outputs: "One number for net new contribution — agreed by risk, finance and growth.",
     metrics: ["Approval rate", "Funded volume", "30+ DPD", "Roll rates", "CAC payback", "Vintage loss"],
+    metaDescription:
+      "One customer timeline from application to collections, Consumer Duty evidence with a full audit trail, and one contribution number everyone agrees on.",
+    faqs: [
+      {
+        q: "How do you produce Consumer Duty evidence from our data?",
+        a: `We land every event — application, decision, funding, contact, payment — in your own BigQuery as an immutable history, then build outcome reporting on top with a full audit trail behind each number. The evidence regenerates itself rather than being assembled by hand as the deadline approaches.`,
+      },
+      {
+        q: "Can you rebuild vintage cohorts and roll rates if our system only holds today's position?",
+        a: `Yes. Most lending systems store the current balance and no history, so cohorts and roll rates do not exist to report. We reconstruct the position over time from the events, so vintage loss, roll rates and arrears trends become reportable — usually further back than you expect.`,
+      },
+      {
+        q: "How much does it cost for a consumer credit lender, and how fast?",
+        a: `Solving one area — usually risk or collections reporting — is £${entryYearK}k a year, billed at £${entryMonthlyK}k a month, in your own Google environment. You see a real number within the first week, and the reporting behind it lands over the following two to three months.`,
+      },
+    ],
   },
   {
     slug: "debt-management",
@@ -72,6 +101,22 @@ export const sectors: Sector[] = [
     ],
     outputs: "Evidence that a treatment strategy works, and where it quietly does not.",
     metrics: ["Cure rate", "Breakage", "Contact-to-arrangement", "Cost to collect", "Promise kept %"],
+    metaDescription:
+      "Collections performance, treatment outcomes and fair-value evidence joined in one place — cure, breakage and cost to collect on a single definition.",
+    faqs: [
+      {
+        q: "Can you measure whether a treatment strategy actually works?",
+        a: `Yes — that is usually the first thing we build. We join contact outcomes from the dialler, arrangements from the servicing system and payments into one customer timeline, then measure cure and breakage by cohort and pathway. You see which treatments work and where one quietly does not.`,
+      },
+      {
+        q: "How do you evidence fair value and vulnerable-customer outcomes?",
+        a: `We carry vulnerability and forbearance flags through from the operational systems into the reporting layer, so outcome reporting shows the working rather than a headline number. Every figure has an auditable trail back to the events behind it, which is what a fair-value review needs.`,
+      },
+      {
+        q: "Our contact, arrangement and payment data live in three systems — is that a problem?",
+        a: `No, that is the normal starting point. We connect each system and land its events in your own BigQuery, then join them into one timeline per customer. Nothing has to be migrated or replaced — we work in your environment and read from the systems you already run.`,
+      },
+    ],
   },
   {
     slug: "credit-unions",
@@ -94,6 +139,22 @@ export const sectors: Sector[] = [
     ],
     outputs: "A board pack that stands up to a regulator and a member AGM alike.",
     metrics: ["Loan book value", "Arrears 30+", "Member growth", "Savings per member", "Cost-income ratio"],
+    metaDescription:
+      "Loan-book health, member value and social impact you can actually show — a board pack that regenerates itself, without adding headcount.",
+    faqs: [
+      {
+        q: "Can a credit union afford this without adding headcount?",
+        a: `Yes — the point is to get bank-grade reporting without bank-grade resource. Solving one area is £${entryYearK}k a year at £${entryMonthlyK}k a month, in your own Google environment, with no new hire to make or manage. The board pack that used to be someone's weekend regenerates itself.`,
+      },
+      {
+        q: "Our core banking system holds balances but not history — can you still trend arrears?",
+        a: `Yes. We rebuild the loan-book position over time from the ledger events, so arrears and provisioning trend properly instead of showing only today's figure. That history is what lets you see a problem developing rather than reporting it after it has arrived.`,
+      },
+      {
+        q: "Can you evidence member value and social impact for the AGM?",
+        a: `We build social impact and member-value reporting from the ledger itself rather than from estimates, alongside a member lifecycle view of joining, saving, borrowing and staying. It stands up to a regulator and to a member AGM alike because every number traces back to the data.`,
+      },
+    ],
   },
   {
     slug: "b2b-services",
@@ -116,6 +177,22 @@ export const sectors: Sector[] = [
     ],
     outputs: "One view of which accounts are worth more effort, and which are quietly costing you.",
     metrics: ["Pipeline coverage", "Win rate", "Delivery margin", "Net revenue retention", "Utilisation"],
+    metaDescription:
+      "Pipeline, delivery margin and account health from one definition — see which accounts actually make money before the quarter closes.",
+    faqs: [
+      {
+        q: "Why do our CRM pipeline and delivered revenue never reconcile?",
+        a: `Because sales and delivery measure different things, in different systems, on different definitions. We build one opportunity-to-cash timeline joining CRM, delivery and finance, so pipeline, delivered revenue and margin all resolve from the same events instead of three teams' spreadsheets.`,
+      },
+      {
+        q: "Can you show delivery margin per account before the quarter closes?",
+        a: `Yes. We build account-level margin that includes delivery cost and time, updated as the work happens rather than reconciled at quarter-end. You can see which accounts are worth more effort and which are quietly costing you, in time to do something about it.`,
+      },
+      {
+        q: "How much does it cost and how quickly do we see something?",
+        a: `Solving one area — usually the commercial-plus-delivery view — is £${entryYearK}k a year at £${entryMonthlyK}k a month, built in your own Google environment. A real number is in front of you within a week, with the full commercial pack live over the following months.`,
+      },
+    ],
   },
   {
     slug: "wholesale",
@@ -139,6 +216,22 @@ export const sectors: Sector[] = [
     ],
     outputs: "Pricing and range decisions made on real margin, the same week.",
     metrics: ["Gross margin", "Contribution per customer", "Stock turn", "Dead stock", "Fill rate"],
+    metaDescription:
+      "True landed margin by customer and product, stock turn and dead stock in one view — so pricing and range decisions run on real margin, the same week.",
+    faqs: [
+      {
+        q: "Our true margin is buried under rebates, carriage and terms — can you untangle it?",
+        a: `Yes. We rebuild margin at the line level with rebates, carriage, returns and payment terms all attributed properly, so margin per customer and per product stops being a guess. Pricing and range decisions then run on real contribution rather than headline revenue.`,
+      },
+      {
+        q: "Can you show stock turn and dead stock early enough to act?",
+        a: `Yes — stock turn, ageing and availability land in one operational view that updates itself, rather than a report that arrives too late to do anything about. Dead stock becomes visible while there is still a decision to make on it.`,
+      },
+      {
+        q: "We're a distributor, not a tech company — is this really for us?",
+        a: `It is built for exactly this. You do not need a data team or a platform project: we work in your own Google environment, read from the systems you already run, and put real margin in front of you within a week. Solving one area is £${entryYearK}k a year at £${entryMonthlyK}k a month.`,
+      },
+    ],
   },
   {
     slug: "manufacturing",
@@ -162,6 +255,22 @@ export const sectors: Sector[] = [
     ],
     outputs: "A clear answer on which products and lines are worth running.",
     metrics: ["OEE", "Yield", "Scrap rate", "Cost per unit", "On-time in full"],
+    metaDescription:
+      "Actual cost to make, yield and OEE joined to what you actually sold — a clear answer on which products and lines are worth running.",
+    faqs: [
+      {
+        q: "Can you tell us the real cost to make a unit?",
+        a: `Yes. We build actual cost to make per unit, updated as inputs move, rather than the stale standard cost most product profitability rests on. Joined to what you sold, it gives the commercial team a product-level profitability number they can actually trust.`,
+      },
+      {
+        q: "Our shop-floor and finance systems don't talk — can you connect them?",
+        a: `That join is the core of the work. Shop-floor systems know output, finance knows revenue, and the two rarely meet. We land both in your own BigQuery and build an order-to-despatch timeline across production and commercial, so which lines make money stops being an argument.`,
+      },
+      {
+        q: "How do you handle yield, scrap and downtime?",
+        a: `We join yield, scrap and downtime to shift, line and product, so causes recorded but never analysed finally get analysed. Reported weekly but decided daily becomes a live operational view, which is where OEE improvement actually comes from.`,
+      },
+    ],
   },
   {
     slug: "omni-channel-retail",
@@ -184,6 +293,22 @@ export const sectors: Sector[] = [
     ],
     outputs: "A live trading pack the buying team trusts more than the spreadsheet.",
     metrics: ["Net revenue", "Gross margin", "Return rate", "AOV", "Repeat rate", "Contribution per SKU"],
+    metaDescription:
+      "True margin by SKU, channel and customer without the spreadsheet — a live trading pack the buying team trusts more than exports.",
+    faqs: [
+      {
+        q: "Can you unify webstore, marketplaces, retailer EDI and ad platforms?",
+        a: `Yes. We land every channel — webstore, marketplaces, retailer EDI and ad platforms — into one unified order-line history in your own BigQuery, with promotions, returns and COGS attributed cleanly. Margin truth stops being buried under the things that distort it.`,
+      },
+      {
+        q: "Will the trading meeting finally run on live numbers instead of exports?",
+        a: `That is the point of it. We build a live Summary Page tuned for the trading meeting, plus a true-margin metric tree by SKU, channel and customer segment. The buying team ends up trusting it more than the spreadsheet, because it is current every time they open it.`,
+      },
+      {
+        q: "Can you measure customer value across every channel, not per channel?",
+        a: `Yes. We build a cohort and repeat-purchase view that spans every channel end to end, rather than measuring a customer separately in each one. That is what makes AOV, repeat rate and contribution per SKU comparable across the whole business.`,
+      },
+    ],
   },
   {
     slug: "legal-services",
@@ -207,6 +332,22 @@ export const sectors: Sector[] = [
     outputs:
       "A partner pack that is current every time they open it, ending the 'whose number is right?' debate.",
     metrics: ["Cases opened", "Cost per acquired case", "WIP value", "Settlement value", "Time to settle"],
+    metaDescription:
+      "Case economics from first touch to settlement — cost per acquired case, WIP value and a partner pack that is current every time they open it.",
+    faqs: [
+      {
+        q: "Can you tell us our true cost per acquired case?",
+        a: `Yes. We join marketing, case management and finance into one case lifecycle from first touch to settlement, so cost per acquired case stops being a guess. You can then see funnel and lifetime value by panel, source and claim type, and put spend where it actually pays.`,
+      },
+      {
+        q: "WIP value differs between fee-earners and finance — can you reconcile it?",
+        a: `Yes. We build a shared WIP and pipeline view that partners and finance read from the same definition, so the "whose number is right?" debate ends. The partner pack is current every time it is opened rather than rebuilt for each meeting.`,
+      },
+      {
+        q: "How much does it cost for a law firm and how quickly does it land?",
+        a: `Solving one area is £${entryYearK}k a year at £${entryMonthlyK}k a month, in your own Google environment. You get a real number within the first week, with settlement and duration benchmarks by case type building out over the following months.`,
+      },
+    ],
   },
   {
     slug: "customer-service",
@@ -236,6 +377,22 @@ export const sectors: Sector[] = [
       "CSAT",
       "Failure demand",
     ],
+    metaDescription:
+      "Cost to serve, repeat contacts and the root causes behind both — the reasons people contact you, ranked by what fixing them is worth.",
+    faqs: [
+      {
+        q: "Can you tell us our real cost to serve?",
+        a: `Yes. We build cost to serve per contact, per customer and per product by joining the contact to the customer and the order behind it. Once it is measurable you can price and staff service properly instead of guessing at it.`,
+      },
+      {
+        q: "How do you separate repeat contacts from genuinely new ones?",
+        a: `We join every contact into one timeline per customer across phone, email, chat and social, so a repeat contact is recognised as one rather than counted as new. That reveals the failure demand hiding in your volume — and its root causes, ranked by what fixing them is worth.`,
+      },
+      {
+        q: "Can you measure whether self-serve and deflection actually work?",
+        a: `Yes. We measure deflection and self-serve impact against real volume rather than against a vendor's claim, so you can see what genuinely reduces contacts. Agent performance moves onto outcomes instead of call-listening anecdote at the same time.`,
+      },
+    ],
   },
   {
     slug: "recruitment-training",
@@ -258,6 +415,22 @@ export const sectors: Sector[] = [
     ],
     outputs: "Every desk and every cohort measured the same way, without a spreadsheet.",
     metrics: ["Time to fill", "Desk margin", "Fall-through", "Placements per consultant", "Cohort completion"],
+    metaDescription:
+      "Desk margin, time-to-fill, fall-through and cohort outcomes on one definition — every desk measured the same way, without a spreadsheet.",
+    faqs: [
+      {
+        q: "Can you measure consultant and desk productivity properly?",
+        a: `Yes. We build a candidate and placement timeline from first contact to invoice across ATS, CRM and payroll, then measure desk margin, time-to-fill and placements per consultant on one definition. Productivity stops being argued from memory and gets measured on contribution.`,
+      },
+      {
+        q: "Is fall-through actually measured, or just absorbed?",
+        a: `Most agencies absorb it quietly — we make it a number. Fall-through is tracked by desk and cohort so its real cost is visible, which is usually the fastest margin improvement available once you can finally see it.`,
+      },
+      {
+        q: "Can you connect training course outcomes to revenue?",
+        a: `Yes. We wire cohort completion and outcome tracking back to billing, so course and cohort performance is measured against revenue rather than sitting disconnected from it. Every desk and every cohort ends up measured the same way, without a spreadsheet.`,
+      },
+    ],
   },
   {
     slug: "saas-startups",
@@ -280,6 +453,22 @@ export const sectors: Sector[] = [
     ],
     outputs: "The board pack builds itself, and the growth numbers survive diligence.",
     metrics: ["MRR", "Net revenue retention", "Activation rate", "CAC payback", "Logo churn"],
+    metaDescription:
+      "Activation, retention and CAC payback from one event history — an investor-ready board pack that regenerates itself and survives diligence.",
+    faqs: [
+      {
+        q: "Our product events, billing and CRM tell three different growth stories — can you fix that?",
+        a: `Yes. We record every product event once and join it to billing and CRM in your own BigQuery, so activation, expansion, churn and CAC payback all come from one definition. The three conflicting stories collapse into one set of numbers everyone works from.`,
+      },
+      {
+        q: "Will the metrics survive investor diligence?",
+        a: `That is the bar we build to. Because every metric derives from an immutable event history rather than a hand-built spreadsheet, the numbers are consistent and auditable, and diligence questions that used to take a week become a query. Cohort retention runs from your first cohort onwards.`,
+      },
+      {
+        q: "We're early — is it worth doing this now?",
+        a: `Doing it early is the advantage: the event history you capture now is what later cohort and retention analysis depends on, and it cannot be recovered retrospectively. Solving one area is £${entryYearK}k a year at £${entryMonthlyK}k a month, in your own Google environment, and the board pack then builds itself.`,
+      },
+    ],
   },
 ];
 

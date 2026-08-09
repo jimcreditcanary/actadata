@@ -5,6 +5,8 @@ import { Breadcrumbs } from "@/components/breadcrumbs";
 import { PostCards } from "@/components/post-cards";
 import { ContactFooter } from "@/components/sections/contact-footer";
 import { allPosts, caseStudies, insights } from "@/lib/posts";
+import { JsonLd } from "@/components/json-ld";
+import { graph, ORG_ID, SITE } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Writing: case studies and data & AI insight",
@@ -27,6 +29,30 @@ export default function BlogPage() {
   return (
     <>
       <Breadcrumbs trail={[{name: "Writing",path: "/blog"}]} />
+      {/* Blog node describing the index and its posts, so the writing surfaces
+          as a collection an engine can enumerate rather than three loose URLs. */}
+      {all.length > 0 && (
+        <JsonLd
+          data={graph({
+            "@type": "Blog",
+            "@id": `${SITE}/blog#blog`,
+            name: "Acta Data — Writing",
+            description:
+              "Case studies and thought leadership on operational data, event tracking and putting AI agents into a live business.",
+            url: `${SITE}/blog`,
+            publisher: { "@id": ORG_ID },
+            blogPost: all.map(p => ({
+              "@type": "BlogPosting",
+              "@id": `${SITE}/blog/${p.slug}#post`,
+              headline: p.title,
+              description: p.excerpt,
+              url: `${SITE}/blog/${p.slug}`,
+              datePublished: p.published,
+              author: { "@type": "Person", name: p.author ?? "Acta Data" },
+            })),
+          })}
+        />
+      )}
       <PageHeader
         eyebrow="Writing"
         title="What we've built,"

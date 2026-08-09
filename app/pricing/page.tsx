@@ -4,12 +4,12 @@ import { Breadcrumbs } from "@/components/breadcrumbs";
 import { Pricing } from "@/components/sections/pricing";
 import { Problem } from "@/components/sections/problem";
 import { ContactFooter } from "@/components/sections/contact-footer";
-import { discoveryOneOffK, entryYearK } from "@/lib/economics";
+import { discoveryOneOffK, entryYearK, wholeBusinessYearK } from "@/lib/economics";
 
 export const metadata: Metadata = {
   title: "Pricing: £15k for the map, £60k to solve an area",
   description:
-    "Four tiers priced by scope: a £15k Discovery map you can take away and build yourself, credited in full if you go ahead; £60k a year to solve one area; £120k to map the whole business with Claude self-service; and Enterprise agents priced against outcomes.",
+    `Four tiers priced by scope: £${discoveryOneOffK}k for a Discovery map you own and can build from, £${entryYearK}k to solve one area, £${wholeBusinessYearK}k for the whole business. No lock-in.`,
   alternates: { canonical: "/pricing" },
 };
 

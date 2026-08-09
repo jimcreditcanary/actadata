@@ -65,7 +65,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     : [];
 
   return [...core, ...blogIndex, ...studyIndex, ...sectorPages, ...postPages].map(p => ({
-    url: `${BASE}${p.path}`,
+    // The homepage canonical Next emits is the bare origin with no trailing
+    // slash; match it here so the sitemap and the canonical agree exactly.
+    url: p.path === "/" ? BASE : `${BASE}${p.path}`,
     lastModified: p.lastModified,
     changeFrequency: p.changeFrequency,
     priority: p.priority,

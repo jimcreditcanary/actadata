@@ -67,6 +67,12 @@ export type Post = {
   slug: string;
   kind: "case-study" | "insight";
   title: string;
+  /**
+   * Optional shorter title for the <title> tag only, when the on-page headline
+   * runs past the ~60-char SERP display limit once " | Acta Data" is appended.
+   * The visible H1 still uses `title`.
+   */
+  seoTitle?: string;
   excerpt: string;
   /** YYYY-MM-DD. */
   published: string;
@@ -97,6 +103,7 @@ const insightPosts: Post[] = [
     slug: "drowning-in-reconciliation",
     kind: "insight",
     title: "Nobody is drowning in data. They're drowning in reconciliation.",
+    seoTitle: "Drowning in reconciliation, not in data",
     excerpt:
       "Month-end isn't slow because the numbers are hard. It's slow because five people are proving to each other that their versions agree.",
     published: "2026-08-08",

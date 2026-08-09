@@ -18,11 +18,14 @@ export const metadata: Metadata = {
   /* Interior pages set their own title; this template keeps the brand on the end
      of every one of them without each page repeating it. */
   title: {
-    default: "Acta Data — The data layer AI needs. Built, handed over, done.",
+    /* Kept under ~60 characters so it renders in full in the SERP rather than
+       truncating — the fuller "Built, handed over, done." line lives in the OG
+       and Twitter titles below, where length is not clipped. */
+    default: "Acta Data — The data layer AI needs, built and handed over",
     template: "%s | Acta Data",
   },
   description:
-    "Acta Data builds the data layer AI needs: timely data recorded once and never rewritten, in BigQuery, inside your own secure, scalable Google environment, with Claude wired in for real self-service. Live in weeks, not years.",
+    "Acta Data builds the operational data layer AI needs — event history in BigQuery, reporting people open, and Claude for self-service. Live in weeks, not years.",
   metadataBase: new URL("https://www.actadata.co.uk"),
   alternates: { canonical: "/" },
   icons: {
@@ -70,7 +73,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html
-      lang="en"
+      lang="en-GB"
       className={`${GeistSans.variable} ${GeistMono.variable} ${archivoBlack.variable} dark`}
       suppressHydrationWarning
     >

@@ -9,7 +9,7 @@ import { sectorGroups, sectorsByGroup } from "@/lib/sectors";
 export const metadata: Metadata = {
   title: "Sectors: consumer credit, debt, credit unions & more",
   description:
-    "Data and AI delivery across consumer credit, debt management, credit unions, B2B services, wholesale, manufacturing, retail, legal, customer service, recruitment and SaaS.",
+    "Data and AI delivery for consumer credit, debt, credit unions, wholesale, manufacturing, retail, legal, customer service, recruitment, SaaS and more.",
   alternates: { canonical: "/sectors" },
 };
 

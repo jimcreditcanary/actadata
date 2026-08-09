@@ -27,13 +27,11 @@ export async function generateMetadata({
   const { slug } = await params;
   const sector = getSector(slug);
   if (!sector) return {};
-  /* The tagline alone ran 56–81 characters, so search results showed a
-     half-empty snippet. Padding it with the opening of the intro takes every
-     sector page into the range Google will actually render. */
-  const description = `${sector.tagline} ${sector.intro}`.slice(0, 158).trim();
   return {
     title: `${sector.label} data & AI`,
-    description,
+    /* A complete, hand-written sentence under ~155 chars — the old approach of
+       slicing tagline+intro to a fixed length cut every snippet mid-sentence. */
+    description: sector.metaDescription,
     alternates: { canonical: `/sectors/${sector.slug}` },
   };
 }
@@ -70,6 +68,17 @@ export default async function SectorPage({ params }: { params: Promise<{ slug: s
                 itemOffered: { "@type": "Service", name: b },
               })),
             },
+          },
+          {
+            /* Sector-level Q&A, so "how much is data work for credit unions" or
+               "can you rebuild vintage cohorts" resolves to an answer, not a page. */
+            "@type": "FAQPage",
+            "@id": `${SITE}/sectors/${sector.slug}#faq`,
+            mainEntity: sector.faqs.map(f => ({
+              "@type": "Question",
+              name: f.q,
+              acceptedAnswer: { "@type": "Answer", text: f.a },
+            })),
           },
           breadcrumbs([
             { name: "Sectors", path: "/sectors" },
@@ -167,6 +176,22 @@ export default async function SectorPage({ params }: { params: Promise<{ slug: s
         title={`What this looks like in ${sector.label.toLowerCase()}.`}
         cta={{ href: "/blog", label: "All writing →" }}
       />
+
+      {/* Sector-specific Q&A. Matches the FAQPage schema above exactly — Google
+          requires FAQ markup to be visible on the page it describes. */}
+      <section className="py-14 md:py-16 border-t border-white/[0.04]">
+        <div className="container">
+          <Eyebrow as="h2" accent className="mb-8">Common questions</Eyebrow>
+          <div className="max-w-3xl divide-y divide-white/[0.06]">
+            {sector.faqs.map(f => (
+              <div key={f.q} className="py-6 first:pt-0">
+                <h3 className="text-lg font-semibold tracking-tight leading-snug">{f.q}</h3>
+                <p className="mt-2.5 text-muted-foreground leading-relaxed">{f.a}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* Cross-links, so a landing page is a route into the site rather than a dead end */}
       <section className="py-14 md:py-16 border-t border-white/[0.04]">

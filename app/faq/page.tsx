@@ -8,7 +8,7 @@ import { graph, breadcrumbs, faqs, SITE } from "@/lib/seo";
 export const metadata: Metadata = {
   title: "FAQ: cost, timelines, ownership and your data",
   description:
-    "What a data layer costs, how long before you see something, who owns the environment, what happens to personal data, and whether this replaces your data team. Answered in full, no call required.",
+    "What a data layer costs, how long until you see something, who owns it, and what happens to personal data. Answered in full, no call required.",
   alternates: { canonical: "/faq" },
 };
 
@@ -35,6 +35,18 @@ export default function FaqPage() {
               acceptedAnswer: { "@type": "Answer", text: f.a },
             })),
           },
+          {
+            /* Gives a voice assistant an explicit passage to read aloud — the
+               questions and their answers — rather than guessing at the page. */
+            "@type": "WebPage",
+            "@id": `${SITE}/faq#webpage`,
+            url: `${SITE}/faq`,
+            name: "Acta Data — FAQ",
+            speakable: {
+              "@type": "SpeakableSpecification",
+              cssSelector: [".faq-question", ".faq-answer"],
+            },
+          },
           breadcrumbs([{ name: "Questions", path: "/faq" }])
         )}
       />
@@ -51,10 +63,10 @@ export default function FaqPage() {
           <div className="max-w-3xl divide-y divide-white/[0.06]">
             {faqs.map(f => (
               <div key={f.q} className="py-7 first:pt-0">
-                <h2 className="text-xl md:text-2xl font-semibold tracking-tight leading-snug">
+                <h2 className="faq-question text-xl md:text-2xl font-semibold tracking-tight leading-snug">
                   {f.q}
                 </h2>
-                <p className="mt-3 text-muted-foreground leading-relaxed">{f.a}</p>
+                <p className="faq-answer mt-3 text-muted-foreground leading-relaxed">{f.a}</p>
               </div>
             ))}
           </div>
