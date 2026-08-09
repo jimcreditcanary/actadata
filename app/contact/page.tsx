@@ -20,7 +20,7 @@ export default function ContactPage() {
         accent="your data should be helping you make."
         lede="30 minutes, no deck. We'll tell you on the call whether we're the right partner, and exactly what we'd ship in the first 30 days. All we need to start is read access with personal data excluded."
       />
-      <ContactFooter />
+      <ContactFooter hideHeading />
     </>
   );
 }

@@ -1,26 +1,31 @@
 import { Logo } from "@/components/logo";
-import { CopyEmail } from "@/components/copy-email";
-import { EnquiryDialog } from "@/components/enquiry-dialog";
+import { LeadForm } from "@/components/lead-form";
 import { Eyebrow } from "@/components/eyebrow";
 
-export function ContactFooter() {
+/**
+ * `hideHeading` drops the eyebrow + headline + lede, leaving just the form.
+ * Used on /contact, where the PageHeader already carries the same headline —
+ * without it the visitor reads the identical line twice.
+ */
+export function ContactFooter({ hideHeading = false }: { hideHeading?: boolean }) {
   return (
     <>
       <section id="contact" className="relative py-16 md:py-20 border-t border-white/[0.04]">
         <div className="container">
           <div className="mx-auto max-w-3xl text-center">
-            <Eyebrow accent className="mb-6">Let&apos;s talk</Eyebrow>
-            <h2 className="font-display text-4xl md:text-5xl tracking-tight leading-[1.05]">
-              Bring one decision your data should be helping you make.
-            </h2>
-            <p className="mt-5 text-lg text-muted-foreground">
-              30 minutes, no deck. We&apos;ll tell you on the call whether we&apos;re the right
-              partner, and exactly what we&apos;d ship in the first 30 days.
-            </p>
-            <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
-              <EnquiryDialog />
-              <CopyEmail email="info@actadata.co.uk" />
-            </div>
+            {!hideHeading && (
+              <>
+                <Eyebrow accent className="mb-6">Let&apos;s talk</Eyebrow>
+                <h2 className="font-display text-4xl md:text-5xl tracking-tight leading-[1.05]">
+                  Bring one decision your data should be helping you make.
+                </h2>
+                <p className="mt-5 text-lg text-muted-foreground">
+                  30 minutes, no deck. We&apos;ll tell you on the call whether we&apos;re the right
+                  partner, and exactly what we&apos;d ship in the first 30 days.
+                </p>
+              </>
+            )}
+            <LeadForm />
           </div>
         </div>
       </section>
