@@ -36,13 +36,51 @@ export const inHouseYearOneK = Math.round(baseSalaryK * loadingMultiplier);
  * Tiers 2 and 3 are billed monthly; the annual figure is the headline because
  * that is the number a board approves. Both are derived, never typed twice.
  */
+/**
+ * Each tier carries a `fit` (who it suits, a guide) and a `bound` (what it
+ * actually covers, the boundary).
+ *
+ * The boundary is NOT stated in turnover, on purpose. Turnover does not correlate
+ * with delivery cost: a £200m merchant with four systems and eighty staff is a
+ * cheap build, and a £25m regulated fintech with twenty-five systems and six
+ * squads is not. What costs money is the number of source systems, the number of
+ * legal entities, and the number of people who have to agree a definition — so
+ * those are what the boundary is written in. Gating on revenue would have
+ * over-charged the large-and-simple and under-protected against the
+ * small-and-complex, which is the opposite of the intent.
+ *
+ * `fit` is deliberately phrased as who a tier suits rather than who is allowed to
+ * buy it. It exists so a reader can place themselves, not to police anyone.
+ */
 export const tiers = {
   /** No twelve-month commitment. A deliverable, not a retainer. */
-  discovery: { oneOffK: 15 },
-  oneArea: { monthlyK: 5 },
-  wholeBusiness: { monthlyK: 10 },
+  discovery: {
+    oneOffK: 15,
+    fit: "Any size",
+    /* The most attractive thing on the page, so it is the one a very large group
+       grabs first — and £15k to map a 5,000-person group is a guaranteed loss. */
+    bound: "Up to 3 value streams, one legal entity",
+  },
+  oneArea: {
+    monthlyK: 5,
+    fit: "Any size",
+    /* "One area" bounds scope but not size: a large bank's collections operation
+       alone can be fifteen systems, bigger than an entire SME. Hence a systems
+       cap even though the tier itself suits any size of company. */
+    bound: "One value stream, up to 6 source systems",
+  },
+  wholeBusiness: {
+    monthlyK: 10,
+    fit: "Around 20–250 people",
+    bound: "One entity, one country, up to 12 source systems",
+  },
   /** No list price: scoped and priced against the outcome it delivers. */
-  enterprise: { price: "Let's talk", note: "Outcome-driven pricing" },
+  enterprise: {
+    price: "Let's talk",
+    note: "Outcome-driven pricing",
+    fit: "Groups and regulated estates",
+    bound: "Multiple entities or countries, or past the limits above",
+  },
 } as const;
 
 export const discoveryOneOffK = tiers.discovery.oneOffK;

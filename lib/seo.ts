@@ -127,7 +127,7 @@ export const service = {
         "@type": "Offer",
         name: "Discovery — value stream map and AI readiness review",
         description:
-          `One-off engagement, no commitment. Your value streams mapped end to end, the value leaks quantified, an assessment of what your data can support today, the watch-outs before you point AI at it, and a build plan and strategy you own outright and can hand to anyone. ${discoveryCreditNote} if you go on to build with us, so it acts as a down payment rather than a fee.`,
+          `One-off engagement, no commitment. Your value streams mapped end to end, the value leaks quantified, an assessment of what your data can support today, the watch-outs before you point AI at it, and a build plan and strategy you own outright and can hand to anyone. ${discoveryCreditNote} if you go on to build with us, so it acts as a down payment rather than a fee. Suits any size of organisation; covers ${tiers.discovery.bound.toLowerCase()}.`,
         priceSpecification: {
           "@type": "UnitPriceSpecification",
           price: discoveryOneOffK * 1000,
@@ -139,7 +139,7 @@ export const service = {
         "@type": "Offer",
         name: "One area — a single problem solved end to end",
         description:
-          "One value stream, usually operations, built end to end in your own Google environment: sources connected, full event history, metric tree and the Summary Page live for that area.",
+          `One value stream, usually operations, built end to end in your own Google environment: sources connected, full event history, metric tree and the Summary Page live for that area. Suits any size of organisation; covers ${tiers.oneArea.bound.toLowerCase()}.`,
         priceSpecification: {
           "@type": "UnitPriceSpecification",
           price: entryMonthlyK * 1000,
@@ -152,7 +152,7 @@ export const service = {
         "@type": "Offer",
         name: "Whole business — every value stream, plus self-service analytics",
         description:
-          "Every value stream in the business on one layer with one set of definitions, the full reporting suite including regulated reporting, and safe PII-restricted self-service analytics through Claude in your own enterprise account.",
+          `Every value stream in the business on one layer with one set of definitions, the full reporting suite including regulated reporting, and safe PII-restricted self-service analytics through Claude in your own enterprise account. Best fit ${tiers.wholeBusiness.fit.toLowerCase()}; covers ${tiers.wholeBusiness.bound.toLowerCase()}. Larger or multi-entity estates are scoped as Enterprise.`,
         priceSpecification: {
           "@type": "UnitPriceSpecification",
           price: wholeBusinessMonthlyK * 1000,
@@ -165,7 +165,7 @@ export const service = {
         "@type": "Offer",
         name: "Enterprise — autonomous agents",
         description:
-          "Adds AI agents working the exceptions inside your operation. Scoped and priced against the outcome it delivers.",
+          `Adds AI agents working the exceptions inside your operation, and covers ${tiers.enterprise.bound.toLowerCase()}. Scoped and priced against the outcome it delivers.`,
         priceSpecification: {
           "@type": "PriceSpecification",
           priceCurrency: "GBP",
@@ -204,7 +204,11 @@ export const faqs: { q: string; a: string }[] = [
   },
   {
     q: "How much does it cost?",
-    a: `Four options, priced by how much of the business is in scope. Discovery is a £${discoveryOneOffK}k one-off: the value stream map, the AI readiness review, the watch-outs and a build plan you own and can hand to anyone — there is no obligation to use us afterwards — and if you do go ahead with a build, the whole £${discoveryOneOffK}k is credited against it. Solving one area, usually operations, is £${entryYearK}k a year, billed monthly at £${entryMonthlyK}k. Mapping the whole business, with safe PII-restricted self-service analytics through Claude, is £${wholeBusinessYearK}k a year at £${wholeBusinessMonthlyK}k a month. Enterprise adds autonomous agents and is priced against the outcome it delivers rather than from a list. After the twelve-month build you can walk away, or keep us on for £${maintenanceMonthlyK}k a month on a rolling monthly contract so nothing falls over. For scale, one area a year is less than half a fully-loaded senior data hire at around £${seniorHireLoadedK}k.`,
+    a: `Four options, priced by how much of the business is in scope. Discovery is a £${discoveryOneOffK}k one-off: the value stream map, the AI readiness review, the watch-outs and a build plan you own and can hand to anyone — there is no obligation to use us afterwards — and if you do go ahead with a build, the whole £${discoveryOneOffK}k is credited against it. Solving one area, usually operations, is £${entryYearK}k a year, billed monthly at £${entryMonthlyK}k. Mapping the whole business, with safe PII-restricted self-service analytics through Claude, is £${wholeBusinessYearK}k a year at £${wholeBusinessMonthlyK}k a month. Enterprise adds autonomous agents and is priced against the outcome it delivers rather than from a list. After the twelve-month build you can walk away, or keep us on for £${maintenanceMonthlyK}k a month on a rolling monthly contract so nothing falls over. For scale, one area a year is less than half a fully-loaded senior data hire at around £${seniorHireLoadedK}k. Each tier covers a stated number of source systems and legal entities rather than a revenue band, because a large simple business is a cheaper build than a small complex one: Whole business covers ${tiers.wholeBusiness.bound.toLowerCase()}, and anything past that — group structures, several countries, more integration — is scoped as Enterprise.`,
+  },
+  {
+    q: "We are a large or multi-entity group — which tier applies?",
+    a: `Enterprise. The published tiers are bounded by scope rather than by turnover: Whole business covers ${tiers.wholeBusiness.bound.toLowerCase()}, and One area covers ${tiers.oneArea.bound.toLowerCase()}. Past those limits — several legal entities, more than one country, or more integration than that — it is scoped and priced properly instead of squeezed into a tier. That cuts both ways: a large, structurally simple business often lands inside a published tier, because what drives the cost is the number of systems and the number of people who have to agree a definition, not revenue.`,
   },
   {
     q: "Can we just buy the strategy and build it ourselves?",

@@ -32,6 +32,8 @@ const plans = [
     audience: "Value stream map + AI readiness",
     priceK: discoveryOneOffK,
     priceNote: `One-off. ${discoveryCreditNote}.`,
+    fit: tiers.discovery.fit,
+    bound: tiers.discovery.bound,
     diy: true,
     summary: "The map, the plan and the watch-outs. Then do it yourself, or don't.",
     features: [
@@ -49,6 +51,8 @@ const plans = [
     audience: "A single problem, solved",
     priceK: entryYearK,
     monthlyK: entryMonthlyK,
+    fit: tiers.oneArea.fit,
+    bound: tiers.oneArea.bound,
     summary: "Pick the area that hurts — usually operations — and we finish it.",
     features: [
       "One value stream, built end to end rather than half-covered everywhere",
@@ -64,6 +68,8 @@ const plans = [
     audience: "Every value stream, plus self-service",
     priceK: wholeBusinessYearK,
     monthlyK: wholeBusinessMonthlyK,
+    fit: tiers.wholeBusiness.fit,
+    bound: tiers.wholeBusiness.bound,
     summary: "The whole company mapped, and your exec team answering their own questions.",
     features: [
       "Every value stream in the business, on one layer with one set of definitions",
@@ -80,6 +86,8 @@ const plans = [
     audience: "Autonomous agents",
     price: tiers.enterprise.price,
     priceNote: tiers.enterprise.note,
+    fit: tiers.enterprise.fit,
+    bound: tiers.enterprise.bound,
     summary: "Everything above, plus agents that do the work.",
     features: [
       "Everything in Whole business",
@@ -162,7 +170,24 @@ export function Pricing() {
                   ))}
                 </ul>
 
-                <div className="mt-auto pt-8">
+                {/* mt-auto pins this and the CTA to the bottom, so the fit and
+                    boundary line up across cards whatever the feature list does. */}
+                <dl className="mt-auto pt-7 space-y-2 text-xs border-t border-white/[0.06]">
+                  <div className="flex gap-2.5">
+                    <dt className="w-[52px] shrink-0 uppercase tracking-[0.14em] text-muted-foreground/70">
+                      Fits
+                    </dt>
+                    <dd className="text-foreground/80">{p.fit}</dd>
+                  </div>
+                  <div className="flex gap-2.5">
+                    <dt className="w-[52px] shrink-0 uppercase tracking-[0.14em] text-muted-foreground/70">
+                      Covers
+                    </dt>
+                    <dd className="text-muted-foreground leading-relaxed">{p.bound}</dd>
+                  </div>
+                </dl>
+
+                <div className="pt-6">
                   <Button asChild variant={p.featured ? "electric" : "outline"} className="w-full">
                     <a href="#contact">{p.cta} →</a>
                   </Button>

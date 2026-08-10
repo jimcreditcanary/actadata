@@ -39,6 +39,11 @@ export function PricingTeaser() {
               senior data hire (~£{seniorHireLoadedK}k). No lock-in, and you own everything we
               build as we build it.
             </p>
+            <p className="mt-4 text-sm text-muted-foreground">
+              Each tier covers a stated number of source systems and entities rather than a
+              revenue band — a large, simple business is a cheaper build than a small, complex
+              one, and the price should say so.
+            </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Button asChild variant="electric" size="lg">
                 <Link href="/pricing">See what&apos;s included →</Link>
