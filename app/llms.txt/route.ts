@@ -63,7 +63,7 @@ Priced by how much of the business is in scope, not by feature tier.
 
 ## Sectors
 
-${sectors.map(s => `- [${s.label}](${SITE}/sectors/${s.slug}): ${s.tagline}`).join("\n")}
+${sectors.map(s => `- [${s.label}](${SITE}/sectors/${s.slug}): ${s.tagline} Systems typically connected: ${s.systems.join("; ")}.`).join("\n")}
 
 ## Writing
 

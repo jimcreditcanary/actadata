@@ -28,6 +28,15 @@ export type Sector = {
   /** The metrics this sector lives or dies by. */
   metrics: string[];
   /**
+   * The systems this market actually runs on, named so a reader recognises their
+   * own estate. Generic connector talk reads as "not for us" to anyone whose
+   * business runs on an ERP and a shared drive — and naming Shopify to a builders
+   * merchant actively tells them they are in the wrong place. In-house SQL and
+   * Access databases belong on these lists: for most of this market that is
+   * where the real logic lives, not an edge case.
+   */
+  systems: string[];
+  /**
    * Three to five sector-specific questions, rendered on the page and marked up
    * as FAQPage schema. Answers lead with a direct sentence so they are snippet-
    * and voice-extractable, and every commitment matches the rest of the site.
@@ -70,6 +79,15 @@ export const sectors: Sector[] = [
     ],
     outputs: "One number for net new contribution — agreed by risk, finance and growth.",
     metrics: ["Approval rate", "Funded volume", "30+ DPD", "Roll rates", "CAC payback", "Vintage loss"],
+    systems: [
+      "Loan management system",
+      "Decision engine",
+      "Bureau feeds — Experian, Equifax, TransUnion",
+      "Open banking provider",
+      "Direct debit and card payments",
+      "Collections dialler",
+      "In-house SQL Server",
+    ],
     metaDescription:
       "One customer timeline from application to collections, Consumer Duty evidence with a full audit trail, and one contribution number everyone agrees on.",
     deepDive: {
@@ -116,6 +134,14 @@ export const sectors: Sector[] = [
     ],
     outputs: "Evidence that a treatment strategy works, and where it quietly does not.",
     metrics: ["Cure rate", "Breakage", "Contact-to-arrangement", "Cost to collect", "Promise kept %"],
+    systems: [
+      "Case management platform",
+      "Creditor file exchanges over SFTP",
+      "Payment processor",
+      "Client portal",
+      "Dialler and call recording",
+      "In-house Access and SQL databases",
+    ],
     metaDescription:
       "Collections performance, treatment outcomes and fair-value evidence joined in one place — cure, breakage and cost to collect on a single definition.",
     deepDive: {
@@ -162,6 +188,13 @@ export const sectors: Sector[] = [
     ],
     outputs: "A board pack that stands up to a regulator and a member AGM alike.",
     metrics: ["Loan book value", "Arrears 30+", "Member growth", "Savings per member", "Cost-income ratio"],
+    systems: [
+      "Core member and loan system",
+      "BACS and Faster Payments files",
+      "Loan decisioning",
+      "Member registers still kept in Excel",
+      "In-house SQL database",
+    ],
     metaDescription:
       "Loan-book health, member value and social impact you can actually show — a board pack that regenerates itself, without adding headcount.",
     deepDive: {
@@ -208,6 +241,13 @@ export const sectors: Sector[] = [
     ],
     outputs: "One view of which accounts are worth more effort, and which are quietly costing you.",
     metrics: ["Pipeline coverage", "Win rate", "Delivery margin", "Net revenue retention", "Utilisation"],
+    systems: [
+      "CRM — Salesforce, HubSpot, Dynamics",
+      "PSA, time recording and billing",
+      "Finance — Xero, Sage, NetSuite",
+      "Contract and document store",
+      "In-house SQL database",
+    ],
     metaDescription:
       "Pipeline, delivery margin and account health from one definition — see which accounts actually make money before the quarter closes.",
     deepDive: {
@@ -255,6 +295,16 @@ export const sectors: Sector[] = [
     ],
     outputs: "Pricing and range decisions made on real margin, the same week.",
     metrics: ["Gross margin", "Contribution per customer", "Stock turn", "Dead stock", "Fill rate"],
+    systems: [
+      "ERP — Kerridge K8, Sage 200, Access Dimensions, SAP Business One",
+      "Warehouse management",
+      "Trade counter EPOS",
+      "Telesales and quoting",
+      "Carrier and haulier portals",
+      "Supplier EDI and price files",
+      "In-house SQL Server",
+      "The rebate and margin spreadsheets",
+    ],
     metaDescription:
       "True landed margin by customer and product, stock turn and dead stock in one view — so pricing and range decisions run on real margin, the same week.",
     deepDive: {
@@ -302,6 +352,14 @@ export const sectors: Sector[] = [
     ],
     outputs: "A clear answer on which products and lines are worth running.",
     metrics: ["OEE", "Yield", "Scrap rate", "Cost per unit", "On-time in full"],
+    systems: [
+      "ERP and MRP",
+      "Shop-floor MES",
+      "SCADA and PLC historians",
+      "Quality and non-conformance",
+      "Maintenance — CMMS",
+      "In-house SQL and Access databases",
+    ],
     metaDescription:
       "Actual cost to make, yield and OEE joined to what you actually sold — a clear answer on which products and lines are worth running.",
     deepDive: {
@@ -348,6 +406,15 @@ export const sectors: Sector[] = [
     ],
     outputs: "A live trading pack the buying team trusts more than the spreadsheet.",
     metrics: ["Net revenue", "Gross margin", "Return rate", "AOV", "Repeat rate", "Contribution per SKU"],
+    systems: [
+      "EPOS",
+      "E-commerce — Shopify, Magento, BigCommerce",
+      "Stock and merchandising",
+      "Marketplace feeds",
+      "Payments",
+      "Ad platforms",
+      "Loyalty",
+    ],
     metaDescription:
       "True margin by SKU, channel and customer without the spreadsheet — a live trading pack the buying team trusts more than exports.",
     deepDive: {
@@ -395,6 +462,13 @@ export const sectors: Sector[] = [
     outputs:
       "A partner pack that is current every time they open it, ending the 'whose number is right?' debate.",
     metrics: ["Cases opened", "Cost per acquired case", "WIP value", "Settlement value", "Time to settle"],
+    systems: [
+      "Practice management — Proclaim, LEAP, Osprey, Clio",
+      "Time recording",
+      "Legal accounts",
+      "Document management",
+      "In-house SQL database",
+    ],
     metaDescription:
       "Case economics from first touch to settlement — cost per acquired case, WIP value and a partner pack that is current every time they open it.",
     deepDive: {
@@ -448,6 +522,13 @@ export const sectors: Sector[] = [
       "CSAT",
       "Failure demand",
     ],
+    systems: [
+      "Contact centre — Genesys, Five9, Amazon Connect",
+      "Ticketing — Zendesk, Freshdesk",
+      "Telephony and IVR",
+      "Workforce management",
+      "QA and call scoring",
+    ],
     metaDescription:
       "Cost to serve, repeat contacts and the root causes behind both — the reasons people contact you, ranked by what fixing them is worth.",
     deepDive: {
@@ -494,6 +575,13 @@ export const sectors: Sector[] = [
     ],
     outputs: "Every desk and every cohort measured the same way, without a spreadsheet.",
     metrics: ["Time to fill", "Desk margin", "Fall-through", "Placements per consultant", "Cohort completion"],
+    systems: [
+      "ATS and CRM — Bullhorn, Vincere, JobAdder",
+      "Learning management system",
+      "Timesheets and payroll",
+      "Job board and aggregator feeds",
+      "In-house candidate databases",
+    ],
     metaDescription:
       "Desk margin, time-to-fill, fall-through and cohort outcomes on one definition — every desk measured the same way, without a spreadsheet.",
     deepDive: {
@@ -540,6 +628,14 @@ export const sectors: Sector[] = [
     ],
     outputs: "The board pack builds itself, and the growth numbers survive diligence.",
     metrics: ["MRR", "Net revenue retention", "Activation rate", "CAC payback", "Logo churn"],
+    systems: [
+      "Application database — Postgres, MySQL",
+      "Stripe",
+      "Product analytics",
+      "CRM",
+      "Support desk",
+      "Ad platforms",
+    ],
     metaDescription:
       "Activation, retention and CAC payback from one event history — an investor-ready board pack that regenerates itself and survives diligence.",
     deepDive: {

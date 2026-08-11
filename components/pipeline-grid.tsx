@@ -10,7 +10,14 @@
  * The data is illustrative and deterministic (seeded, not random) so server and
  * client agree on render. The surrounding card is labelled as illustrative.
  */
-const SOURCES = ["Shopify", "Stripe", "Ad platforms", "CRM", "Ops database", "Finance ledger"];
+const SOURCES = [
+  "ERP",
+  "Finance ledger",
+  "In-house SQL database",
+  "CRM",
+  "Warehouse / stock",
+  "Spreadsheets",
+];
 const DAYS = 30;
 
 type State = "clean" | "retried" | "today";

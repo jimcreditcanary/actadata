@@ -56,7 +56,7 @@ const plans = [
     summary: "Pick the area that hurts — usually operations — and we finish it.",
     features: [
       "One value stream, built end to end rather than half-covered everywhere",
-      "Every source it touches connected, however it exposes itself",
+      "Every source it touches connected — ERP, in-house database, nightly file or a hand-maintained spreadsheet",
       "BigQuery and Cloud Run in your own secure, scalable Google environment",
       "Full event history, business mapping and the metric tree for that area",
       "The Summary Page, live, for the part of the business you chose",

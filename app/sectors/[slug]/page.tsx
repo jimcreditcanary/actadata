@@ -115,6 +115,30 @@ export default async function SectorPage({ params }: { params: Promise<{ slug: s
               </span>
             ))}
           </div>
+
+          {/* The systems this market actually runs on, named. Generic connector
+              talk reads as "not for us" to anyone whose business runs on an ERP
+              and a shared drive, and the recognition is most of the credibility.
+              Outlined rather than filled so it reads as inventory beneath the
+              metrics rather than competing with them. */}
+          <Eyebrow as="h2" className="mt-10 mb-5">
+            What we&apos;d connect here
+          </Eyebrow>
+          <div className="flex flex-wrap gap-2.5">
+            {sector.systems.map(sys => (
+              <span
+                key={sys}
+                className="rounded-lg border border-white/[0.12] bg-white/[0.03] px-3.5 py-2 text-sm text-muted-foreground"
+              >
+                {sys}
+              </span>
+            ))}
+          </div>
+          <p className="mt-5 max-w-2xl text-sm text-muted-foreground">
+            Whatever it is and however it exposes itself — API, database, nightly
+            file, or a spreadsheet somebody maintains by hand. We only ever need read
+            access, with personal data excluded.
+          </p>
         </div>
       </section>
 
