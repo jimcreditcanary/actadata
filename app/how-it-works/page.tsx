@@ -4,8 +4,9 @@ import { PageHeader } from "@/components/page-header";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { Button } from "@/components/ui/button";
 import { FlowDiagram } from "@/components/flow-diagram";
-import { SummaryPageDemo } from "@/components/sections/summary-page-demo";
 import { Stack } from "@/components/sections/stack";
+import { PipelineGrid } from "@/components/pipeline-grid";
+import { SpreadsheetTrap } from "@/components/sections/spreadsheet-trap";
 import { ValueStream } from "@/components/sections/value-stream";
 import { EngagementTimeline } from "@/components/sections/engagement-timeline";
 import { ContactFooter } from "@/components/sections/contact-footer";
@@ -40,6 +41,8 @@ export default function HowItWorksPage() {
         </div>
       </PageHeader>
 
+      <SpreadsheetTrap />
+
       <section className="py-14 md:py-16">
         <div className="container">
           <FlowDiagram />
@@ -48,9 +51,18 @@ export default function HowItWorksPage() {
 
       <ValueStream />
       <Stack />
-      <SummaryPageDemo showPipelineHealth />
       {/* Sequence last: by this point the reader knows what we build, and the
           only open question is when they get it. */}
+      {/* The only block on the site that evidences the real-time claim rather
+          than asserting it: one cell per source per day. It came off the Summary
+          demo when that moved to home only, and it belongs here anyway — this is
+          the page where the plumbing is the subject. */}
+      <section className="py-14 md:py-16 border-t border-white/[0.04]">
+        <div className="container">
+          <PipelineGrid />
+        </div>
+      </section>
+
       <EngagementTimeline />
       <ContactFooter />
     </>

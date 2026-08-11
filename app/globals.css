@@ -169,3 +169,49 @@
 .bg-grain {
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.05 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
 }
+
+/* ---------------------------------------------------------------------------
+   Scroll-driven section reveal.
+
+   Each section rises and fades as it enters the viewport, so a long page reads as
+   a series of beats rather than one continuous wall — which is the effect
+   scroll-snap is usually reached for. Snap is deliberately NOT used: these
+   sections run from 900px to 3,300px on a phone, several taller than the viewport
+   itself, and mandatory snap on blocks that size fights the thumb and can trap the
+   reader mid-section. This gets the pacing without touching scrolling at all.
+
+   Three safety properties, in order of importance:
+
+   1. It lives inside @supports. In a browser without view timelines the rule never
+      applies, so nothing is hidden — rather than the far worse failure of an
+      unsupported timeline leaving every section stuck at opacity 0.
+   2. It skips the first section. The hero is above the fold on load and must not
+      animate in.
+   3. It is off entirely under prefers-reduced-motion.
+
+   `entry 8% cover 26%` finishes the animation well before a section reaches the
+   middle of the screen, so the content is fully legible by the time you are
+   reading it. A reveal still running when you start reading is just a delay.
+--------------------------------------------------------------------------- */
+@keyframes section-reveal {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 20px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    main > section:not(:first-child),
+    main > article,
+    main > footer {
+      animation: section-reveal linear both;
+      animation-timeline: view();
+      animation-range: entry 8% cover 26%;
+    }
+  }
+}

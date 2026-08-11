@@ -1,6 +1,5 @@
 import { Hero } from "@/components/sections/hero";
 import { ExperienceStrip } from "@/components/sections/experience-strip";
-import { SpreadsheetTrap } from "@/components/sections/spreadsheet-trap";
 import { NotATechCompany } from "@/components/sections/not-a-tech-company";
 import { HowItWorks } from "@/components/sections/how-it-works";
 import { SummaryPageDemo } from "@/components/sections/summary-page-demo";
@@ -48,7 +47,6 @@ export default function Page() {
     <>
       <Hero />
       <ExperienceStrip />
-      <SpreadsheetTrap />
       <HowItWorks />
       <SummaryPageDemo />
       <SecondBrain compact />

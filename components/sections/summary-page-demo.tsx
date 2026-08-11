@@ -2,7 +2,6 @@
 import Link from "next/link";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Eyebrow } from "@/components/eyebrow";
-import { PipelineGrid } from "@/components/pipeline-grid";
 import { SummaryScorecard } from "@/components/summary-scorecard";
 import { SummaryOkrs } from "@/components/summary-okrs";
 import { SummaryAlerts } from "@/components/summary-alerts";
@@ -13,7 +12,7 @@ import { summaryExamples } from "@/lib/summary-examples";
  * The Summary Page mock. Content lives in lib/summary-examples.ts so this file
  * stays layout, and every example carries the same four blocks in the same order:
  * scorecard (whole business), objectives (against pace), alerts (what needs you),
- * then the trend and the pipeline health behind it all.
+ * and the trend underneath.
  *
  * Every chart here is hand-rolled SVG — the sparklines in SummaryScorecard and
  * the trend in SummaryTrend. There is no charting library in the bundle at all,
@@ -21,13 +20,12 @@ import { summaryExamples } from "@/lib/summary-examples";
  */
 
 /**
- * `showPipelineHealth` is off on the home page and on for /how-it-works.
- * The pipeline grid is the only thing that evidences the "live, always on"
- * claim, so it earns its place where the plumbing is the subject — but on the
- * home page the buyer wants the scorecard, the objectives and the alerts, and
- * an internal ops view is the least valuable block per pixel there.
+ * The demo lives on the home page only. It used to take a `showPipelineHealth`
+ * flag for /how-it-works, but carrying a second copy of a 3,637px block made that
+ * page the longest on the site while saying nothing home had not said — so the
+ * pipeline grid moved to its own section there instead.
  */
-export function SummaryPageDemo({ showPipelineHealth = false }: { showPipelineHealth?: boolean }) {
+export function SummaryPageDemo() {
   return (
     <section id="summary" className="relative py-16 md:py-20 border-t border-white/[0.04]">
       <div className="container">
@@ -86,12 +84,6 @@ export function SummaryPageDemo({ showPipelineHealth = false }: { showPipelineHe
                     </div>
                     <SummaryAlerts alerts={v.alerts} queued={v.queued} persona={v.persona} />
                   </div>
-
-                  {showPipelineHealth && (
-                    <div className="mt-3">
-                      <PipelineGrid />
-                    </div>
-                  )}
                 </div>
               </TabsContent>
             ))}
