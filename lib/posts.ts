@@ -93,12 +93,129 @@ export type Post = {
 
 /**
  * Thought-leadership pieces. Each one argues a position Acta Data already takes
- * publicly elsewhere on the site, at length — the spreadsheet trap, data before
- * agents, and the four atomic units. No client facts and no figures appear in
- * any of them, deliberately: everything here is argument, so nothing needs a
- * source we cannot show.
+ * publicly elsewhere on the site, at length — the shared-drive folder, the
+ * spreadsheet trap, data before agents, and the four atomic units. No client
+ * facts and no figures appear in any of them, deliberately: everything here is
+ * argument, so nothing needs a source we cannot show.
+ *
+ * The folder piece is the only one carrying a `sector`, which puts it on
+ * /sectors/wholesale — that page's writing section renders nothing without it.
+ * Add a sector only where a piece genuinely belongs to one; a general argument
+ * tagged to a sector just makes the sector page look thinner than it is.
  */
 const insightPosts: Post[] = [
+  {
+    slug: "your-data-team-is-a-folder",
+    kind: "insight",
+    title: "Your data team is a folder on a shared drive",
+    excerpt:
+      "It is called Reports, it has 240 files in it, and every one of them is a question the business asks every week. That folder is not a failure — it is a specification.",
+    published: "2026-08-10",
+    readingMinutes: 4,
+    author: "Shaun Adams",
+    sector: "wholesale",
+    body: [
+      {
+        type: "p",
+        text: "Your data team is a folder on a shared drive. It is called Reports, it has about 240 files in it, and it is the reason the business works.",
+      },
+      {
+        type: "p",
+        text: "I have been in enough builders merchants, wholesalers and family manufacturers to know that folder by heart. Change the company and the file names barely change:",
+      },
+      {
+        type: "ul",
+        items: [
+          "Stock take March FINAL v4.xlsx",
+          "Debtors chase list (Dave's copy).xlsx",
+          "Margin by branch — DO NOT EDIT.xlsx",
+          "Quotes outstanding wk32.xlsx",
+          "Price list 2026 (new) (2).xlsx",
+          "Van costs Sheet1.xlsx",
+          "Credit limits master.xlsx",
+          "Supplier rebates Q3.xlsx",
+        ],
+      },
+      {
+        type: "p",
+        text: "Every one of those is a question the business asks every single week. None of them talk to each other. None of them have any history. All of them depend on somebody remembering to update them.",
+      },
+      { type: "h2", text: "Nobody says the next part out loud" },
+      {
+        type: "p",
+        text: "Those spreadsheets are not a failure. Somebody built each one because the system would not answer the question, and the business has run on them ever since. That person — usually one person — is doing a data engineer's job by hand, on a Sunday, and has been for years.",
+      },
+      {
+        type: "p",
+        text: "The risk is not that the workbooks are wrong. Mostly they are right, because whoever maintains them knows exactly where the edges are. The risk is that all of that knowledge is undocumented, unversioned and resident in one head, and the day it walks out of the door the business loses the ability to answer its own questions.",
+      },
+      { type: "h2", text: "What each of those files is actually costing" },
+      {
+        type: "p",
+        text: "Taken one at a time, the same findings come up in merchant after merchant:",
+      },
+      {
+        type: "ul",
+        items: [
+          "The stock take tells you what was on the shelf in March. It does not tell you which lines have not moved since, or what that cash would be worth doing something else.",
+          "The debtors list is somebody's personal copy, so the chase happens when they remember rather than when an account crosses a limit.",
+          "Margin by branch is gross margin, so the branch that absorbs the deliveries and the returns still looks like the good one.",
+          "Quotes outstanding has no win rate in it, and no record of which quotes went cold or why.",
+          "Two price lists are in circulation and the trade counter has the older one.",
+          "Van costs sit in their own file, so cost to serve per drop — where the margin actually goes — is never in the same place as the margin.",
+          "Credit limits were set once, years ago, on customers who have since doubled or halved.",
+          "Rebate thresholds get hit or missed without anyone noticing until the quarter closes.",
+        ],
+      },
+      {
+        type: "p",
+        text: "Not one of those needs AI to fix. They need the eight files to be one thing.",
+      },
+      { type: "h2", text: "Why it has become urgent rather than annoying" },
+      {
+        type: "p",
+        text: "Manual reconciliation was survivable while a report was the endpoint. It stops being survivable the moment you want software to act on the numbers.",
+      },
+      {
+        type: "p",
+        text: "An agent has no way of knowing that the third tab is the one to believe. It cannot see that Dave excludes inter-branch transfers, that the March file was never finished, or that the margin column carries a manual adjustment somebody typed in during a stocktake two years ago. Point a model at that folder and it will answer confidently and wrongly, at speed, to more people than the workbook ever reached.",
+      },
+      {
+        type: "quote",
+        text: "You cannot put AI on top of a process that gets settled by human judgement in a workbook every month.",
+      },
+      { type: "h2", text: "What replaces it" },
+      {
+        type: "p",
+        text: "Not a dashboard. The eight questions in that folder become one layer: every source connected, every activity recorded once with the time it happened, and the definitions written down as code rather than remembered. After that the questions are queries against one thing, instead of eight files that have to be reconciled before anyone can answer anything.",
+      },
+      {
+        type: "p",
+        text: "The person who currently maintains the folder does not lose their job. They stop being the pipeline and start being the person who says what to do about what the numbers show — which is what you hired them for in the first place.",
+      },
+      { type: "h2", text: "And you are not too small" },
+      {
+        type: "p",
+        text: "If you are a merchant or a distributor reading this and thinking data and AI is not for you, it is more for you than it is for the tech companies. You are the one still doing it by hand.",
+      },
+      {
+        type: "p",
+        text: "You are also the size where it pays back fastest. A large corporate needs a multi-year programme and a steering committee, because it has forty systems and nine countries to reconcile first. A hundred-person merchant needs a few months, because the whole operation genuinely fits in one layer — one stock system, one finance system, one CRM if you are lucky, and the folder in between.",
+      },
+      {
+        type: "p",
+        text: "And the payback is not a nicer report. It is one dead product line cleared, one bad account repriced, one rebate threshold hit that you would otherwise have missed.",
+      },
+      {
+        type: "quote",
+        text: "That folder is not evidence of a problem. It is a specification.",
+      },
+      {
+        type: "p",
+        text: "Every file in it is a question the business already decided was worth answering every week, and somebody has already done the hard thinking about what matters — they just had to do it in Excel. Build the layer that answers those eight questions properly and you have not started a data project. You have finished one that has been running by hand for years.",
+      },
+    ],
+  },
   {
     slug: "drowning-in-reconciliation",
     kind: "insight",
