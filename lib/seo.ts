@@ -84,6 +84,46 @@ export const organisation = {
     "Next best action",
     "Claude for self-service analytics",
     "Value stream mapping",
+    /* Named systems and platforms.
+       knowsAbout describes the ENTITY, not a claim about any one page, so this is
+       the right place for the specific product names — an assistant asked "who
+       does reporting on Kerridge K8" can match here, and no reader pays for it in
+       prose. Keep in step with the `systems` lists in lib/sectors.ts; those drive
+       the visible chips and the generated integration FAQ on each sector page.
+       These are systems we integrate with, not partnerships or endorsements. */
+    "Kerridge K8",
+    "Sage 200",
+    "Access Dimensions",
+    "SAP Business One",
+    "Microsoft SQL Server",
+    "Microsoft Access databases",
+    "PostgreSQL",
+    "MySQL",
+    "Warehouse management systems",
+    "EPOS and trade counter systems",
+    "Supplier EDI and price files",
+    "Manufacturing execution systems (MES)",
+    "SCADA and PLC historians",
+    "CMMS maintenance systems",
+    "Experian, Equifax and TransUnion bureau feeds",
+    "Open banking data",
+    "Loan management and decisioning systems",
+    "Collections diallers",
+    "Salesforce",
+    "HubSpot",
+    "Microsoft Dynamics",
+    "Xero",
+    "NetSuite",
+    "Shopify",
+    "Magento",
+    "BigCommerce",
+    "Proclaim, LEAP and Osprey practice management",
+    "Genesys, Five9 and Amazon Connect",
+    "Zendesk and Freshdesk",
+    "Bullhorn, Vincere and JobAdder",
+    "Stripe",
+    "Terraform",
+    "Google Cloud Run",
   ],
   contactPoint: {
     "@type": "ContactPoint",

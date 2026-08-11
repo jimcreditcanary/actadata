@@ -672,3 +672,56 @@ export const sectorGroups = [
 
 export const getSector = (slug: string) => sectors.find(s => s.slug === slug);
 export const sectorsByGroup = (group: string) => sectors.filter(s => s.group === group);
+
+/**
+ * Every sector's FAQ list, plus a generated integration question.
+ *
+ * "Which wholesale systems do you connect to" is a real query, and the answer is
+ * where the specific product names earn their keep — a merchant searching for
+ * reporting on Kerridge K8 or Access Dimensions has nothing to match against a
+ * page that only says "any source, however it exposes itself".
+ *
+ * It is GENERATED from `systems` rather than written out, for two reasons. It
+ * cannot drift from the chips shown higher up the same page, and the FAQPage
+ * schema and the visible text are necessarily identical — Google discounts schema
+ * that does not appear on the page, so a longer keyword-stuffed version hidden in
+ * the markup would be worth less than nothing.
+ *
+ * The reader's cost is one sentence: the answer opens with "Yes" and the product
+ * names sit behind it in a single list sentence they can skip.
+ */
+/**
+ * A sector label as it should read mid-sentence.
+ *
+ * Plain .toLowerCase() turned "SaaS & Startups" into "saas & startups" and "B2B
+ * Services" into "b2b services" — in the visible copy AND in the schema. A word
+ * keeps its case if it carries an uppercase letter after the first character or
+ * contains a digit, which covers SaaS, B2B and any acronym added later; anything
+ * else lowercases normally.
+ */
+export const labelInSentence = (label: string) =>
+  label
+    .split(" ")
+    .map(w => (/[A-Z]/.test(w.slice(1)) || /\d/.test(w) ? w : w.toLowerCase()))
+    .join(" ");
+
+export const integrationFaq = (sector: Sector) => {
+  /* The chips are written capitalised for display, so inlined with commas they
+     read as a broken sentence ("...means ERP, Warehouse management, Trade counter
+     EPOS"). Presented after a colon and separated by semicolons they read as an
+     inventory, which is what they are — and the vendor sub-lists become
+     parenthetical rather than a second colon inside the same clause. */
+  const inventory = sector.systems
+    .map(s => (s.includes(" — ") ? `${s.replace(" — ", " (")})` : s))
+    .join("; ");
+
+  return {
+    q: `Which ${labelInSentence(sector.label)} systems do you connect to?`,
+    /* Opens by answering the question actually asked. An earlier version opened
+       with "Yes", which answers a yes/no question this is not. */
+    a: `Whatever you already run — it makes no difference whether a system exposes an API, a database view, a nightly file or a spreadsheet somebody maintains by hand. In ${labelInSentence(sector.label)} that usually means: ${inventory}. We only ever need read access with personal data excluded, and the layer is built in your own Google environment rather than ours.`,
+  };
+};
+
+/** Used for both the visible FAQ list and the FAQPage schema, so they agree. */
+export const sectorFaqs = (sector: Sector) => [...sector.faqs, integrationFaq(sector)];

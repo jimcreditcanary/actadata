@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { ContactFooter } from "@/components/sections/contact-footer";
 import { PostSection } from "@/components/post-cards";
 import { NotATechCompany } from "@/components/sections/not-a-tech-company";
-import { sectors, getSector } from "@/lib/sectors";
+import { sectors, getSector, sectorFaqs, labelInSentence } from "@/lib/sectors";
 import { postsForSector } from "@/lib/posts";
 import { entryMonthlyK } from "@/lib/economics";
 import { JsonLd } from "@/components/json-ld";
@@ -53,7 +53,7 @@ export default async function SectorPage({ params }: { params: Promise<{ slug: s
           {
             "@type": "Service",
             "@id": `${SITE}/sectors/${sector.slug}#service`,
-            name: `Data and AI for ${sector.label.toLowerCase()}`,
+            name: `Data and AI for ${labelInSentence(sector.label)}`,
             serviceType: "Data and AI consultancy",
             description: `${sector.tagline} ${sector.intro}`,
             provider: { "@id": ORG_ID },
@@ -62,7 +62,7 @@ export default async function SectorPage({ params }: { params: Promise<{ slug: s
             url: `${SITE}/sectors/${sector.slug}`,
             hasOfferCatalog: {
               "@type": "OfferCatalog",
-              name: `What we build for ${sector.label.toLowerCase()}`,
+              name: `What we build for ${labelInSentence(sector.label)}`,
               itemListElement: sector.builds.map(b => ({
                 "@type": "Offer",
                 itemOffered: { "@type": "Service", name: b },
@@ -74,7 +74,7 @@ export default async function SectorPage({ params }: { params: Promise<{ slug: s
                "can you rebuild vintage cohorts" resolves to an answer, not a page. */
             "@type": "FAQPage",
             "@id": `${SITE}/sectors/${sector.slug}#faq`,
-            mainEntity: sector.faqs.map(f => ({
+            mainEntity: sectorFaqs(sector).map(f => ({
               "@type": "Question",
               name: f.q,
               acceptedAnswer: { "@type": "Answer", text: f.a },
@@ -214,7 +214,7 @@ export default async function SectorPage({ params }: { params: Promise<{ slug: s
       <PostSection
         posts={related}
         heading="Proof and thinking"
-        title={`What this looks like in ${sector.label.toLowerCase()}.`}
+        title={`What this looks like in ${labelInSentence(sector.label)}.`}
         cta={{ href: "/blog", label: "All writing →" }}
       />
 
@@ -224,7 +224,7 @@ export default async function SectorPage({ params }: { params: Promise<{ slug: s
         <div className="container">
           <Eyebrow as="h2" accent className="mb-8">Common questions</Eyebrow>
           <div className="max-w-3xl divide-y divide-white/[0.06]">
-            {sector.faqs.map(f => (
+            {sectorFaqs(sector).map(f => (
               <div key={f.q} className="py-6 first:pt-0">
                 <h3 className="text-lg font-semibold tracking-tight leading-snug">{f.q}</h3>
                 <p className="mt-2.5 text-muted-foreground leading-relaxed">{f.a}</p>
