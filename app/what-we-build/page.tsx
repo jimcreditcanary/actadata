@@ -5,6 +5,7 @@ import { Breadcrumbs } from "@/components/breadcrumbs";
 import { Button } from "@/components/ui/button";
 import { WhatWeBuild } from "@/components/sections/what-we-build";
 import { SecondBrain } from "@/components/sections/second-brain";
+import { DataProtection } from "@/components/sections/data-protection";
 import { EngagementModels } from "@/components/sections/engagement-models";
 import { ContactFooter } from "@/components/sections/contact-footer";
 
@@ -37,6 +38,7 @@ export default function WhatWeBuildPage() {
 
       <WhatWeBuild />
       <SecondBrain />
+      <DataProtection compact />
       <EngagementModels />
       <ContactFooter />
     </>

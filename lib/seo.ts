@@ -124,6 +124,19 @@ export const organisation = {
     "Stripe",
     "Terraform",
     "Google Cloud Run",
+    /* Data protection vocabulary. These are the terms a compliance-led search
+       uses, and knowsAbout is an entity property rather than a page claim — the
+       visible commitments live on /data-protection. */
+    "UK GDPR",
+    "Data Protection Act 2018",
+    "PECR and electronic marketing rules",
+    "Data retention and destruction",
+    "Right to erasure",
+    "Data minimisation",
+    "Pseudonymisation at ingest",
+    "Records of processing activities",
+    "Marketing consent and lawful basis",
+    "Data subject access requests",
   ],
   contactPoint: {
     "@type": "ContactPoint",
@@ -237,6 +250,21 @@ export const service = {
  * own cloud" retrieves answers, not marketing. Every answer here must stay true
  * to the rest of the site — they are the same commitments, written plainly.
  */
+export const dataProtectionFaqs: { q: string; a: string }[] = [
+  {
+    q: "Can you prove our data retention policy is actually being followed?",
+    a: "That is the work. Most retention policies exist as a document and nothing else, because nobody knows which of a dozen systems hold a given record and deleting it from the CRM does nothing about the copy in the warehouse, the reporting database or a spreadsheet on somebody's desktop. We map where personal data actually lives across every connected system, express your retention rules as code against that map, run them on a schedule, and keep an audit trail of what was deleted, when and under which rule. You set the policy — we make it happen and produce the evidence that it did.",
+  },
+  {
+    q: "Can you support data destruction and right-to-erasure requests?",
+    a: "Yes. An erasure request is the same problem as retention, one record at a time: the difficulty is not deleting, it is knowing everywhere the record exists. Once personal data is mapped across your systems, a request can be actioned once and evidenced across all of them, with a record of what was removed and when. That record is usually what an auditor or the ICO actually asks for.",
+  },
+  {
+    q: "Our marketing list is old — can you tell which contacts we can lawfully email?",
+    a: "We can show you which contacts have an evidenced lawful basis and which do not. Every contact gets traced back to the event that created it — the form submission, its timestamp and the wording that was on the page at the time — or to nothing at all, which is the common case for anything more than a few years old. The list then splits into contacts you can stand behind and contacts to suppress. The decision about what basis you rely on is yours and your counsel's; we produce the evidence to make it with.",
+  },
+];
+
 export const faqs: { q: string; a: string }[] = [
   {
     q: "What does Acta Data actually do?",
@@ -287,6 +315,10 @@ export const faqs: { q: string; a: string }[] = [
   {
     q: "What do you mean by a second brain?",
     a: "A layer that remembers everything the business has done — every activity, every decision, and what happened next — and can be asked about it in real time. For an individual it answers what they would otherwise have to ask the colleague who has been there fifteen years. For the business it means that judgement stops living in a handful of heads: when somebody resigns the reasoning stays behind, and when somebody joins they start with the whole history. Recommendations are generated inside your own policy rather than filtered afterwards, the priors come from decisions your business has actually made rather than from industry averages, and every recommendation is scored against what happened next so the following one is better.",
+  },
+  {
+    q: "Can you prove our data retention policy is actually being followed?",
+    a: dataProtectionFaqs[0].a,
   },
   {
     q: "What is the Summary Page?",

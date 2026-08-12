@@ -13,6 +13,13 @@ import { hasCaseStudies, hasPosts } from "@/lib/posts";
  * The case-studies and writing links only exist when there is something to read,
  * so an empty section can never be discovered.
  *
+ * NAV WIDTH IS AT ITS LIMIT. Eight links fit one row down to 1024px with 75px of
+ * clearance to the CTA — measured, not guessed. "Case studies" is currently gated
+ * off because there are none; publishing the first one makes nine and will overflow
+ * at laptop widths. When that happens, drop something (FAQ is the weakest, since
+ * /data-protection and the sector pages now carry most of those answers) or move to
+ * a grouped menu. Do not just add a ninth.
+ *
  * Links no longer hide until scroll: on a multi-page site the nav is how you get
  * around, and hiding it on every page load was costing navigation to save the
  * hero some room.
@@ -24,6 +31,7 @@ const links: { href: string; label: string; needsCaseStudies?: boolean; needsPos
   { href: "/case-studies", label: "Case studies", needsCaseStudies: true },
   { href: "/blog", label: "Writing", needsPosts: true },
   { href: "/pricing", label: "Pricing" },
+  { href: "/data-protection", label: "Data protection" },
   { href: "/faq", label: "FAQ" },
   { href: "/about", label: "About" },
 ];

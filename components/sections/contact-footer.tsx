@@ -49,6 +49,7 @@ export function ContactFooter({ hideHeading = false }: { hideHeading?: boolean }
             <div className="pt-2 flex flex-wrap gap-x-4 gap-y-1 md:justify-end text-xs">
               <a href="/blog" className="hover:text-foreground transition-colors">Writing</a>
               <a href="/faq" className="hover:text-foreground transition-colors">FAQ</a>
+              <a href="/data-protection" className="hover:text-foreground transition-colors">Data protection</a>
               <a href="/privacy" className="hover:text-foreground transition-colors">Privacy notice</a>
               <a
                 href={`tel:${PHONE_E164}`}
