@@ -20,7 +20,9 @@ export default function PricingPage() {
       <PageHeader
         eyebrow="Pricing"
         title={`£${discoveryOneOffK}k for the map. £${entryYearK}k to solve an area.`}
-        accent="All of it cheaper than hiring."
+        /* Was "All of it cheaper than hiring", which the section headline 500px below
+           now says better. This sets that argument up rather than repeating it. */
+        accent="Neither is a discount."
         lede="Priced by how much of the business is in scope, not by which features you unlock. No lock-in, and you own everything we build as we build it — including the Discovery report, which you are free to take elsewhere, and which is credited in full if you go ahead with a build."
       />
       <Pricing />

@@ -106,15 +106,26 @@ export function Pricing() {
       <div className="container">
         <div className="max-w-3xl">
           <Eyebrow className="mb-5">Pricing</Eyebrow>
+          {/* "Cheaper than hiring" as a headline invites the wrong question — what am
+              I not getting? This states the cause and the pass-through instead, so the
+              price reads as earned rather than discounted. Kept to two short clauses:
+              the longer version ran to six lines on a phone, which is not punchy. */}
+          {/* The accent is a block so the two clauses always sit on their own lines.
+              Inline, it broke after "You", stranding one word of the punchline at the
+              end of the first line at every width. */}
           <h2 className="font-display text-4xl md:text-5xl tracking-tight leading-[1.05]">
-            Four ways in.{" "}
-            <span className="text-electric">All of them cheaper than hiring.</span>
+            We are faster.{" "}
+            <span className="block text-electric">You keep the difference.</span>
           </h2>
           <p className="mt-5 text-lg text-muted-foreground">
+            AI made a small, senior team much quicker — work that took a quarter takes weeks.
+            We pass that gain on rather than banking it, and charge for what is actually
+            scarce: knowing which decisions move your number. Nothing is held back to protect
+            a follow-on sale. You get the tools, the code and the reasoning, and the sooner
+            you are ready, the sooner we hand over the keys.
+          </p>
+          <p className="mt-4 text-lg text-muted-foreground">
             Priced by how much of the business is in scope, not by which features you unlock.
-            Start with the map if you want to think about it first, solve one area if something
-            specific is hurting, or map the whole company. You own everything we build as we
-            build it.
           </p>
         </div>
 

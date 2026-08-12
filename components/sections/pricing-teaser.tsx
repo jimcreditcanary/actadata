@@ -30,8 +30,8 @@ export function PricingTeaser() {
           <div>
             <Eyebrow className="mb-5">Pricing</Eyebrow>
             <h2 className="font-display text-4xl md:text-5xl tracking-tight leading-[1.05]">
-              Four ways in.{" "}
-              <span className="text-electric">All cheaper than hiring.</span>
+              Faster than hiring a team.{" "}
+              <span className="text-electric">So it costs less than one.</span>
             </h2>
             <p className="mt-5 text-lg text-muted-foreground">
               Start with a £{discoveryOneOffK}k map you can take away and build yourself —
