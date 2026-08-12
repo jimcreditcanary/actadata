@@ -38,7 +38,7 @@ export default function WhatWeBuildPage() {
 
       <WhatWeBuild />
       <SecondBrain />
-      <DataProtection compact />
+      <DataProtection />
       <EngagementModels />
       <ContactFooter />
     </>

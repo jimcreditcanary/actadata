@@ -1,6 +1,18 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  async redirects() {
+    return [
+      {
+        // /data-protection was briefly its own route before the content was folded
+        // into /what-we-build as a section. It shipped, so it was crawlable and in
+        // the sitemap — a 301 costs nothing and keeps any link or index entry alive.
+        source: "/data-protection",
+        destination: "/what-we-build#data-protection",
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {

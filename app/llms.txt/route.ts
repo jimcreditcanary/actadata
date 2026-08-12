@@ -52,10 +52,9 @@ Priced by how much of the business is in scope, not by feature tier.
 ## Pages
 
 - [How it works](${SITE}/how-it-works): clean, model, alert, act — and what happens in week one, month one, months two to three, four to twelve, and after twelve months.
-- [What we build](${SITE}/what-we-build): the six capabilities that make up a working data function, and the engagement models.
+- [What we build](${SITE}/what-we-build): the six capabilities that make up a working data function, the engagement models, and data protection — personal data kept out of the analytical layer, retention rules as code with an audit trail of what was deleted, erasure requests actioned once across every system, and marketing contacts traced to the consent event that created them. Mechanics and evidence, not legal advice.
 - [Sectors](${SITE}/sectors): the value streams we already know.
 - [Pricing](${SITE}/pricing): the four tiers, and the DIY Discovery option, against the cost of hiring a team.
-- [Data protection](${SITE}/data-protection): personal data kept out of the analytical layer, retention rules as code with an audit trail of what was deleted, erasure requests actioned once across every system, and marketing contacts traced to the consent event that created them. Mechanics and evidence, not legal advice.
 - [Questions](${SITE}/faq): cost, timelines, ownership, personal data, and whether this replaces a data team.
 - [About](${SITE}/about): the crew, where they have worked, and how we work.
 - [Writing](${SITE}/blog): case studies and thought leadership.
