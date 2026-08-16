@@ -3,6 +3,7 @@ import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import { Archivo_Black } from "next/font/google";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/next";
 import { Nav } from "@/components/nav";
 import { JsonLd } from "@/components/json-ld";
 import { graph, organisation, website, service } from "@/lib/seo";
@@ -83,6 +84,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <JsonLd data={graph(organisation, website, service)} />
         <Nav />
         <main>{children}</main>
+        {/* Vercel Web Analytics — privacy-friendly, cookieless page + event
+            analytics. Only sends data on Vercel; a no-op in local dev. Enable
+            Web Analytics for the project in the Vercel dashboard to collect. */}
+        <Analytics />
       </body>
     </html>
   );
