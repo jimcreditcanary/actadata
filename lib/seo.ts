@@ -10,6 +10,7 @@ import {
   seniorHireLoadedK,
 } from "@/lib/economics";
 import { sectors } from "@/lib/sectors";
+import { caseStudies } from "@/lib/posts";
 
 /**
  * Structured data, in one place.
@@ -146,6 +147,22 @@ export const organisation = {
     areaServed: "GB",
     availableLanguage: "English",
   },
+  /* Published client work, as entity data rather than as a page.
+     Deliberately NOT marked up as Review/AggregateRating: Google's policy treats
+     reviews an organisation publishes about itself as self-serving and will not
+     award stars for them, and claiming a rating we have not collected would be
+     the kind of thing this site exists to argue against. `subjectOf` makes the
+     same connection honestly — here is a documented engagement, go and read it.
+     Generated from the posts list, so publishing or withdrawing a study updates
+     the entity graph with it. */
+  subjectOf: caseStudies().map(s => ({
+    "@type": "Article",
+    "@id": `${SITE}/blog/${s.slug}#article`,
+    url: `${SITE}/blog/${s.slug}`,
+    headline: s.title,
+    datePublished: s.published,
+    about: s.client ? { "@type": "Organization", name: s.client } : undefined,
+  })),
 };
 
 export const website = {

@@ -3,6 +3,7 @@ import { PageHeader } from "@/components/page-header";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { Pricing } from "@/components/sections/pricing";
 import { Problem } from "@/components/sections/problem";
+import { TestimonialCard } from "@/components/sections/testimonial";
 import { ContactFooter } from "@/components/sections/contact-footer";
 import { discoveryOneOffK, entryYearK, wholeBusinessYearK } from "@/lib/economics";
 
@@ -26,6 +27,13 @@ export default function PricingPage() {
         lede="Priced by how much of the business is in scope, not by which features you unlock. No lock-in, and you own everything we build as we build it — including the Discovery report, which you are free to take elsewhere, and which is credited in full if you go ahead with a build."
       />
       <Pricing />
+      {/* Directly under the tiers, because the objection a price list creates is
+          "and does it actually arrive?" — answered here by somebody who paid. */}
+      <section className="pb-4">
+        <div className="container">
+          <TestimonialCard className="max-w-3xl" />
+        </div>
+      </section>
       <Problem />
       <ContactFooter />
     </>

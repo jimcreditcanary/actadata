@@ -7,11 +7,12 @@
  * case study is just a post that also carries stats/situation/work/outcome, and
  * the post page renders those extra blocks when they exist.
  *
- * The case-study slots are deliberately empty — client evidence is Shaun's to
- * supply, and an invented one would be worse than none. Everything keyed off an
- * empty list degrades to nothing: /case-studies explains itself instead of
- * showing placeholder cards, its nav link does not appear, and the sitemap omits
- * the detail pages.
+ * Everything keyed off the case-study list degrades to nothing when it is empty:
+ * /case-studies explains itself instead of showing placeholder cards, its nav
+ * link does not appear, the home page falls back to the insight pieces, the
+ * site-wide testimonial disappears, and the sitemap omits the detail pages. That
+ * still holds — it is how the site behaved before the first study was published,
+ * and how it would behave again if one were withdrawn.
  *
  * TEMPLATE — copy one, fill it in, delete the comment. `slug` is the URL.
  *
@@ -89,6 +90,13 @@ export type Post = {
   work?: string[];
   outcome?: string[];
   quote?: { text: string; name?: string; role?: string };
+  /**
+   * Optional path under /public to a one-page PDF of the study. When present the
+   * post page offers it as a download and the schema advertises it as
+   * associatedMedia, so the leave-behind a salesperson emails and the page a
+   * prospect lands on are the same document.
+   */
+  pdf?: string;
 };
 
 /**
@@ -388,8 +396,138 @@ const insightPosts: Post[] = [
   },
 ];
 
-/** Case studies go here. Empty until there is real client evidence to publish. */
-const caseStudyPosts: Post[] = [];
+/**
+ * Case studies — delivered work, published with the client's permission.
+ *
+ * Every figure here comes from the signed case-study document. Two things are
+ * deliberately absent: the size of DRA's book, which is their number to disclose
+ * rather than ours, and any claim we cannot point at a source for.
+ */
+const caseStudyPosts: Post[] = [
+  {
+    slug: "point-in-time-reporting-in-three-months",
+    kind: "case-study",
+    title: "From SQL Server and spreadsheets to a live data platform",
+    seoTitle: "Consumer Duty reporting, live in three months",
+    excerpt:
+      "A digital-first debt resolution agency with no way to see its book as it stood last month. Three months later: a nightly feed into BigQuery, 30+ governed definitions, point-in-time history, and seven live reporting products the team run themselves.",
+    published: "2026-08-21",
+    readingMinutes: 5,
+    author: "Shaun Adams",
+    client: "The Digital DRA",
+    sector: "debt-management",
+    pdf: "/acta-data-the-digital-dra-case-study.pdf",
+    stats: [
+      { figure: "3 months", label: "From manual Excel packs to a live platform" },
+      { figure: "30+", label: "Governed views, one set of definitions" },
+      { figure: "~60", label: "Consumer Duty metrics, measured monthly" },
+      { figure: "7", label: "Reporting products live, board to ops" },
+    ],
+    situation: [
+      "All operational data sat in SQL Server; every report was pulled into Excel and assembled by hand, every month.",
+      "Every figure was “as of now” — no way to see the book as it stood at a past date, so nothing could be tracked month on month.",
+      "Definitions varied between spreadsheets, so every new question from the board, a client or the FCA meant starting again.",
+    ],
+    work: [
+      "A nightly automated feed into Google BigQuery, in their own cloud environment.",
+      "30+ governed views encoding the business's definitions once — revenue, collections, contact, service, Consumer Duty.",
+      "Point-in-time history across the whole book: any figure, reconstructed at any month-end.",
+      "A reporting suite on top: an FCA Consumer Duty board report, a monthly client pack with a full audit trail, an operations pack that generates its own board PDF, and per-client reports — all in DRA's own brand.",
+      "Claude wired into the governed layer, with personal data kept out of it, so the reporting suite is prompt-driven and the team change their own reports.",
+    ],
+    outcome: [
+      "Monthly packs that took days to assemble are produced in minutes, and every figure traces to a governed definition.",
+      "Consumer Duty MI went from a once-a-year exercise to standing monthly measurement across roughly 60 metrics per client.",
+      "New questions are answered from the platform in hours — including ones the old reporting could not see at all.",
+      "Claude is now used across the organisation rather than in development alone, because it finally has governed data and business context to reason over.",
+    ],
+    quote: {
+      text: "The transparency and the speed the Acta Data team work at is refreshing. Being able to query our own data and build our own reports is the biggest step forward we've had in five years — and it has only been three months.",
+      name: "Tom Hill",
+      role: "Chief Operating Officer, The Digital DRA",
+    },
+    body: [
+      { type: "h2", text: "“As of now” is not a reporting position" },
+      {
+        type: "p",
+        text: "The Digital DRA manages customer accounts at scale for energy, telecoms and consumer-finance clients. All of the operational data sat in SQL Server, and every report came out of it into Excel, by hand, every month.",
+      },
+      {
+        type: "p",
+        text: "The bigger problem was not the assembly work. It was that every figure was as of now. There was no way to see the book as it stood at a past month-end — so nothing could be tracked month on month. Not arrears movement, not collections performance, not whether a treatment was working.",
+      },
+      {
+        type: "p",
+        text: "That is a reporting gap that quietly becomes a regulatory one. Consumer Duty asks you to demonstrate outcomes over time. If your systems only hold today, you cannot show a trend, because the trend was never stored.",
+      },
+      {
+        type: "quote",
+        text: "A system that holds today's position holds no history. There is nothing to trend, because nothing was kept.",
+      },
+      { type: "h2", text: "The definitions were the real work" },
+      {
+        type: "p",
+        text: "Definitions varied between spreadsheets. So every new question — from the board, a client, or the FCA — started from scratch, and the answer depended on which workbook you asked.",
+      },
+      {
+        type: "p",
+        text: "This is where reporting projects actually fail, and it is not a tooling problem. We encoded the definitions once, as 30+ governed views: revenue, collections, contact, service, Consumer Duty. One place where “an account in arrears” means one thing.",
+      },
+      {
+        type: "p",
+        text: "Then the part that made it trustworthy on day one: every figure was validated against the client's existing board numbers before go-live. Not reconciled afterwards — matched first, so nobody had to take the new platform on faith.",
+      },
+      { type: "h2", text: "Point-in-time history for the whole book" },
+      {
+        type: "p",
+        text: "A nightly feed lands the data in their own BigQuery environment, with snapshot history behind it, so any figure can be reconstructed at any month-end.",
+      },
+      {
+        type: "p",
+        text: "That single capability is what turned a monthly assembly job into a platform. Once the past is stored properly, “how did this look in March” stops being an archaeology project.",
+      },
+      {
+        type: "p",
+        text: "Seven reporting products now run on top of it: an FCA Consumer Duty board report, a monthly client pack with a full audit trail, an operations pack that generates its own board PDF, and per-client reports — all in DRA's own brand.",
+      },
+      { type: "h2", text: "It was built with their team, not around them" },
+      {
+        type: "p",
+        text: "DRA's team built the nightly feed and supplied the operational knowledge. We designed the data model, encoded and reconciled the definitions, and shipped the reporting suite iteratively.",
+      },
+      {
+        type: "p",
+        text: "That split matters. The operational knowledge — why a number moves, which exception matters, what a client needs to see — was already in the building. It usually is. What was missing was somewhere to put it.",
+      },
+      { type: "h2", text: "Then we gave it to Claude" },
+      {
+        type: "p",
+        text: "A governed layer with the definitions written down and personal data stripped out is exactly what an AI assistant needs and almost never gets. Point a model at a folder of spreadsheets and it answers confidently from whichever one it was handed. Point it at a layer where “an account in arrears” has one meaning, and it reasons over the business.",
+      },
+      {
+        type: "p",
+        text: "So the reporting suite became prompt-driven. Tom Hill, their COO, changes his own reports — no ticket, no developer, no waiting for us. Claude is now used across the organisation rather than in one corner of it.",
+      },
+      {
+        type: "p",
+        text: "The technology was available to them before we arrived. What was missing was the layer underneath it.",
+      },
+      { type: "h2", text: "What we handed over" },
+      {
+        type: "p",
+        text: "We showed our work throughout, validated every number against what they already trusted, and handed over a platform they own outright in their own cloud environment.",
+      },
+      {
+        type: "p",
+        text: "That is the model. We set it up properly, and you take it as far as you want — with us, or on your own. The measure of the engagement is not how long we stay.",
+      },
+      {
+        type: "p",
+        text: "If your regulatory reporting is assembled by hand every month, and your systems only hold today's position, the problem is not the spreadsheet. It is that nothing underneath it was ever built. Three months is a realistic timeline for fixing that.",
+      },
+    ],
+  },
+];
 
 export const posts: Post[] = [...caseStudyPosts, ...insightPosts];
 
@@ -409,6 +547,33 @@ export const postsForSector = (sectorSlug: string) =>
 
 export const hasPosts = () => posts.length > 0;
 export const hasCaseStudies = () => caseStudies().length > 0;
+
+/**
+ * The quote the site leads with, derived from the newest case study that carries
+ * one rather than typed out again in a constants file.
+ *
+ * That derivation is the point: this line now appears on the home page, four
+ * interior pages and the study itself, and a testimonial that says something
+ * slightly different in one of those places is worse than no testimonial at all.
+ * Change the client's words in one place — the case study — or nowhere.
+ *
+ * Returns undefined when no published study carries a quote, and every caller
+ * renders nothing in that case, so removing the study cleanly removes the quote
+ * from the whole site.
+ */
+export type FeaturedQuote = {
+  text: string;
+  name?: string;
+  role?: string;
+  client?: string;
+  href: string;
+};
+
+export const featuredQuote = (): FeaturedQuote | undefined => {
+  const study = caseStudies().find(p => p.quote?.text);
+  if (!study?.quote) return undefined;
+  return { ...study.quote, client: study.client, href: `/blog/${study.slug}` };
+};
 
 /** en-GB, spelled out — "8 August 2026". */
 export const formatDate = (iso: string) =>

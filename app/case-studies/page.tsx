@@ -3,6 +3,7 @@ import Link from "next/link";
 import { PageHeader } from "@/components/page-header";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { PostCards } from "@/components/post-cards";
+import { Testimonial } from "@/components/sections/testimonial";
 import { ContactFooter } from "@/components/sections/contact-footer";
 import { caseStudies, insights } from "@/lib/posts";
 
@@ -21,6 +22,9 @@ export const metadata: Metadata = {
 export default function CaseStudiesPage() {
   const studies = caseStudies();
   const pieces = insights();
+  /* One-page PDFs of the studies that have one, for the buyer who wants
+     something to forward rather than a link to send. */
+  const downloads = studies.filter(s => s.pdf);
 
   return (
     <>
@@ -62,6 +66,40 @@ export default function CaseStudiesPage() {
           )}
         </div>
       </section>
+
+      {downloads.length > 0 && (
+        <section className="pb-14 md:pb-16">
+          <div className="container">
+            <div className="max-w-3xl rounded-2xl border border-white/[0.08] bg-card/50 p-7 md:p-8">
+              <h2 className="font-display text-2xl tracking-tight">Take one with you</h2>
+              <p className="mt-2.5 text-sm text-muted-foreground leading-relaxed">
+                Each study is also a single page you can forward to whoever else needs to see it.
+              </p>
+              <ul className="mt-6 space-y-3">
+                {downloads.map(s => (
+                  <li key={s.slug}>
+                    <a
+                      href={s.pdf}
+                      /* Not target=_blank: a PDF link that hijacks the tab is a
+                         small rudeness, and the browser decides whether to open
+                         it inline or save it. `download` only hints the filename. */
+                      download
+                      className="group flex flex-wrap items-baseline gap-x-3 gap-y-1 text-sm"
+                    >
+                      <span className="text-electric group-hover:underline">
+                        {s.client ?? s.title} — one-page PDF ↓
+                      </span>
+                      <span className="text-xs text-muted-foreground">{s.title}</span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </section>
+      )}
+
+      <Testimonial compact eyebrow="In their words" />
 
       <ContactFooter />
     </>

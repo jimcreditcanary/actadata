@@ -7,6 +7,7 @@ import { WhatWeBuild } from "@/components/sections/what-we-build";
 import { SecondBrain } from "@/components/sections/second-brain";
 import { DataProtection } from "@/components/sections/data-protection";
 import { EngagementModels } from "@/components/sections/engagement-models";
+import { Testimonial } from "@/components/sections/testimonial";
 import { ContactFooter } from "@/components/sections/contact-footer";
 
 export const metadata: Metadata = {
@@ -38,6 +39,9 @@ export default function WhatWeBuildPage() {
 
       <WhatWeBuild />
       <SecondBrain />
+      {/* Straight after the AI layer, because that is exactly what the quote is
+          about — the client running their own queries rather than asking us. */}
+      <Testimonial eyebrow="Built, delivered, handed over" />
       <DataProtection />
       <EngagementModels />
       <ContactFooter />

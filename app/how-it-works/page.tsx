@@ -9,6 +9,7 @@ import { PipelineGrid } from "@/components/pipeline-grid";
 import { SpreadsheetTrap } from "@/components/sections/spreadsheet-trap";
 import { ValueStream } from "@/components/sections/value-stream";
 import { EngagementTimeline } from "@/components/sections/engagement-timeline";
+import { Testimonial } from "@/components/sections/testimonial";
 import { ContactFooter } from "@/components/sections/contact-footer";
 import { JsonLd } from "@/components/json-ld";
 import { graph, howItWorks } from "@/lib/seo";
@@ -64,6 +65,9 @@ export default function HowItWorksPage() {
       </section>
 
       <EngagementTimeline />
+      {/* The timeline above claims a few months. This is the client saying it
+          took three — which is the only kind of evidence that claim can have. */}
+      <Testimonial eyebrow="Three months, in practice" />
       <ContactFooter />
     </>
   );

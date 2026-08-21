@@ -7,6 +7,7 @@ import { SecondBrain } from "@/components/sections/second-brain";
 import { SectorTeaser } from "@/components/sections/sector-teaser";
 import { HowWeWork } from "@/components/sections/how-we-work";
 import { PricingTeaser } from "@/components/sections/pricing-teaser";
+import { Testimonial } from "@/components/sections/testimonial";
 import { ContactFooter } from "@/components/sections/contact-footer";
 import { PostSection } from "@/components/post-cards";
 import { allPosts, caseStudies } from "@/lib/posts";
@@ -47,6 +48,12 @@ export default function Page() {
     <>
       <Hero />
       <ExperienceStrip />
+      {/* Proof before explanation. The brand marquee above says who we have
+          worked with; this says what one of them got, in their words, before the
+          page starts explaining anything. Compact, and it renders nothing until a
+          case study carrying a quote is published — so the mobile height budget
+          only pays for it while it is earning. */}
+      <Testimonial compact />
       <HowItWorks />
       <SummaryPageDemo />
       <SecondBrain compact />

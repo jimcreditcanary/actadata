@@ -123,6 +123,19 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
             image: `${SITE}/opengraph-image`,
             mainEntityOfPage: { "@type": "WebPage", "@id": `${SITE}/blog/${post.slug}` },
             about: sector ? { "@type": "Thing", name: sector.label } : undefined,
+            /* The named client as an entity, so an assistant asked "who has Acta
+               Data worked with" can resolve the relationship rather than having
+               to parse it out of the prose. */
+            mentions: post.client ? { "@type": "Organization", name: post.client } : undefined,
+            /* The one-pager, declared as the same work in another format. */
+            associatedMedia: post.pdf
+              ? {
+                  "@type": "MediaObject",
+                  contentUrl: `${SITE}${post.pdf}`,
+                  encodingFormat: "application/pdf",
+                  name: `${post.title} — one-page PDF`,
+                }
+              : undefined,
           },
           breadcrumbs([
             { name: "Writing", path: "/blog" },
@@ -145,6 +158,11 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
               {sector.label} →
             </Link>
           )}
+          {post.pdf && (
+            <a href={post.pdf} download className="text-electric hover:underline">
+              Download the one-page PDF ↓
+            </a>
+          )}
         </div>
       </PageHeader>
 
@@ -161,6 +179,35 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
                 </CardContent>
               </Card>
             ))}
+          </div>
+        </section>
+      )}
+
+      {/* The quote leads rather than trails. Buried under 1,200 words it was read
+          by the people who least needed convincing; here it sits directly under
+          the figures, where the client corroborates them before we start
+          explaining. */}
+      {post.quote && (
+        <section className="py-14 md:py-16 border-b border-white/[0.04]">
+          <div className="container">
+            <blockquote className="max-w-4xl">
+              <span
+                aria-hidden
+                className="block font-display text-6xl md:text-7xl leading-none text-electric/25 select-none"
+              >
+                &ldquo;
+              </span>
+              <p className="-mt-4 md:-mt-6 font-display text-2xl md:text-4xl tracking-tight leading-[1.15] text-foreground/95">
+                {post.quote.text}
+              </p>
+              {(post.quote.name || post.quote.role) && (
+                <footer className="mt-6 text-sm text-muted-foreground">
+                  <cite className="not-italic">
+                    {[post.quote.name, post.quote.role].filter(Boolean).join(" · ")}
+                  </cite>
+                </footer>
+              )}
+            </blockquote>
           </div>
         </section>
       )}
@@ -198,17 +245,24 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
             </div>
           )}
 
-          {post.quote && (
-            <blockquote className="mt-14 rounded-2xl border border-electric/25 bg-electric/[0.05] p-7 md:p-9">
-              <p className="text-xl md:text-2xl leading-relaxed tracking-tight text-foreground/95">
-                &ldquo;{post.quote.text}&rdquo;
-              </p>
-              {(post.quote.name || post.quote.role) && (
-                <footer className="mt-5 text-sm text-muted-foreground">
-                  {[post.quote.name, post.quote.role].filter(Boolean).join(" · ")}
-                </footer>
-              )}
-            </blockquote>
+          {/* The quote now sits above the article, so what belongs at the end is
+              the thing a convinced reader wants next: the page on paper. */}
+          {post.pdf && (
+            <a
+              href={post.pdf}
+              download
+              className="group mt-14 flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-electric/25 bg-electric/[0.05] p-7 md:p-8"
+            >
+              <div>
+                <div className="font-display text-xl tracking-tight">
+                  This case study on one page
+                </div>
+                <div className="mt-1.5 text-sm text-muted-foreground">
+                  A single-sheet PDF, for forwarding to whoever else needs to see it.
+                </div>
+              </div>
+              <span className="text-sm text-electric group-hover:underline">Download ↓</span>
+            </a>
           )}
 
           <div className="mt-14 pt-8 border-t border-white/[0.06] flex flex-wrap items-center justify-between gap-4 text-sm">
