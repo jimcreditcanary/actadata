@@ -11,17 +11,18 @@ import { cn } from "@/lib/utils";
  */
 export function Logo({ className }: { className?: string }) {
   return (
-    <span
-      className={cn("inline-flex items-center select-none", className)}
-      aria-label="Acta Data"
-    >
+    <span className={cn("inline-flex items-center select-none", className)}>
+      {/* The accessible name lives on the SVG itself (role="img" + aria-label):
+          aria-label is prohibited on a roleless <span>, which failed Lighthouse's
+          "prohibited ARIA attributes" and "accessibility tree not well-formed"
+          audits on every page the nav/footer logo appears. */}
       <svg
         viewBox="0 0 1542 857"
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
         className="h-9 w-auto"
         role="img"
-        aria-hidden
+        aria-label="Acta Data"
       >
         <path d="M448.5 33.5L482 0H686.5L719.5 33.5L753 66V132H646V99H517V265H646V237.5H753V301.5L719.5 333.5L686.5 367H482L448.5 333.5L415 301.5V69L448.5 33.5Z" fill="white" fillOpacity="0.5"/>
         <path d="M817 0H1140V99H1034.5V367H935V99H817V0Z" fill="white" fillOpacity="0.5"/>
