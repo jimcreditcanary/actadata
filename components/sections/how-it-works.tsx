@@ -1,4 +1,3 @@
-import { Eyebrow } from "@/components/eyebrow";
 import { FlowDiagram } from "@/components/flow-diagram";
 
 export function HowItWorks() {
@@ -6,7 +5,9 @@ export function HowItWorks() {
     <section id="how" className="relative py-14 md:py-16 border-t border-white/[0.04]">
       <div className="container">
         <div className="max-w-3xl">
-          <Eyebrow className="mb-5">How it works</Eyebrow>
+          {/* No eyebrow: the headline carries the section, and an "How it works"
+              label above "...Then it works for you" only restates it. Dropping it
+              here also breaks the every-section eyebrow cadence down the home page. */}
           <h2 className="font-display text-4xl md:text-5xl tracking-tight leading-[1.05]">
             Everything in.{" "}
             <span className="text-electric">One layer. Then it works for you.</span>

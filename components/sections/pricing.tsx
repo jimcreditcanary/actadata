@@ -147,7 +147,7 @@ export function Pricing() {
                 <div className="flex items-start justify-between gap-2">
                   <Eyebrow accent={p.featured}>{p.name}</Eyebrow>
                   {p.diy && (
-                    <span className="shrink-0 rounded border border-white/[0.18] px-1.5 py-0.5 text-[10px] uppercase tracking-[0.16em] text-muted-foreground">
+                    <span className="shrink-0 rounded-md border border-white/[0.18] px-1.5 py-0.5 text-[10px] uppercase tracking-[0.16em] text-muted-foreground">
                       DIY
                     </span>
                   )}

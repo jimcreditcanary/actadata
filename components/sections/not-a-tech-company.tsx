@@ -40,7 +40,12 @@ export function NotATechCompany({ compact = false }: { compact?: boolean }) {
     <section id="not-a-tech-company" className="relative py-16 md:py-20 border-t border-white/[0.04]">
       <div className="container">
         <div className="max-w-4xl">
-          <Eyebrow accent className="mb-5">If you think this isn&apos;t for you</Eyebrow>
+          {/* Dropped on the home page (compact) to break the every-section eyebrow
+              cadence; the headline sets up the objection on its own. Sector pages
+              (full) keep it. */}
+          {!compact && (
+            <Eyebrow accent className="mb-5">If you think this isn&apos;t for you</Eyebrow>
+          )}
           <h2 className="font-display text-4xl md:text-5xl tracking-tight leading-[1.05]">
             You don&apos;t need to be a tech company.{" "}
             <span className="text-electric">You need to see your own numbers.</span>

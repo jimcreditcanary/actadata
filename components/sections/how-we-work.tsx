@@ -48,7 +48,9 @@ export function HowWeWork({ compact = false }: { compact?: boolean }) {
     >
       <div className="container">
         <div className="max-w-3xl">
-          <Eyebrow accent className="mb-5">How we work</Eyebrow>
+          {/* Home page (compact) lets the headline carry; /about (full) keeps the
+              eyebrow. Part of thinning the home page's every-section eyebrow cadence. */}
+          {!compact && <Eyebrow accent className="mb-5">How we work</Eyebrow>}
           <h2 className="font-display text-4xl md:text-5xl tracking-tight leading-[1.05]">
             Nothing held back.{" "}
             <span className="text-electric">Including the keys.</span>

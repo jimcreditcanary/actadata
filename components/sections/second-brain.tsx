@@ -59,7 +59,10 @@ export function SecondBrain({ compact = false }: { compact?: boolean }) {
         {/* The heading gets max-w-4xl rather than the usual 3xl: at 3xl it broke
             after "everyone in" and left "it." orphaned on a third line. */}
         <div className="max-w-4xl">
-          <Eyebrow accent className="mb-5">The second brain</Eyebrow>
+          {/* On the home page (compact) the headline "A second brain for your
+              business" already names it, so the eyebrow only repeats the line and
+              adds to the every-section cadence. Full pages keep it for wayfinding. */}
+          {!compact && <Eyebrow accent className="mb-5">The second brain</Eyebrow>}
           <h2 className="font-display text-4xl md:text-5xl tracking-tight leading-[1.05]">
             A second brain for your business.{" "}
             <span className="text-electric">And for everyone in it.</span>

@@ -46,6 +46,9 @@ export function PipelineGrid() {
           <div className="mt-0.5 text-sm text-foreground">Last 30 days, every source</div>
         </div>
         <div className="flex items-center gap-4 text-xs text-muted-foreground">
+          {/* Same honesty label the Summary Page mock carries: the run-history
+              cells below are seeded, not a real feed. */}
+          <span className="text-[11px] uppercase tracking-[0.16em]">Illustrative</span>
           <span className="flex items-center gap-1.5">
             <span className="h-2.5 w-2.5 rounded-[2px] bg-electric/55" aria-hidden /> Clean
           </span>
