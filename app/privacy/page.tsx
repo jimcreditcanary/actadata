@@ -71,7 +71,7 @@ export default function PrivacyPage() {
           <Section title="What this website collects">
             <p>
               Nothing. This site sets no cookies, runs no analytics, and loads no
-              third-party scripts, fonts or trackers. There are no forms — the only way to
+              third-party scripts, fonts or trackers. There are no forms - the only way to
               contact us from here is the email link, which opens your own email client.
             </p>
             <p>
@@ -84,7 +84,7 @@ export default function PrivacyPage() {
           <Section title="Server logs">
             <p>
               The site is hosted by Vercel Inc., which processes standard server logs on our
-              behalf — including your IP address, the pages requested, and your browser
+              behalf - including your IP address, the pages requested, and your browser
               user-agent. These are used only to deliver the site and to protect it from
               abuse, and we do not combine them with anything else or use them to build a
               profile of you.
@@ -99,7 +99,7 @@ export default function PrivacyPage() {
             <p>
               If you email us we will hold your name, email address and whatever you send,
               so that we can reply and take the conversation forward. Our lawful basis is
-              legitimate interests — responding to someone who has asked to speak to us —
+              legitimate interests - responding to someone who has asked to speak to us - 
               and, once we are working together, performance of a contract.
             </p>
             <p>

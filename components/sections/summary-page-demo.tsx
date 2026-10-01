@@ -14,7 +14,7 @@ import { summaryExamples } from "@/lib/summary-examples";
  * scorecard (whole business), objectives (against pace), alerts (what needs you),
  * and the trend underneath.
  *
- * Every chart here is hand-rolled SVG — the sparklines in SummaryScorecard and
+ * Every chart here is hand-rolled SVG - the sparklines in SummaryScorecard and
  * the trend in SummaryTrend. There is no charting library in the bundle at all,
  * which is worth roughly 90kB of JavaScript on this page.
  */
@@ -22,7 +22,7 @@ import { summaryExamples } from "@/lib/summary-examples";
 /**
  * The demo lives on the home page only. It used to take a `showPipelineHealth`
  * flag for /how-it-works, but carrying a second copy of a 3,637px block made that
- * page the longest on the site while saying nothing home had not said — so the
+ * page the longest on the site while saying nothing home had not said - so the
  * pipeline grid moved to its own section there instead.
  */
 export function SummaryPageDemo() {
@@ -35,7 +35,7 @@ export function SummaryPageDemo() {
             One page. The whole business. <span className="text-electric">In real time.</span>
           </h2>
           <p className="mt-5 text-lg text-muted-foreground">
-            A balanced scorecard across finance, customer, operations and people — every
+            A balanced scorecard across finance, customer, operations and people - every
             measure against target, with RAG status derived from the metric tree rather than
             typed in by hand. Underneath it, objectives tracked against pace, and the three
             things that actually need you today. Clear one and the next moves up.
@@ -93,7 +93,7 @@ export function SummaryPageDemo() {
             <span>Demo data shown. Live versions are wired straight to your warehouse.</span>
             <span>
               Also built for credit unions, B2B services, wholesale, customer service and
-              recruitment —{" "}
+              recruitment - {" "}
               <Link href="/sectors" className="text-electric hover:underline">
                 every sector
               </Link>

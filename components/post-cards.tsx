@@ -5,8 +5,8 @@ import { KIND_LABEL, formatDate, type Post } from "@/lib/posts";
 
 /**
  * One card for both kinds of post. A case study shows its client and headline
- * figures; an insight shows the date and reading time. Everything else — the
- * frame, the hover, the link target — is identical, because they are the same
+ * figures; an insight shows the date and reading time. Everything else - the
+ * frame, the hover, the link target - is identical, because they are the same
  * kind of object as far as a reader is concerned.
  *
  * Renders nothing when the list is empty, so callers can drop it in

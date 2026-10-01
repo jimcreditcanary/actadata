@@ -1,10 +1,10 @@
 import { cn } from "@/lib/utils";
 
 /**
- * Section label. Plain tracked caps rather than a pill chip — the bordered
+ * Section label. Plain tracked caps rather than a pill chip - the bordered
  * badge-with-dot look reads as generic AI-startup template.
  *
- * `as` exists because on several pages the eyebrow IS the section's only title —
+ * `as` exists because on several pages the eyebrow IS the section's only title - 
  * the sector pages had an H1 and then nothing until the footer, which reads as
  * one undifferentiated blob to a screen reader and to a crawler. Rendering the
  * same styles as an h2/h3 fixes the document outline without touching the look.

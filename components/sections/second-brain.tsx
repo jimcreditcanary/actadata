@@ -3,7 +3,7 @@ import { Eyebrow } from "@/components/eyebrow";
 import { Card, CardContent } from "@/components/ui/card";
 
 /**
- * The second brain — what the layer becomes once it has history, policy and a
+ * The second brain - what the layer becomes once it has history, policy and a
  * feedback loop on top of it.
  *
  * Two things make this claim defensible rather than vapour, and both are stated
@@ -13,15 +13,15 @@ import { Card, CardContent } from "@/components/ui/card";
  * best practice. If either of those stops being true in delivery, this section is
  * the first thing that has to change.
  *
- * `compact` is the home-page rendering — the two brains and the alignment line,
+ * `compact` is the home-page rendering - the two brains and the alignment line,
  * with the mechanism detail on /what-we-build.
  */
 const brains = [
   {
     t: "For everyone in it",
     short:
-      "Ask it what you would ask the colleague who has been here fifteen years — why we decline these, what we did last time, which of my accounts is about to go wrong.",
-    d: "Ask it what you would ask the colleague who has been here fifteen years. Why do we decline these? What did we do last time this happened? Which of my accounts is about to go wrong? It answers from your own history, at whatever level of detail the person asking wants — and it never gets tired of being asked.",
+      "Ask it what you would ask the colleague who has been here fifteen years - why we decline these, what we did last time, which of my accounts is about to go wrong.",
+    d: "Ask it what you would ask the colleague who has been here fifteen years. Why do we decline these? What did we do last time this happened? Which of my accounts is about to go wrong? It answers from your own history, at whatever level of detail the person asking wants - and it never gets tired of being asked.",
   },
   {
     t: "For the business itself",
@@ -35,12 +35,12 @@ const alignment = [
   {
     n: "01",
     t: "Your policies, as code",
-    d: "Recommendations are generated inside your policy rather than filtered after the fact. If something cannot be offered to a customer in that position, it is never suggested in the first place — which is also what makes the output safe to put in front of a regulator.",
+    d: "Recommendations are generated inside your policy rather than filtered after the fact. If something cannot be offered to a customer in that position, it is never suggested in the first place - which is also what makes the output safe to put in front of a regulator.",
   },
   {
     n: "02",
     t: "Your decisioning priors, not generic best practice",
-    d: "It learns how your business actually trades off risk, cost and service from the decisions you have already made — including the ones where a person overrode the system and turned out to be right. Your appetite, not the industry average.",
+    d: "It learns how your business actually trades off risk, cost and service from the decisions you have already made - including the ones where a person overrode the system and turned out to be right. Your appetite, not the industry average.",
   },
   {
     n: "03",
@@ -68,7 +68,7 @@ export function SecondBrain({ compact = false }: { compact?: boolean }) {
             <span className="text-electric">And for everyone in it.</span>
           </h2>
           <p className="mt-5 max-w-3xl text-lg text-muted-foreground">
-            The layer does not only report. It remembers — every activity you have recorded,
+            The layer does not only report. It remembers - every activity you have recorded,
             every decision anyone made, and what happened next. That is what turns reporting
             into recommendations: something that has seen your business work, is still watching,
             and tells you what to do about what it is seeing right now.
@@ -104,7 +104,7 @@ export function SecondBrain({ compact = false }: { compact?: boolean }) {
             </h3>
             <p className="mt-3 text-sm md:text-base text-muted-foreground leading-relaxed max-w-3xl">
               Recommendations come from inside your own policy, and the priors from decisions your
-              business has already made — not the industry average.
+              business has already made - not the industry average.
             </p>
             <Link
               href="/what-we-build#second-brain"
@@ -146,7 +146,7 @@ export function SecondBrain({ compact = false }: { compact?: boolean }) {
                   <p>
                     A monthly pack tells you what you should have done. A second brain is
                     looking at the business continuously, which means the recommendation arrives
-                    while the decision is still live — the case still open, the customer still on
+                    while the decision is still live - the case still open, the customer still on
                     the phone, the limit not yet breached.
                   </p>
                   <p>

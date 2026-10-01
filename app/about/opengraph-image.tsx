@@ -9,7 +9,7 @@ import { OgCard, OG_SIZE, ogFonts } from "@/components/og-card";
 export const size = OG_SIZE;
 export const contentType = "image/png";
 export const alt =
-  "Acta Data — operators first, data people second. C-suite experience across marketing, operations, technology and product.";
+  "Acta Data - operators first, data people second. C-suite experience across marketing, operations, technology and product.";
 
 export default function Image() {
   return new ImageResponse(

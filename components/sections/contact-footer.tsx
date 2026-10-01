@@ -5,7 +5,7 @@ import { PHONE_DISPLAY, PHONE_E164 } from "@/lib/seo";
 
 /**
  * `hideHeading` drops the eyebrow + headline + lede, leaving just the form.
- * Used on /contact, where the PageHeader already carries the same headline —
+ * Used on /contact, where the PageHeader already carries the same headline - 
  * without it the visitor reads the identical line twice.
  */
 export function ContactFooter({ hideHeading = false }: { hideHeading?: boolean }) {
@@ -35,7 +35,7 @@ export function ContactFooter({ hideHeading = false }: { hideHeading?: boolean }
         <div className="container flex flex-col md:flex-row items-start justify-between gap-6 text-sm text-muted-foreground">
           <div className="flex flex-col gap-3">
             <Logo />
-            <div className="text-xs">Strategy · Build · Run — for consumer businesses.</div>
+            <div className="text-xs">Strategy · Build · Run - for consumer businesses.</div>
           </div>
           <div className="md:text-right space-y-1">
             <div className="text-foreground/80">Acta Data Ltd</div>

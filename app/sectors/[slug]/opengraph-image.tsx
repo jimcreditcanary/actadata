@@ -3,7 +3,7 @@ import { OgCard, OG_SIZE, ogFonts, splitHeadline } from "@/components/og-card";
 import { sectors, getSector } from "@/lib/sectors";
 
 /**
- * A card per sector, built from lib/sectors.ts — so a campaign landing on
+ * A card per sector, built from lib/sectors.ts - so a campaign landing on
  * /sectors/credit-unions shares as a credit-union card naming the metrics that
  * sector argues about, not as the generic company card.
  *
@@ -11,7 +11,7 @@ import { sectors, getSector } from "@/lib/sectors";
  */
 export const size = OG_SIZE;
 export const contentType = "image/png";
-export const alt = "Acta Data — data and AI for your sector.";
+export const alt = "Acta Data - data and AI for your sector.";
 
 export function generateStaticParams() {
   return sectors.map(s => ({ slug: s.slug }));
@@ -26,7 +26,7 @@ export default async function SectorOgImage({ params }: { params: Promise<{ slug
       (
         <OgCard
           lines={["The data layer", "AI needs."]}
-          sub="Timely data, one source, agents that act — all on Google."
+          sub="Timely data, one source, agents that act - all on Google."
         />
       ),
       { ...size, fonts: ogFonts() }

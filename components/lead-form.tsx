@@ -57,7 +57,7 @@ export function LeadForm() {
         <div className="mx-auto flex h-11 w-11 items-center justify-center rounded-full bg-electric/15">
           <Check className="h-5 w-5 text-electric" aria-hidden />
         </div>
-        <h3 className="mt-4 text-lg font-semibold tracking-tight">You&apos;re in — check your inbox.</h3>
+        <h3 className="mt-4 text-lg font-semibold tracking-tight">You&apos;re in - check your inbox.</h3>
         <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
           We&apos;ve just emailed you a couple of times to meet. Reply with whichever works and
           we&apos;ll lock it in.
@@ -71,7 +71,7 @@ export function LeadForm() {
 
   return (
     <form onSubmit={onSubmit} className="mx-auto mt-9 max-w-md text-left" noValidate>
-      {/* Honeypot — hidden from people, catnip for bots. */}
+      {/* Honeypot - hidden from people, catnip for bots. */}
       <div aria-hidden className="absolute left-[-9999px] h-0 w-0 overflow-hidden">
         <label>
           Website

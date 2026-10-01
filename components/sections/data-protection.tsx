@@ -5,13 +5,13 @@ import { Eyebrow } from "@/components/eyebrow";
  *
  * THE LINE THIS COPY MUST NOT CROSS. Everything here is a mechanism we build or a
  * piece of evidence we produce. Nowhere does it say we make anyone compliant,
- * certify anything, or advise on the law — that would be both untrue and a
+ * certify anything, or advise on the law - that would be both untrue and a
  * liability, and the "What we are not" panel says so in the client's face rather
  * than in a footnote. The policy is the DPO's or counsel's; we build the plumbing
  * that makes it happen and the audit trail that proves it did.
  *
  * The three pillars map to what is actually broken in this market:
- *   1. Personal data in the analytical layer — already prevented by the design, so
+ *   1. Personal data in the analytical layer - already prevented by the design, so
  *      this pillar is a claim we can already stand behind.
  *   2. Retention policies that exist as a document and nothing else.
  *   3. Marketing lists carrying contacts whose consent nobody can evidence.
@@ -30,12 +30,12 @@ const pillars = [
   {
     n: "02",
     t: "Retention and destruction that actually happens",
-    d: "We map where personal data actually lives across every connected system, express your retention rules as code against that map, and run them on a schedule. Then the part that decides whether any of it counts: an audit trail showing what was deleted, when, and under which rule — so a retention policy becomes evidence rather than an intention. Erasure requests get the same treatment, once, across every system that holds the record.",
+    d: "We map where personal data actually lives across every connected system, express your retention rules as code against that map, and run them on a schedule. Then the part that decides whether any of it counts: an audit trail showing what was deleted, when, and under which rule - so a retention policy becomes evidence rather than an intention. Erasure requests get the same treatment, once, across every system that holds the record.",
   },
   {
     n: "03",
     t: "Marketing lists you can stand behind",
-    d: "Every contact traced back to the event that created it — the form submission, with its timestamp and the wording that was on the page — or to nothing at all. Contacts with an evidenced lawful basis get separated from contacts without one, so a list can be suppressed rather than hoped over. The finding is usually the same and usually uncomfortable: a large share of the list has no traceable basis, and nobody knew, because the CRM stores the current state and not how it got there.",
+    d: "Every contact traced back to the event that created it - the form submission, with its timestamp and the wording that was on the page - or to nothing at all. Contacts with an evidenced lawful basis get separated from contacts without one, so a list can be suppressed rather than hoped over. The finding is usually the same and usually uncomfortable: a large share of the list has no traceable basis, and nobody knew, because the CRM stores the current state and not how it got there.",
   },
 ];
 
@@ -90,7 +90,7 @@ export function DataProtection() {
               </p>
               <p>
                 Acta Data Ltd is registered with the Information Commissioner&apos;s Office
-                under ZB502441, and every environment we build is your own — so the data, and
+                under ZB502441, and every environment we build is your own - so the data, and
                 the responsibility for it, never leaves your control.
               </p>
               <p className="text-foreground/90">

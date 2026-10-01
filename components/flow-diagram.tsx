@@ -3,12 +3,12 @@
  *
  *   1. A complete grid of every record you own, running right up to the layer.
  *      Rows are banded into three source hues that blend to violet before they
- *      arrive — visibly different systems, without a rainbow.
+ *      arrive - visibly different systems, without a rainbow.
  *   2. One modelled data layer.
  *   3. Blocks carry the data out to a handful of reports, one flagged amber.
  *   4. More blocks carry it on to the agents that act.
  *
- * Everything is deterministic — no Math.random, which would desync server and
+ * Everything is deterministic - no Math.random, which would desync server and
  * client render. Colours are literal because SVG needs concrete paint values;
  * they mirror the electric / amber tokens used elsewhere.
  *
@@ -22,7 +22,7 @@ const AMBER = "#FCD34D";
 const LILAC = "#DDD6FE";
 
 /**
- * Three source hues, pushed further apart than the first attempt — the point of
+ * Three source hues, pushed further apart than the first attempt - the point of
  * the stage is that separate systems arrive separately, and a near-violet trio
  * read as one field. Still all in the violet family so the palette holds.
  */
@@ -40,7 +40,7 @@ const VB_W = 1000;
 /** Extra height over the 292px content: room for the stage labels. */
 const VB_H = 336;
 /**
- * On the lattice, at latX(29) — written literally because the lattice helpers are
+ * On the lattice, at latX(29) - written literally because the lattice helpers are
  * defined below it. Roughly centred between the grid's right edge (313) and the
  * reports (540): 101px of clearance left, 94px right.
  *
@@ -51,7 +51,7 @@ const LAYER_X = 414;
 const LAYER_Y = 28;
 const LAYER_W = 32;
 const LAYER_H = 256;
-/** Pulled in from 660/930 — the layer-to-reports void was the emptiest
+/** Pulled in from 660/930 - the layer-to-reports void was the emptiest
  * part of the diagram at 234px. Now 174px. */
 const REPORT_X = 540;
 const AGENT_X = 830;
@@ -59,7 +59,7 @@ const MID = 156;
 
 /**
  * How far across the grid PII survives. Past this point no cell carries a PII
- * slot, because personal data is removed at ingest — the layer holds none by
+ * slot, because personal data is removed at ingest - the layer holds none by
  * design. This is the same commitment made in the Stack section (non-PII read
  * access is all we ask for) and in the privacy notice.
  */
@@ -102,8 +102,8 @@ function bezier(p0: Point, p1: Point, p2: Point, p3: Point, t: number): Point {
 /**
  * ONE LATTICE.
  *
- * Every square in this diagram — grid cells, feeds, report chains, agent chains
- * — sits on the same 14px pitch at the same 11px size. It did not used to: the
+ * Every square in this diagram - grid cells, feeds, report chains, agent chains
+ * - sits on the same 14px pitch at the same 11px size. It did not used to: the
  * chains placed continuously-positioned rects of 7, 8 and 9→5.5px along bezier
  * curves, which is why the squares looked like two different systems and why the
  * feeds visibly overlapped the grid's last columns.
@@ -125,8 +125,8 @@ const snapRow = (y: number) => Math.round((y - MID) / PITCH);
  * ordered unique cells.
  *
  * The dense-sample-then-dedupe is the whole trick. Sampling n times and snapping
- * gives duplicates wherever the curve runs shallow — two rects stacked in one
- * cell, which is exactly the overlap this is meant to remove — so it oversamples
+ * gives duplicates wherever the curve runs shallow - two rects stacked in one
+ * cell, which is exactly the overlap this is meant to remove - so it oversamples
  * and drops repeats instead.
  */
 function latticePath(from: Point, c1: Point, c2: Point, to: Point, samples = 240) {
@@ -144,8 +144,8 @@ function latticePath(from: Point, c1: Point, c2: Point, to: Point, samples = 240
 /**
  * A fan of chains leaving one point, deduped across the whole fan.
  *
- * Chains in a fan share their first cells by definition — they all start at the
- * same place — so rendering them independently stacks four rects in one cell,
+ * Chains in a fan share their first cells by definition - they all start at the
+ * same place - so rendering them independently stacks four rects in one cell,
  * each with its own animation delay. That builds brightness and flickers exactly
  * where the eye enters the stage. On a lattice a cell holds one square, full stop,
  * so the fan is resolved before anything is drawn.
@@ -205,7 +205,7 @@ function ChainFan({
  * Two earlier versions were wrong in opposite ways. The first was a bezier
  * starting three columns INSIDE the grid with squares shrinking 9 → 5.5px, so it
  * overlapped the grid's own cells at a different size. The second put three
- * symmetric staircases onto the layer's centre row — on-lattice and tidy, but it
+ * symmetric staircases onto the layer's centre row - on-lattice and tidy, but it
  * drew a literal arrow pointing at the layer, which is a diagram of an arrow
  * rather than of data arriving.
  *
@@ -225,7 +225,7 @@ const h2 = (a: number, b: number) => (Math.abs(a * 73856093 + b * 19349663) % 10
 
 function Feeds() {
   /* One cell holds one square, so every stream's cells are claimed into a single
-     map before anything renders — the streams cross each other by design, and two
+     map before anything renders - the streams cross each other by design, and two
      rects in a cell is the defect this whole lattice exists to prevent. */
   const claimed = new Map<
     string,
@@ -262,8 +262,8 @@ function Feeds() {
         });
       }
 
-      /* Decide the next row. Mostly hold — that is what makes the runs read as
-         horizontal — with a gentle pull toward the middle and an occasional step
+      /* Decide the next row. Mostly hold - that is what makes the runs read as
+         horizontal - with a gentle pull toward the middle and an occasional step
          the other way so the field does not comb itself straight. */
       const t = h2(col * 3 + 1, k * 5 + 2);
       if (t < 0.34 && k !== 0) k += Math.sign(-k);
@@ -313,7 +313,7 @@ function BackGrid() {
       const op = Math.max(0.12, Math.min(0.95, 0.34 + t * 0.6 + jitter));
 
       // PII slots: personal data is stripped at ingest, so these render as empty
-      // outlined cells — a hole where the field was — and they only exist in the
+      // outlined cells - a hole where the field was - and they only exist in the
       // raw left-hand columns. Nothing past PII_CLEARED_AT carries one, which is
       // the point: by the time data reaches the layer there is none left.
       if ((r * 5 + c * 3) % 31 === 0 && t < PII_CLEARED_AT) {
@@ -385,7 +385,7 @@ export function FlowDiagram() {
           viewBox={`0 0 ${VB_W} ${VB_H}`}
           className="w-full min-w-[900px]"
           role="img"
-          aria-label="A complete grid of records from three source systems blends to one colour as personal data is stripped out, passes through a single data layer holding no personal information, and streams out as blocks to four reports — one flagged as needing attention — and on to three autonomous agent workflows."
+          aria-label="A complete grid of records from three source systems blends to one colour as personal data is stripped out, passes through a single data layer holding no personal information, and streams out as blocks to four reports - one flagged as needing attention - and on to three autonomous agent workflows."
         >
           <defs>
             <linearGradient id="flow-layer" x1="0" y1="0" x2="0" y2="1">
@@ -417,7 +417,7 @@ export function FlowDiagram() {
             <BackGrid />
           </g>
 
-          {/* Three feeds converging on the layer — this is the distillation, and
+          {/* Three feeds converging on the layer - this is the distillation, and
               the only place the diagram shows many-becoming-one as motion rather
               than as a gradient. Each chain carries its source colour and turns
               violet as it arrives. */}
@@ -589,7 +589,7 @@ export function FlowDiagram() {
       </div>
 
       {/*
-        Captions sit under the stage they describe — column widths are set in
+        Captions sit under the stage they describe - column widths are set in
         globals.css (.flow-captions) from the midpoints between stage centres,
         because the four stages are not evenly spaced across the SVG.
 
@@ -601,7 +601,7 @@ export function FlowDiagram() {
         Below md these four are the whole diagram, and as loose centred text
         blocks with 32px gaps they read as fragments floating in space. So on
         mobile each stage becomes a numbered card and each key fact becomes a
-        chip — every mobile-only style is reset at md, where the SVG is back and
+        chip - every mobile-only style is reset at md, where the SVG is back and
         the captions are supposed to sit quietly underneath it.
       */}
       <div className="mt-7 grid grid-cols-1 gap-3 md:gap-5 flow-captions">
@@ -616,7 +616,7 @@ export function FlowDiagram() {
           {
             n: "02",
             label: "Model",
-            d: "Recorded once in BigQuery and never rewritten — every activity with its cost, revenue, conversion and time.",
+            d: "Recorded once in BigQuery and never rewritten - every activity with its cost, revenue, conversion and time.",
           },
           {
             n: "03",
@@ -635,7 +635,7 @@ export function FlowDiagram() {
             key={s.n}
             className="rounded-xl border border-white/[0.07] bg-navy-100/40 p-4 md:rounded-none md:border-0 md:bg-transparent md:p-0 md:text-center"
           >
-            {/* Mobile-only heading — the SVG label carries it on desktop. */}
+            {/* Mobile-only heading - the SVG label carries it on desktop. */}
             <div className="md:hidden flex items-baseline gap-2.5">
               <span className="font-display text-sm tabular-nums text-electric/45">{s.n}</span>
               <span className="text-[11px] font-medium uppercase tracking-[0.2em] text-electric">

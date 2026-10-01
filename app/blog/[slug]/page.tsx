@@ -36,7 +36,7 @@ export async function generateMetadata({
   };
 }
 
-/** Prose blocks. Kept small on purpose — four types cover everything we write. */
+/** Prose blocks. Kept small on purpose - four types cover everything we write. */
 function Block({ block }: { block: PostBlock }) {
   switch (block.type) {
     case "h2":
@@ -133,7 +133,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
                   "@type": "MediaObject",
                   contentUrl: `${SITE}${post.pdf}`,
                   encodingFormat: "application/pdf",
-                  name: `${post.title} — one-page PDF`,
+                  name: `${post.title} - one-page PDF`,
                 }
               : undefined,
           },
@@ -270,7 +270,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
               ← All writing
             </Link>
             <Link href="/contact" className="text-electric hover:underline">
-              Talk to us about your data layer →
+              Talk to us →
             </Link>
             </div>
           </div>

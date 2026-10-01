@@ -19,7 +19,7 @@ export function EnquiryDialog() {
   const [copied, setCopied] = useState(false);
 
   const subject = company
-    ? `Acta Data enquiry — ${company}`
+    ? `Acta Data enquiry - ${company}`
     : "Acta Data enquiry";
 
   const body = [
@@ -37,7 +37,7 @@ export function EnquiryDialog() {
     try {
       await navigator.clipboard.writeText(text);
     } catch {
-      // Clipboard blocked — the textarea contents are still selectable.
+      // Clipboard blocked - the textarea contents are still selectable.
     }
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
@@ -130,7 +130,7 @@ export function EnquiryDialog() {
           </div>
 
           <p className="mt-5 text-xs text-muted-foreground">
-            Nothing is sent from this page and nothing is stored — it opens your own email
+            Nothing is sent from this page and nothing is stored - it opens your own email
             client, or copies the text for you to paste. Or write to us directly at{" "}
             <span className="select-all text-foreground">{EMAIL}</span>.
           </p>

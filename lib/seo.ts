@@ -18,7 +18,7 @@ import { caseStudies } from "@/lib/posts";
  * Two audiences read this and neither of them reads the CSS: Google's rich-result
  * parsers, and the retrieval layer behind AI assistants. Both reward pages that
  * state plainly what the company is, what it sells, what it costs and who it is
- * for — as data rather than as prose. Every value here is drawn from the same
+ * for - as data rather than as prose. Every value here is drawn from the same
  * constants the visible copy uses, so schema and page can never disagree.
  */
 export const SITE = "https://www.actadata.co.uk";
@@ -44,7 +44,7 @@ export const organisation = {
   logo: { "@type": "ImageObject", url: `${SITE}/opengraph-image`, width: 1200, height: 630 },
   image: `${SITE}/opengraph-image`,
   description:
-    "Acta Data builds the operational data layer that AI needs — event history in Google BigQuery, reporting people actually open, and Claude wired in for safe self-service analytics. Live in weeks, handed over inside a year.",
+    "Acta Data builds the operational data layer that AI needs - event history in Google BigQuery, reporting people actually open, and Claude wired in for safe self-service analytics. Live in weeks, handed over inside a year.",
   slogan: "The data layer AI needs.",
   address: {
     "@type": "PostalAddress",
@@ -58,7 +58,7 @@ export const organisation = {
   /* External anchors for the entity, so an AI engine can triangulate that the
      company described here is the same one it has seen elsewhere. Companies House
      is the public, verifiable one; add the LinkedIn company page and any founder
-     profiles here as they go live — each extra corroborating URL raises trust. */
+     profiles here as they go live - each extra corroborating URL raises trust. */
   sameAs: [
     "https://www.linkedin.com/company/acta-data/",
     "https://find-and-update.company-information.service.gov.uk/company/14182372",
@@ -87,7 +87,7 @@ export const organisation = {
     "Value stream mapping",
     /* Named systems and platforms.
        knowsAbout describes the ENTITY, not a claim about any one page, so this is
-       the right place for the specific product names — an assistant asked "who
+       the right place for the specific product names - an assistant asked "who
        does reporting on Kerridge K8" can match here, and no reader pays for it in
        prose. Keep in step with the `systems` lists in lib/sectors.ts; those drive
        the visible chips and the generated integration FAQ on each sector page.
@@ -126,7 +126,7 @@ export const organisation = {
     "Terraform",
     "Google Cloud Run",
     /* Data protection vocabulary. These are the terms a compliance-led search
-       uses, and knowsAbout is an entity property rather than a page claim — the
+       uses, and knowsAbout is an entity property rather than a page claim - the
        visible commitments live in the data-protection section of /what-we-build. */
     "UK GDPR",
     "Data Protection Act 2018",
@@ -152,7 +152,7 @@ export const organisation = {
      reviews an organisation publishes about itself as self-serving and will not
      award stars for them, and claiming a rating we have not collected would be
      the kind of thing this site exists to argue against. `subjectOf` makes the
-     same connection honestly — here is a documented engagement, go and read it.
+     same connection honestly - here is a documented engagement, go and read it.
      Generated from the posts list, so publishing or withdrawing a study updates
      the entity graph with it. */
   subjectOf: caseStudies().map(s => ({
@@ -195,7 +195,7 @@ export const service = {
     itemListElement: [
       {
         "@type": "Offer",
-        name: "Discovery — value stream map and AI readiness review",
+        name: "Discovery - value stream map and AI readiness review",
         description:
           `One-off engagement, no commitment. Your value streams mapped end to end, the value leaks quantified, an assessment of what your data can support today, the watch-outs before you point AI at it, and a build plan and strategy you own outright and can hand to anyone. ${discoveryCreditNote} if you go on to build with us, so it acts as a down payment rather than a fee. Suits any size of organisation; covers ${tiers.discovery.bound.toLowerCase()}.`,
         priceSpecification: {
@@ -207,7 +207,7 @@ export const service = {
       },
       {
         "@type": "Offer",
-        name: "One area — a single problem solved end to end",
+        name: "One area - a single problem solved end to end",
         description:
           `One value stream, usually operations, built end to end in your own Google environment: sources connected, full event history, metric tree and the Summary Page live for that area. Suits any size of organisation; covers ${tiers.oneArea.bound.toLowerCase()}.`,
         priceSpecification: {
@@ -220,7 +220,7 @@ export const service = {
       },
       {
         "@type": "Offer",
-        name: "Whole business — every value stream, plus self-service analytics",
+        name: "Whole business - every value stream, plus self-service analytics",
         description:
           `Every value stream in the business on one layer with one set of definitions, the full reporting suite including regulated reporting, and safe PII-restricted self-service analytics through Claude in your own enterprise account. Best fit ${tiers.wholeBusiness.fit.toLowerCase()}; covers ${tiers.wholeBusiness.bound.toLowerCase()}. Larger or multi-entity estates are scoped as Enterprise.`,
         priceSpecification: {
@@ -233,7 +233,7 @@ export const service = {
       },
       {
         "@type": "Offer",
-        name: "Enterprise — autonomous agents",
+        name: "Enterprise - autonomous agents",
         description:
           `Adds AI agents working the exceptions inside your operation, and covers ${tiers.enterprise.bound.toLowerCase()}. Scoped and priced against the outcome it delivers.`,
         priceSpecification: {
@@ -265,7 +265,7 @@ export const service = {
  * This is the single highest-value block on the site for AI discovery: an
  * assistant asked "how much does a data layer cost" or "can I keep my data in my
  * own cloud" retrieves answers, not marketing. Every answer here must stay true
- * to the rest of the site — they are the same commitments, written plainly.
+ * to the rest of the site - they are the same commitments, written plainly.
  */
 export const faqs: { q: string; a: string }[] = [
   {
@@ -274,23 +274,23 @@ export const faqs: { q: string; a: string }[] = [
   },
   {
     q: "How much does it cost?",
-    a: `Four options, priced by how much of the business is in scope. Discovery is a £${discoveryOneOffK}k one-off: the value stream map, the AI readiness review, the watch-outs and a build plan you own and can hand to anyone — there is no obligation to use us afterwards — and if you do go ahead with a build, the whole £${discoveryOneOffK}k is credited against it. Solving one area, usually operations, is £${entryYearK}k a year, billed monthly at £${entryMonthlyK}k. Mapping the whole business, with safe PII-restricted self-service analytics through Claude, is £${wholeBusinessYearK}k a year at £${wholeBusinessMonthlyK}k a month. Enterprise adds autonomous agents and is priced against the outcome it delivers rather than from a list. After the twelve-month build you can walk away, or keep us on for £${maintenanceMonthlyK}k a month on a rolling monthly contract so nothing falls over. For scale, one area a year is less than half a fully-loaded senior data hire at around £${seniorHireLoadedK}k. Each tier covers a stated number of source systems and legal entities rather than a revenue band, because a large simple business is a cheaper build than a small complex one: Whole business covers ${tiers.wholeBusiness.bound.toLowerCase()}, and anything past that — group structures, several countries, more integration — is scoped as Enterprise.`,
+    a: `Four options, priced by how much of the business is in scope. Discovery is a £${discoveryOneOffK}k one-off: the value stream map, the AI readiness review, the watch-outs and a build plan you own and can hand to anyone - there is no obligation to use us afterwards - and if you do go ahead with a build, the whole £${discoveryOneOffK}k is credited against it. Solving one area, usually operations, is £${entryYearK}k a year, billed monthly at £${entryMonthlyK}k. Mapping the whole business, with safe PII-restricted self-service analytics through Claude, is £${wholeBusinessYearK}k a year at £${wholeBusinessMonthlyK}k a month. Enterprise adds autonomous agents and is priced against the outcome it delivers rather than from a list. After the twelve-month build you can walk away, or keep us on for £${maintenanceMonthlyK}k a month on a rolling monthly contract so nothing falls over. For scale, one area a year is less than half a fully-loaded senior data hire at around £${seniorHireLoadedK}k. Each tier covers a stated number of source systems and legal entities rather than a revenue band, because a large simple business is a cheaper build than a small complex one: Whole business covers ${tiers.wholeBusiness.bound.toLowerCase()}, and anything past that - group structures, several countries, more integration - is scoped as Enterprise.`,
   },
   {
-    q: "We are a large or multi-entity group — which tier applies?",
-    a: `Enterprise. The published tiers are bounded by scope rather than by turnover: Whole business covers ${tiers.wholeBusiness.bound.toLowerCase()}, and One area covers ${tiers.oneArea.bound.toLowerCase()}. Past those limits — several legal entities, more than one country, or more integration than that — it is scoped and priced properly instead of squeezed into a tier. That cuts both ways: a large, structurally simple business often lands inside a published tier, because what drives the cost is the number of systems and the number of people who have to agree a definition, not revenue.`,
+    q: "We are a large or multi-entity group - which tier applies?",
+    a: `Enterprise. The published tiers are bounded by scope rather than by turnover: Whole business covers ${tiers.wholeBusiness.bound.toLowerCase()}, and One area covers ${tiers.oneArea.bound.toLowerCase()}. Past those limits - several legal entities, more than one country, or more integration than that - it is scoped and priced properly instead of squeezed into a tier. That cuts both ways: a large, structurally simple business often lands inside a published tier, because what drives the cost is the number of systems and the number of people who have to agree a definition, not revenue.`,
   },
   {
     q: "Can we just buy the strategy and build it ourselves?",
-    a: `Yes, and the Discovery tier exists for exactly that. For £${discoveryOneOffK}k you get your value streams mapped, the leaks quantified, an honest read on whether your data can support AI yet, the watch-outs, and a prioritised build plan. It is written to be acted on by somebody else — your own team, or another supplier. No proprietary format, no dependency, and nothing held back to protect a follow-on sale. And it is a down payment rather than a sunk cost: if you do come back for the build, the whole £${discoveryOneOffK}k comes off it.`,
+    a: `Yes, and the Discovery tier exists for exactly that. For £${discoveryOneOffK}k you get your value streams mapped, the leaks quantified, an honest read on whether your data can support AI yet, the watch-outs, and a prioritised build plan. It is written to be acted on by somebody else - your own team, or another supplier. No proprietary format, no dependency, and nothing held back to protect a follow-on sale. And it is a down payment rather than a sunk cost: if you do come back for the build, the whole £${discoveryOneOffK}k comes off it.`,
   },
   {
     q: "How long before we see something?",
-    a: "Within a week. We connect the first source, land the events and put a real number in front of you — not a plan for a number. The layer takes shape over the first month, and the Summary Page and reporting behind it go live in months two and three. There is no six-week discovery phase that produces a document.",
+    a: "Within a week. We connect the first source, land the events and put a real number in front of you - not a plan for a number. The layer takes shape over the first month, and the Summary Page and reporting behind it go live in months two and three. There is no six-week discovery phase that produces a document.",
   },
   {
     q: "Do we own the environment and the data?",
-    a: "Yes. Everything is built in your own Google Cloud project, inside your own secure VPC. You own the environment, the data and the models throughout — we are working in your account, not hosting you in ours. At the end there is a structured handover with everything Terraformed and documented, so you can run it without us.",
+    a: "Yes. Everything is built in your own Google Cloud project, inside your own secure VPC. You own the environment, the data and the models throughout - we are working in your account, not hosting you in ours. At the end there is a structured handover with everything Terraformed and documented, so you can run it without us.",
   },
   {
     q: "What happens to personal data?",
@@ -298,7 +298,7 @@ export const faqs: { q: string; a: string }[] = [
   },
   {
     q: "Does this replace our data team?",
-    a: "No — it means you do not have to build one before you get value. We work alongside whoever you already have, and the point of the engagement is that your team is self-sufficient well before twelve months. Then we get out of the way and you use us where it actually matters.",
+    a: "No - it means you do not have to build one before you get value. We work alongside whoever you already have, and the point of the engagement is that your team is self-sufficient well before twelve months. Then we get out of the way and you use us where it actually matters.",
   },
   {
     q: "What technology do you use, and why that stack?",
@@ -312,23 +312,23 @@ export const faqs: { q: string; a: string }[] = [
   },
   {
     q: "Can you take over an existing BI or reporting setup?",
-    a: "Yes. Taking over reporting somebody else built is one of the most common ways engagements start — usually when the manual reconciliation behind it has become the bottleneck, or when the person who understood the workbooks has left.",
+    a: "Yes. Taking over reporting somebody else built is one of the most common ways engagements start - usually when the manual reconciliation behind it has become the bottleneck, or when the person who understood the workbooks has left.",
   },
   {
     q: "What do you mean by a second brain?",
-    a: "A layer that remembers everything the business has done — every activity, every decision, and what happened next — and can be asked about it in real time. For an individual it answers what they would otherwise have to ask the colleague who has been there fifteen years. For the business it means that judgement stops living in a handful of heads: when somebody resigns the reasoning stays behind, and when somebody joins they start with the whole history. Recommendations are generated inside your own policy rather than filtered afterwards, the priors come from decisions your business has actually made rather than from industry averages, and every recommendation is scored against what happened next so the following one is better.",
+    a: "A layer that remembers everything the business has done - every activity, every decision, and what happened next - and can be asked about it in real time. For an individual it answers what they would otherwise have to ask the colleague who has been there fifteen years. For the business it means that judgement stops living in a handful of heads: when somebody resigns the reasoning stays behind, and when somebody joins they start with the whole history. Recommendations are generated inside your own policy rather than filtered afterwards, the priors come from decisions your business has actually made rather than from industry averages, and every recommendation is scored against what happened next so the following one is better.",
   },
   {
     q: "Can you prove our data retention policy is actually being followed?",
-    a: "That is the work. Most retention policies exist as a document and nothing else, because nobody knows which of a dozen systems hold a given record and deleting it from the CRM does nothing about the copy in the warehouse, the reporting database or a spreadsheet on somebody's desktop. We map where personal data actually lives across every connected system, express your retention rules as code against that map, run them on a schedule, and keep an audit trail of what was deleted, when and under which rule. You set the policy — we make it happen and produce the evidence that it did.",
+    a: "That is the work. Most retention policies exist as a document and nothing else, because nobody knows which of a dozen systems hold a given record and deleting it from the CRM does nothing about the copy in the warehouse, the reporting database or a spreadsheet on somebody's desktop. We map where personal data actually lives across every connected system, express your retention rules as code against that map, run them on a schedule, and keep an audit trail of what was deleted, when and under which rule. You set the policy - we make it happen and produce the evidence that it did.",
   },
   {
     q: "Can you support data destruction and right-to-erasure requests?",
     a: "Yes. An erasure request is the same problem as retention, one record at a time: the difficulty is not deleting, it is knowing everywhere the record exists. Once personal data is mapped across your systems, a request can be actioned once and evidenced across all of them, with a record of what was removed and when. That record is usually what an auditor or the ICO actually asks for.",
   },
   {
-    q: "Our marketing list is old — can you tell which contacts we can lawfully email?",
-    a: "We can show you which contacts have an evidenced lawful basis and which do not. Every contact gets traced back to the event that created it — the form submission, its timestamp and the wording that was on the page at the time — or to nothing at all, which is the common case for anything more than a few years old. The list then splits into contacts you can stand behind and contacts to suppress. The decision about what basis you rely on is yours and your counsel's; we produce the evidence to make it with.",
+    q: "Our marketing list is old - can you tell which contacts we can lawfully email?",
+    a: "We can show you which contacts have an evidenced lawful basis and which do not. Every contact gets traced back to the event that created it - the form submission, its timestamp and the wording that was on the page at the time - or to nothing at all, which is the common case for anything more than a few years old. The list then splits into contacts you can stand behind and contacts to suppress. The decision about what basis you rely on is yours and your counsel's; we produce the evidence to make it with.",
   },
   {
     q: "What is the Summary Page?",
@@ -362,21 +362,21 @@ export const howItWorks = {
       "@type": "HowToStep",
       position: 2,
       name: "Model",
-      text: "Recorded once in BigQuery and never rewritten — every activity carrying its cost, revenue, conversion and time, with definitions written down as code.",
+      text: "Recorded once in BigQuery and never rewritten - every activity carrying its cost, revenue, conversion and time, with definitions written down as code.",
       url: `${SITE}/how-it-works#timeline`,
     },
     {
       "@type": "HowToStep",
       position: 3,
       name: "Alert",
-      text: "A real-time view of the business focused on the next best action — the Summary Page scorecard and the one thing that needs attention now.",
+      text: "A real-time view of the business focused on the next best action - the Summary Page scorecard and the one thing that needs attention now.",
       url: `${SITE}/how-it-works#timeline`,
     },
     {
       "@type": "HowToStep",
       position: 4,
       name: "Act",
-      text: "Agents work the exception off the back of it — chasing, flagging and routing — rather than just noticing it, keeping your people on the decisions.",
+      text: "Agents work the exception off the back of it - chasing, flagging and routing - rather than just noticing it, keeping your people on the decisions.",
       url: `${SITE}/how-it-works#timeline`,
     },
   ],

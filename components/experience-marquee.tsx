@@ -3,7 +3,7 @@
  *
  * Names are text; marks are inlined SVG paths where we have one that is actually
  * licensed for reuse. The five below come from Simple Icons (CC0-1.0), which is
- * why they are monochrome single-path glyphs — they tint with currentColor and
+ * why they are monochrome single-path glyphs - they tint with currentColor and
  * cost no extra requests. Trademarks remain their owners'.
  *
  * The other twenty-one are text only because their logo files are not free to
@@ -12,7 +12,7 @@
  * from the brand's own press kit or with permission, drop the path data in LOGOS
  * against the display name, and it appears automatically.
  *
- * The caption underneath is not decoration — "prior roles and engagements, as
+ * The caption underneath is not decoration - "prior roles and engagements, as
  * employees and as consultants" is what keeps the claim accurate, since several of
  * these were employer or agency relationships rather than Acta Data engagements.
  * Don't drop that qualification.
@@ -114,7 +114,7 @@ export function ExperienceMarquee() {
         <Row names={ROW_TWO} reverse />
       </div>
       <p className="mt-6 text-xs text-muted-foreground">
-        Brands our team has worked with or advised, in prior roles and engagements — as
+        Brands our team has worked with or advised, in prior roles and engagements - as
         employees, and as consultants.
       </p>
     </div>

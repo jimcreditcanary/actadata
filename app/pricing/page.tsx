@@ -24,11 +24,11 @@ export default function PricingPage() {
         /* Was "All of it cheaper than hiring", which the section headline 500px below
            now says better. This sets that argument up rather than repeating it. */
         accent="Neither is a discount."
-        lede="Priced by how much of the business is in scope, not by which features you unlock. No lock-in, and you own everything we build as we build it — including the Discovery report, which you are free to take elsewhere, and which is credited in full if you go ahead with a build."
+        lede="Priced by how much of the business is in scope, not by which features you unlock. No lock-in, and you own everything we build as we build it - including the Discovery report, which you are free to take elsewhere, and which is credited in full if you go ahead with a build."
       />
       <Pricing />
       {/* Directly under the tiers, because the objection a price list creates is
-          "and does it actually arrive?" — answered here by somebody who paid. */}
+          "and does it actually arrive?" - answered here by somebody who paid. */}
       <section className="pb-4">
         <div className="container">
           <TestimonialCard className="max-w-3xl" />

@@ -1,9 +1,9 @@
 /**
- * Pipeline run history — one cell per source per day, 30 days.
+ * Pipeline run history - one cell per source per day, 30 days.
  *
  * This is the same block motif as the header mosaic, but here every cell means
  * something: a clean run, a retried run, or today's run in flight. That is the
- * whole reason it belongs on the page — it evidences the real-time and
+ * whole reason it belongs on the page - it evidences the real-time and
  * idempotent-pipeline claims rather than asserting them. Cells are a daily
  * rollup of health; the pipelines themselves run continuously.
  *
@@ -24,7 +24,7 @@ type State = "clean" | "retried" | "today";
 
 function stateFor(row: number, day: number): State {
   if (day === DAYS - 1) return "today";
-  // Deterministic sparse retries — a wall of pure green reads as fake.
+  // Deterministic sparse retries - a wall of pure green reads as fake.
   const n = (row * 31 + day * 17 + row * day) % 43;
   return n === 0 || n === 19 ? "retried" : "clean";
 }
@@ -65,7 +65,7 @@ export function PipelineGrid() {
         {SOURCES.map((source, row) => (
           <div key={source} className="flex items-center gap-3">
             <div className="w-24 shrink-0 truncate text-[11px] text-muted-foreground">{source}</div>
-            {/* Fixed square cells, not 1fr — stretched cells read as a bar
+            {/* Fixed square cells, not 1fr - stretched cells read as a bar
                 chart, squares read as the block motif. Scrolls on narrow
                 viewports rather than distorting. */}
             <div

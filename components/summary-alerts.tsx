@@ -4,7 +4,7 @@
  *
  * The queue is the whole point. A dashboard shows you everything and leaves the
  * triage to you; this shows three, because three is what someone will actually
- * act on between meetings — and then keeps the next ones visible but dimmed so
+ * act on between meetings - and then keeps the next ones visible but dimmed so
  * it is obvious the list is worked, not infinite.
  *
  * Severity is amber or violet only. A third colour would imply a severity scale
@@ -13,7 +13,7 @@
  */
 export type Alert = {
   title: string;
-  /** One line of context — what changed, and by how much. */
+  /** One line of context - what changed, and by how much. */
   detail: string;
   /** The metric that triggered it. */
   metric: string;
@@ -31,7 +31,7 @@ export function SummaryAlerts({
   persona,
 }: {
   alerts: Alert[];
-  /** Titles only — these are next up, not yet actionable. */
+  /** Titles only - these are next up, not yet actionable. */
   queued: string[];
   /** Who the list is built for, e.g. "COO". */
   persona: string;

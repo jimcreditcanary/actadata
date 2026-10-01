@@ -10,12 +10,12 @@ import { caseStudies, insights } from "@/lib/posts";
 export const metadata: Metadata = {
   title: "Case studies",
   description:
-    "Delivered work written up properly — the situation, what we built, and the numbers afterwards. Consumer credit, debt management, credit unions, B2B and more.",
+    "Delivered work written up properly - the situation, what we built, and the numbers afterwards. Consumer credit, debt management, credit unions, B2B and more.",
   alternates: { canonical: "/case-studies" },
 };
 
 /**
- * A filtered view of the blog, not a second content store — case studies are
+ * A filtered view of the blog, not a second content store - case studies are
  * posts, and the detail pages live at /blog/[slug]. This route exists because
  * "case studies" is what a buyer looks for and what a sales email links to.
  */
@@ -41,12 +41,12 @@ export default function CaseStudiesPage() {
           {studies.length > 0 ? (
             <PostCards posts={studies} columns={studies.length >= 3 ? 3 : 2} headingLevel={2} />
           ) : (
-            /* No placeholder cards — an empty list says so plainly and points at
+            /* No placeholder cards - an empty list says so plainly and points at
                the writing and the sector pages, which are full of substance. */
             <div className="max-w-2xl">
               <p className="text-lg text-muted-foreground leading-relaxed">
                 Most of our work is under NDA. We share written case studies and references on
-                request, matched to your sector — ask on the call and we will send the closest
+                request, matched to your sector - ask on the call and we will send the closest
                 one we can talk about.
               </p>
               <div className="mt-7 flex flex-wrap gap-4 text-sm">
@@ -87,7 +87,7 @@ export default function CaseStudiesPage() {
                       className="group flex flex-wrap items-baseline gap-x-3 gap-y-1 text-sm"
                     >
                       <span className="text-electric group-hover:underline">
-                        {s.client ?? s.title} — one-page PDF ↓
+                        {s.client ?? s.title} - one-page PDF ↓
                       </span>
                       <span className="text-xs text-muted-foreground">{s.title}</span>
                     </a>

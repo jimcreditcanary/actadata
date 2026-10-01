@@ -6,8 +6,8 @@ import type { Alert } from "@/components/summary-alerts";
  * Summary Page examples, one per sector, kept out of the component so the mock
  * is data rather than markup.
  *
- * Every example carries a full balanced scorecard — two measures against target
- * in each of the four perspectives — because a scorecard that only covers
+ * Every example carries a full balanced scorecard - two measures against target
+ * in each of the four perspectives - because a scorecard that only covers
  * finance is the thing we are arguing against. Tab ids match the sector slugs,
  * so a visitor coming from /sectors/debt-management sees the same words here.
  *
@@ -26,7 +26,7 @@ export type SummaryExample = {
   trend: { week: string; current: number; prior: number }[];
 };
 
-/** Deterministic sparkline shapes — no Math.random, so SSR and client agree. */
+/** Deterministic sparkline shapes - no Math.random, so SSR and client agree. */
 function spark(seed: number, n = 12) {
   let v = 50 + (seed % 25);
   const out: number[] = [];
@@ -54,7 +54,7 @@ export const summaryExamples: SummaryExample[] = [
     label: "Omni-channel Retail",
     caption: "DTC + wholesale apparel · last 7 days",
     persona: "COO",
-    trendLabel: "Net revenue (£k) — current vs prior 12 weeks",
+    trendLabel: "Net revenue (£k) - current vs prior 12 weeks",
     trend: trend(2),
     scorecard: [
       { perspective: "Financial", label: "Net revenue", value: "£1.84m", target: "£2.00m", delta: 6.4, rag: "amber", spark: spark(3) },
@@ -83,7 +83,7 @@ export const summaryExamples: SummaryExample[] = [
     label: "Consumer Credit",
     caption: "Unsecured lender · last 7 days",
     persona: "COO",
-    trendLabel: "Approved volume (£m) — current vs prior 12 weeks",
+    trendLabel: "Approved volume (£m) - current vs prior 12 weeks",
     trend: trend(5),
     scorecard: [
       { perspective: "Financial", label: "Funded volume", value: "£8.9m", target: "£8.5m", delta: 6.2, rag: "green", spark: spark(4) },
@@ -112,7 +112,7 @@ export const summaryExamples: SummaryExample[] = [
     label: "Debt Management",
     caption: "Third-party collections · last 7 days",
     persona: "COO",
-    trendLabel: "Cash collected (£k) — current vs prior 12 weeks",
+    trendLabel: "Cash collected (£k) - current vs prior 12 weeks",
     trend: trend(3),
     scorecard: [
       { perspective: "Financial", label: "Cash collected", value: "£4.2m", target: "£4.0m", delta: 3.8, rag: "green", spark: spark(2) },
@@ -141,7 +141,7 @@ export const summaryExamples: SummaryExample[] = [
     label: "Legal Services",
     caption: "Consumer claims firm · last 7 days",
     persona: "Managing Partner",
-    trendLabel: "Cases opened — current vs prior 12 weeks",
+    trendLabel: "Cases opened - current vs prior 12 weeks",
     trend: trend(8),
     scorecard: [
       { perspective: "Financial", label: "WIP value", value: "£14.2m", target: "£12.0m", delta: 9.1, goodWhenDown: true, rag: "amber", spark: spark(3) },
@@ -170,7 +170,7 @@ export const summaryExamples: SummaryExample[] = [
     label: "Manufacturing",
     caption: "Two-site food manufacturer · last 7 days",
     persona: "Operations Director",
-    trendLabel: "Units produced (k) — current vs prior 12 weeks",
+    trendLabel: "Units produced (k) - current vs prior 12 weeks",
     trend: trend(6),
     scorecard: [
       { perspective: "Financial", label: "Contribution per unit", value: "£4.12", target: "£4.60", delta: -1.8, rag: "amber", spark: spark(4) },
@@ -199,7 +199,7 @@ export const summaryExamples: SummaryExample[] = [
     label: "SaaS & Startups",
     caption: "B2B SaaS · last 7 days",
     persona: "CEO",
-    trendLabel: "Net new MRR (£k) — current vs prior 12 weeks",
+    trendLabel: "Net new MRR (£k) - current vs prior 12 weeks",
     trend: trend(11),
     scorecard: [
       { perspective: "Financial", label: "MRR", value: "£1.21m", target: "£1.30m", delta: 3.6, rag: "amber", spark: spark(2) },

@@ -4,7 +4,7 @@ import type { SummaryExample } from "@/lib/summary-examples";
 /**
  * The 12-week trend chart, hand-rolled SVG.
  *
- * This was recharts, which was the only thing pulling that library in — about
+ * This was recharts, which was the only thing pulling that library in - about
  * 90kB of JavaScript on the two heaviest pages for one area chart with two
  * series. On a phone that is the single most expensive thing on the home page,
  * and none of recharts' interactivity was being used beyond a tooltip.

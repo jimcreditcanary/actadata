@@ -6,11 +6,11 @@ const BASE = "https://www.actadata.co.uk";
 
 /**
  * Generated from the same data the pages are, so a new sector or post is in the
- * sitemap the moment it exists — no second list to forget to update.
+ * sitemap the moment it exists - no second list to forget to update.
  *
  * `lastModified` matters more than it looks: without it a crawler has to guess
  * whether a re-crawl is worth it, and posts carry a real publication date we can
- * give it. Everything else gets the build date, which is honest — a rebuild is
+ * give it. Everything else gets the build date, which is honest - a rebuild is
  * the only way this site changes.
  */
 export default function sitemap(): MetadataRoute.Sitemap {

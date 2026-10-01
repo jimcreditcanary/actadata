@@ -11,7 +11,7 @@ import {
 } from "@/lib/economics";
 
 /**
- * Compact pricing on the home page — the numbers are the hook, the detail lives
+ * Compact pricing on the home page - the numbers are the hook, the detail lives
  * on /pricing. Three real prices sit here so nobody has to call to self-qualify,
  * and the £15k map is first because it is the easiest yes on the page.
  */
@@ -34,14 +34,14 @@ export function PricingTeaser() {
               <span className="text-electric">So it costs less than one.</span>
             </h2>
             <p className="mt-5 text-lg text-muted-foreground">
-              Start with a £{discoveryOneOffK}k map you can take away and build yourself —
-              credited in full if you go ahead — or solve one area for £{entryYearK}k a year — less than half of one fully-loaded
+              Start with a £{discoveryOneOffK}k map you can take away and build yourself - 
+              credited in full if you go ahead - or solve one area for £{entryYearK}k a year - less than half of one fully-loaded
               senior data hire (~£{seniorHireLoadedK}k). No lock-in, and you own everything we
               build as we build it.
             </p>
             <p className="mt-4 text-sm text-muted-foreground">
               Each tier covers a stated number of source systems and entities rather than a
-              revenue band — a large, simple business is a cheaper build than a small, complex
+              revenue band - a large, simple business is a cheaper build than a small, complex
               one, and the price should say so.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">

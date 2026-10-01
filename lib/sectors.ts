@@ -1,11 +1,11 @@
 /**
  * Sector content, kept as data so a new sector is an entry here rather than a
  * new page. Each one gets its own route at /sectors/[slug], which is what makes
- * focused landing pages possible — send a consumer-credit prospect to the
+ * focused landing pages possible - send a consumer-credit prospect to the
  * consumer-credit page, not to a general homepage with a tab they have to find.
  *
  * `group` drives how they cluster on the index. `metrics` are the numbers that
- * sector argues about internally — naming them is most of the credibility.
+ * sector argues about internally - naming them is most of the credibility.
  */
 import { entryMonthlyK, entryYearK } from "@/lib/economics";
 export type Sector = {
@@ -30,7 +30,7 @@ export type Sector = {
   /**
    * The systems this market actually runs on, named so a reader recognises their
    * own estate. Generic connector talk reads as "not for us" to anyone whose
-   * business runs on an ERP and a shared drive — and naming Shopify to a builders
+   * business runs on an ERP and a shared drive - and naming Shopify to a builders
    * merchant actively tells them they are in the wrong place. In-house SQL and
    * Access databases belong on these lists: for most of this market that is
    * where the real logic lives, not an edge case.
@@ -43,7 +43,7 @@ export type Sector = {
    */
   faqs: { q: string; a: string }[];
   /**
-   * A longer, sector-specific narrative — what an engagement in this sector
+   * A longer, sector-specific narrative - what an engagement in this sector
    * actually looks like. Written per sector rather than templated, so it adds
    * unique depth and breaks the wrapper duplication the thin pages shared. Each
    * paragraph is illustrative of a typical engagement, not a named client.
@@ -52,7 +52,7 @@ export type Sector = {
   /**
    * Show the "you do not need to be a tech company" section on this sector page.
    * These are the audiences most likely to assume data and AI is for somebody
-   * else — merchants, distributors, family manufacturers.
+   * else - merchants, distributors, family manufacturers.
    */
   smeObjection?: boolean;
 };
@@ -77,12 +77,12 @@ export const sectors: Sector[] = [
       "History rebuilt so vintage cohorts and roll rates exist at all",
       "Affordability and arrears views the credit committee can act on",
     ],
-    outputs: "One number for net new contribution — agreed by risk, finance and growth.",
+    outputs: "One number for net new contribution - agreed by risk, finance and growth.",
     metrics: ["Approval rate", "Funded volume", "30+ DPD", "Roll rates", "CAC payback", "Vintage loss"],
     systems: [
       "Loan management system",
       "Decision engine",
-      "Bureau feeds — Experian, Equifax, TransUnion",
+      "Bureau feeds - Experian, Equifax, TransUnion",
       "Open banking provider",
       "Direct debit and card payments",
       "Collections dialler",
@@ -93,23 +93,23 @@ export const sectors: Sector[] = [
     deepDive: {
       heading: "Inside a consumer credit engagement",
       paragraphs: [
-        "A lender usually arrives with the data spread across an origination platform, a decisioning engine fed by bureau data, a servicing system and a collections dialler, with marketing spend sitting in a fourth place again. Each team trusts its own extract, so the approval rate risk quotes, the funded volume finance books and the acquisition cost growth defends never quite reconcile — and the monthly contribution number is rebuilt by hand every board cycle from whichever version won the argument that month.",
-        "We land the events behind all of it — application, decision, funding, payment, contact, arrears status — in your own BigQuery, recorded once with the time each happened, and rebuild the loan-book position back as far as the data allows. That history is usually the unlock: vintage cohorts and roll rates that never existed become reportable, and the leaks show themselves. A typical one is a channel with a healthy approval rate and quietly worse vintage loss than the book average, which no departmental report was ever built to catch because origination and collections are measured by different people.",
+        "A lender usually arrives with the data spread across an origination platform, a decisioning engine fed by bureau data, a servicing system and a collections dialler, with marketing spend sitting in a fourth place again. Each team trusts its own extract, so the approval rate risk quotes, the funded volume finance books and the acquisition cost growth defends never quite reconcile - and the monthly contribution number is rebuilt by hand every board cycle from whichever version won the argument that month.",
+        "We land the events behind all of it - application, decision, funding, payment, contact, arrears status - in your own BigQuery, recorded once with the time each happened, and rebuild the loan-book position back as far as the data allows. That history is usually the unlock: vintage cohorts and roll rates that never existed become reportable, and the leaks show themselves. A typical one is a channel with a healthy approval rate and quietly worse vintage loss than the book average, which no departmental report was ever built to catch because origination and collections are measured by different people.",
         "Once it is live the credit committee works from cohorts that are current rather than a month old, Consumer Duty outcome reporting regenerates itself with a full audit trail behind every figure, and risk, finance and growth argue about what to do rather than about whose number is right. The affordability and arrears views update on the same definitions the board pack uses, so the decision and the evidence for it come from one place.",
       ],
     },
     faqs: [
       {
         q: "How do you produce Consumer Duty evidence from our data?",
-        a: `We land every event — application, decision, funding, contact, payment — in your own BigQuery as an immutable history, then build outcome reporting on top with a full audit trail behind each number. The evidence regenerates itself rather than being assembled by hand as the deadline approaches.`,
+        a: `We land every event - application, decision, funding, contact, payment - in your own BigQuery as an immutable history, then build outcome reporting on top with a full audit trail behind each number. The evidence regenerates itself rather than being assembled by hand as the deadline approaches.`,
       },
       {
         q: "Can you rebuild vintage cohorts and roll rates if our system only holds today's position?",
-        a: `Yes. Most lending systems store the current balance and no history, so cohorts and roll rates do not exist to report. We reconstruct the position over time from the events, so vintage loss, roll rates and arrears trends become reportable — usually further back than you expect.`,
+        a: `Yes. Most lending systems store the current balance and no history, so cohorts and roll rates do not exist to report. We reconstruct the position over time from the events, so vintage loss, roll rates and arrears trends become reportable - usually further back than you expect.`,
       },
       {
         q: "How much does it cost for a consumer credit lender, and how fast?",
-        a: `Solving one area — usually risk or collections reporting — is £${entryYearK}k a year, billed at £${entryMonthlyK}k a month, in your own Google environment. You see a real number within the first week, and the reporting behind it lands over the following two to three months.`,
+        a: `Solving one area - usually risk or collections reporting - is £${entryYearK}k a year, billed at £${entryMonthlyK}k a month, in your own Google environment. You see a real number within the first week, and the reporting behind it lands over the following two to three months.`,
       },
     ],
   },
@@ -143,27 +143,27 @@ export const sectors: Sector[] = [
       "In-house Access and SQL databases",
     ],
     metaDescription:
-      "Collections performance, treatment outcomes and fair-value evidence joined in one place — cure, breakage and cost to collect on a single definition.",
+      "Collections performance, treatment outcomes and fair-value evidence joined in one place - cure, breakage and cost to collect on a single definition.",
     deepDive: {
       heading: "Inside a debt management engagement",
       paragraphs: [
         "Collections runs on more operational data than almost any other function and turns almost none of it into evidence. Contact outcomes sit in the dialler, arrangements in the servicing system, payments with the provider, and complaints and vulnerability notes somewhere else again. So treatment effectiveness gets argued from agent anecdote, and cure and breakage are recalculated by hand each month from exports that never quite line up.",
-        "We join those systems into one timeline per customer — every contact, arrangement, payment and outcome in order — in your own BigQuery, and carry the vulnerability and forbearance flags through with it rather than dropping them at the reporting boundary. The pattern that usually surfaces first is a treatment pathway that looks strong on cure but quietly high on breakage a few months out, which a point-in-time cure number was never going to show. Measuring by cohort and pathway makes the difference between a strategy that works and one that only appears to.",
+        "We join those systems into one timeline per customer - every contact, arrangement, payment and outcome in order - in your own BigQuery, and carry the vulnerability and forbearance flags through with it rather than dropping them at the reporting boundary. The pattern that usually surfaces first is a treatment pathway that looks strong on cure but quietly high on breakage a few months out, which a point-in-time cure number was never going to show. Measuring by cohort and pathway makes the difference between a strategy that works and one that only appears to.",
         "The output is fair-value and vulnerable-customer evidence with the working shown, and treatment performance you can actually act on: which pathways to expand, which to retire, and where a cohort is being harmed rather than helped. Cost to collect, contact-to-arrangement and promise-kept rates all read from the same events, so an operational decision and its regulatory evidence are the same number rather than two reconciliations.",
       ],
     },
     faqs: [
       {
         q: "Can you measure whether a treatment strategy actually works?",
-        a: `Yes — that is usually the first thing we build. We join contact outcomes from the dialler, arrangements from the servicing system and payments into one customer timeline, then measure cure and breakage by cohort and pathway. You see which treatments work and where one quietly does not.`,
+        a: `Yes - that is usually the first thing we build. We join contact outcomes from the dialler, arrangements from the servicing system and payments into one customer timeline, then measure cure and breakage by cohort and pathway. You see which treatments work and where one quietly does not.`,
       },
       {
         q: "How do you evidence fair value and vulnerable-customer outcomes?",
         a: `We carry vulnerability and forbearance flags through from the operational systems into the reporting layer, so outcome reporting shows the working rather than a headline number. Every figure has an auditable trail back to the events behind it, which is what a fair-value review needs.`,
       },
       {
-        q: "Our contact, arrangement and payment data live in three systems — is that a problem?",
-        a: `No, that is the normal starting point. We connect each system and land its events in your own BigQuery, then join them into one timeline per customer. Nothing has to be migrated or replaced — we work in your environment and read from the systems you already run.`,
+        q: "Our contact, arrangement and payment data live in three systems - is that a problem?",
+        a: `No, that is the normal starting point. We connect each system and land its events in your own BigQuery, then join them into one timeline per customer. Nothing has to be migrated or replaced - we work in your environment and read from the systems you already run.`,
       },
     ],
   },
@@ -196,22 +196,22 @@ export const sectors: Sector[] = [
       "In-house SQL database",
     ],
     metaDescription:
-      "Loan-book health, member value and social impact you can actually show — a board pack that regenerates itself, without adding headcount.",
+      "Loan-book health, member value and social impact you can actually show - a board pack that regenerates itself, without adding headcount.",
     deepDive: {
       heading: "Inside a credit union engagement",
       paragraphs: [
         "A credit union carries the reporting expectations of a bank on a fraction of the resource. The core banking system holds today's balances but not the history behind them, the board pack is assembled by hand from several exports as somebody's weekend, and member value and social impact are asserted in the annual report rather than measured. Arrears look like a single current figure because only the current position is stored, so the trend that would let you act early simply is not there.",
-        "We take the ledger events into your own BigQuery and rebuild the loan-book position over time, so arrears and provisioning trend properly and a developing problem is visible while it is still small. Alongside that we build a member lifecycle view — joining, saving, borrowing, staying — and social impact reporting drawn from the ledger itself rather than estimated. None of it needs a new hire or a platform migration; we work in your own environment and read from the systems you already run.",
+        "We take the ledger events into your own BigQuery and rebuild the loan-book position over time, so arrears and provisioning trend properly and a developing problem is visible while it is still small. Alongside that we build a member lifecycle view - joining, saving, borrowing, staying - and social impact reporting drawn from the ledger itself rather than estimated. None of it needs a new hire or a platform migration; we work in your own environment and read from the systems you already run.",
         "What the board gets is a pack that regenerates itself every month and stands up to a regulator and a member AGM alike, because every number traces back to the underlying data. Loan-book value, arrears, member growth, savings per member and the cost-income ratio all come from one definition, so the conversation moves from assembling the numbers to deciding what to do about them.",
       ],
     },
     faqs: [
       {
         q: "Can a credit union afford this without adding headcount?",
-        a: `Yes — the point is to get bank-grade reporting without bank-grade resource. Solving one area is £${entryYearK}k a year at £${entryMonthlyK}k a month, in your own Google environment, with no new hire to make or manage. The board pack that used to be someone's weekend regenerates itself.`,
+        a: `Yes - the point is to get bank-grade reporting without bank-grade resource. Solving one area is £${entryYearK}k a year at £${entryMonthlyK}k a month, in your own Google environment, with no new hire to make or manage. The board pack that used to be someone's weekend regenerates itself.`,
       },
       {
-        q: "Our core banking system holds balances but not history — can you still trend arrears?",
+        q: "Our core banking system holds balances but not history - can you still trend arrears?",
         a: `Yes. We rebuild the loan-book position over time from the ledger events, so arrears and provisioning trend properly instead of showing only today's figure. That history is what lets you see a problem developing rather than reporting it after it has arrived.`,
       },
       {
@@ -242,18 +242,18 @@ export const sectors: Sector[] = [
     outputs: "One view of which accounts are worth more effort, and which are quietly costing you.",
     metrics: ["Pipeline coverage", "Win rate", "Delivery margin", "Net revenue retention", "Utilisation"],
     systems: [
-      "CRM — Salesforce, HubSpot, Dynamics",
+      "CRM - Salesforce, HubSpot, Dynamics",
       "PSA, time recording and billing",
-      "Finance — Xero, Sage, NetSuite",
+      "Finance - Xero, Sage, NetSuite",
       "Contract and document store",
       "In-house SQL database",
     ],
     metaDescription:
-      "Pipeline, delivery margin and account health from one definition — see which accounts actually make money before the quarter closes.",
+      "Pipeline, delivery margin and account health from one definition - see which accounts actually make money before the quarter closes.",
     deepDive: {
       heading: "Inside a B2B services engagement",
       paragraphs: [
-        "In a services business the deal and the delivery are owned by different people, measured in different systems, on different definitions. Sales forecasts from the CRM, delivery reports from a PSA or a stack of timesheets, and finance books the revenue somewhere the other two never see. So pipeline and delivered revenue never reconcile, and account-level margin — the number that actually tells you which clients are worth keeping — is unknown until the quarter closes, if it is knowable at all.",
+        "In a services business the deal and the delivery are owned by different people, measured in different systems, on different definitions. Sales forecasts from the CRM, delivery reports from a PSA or a stack of timesheets, and finance books the revenue somewhere the other two never see. So pipeline and delivered revenue never reconcile, and account-level margin - the number that actually tells you which clients are worth keeping - is unknown until the quarter closes, if it is knowable at all.",
         "We build one opportunity-to-cash timeline that joins CRM, delivery and finance in your own BigQuery, with delivery cost and time attributed to the account that consumed them. The account that most often surprises people is the marquee logo that looks excellent on revenue and turns out thin or negative on margin once the servicing effort behind it is counted. The same history exposes leading indicators for renewal and expansion risk, so a churn conversation happens before the renewal date rather than at it.",
         "Once it is live the commercial and delivery leads sign off one set of numbers, and the board meeting stops opening with a rebuild of the same figures. Win rate, delivery margin, net revenue retention and utilisation all read from one definition, so effort goes to the accounts worth more of it and away from the ones quietly costing you.",
       ],
@@ -269,7 +269,7 @@ export const sectors: Sector[] = [
       },
       {
         q: "How much does it cost and how quickly do we see something?",
-        a: `Solving one area — usually the commercial-plus-delivery view — is £${entryYearK}k a year at £${entryMonthlyK}k a month, built in your own Google environment. A real number is in front of you within a week, with the full commercial pack live over the following months.`,
+        a: `Solving one area - usually the commercial-plus-delivery view - is £${entryYearK}k a year at £${entryMonthlyK}k a month, built in your own Google environment. A real number is in front of you within a week, with the full commercial pack live over the following months.`,
       },
     ],
   },
@@ -280,7 +280,7 @@ export const sectors: Sector[] = [
     group: "Commerce & supply",
     tagline: "Customer profitability, stock turn and true landed margin.",
     intro:
-      "Wholesale margin hides in the detail — rebates, drop sizes, carriage, returns and payment terms all move it, and none of them sit in the same report. We rebuild margin at the line level so pricing and range decisions stop being guesses.",
+      "Wholesale margin hides in the detail - rebates, drop sizes, carriage, returns and payment terms all move it, and none of them sit in the same report. We rebuild margin at the line level so pricing and range decisions stop being guesses.",
     pains: [
       "True margin per customer buried under rebates, carriage and terms",
       "Stock turn and dead stock reported too late to act",
@@ -296,7 +296,7 @@ export const sectors: Sector[] = [
     outputs: "Pricing and range decisions made on real margin, the same week.",
     metrics: ["Gross margin", "Contribution per customer", "Stock turn", "Dead stock", "Fill rate"],
     systems: [
-      "ERP — Kerridge K8, Sage 200, Access Dimensions, SAP Business One",
+      "ERP - Kerridge K8, Sage 200, Access Dimensions, SAP Business One",
       "Warehouse management",
       "Trade counter EPOS",
       "Telesales and quoting",
@@ -306,26 +306,26 @@ export const sectors: Sector[] = [
       "The rebate and margin spreadsheets",
     ],
     metaDescription:
-      "True landed margin by customer and product, stock turn and dead stock in one view — so pricing and range decisions run on real margin, the same week.",
+      "True landed margin by customer and product, stock turn and dead stock in one view - so pricing and range decisions run on real margin, the same week.",
     deepDive: {
       heading: "Inside a wholesale and distribution engagement",
       paragraphs: [
         "Wholesale margin hides in the detail. Rebates, drop sizes, carriage, returns and payment terms all move it, and none of them sit in the same report, so the headline gross margin on the sales report and the real contribution a customer leaves behind can be a long way apart. Reps are measured on revenue because that is the number that is easy to pull, stock turn and dead stock are reported too late to act on, and trade pricing decisions get made without anyone knowing the current margin they are pricing against.",
-        "We rebuild margin at the line level in your own BigQuery, with rebates, carriage and returns attributed to the order and customer that caused them, and join it to stock so ageing and availability sit in the same view. The customer that most often turns out to be a problem is a high-revenue account whose rebate structure and carriage cost quietly make it one of the least profitable you serve — invisible on revenue, obvious on contribution. Dead stock becomes visible while there is still a decision to make on it rather than after.",
-        "The result is that pricing and range decisions run on real margin the same week, rep and depot performance is measured on contribution rather than revenue, and a customer or product ranking that updates itself replaces the quarterly spreadsheet. You do not need a data team or a platform project for it — the work happens in your environment, on the systems you already run.",
+        "We rebuild margin at the line level in your own BigQuery, with rebates, carriage and returns attributed to the order and customer that caused them, and join it to stock so ageing and availability sit in the same view. The customer that most often turns out to be a problem is a high-revenue account whose rebate structure and carriage cost quietly make it one of the least profitable you serve - invisible on revenue, obvious on contribution. Dead stock becomes visible while there is still a decision to make on it rather than after.",
+        "The result is that pricing and range decisions run on real margin the same week, rep and depot performance is measured on contribution rather than revenue, and a customer or product ranking that updates itself replaces the quarterly spreadsheet. You do not need a data team or a platform project for it - the work happens in your environment, on the systems you already run.",
       ],
     },
     faqs: [
       {
-        q: "Our true margin is buried under rebates, carriage and terms — can you untangle it?",
+        q: "Our true margin is buried under rebates, carriage and terms - can you untangle it?",
         a: `Yes. We rebuild margin at the line level with rebates, carriage, returns and payment terms all attributed properly, so margin per customer and per product stops being a guess. Pricing and range decisions then run on real contribution rather than headline revenue.`,
       },
       {
         q: "Can you show stock turn and dead stock early enough to act?",
-        a: `Yes — stock turn, ageing and availability land in one operational view that updates itself, rather than a report that arrives too late to do anything about. Dead stock becomes visible while there is still a decision to make on it.`,
+        a: `Yes - stock turn, ageing and availability land in one operational view that updates itself, rather than a report that arrives too late to do anything about. Dead stock becomes visible while there is still a decision to make on it.`,
       },
       {
-        q: "We're a distributor, not a tech company — is this really for us?",
+        q: "We're a distributor, not a tech company - is this really for us?",
         a: `It is built for exactly this. You do not need a data team or a platform project: we work in your own Google environment, read from the systems you already run, and put real margin in front of you within a week. Solving one area is £${entryYearK}k a year at £${entryMonthlyK}k a month.`,
       },
     ],
@@ -357,15 +357,15 @@ export const sectors: Sector[] = [
       "Shop-floor MES",
       "SCADA and PLC historians",
       "Quality and non-conformance",
-      "Maintenance — CMMS",
+      "Maintenance - CMMS",
       "In-house SQL and Access databases",
     ],
     metaDescription:
-      "Actual cost to make, yield and OEE joined to what you actually sold — a clear answer on which products and lines are worth running.",
+      "Actual cost to make, yield and OEE joined to what you actually sold - a clear answer on which products and lines are worth running.",
     deepDive: {
       heading: "Inside a manufacturing engagement",
       paragraphs: [
-        "Production data and commercial data rarely meet. The shop-floor systems know output, yield and downtime, the ERP carries a standard cost that went stale months ago, and finance knows revenue — so the actual cost to make a unit is an estimate everybody privately doubts, and nobody can say with confidence which lines make money. Yield and scrap are reported weekly but decided daily, and downtime causes are recorded and then never analysed.",
+        "Production data and commercial data rarely meet. The shop-floor systems know output, yield and downtime, the ERP carries a standard cost that went stale months ago, and finance knows revenue - so the actual cost to make a unit is an estimate everybody privately doubts, and nobody can say with confidence which lines make money. Yield and scrap are reported weekly but decided daily, and downtime causes are recorded and then never analysed.",
         "We land the shop-floor and commercial events together in your own BigQuery and build an order-to-despatch timeline across both, with an actual cost to make per unit that updates as inputs move rather than once a year. The line that usually surprises people is one with strong OEE and disappointing margin, because the scrap rate and input cost eating it were never joined to the product it affected. Yield, scrap and downtime tied to shift, line and product turn a weekly report into something you can act on the same day.",
         "Once it is live the commercial team has product-level profitability it actually trusts, and the answer to which products and lines are worth running stops being a matter of opinion. OEE, yield, scrap rate, cost per unit and on-time-in-full all read from the same events, so an operational fix on the floor and its effect on margin are visible in one place.",
       ],
@@ -376,7 +376,7 @@ export const sectors: Sector[] = [
         a: `Yes. We build actual cost to make per unit, updated as inputs move, rather than the stale standard cost most product profitability rests on. Joined to what you sold, it gives the commercial team a product-level profitability number they can actually trust.`,
       },
       {
-        q: "Our shop-floor and finance systems don't talk — can you connect them?",
+        q: "Our shop-floor and finance systems don't talk - can you connect them?",
         a: `That join is the core of the work. Shop-floor systems know output, finance knows revenue, and the two rarely meet. We land both in your own BigQuery and build an order-to-despatch timeline across production and commercial, so which lines make money stops being an argument.`,
       },
       {
@@ -391,7 +391,7 @@ export const sectors: Sector[] = [
     group: "Commerce & supply",
     tagline: "True margin by SKU, channel and customer, without the spreadsheet.",
     intro:
-      "Retail data is scattered by design — webstore, marketplaces, retailer EDI, ad platforms — and margin truth is buried under returns, promotions and shipping. We land it all and rebuild margin so the trading meeting runs on numbers rather than exports.",
+      "Retail data is scattered by design - webstore, marketplaces, retailer EDI, ad platforms - and margin truth is buried under returns, promotions and shipping. We land it all and rebuild margin so the trading meeting runs on numbers rather than exports.",
     pains: [
       "Channel data scattered across webstore, marketplaces, retailer EDI and ad platforms",
       "Margin truth buried under returns, promotions and shipping costs",
@@ -408,7 +408,7 @@ export const sectors: Sector[] = [
     metrics: ["Net revenue", "Gross margin", "Return rate", "AOV", "Repeat rate", "Contribution per SKU"],
     systems: [
       "EPOS",
-      "E-commerce — Shopify, Magento, BigCommerce",
+      "E-commerce - Shopify, Magento, BigCommerce",
       "Stock and merchandising",
       "Marketplace feeds",
       "Payments",
@@ -416,19 +416,19 @@ export const sectors: Sector[] = [
       "Loyalty",
     ],
     metaDescription:
-      "True margin by SKU, channel and customer without the spreadsheet — a live trading pack the buying team trusts more than exports.",
+      "True margin by SKU, channel and customer without the spreadsheet - a live trading pack the buying team trusts more than exports.",
     deepDive: {
       heading: "Inside an omni-channel retail engagement",
       paragraphs: [
         "Retail data is scattered by design. The webstore, the marketplaces, retailer EDI, the 3PL and the ad platforms each hold a piece, and margin truth is buried under returns, promotions and shipping that land in different places at different times. So the buying meeting runs on stale exports, a SKU's gross margin looks nothing like its real contribution once returns and ad spend are counted, and customer value is measured per channel and never end to end.",
         "We land every channel into one unified order-line history in your own BigQuery, with promotions, returns and cost of goods attributed cleanly, and build a true-margin metric tree by SKU, channel and customer segment on top of it. The SKU that most often needs a second look is a bestseller on gross margin that a high return rate and its acquisition cost quietly turn into a marginal one. A cohort and repeat-purchase view that spans every channel replaces the per-channel snapshots, so a customer acquired on a marketplace and retained on the webstore is finally counted as one.",
-        "What the trading meeting gets is a live Summary Page tuned for exactly that conversation, current every time it is opened — which is why the buying team ends up trusting it more than the spreadsheet. Net revenue, gross margin, return rate, AOV, repeat rate and contribution per SKU all read from one definition, so the range and pricing calls are made on real margin rather than on last week's export.",
+        "What the trading meeting gets is a live Summary Page tuned for exactly that conversation, current every time it is opened - which is why the buying team ends up trusting it more than the spreadsheet. Net revenue, gross margin, return rate, AOV, repeat rate and contribution per SKU all read from one definition, so the range and pricing calls are made on real margin rather than on last week's export.",
       ],
     },
     faqs: [
       {
         q: "Can you unify webstore, marketplaces, retailer EDI and ad platforms?",
-        a: `Yes. We land every channel — webstore, marketplaces, retailer EDI and ad platforms — into one unified order-line history in your own BigQuery, with promotions, returns and COGS attributed cleanly. Margin truth stops being buried under the things that distort it.`,
+        a: `Yes. We land every channel - webstore, marketplaces, retailer EDI and ad platforms - into one unified order-line history in your own BigQuery, with promotions, returns and COGS attributed cleanly. Margin truth stops being buried under the things that distort it.`,
       },
       {
         q: "Will the trading meeting finally run on live numbers instead of exports?",
@@ -463,19 +463,19 @@ export const sectors: Sector[] = [
       "A partner pack that is current every time they open it, ending the 'whose number is right?' debate.",
     metrics: ["Cases opened", "Cost per acquired case", "WIP value", "Settlement value", "Time to settle"],
     systems: [
-      "Practice management — Proclaim, LEAP, Osprey, Clio",
+      "Practice management - Proclaim, LEAP, Osprey, Clio",
       "Time recording",
       "Legal accounts",
       "Document management",
       "In-house SQL database",
     ],
     metaDescription:
-      "Case economics from first touch to settlement — cost per acquired case, WIP value and a partner pack that is current every time they open it.",
+      "Case economics from first touch to settlement - cost per acquired case, WIP value and a partner pack that is current every time they open it.",
     deepDive: {
       heading: "Inside a legal services engagement",
       paragraphs: [
         "In a law firm the case management system, the marketing stack and the finance or practice-management system do not talk, so the economics of a case are guessed rather than known. Cost per acquired case is a back-of-envelope number, WIP value drifts between what the fee-earners think it is and what finance will recognise, and panel or marketing-source performance is invisible until a case closes months or years later.",
-        "We build one case lifecycle in your own BigQuery, from first marketing touch through to settlement, and join the spend, the WIP and the outcome to it. The source that usually gets reconsidered is one delivering cheap leads that convert into low-settlement, long-duration cases — attractive on cost per lead, poor on what actually matters. A shared WIP and pipeline view that partners and finance both read from the same definition ends the recurring argument about whose number is right.",
+        "We build one case lifecycle in your own BigQuery, from first marketing touch through to settlement, and join the spend, the WIP and the outcome to it. The source that usually gets reconsidered is one delivering cheap leads that convert into low-settlement, long-duration cases - attractive on cost per lead, poor on what actually matters. A shared WIP and pipeline view that partners and finance both read from the same definition ends the recurring argument about whose number is right.",
         "The partner pack is then current every time it is opened rather than rebuilt for each meeting, and funnel and lifetime value by panel, source and claim type make marketing spend a decision rather than a hope. Cost per acquired case, WIP value, settlement value and time to settle all come from one place, with settlement and duration benchmarks by case type behind them.",
       ],
     },
@@ -485,7 +485,7 @@ export const sectors: Sector[] = [
         a: `Yes. We join marketing, case management and finance into one case lifecycle from first touch to settlement, so cost per acquired case stops being a guess. You can then see funnel and lifetime value by panel, source and claim type, and put spend where it actually pays.`,
       },
       {
-        q: "WIP value differs between fee-earners and finance — can you reconcile it?",
+        q: "WIP value differs between fee-earners and finance - can you reconcile it?",
         a: `Yes. We build a shared WIP and pipeline view that partners and finance read from the same definition, so the "whose number is right?" debate ends. The partner pack is current every time it is opened rather than rebuilt for each meeting.`,
       },
       {
@@ -500,7 +500,7 @@ export const sectors: Sector[] = [
     group: "Professional services",
     tagline: "Cost to serve, repeat contacts and the root causes behind both.",
     intro:
-      "Service operations generate enormous amounts of data and almost no insight. Contacts sit in the telephony platform, cases in the CRM, and the reason people got in touch nowhere at all. We join the contact to the customer and the order behind it, so cost to serve and repeat contact become measurable — and fixable.",
+      "Service operations generate enormous amounts of data and almost no insight. Contacts sit in the telephony platform, cases in the CRM, and the reason people got in touch nowhere at all. We join the contact to the customer and the order behind it, so cost to serve and repeat contact become measurable - and fixable.",
     pains: [
       "Contact data split across phone, email, chat and social, with no single view",
       "Cost to serve unknown, so nobody can price or staff it properly",
@@ -523,20 +523,20 @@ export const sectors: Sector[] = [
       "Failure demand",
     ],
     systems: [
-      "Contact centre — Genesys, Five9, Amazon Connect",
-      "Ticketing — Zendesk, Freshdesk",
+      "Contact centre - Genesys, Five9, Amazon Connect",
+      "Ticketing - Zendesk, Freshdesk",
       "Telephony and IVR",
       "Workforce management",
       "QA and call scoring",
     ],
     metaDescription:
-      "Cost to serve, repeat contacts and the root causes behind both — the reasons people contact you, ranked by what fixing them is worth.",
+      "Cost to serve, repeat contacts and the root causes behind both - the reasons people contact you, ranked by what fixing them is worth.",
     deepDive: {
       heading: "Inside a customer service engagement",
       paragraphs: [
         "Service operations generate an enormous amount of data and almost no insight. Contacts sit in the telephony platform, cases in the CRM, chat and social in their own tools, and the actual reason a customer got in touch is captured nowhere consistent. So cost to serve is unknown, which means nobody can price or staff it properly, and repeat contacts get counted as fresh ones, hiding the failure demand underneath the volume.",
         "We join every contact into one timeline per customer across phone, email, chat and social, tied back to the order or account behind it, in your own BigQuery. That is what makes cost to serve measurable per contact, per customer and per product, and it turns repeat-contact and root-cause analysis into something concrete: the product fault or broken journey generating a disproportionate share of your contacts stops being a hunch and becomes a ranked list. Deflection and self-serve impact get measured against real volume rather than against a vendor's claim.",
-        "The output is the reasons people contact you, ranked by what fixing each one is worth — so the roadmap argument is settled with a number. Cost per contact, first-contact resolution, repeat contact rate, average handling time and failure demand all read from one definition, and agent performance moves onto outcomes rather than call-listening.",
+        "The output is the reasons people contact you, ranked by what fixing each one is worth - so the roadmap argument is settled with a number. Cost per contact, first-contact resolution, repeat contact rate, average handling time and failure demand all read from one definition, and agent performance moves onto outcomes rather than call-listening.",
       ],
     },
     faqs: [
@@ -546,7 +546,7 @@ export const sectors: Sector[] = [
       },
       {
         q: "How do you separate repeat contacts from genuinely new ones?",
-        a: `We join every contact into one timeline per customer across phone, email, chat and social, so a repeat contact is recognised as one rather than counted as new. That reveals the failure demand hiding in your volume — and its root causes, ranked by what fixing them is worth.`,
+        a: `We join every contact into one timeline per customer across phone, email, chat and social, so a repeat contact is recognised as one rather than counted as new. That reveals the failure demand hiding in your volume - and its root causes, ranked by what fixing them is worth.`,
       },
       {
         q: "Can you measure whether self-serve and deflection actually work?",
@@ -576,20 +576,20 @@ export const sectors: Sector[] = [
     outputs: "Every desk and every cohort measured the same way, without a spreadsheet.",
     metrics: ["Time to fill", "Desk margin", "Fall-through", "Placements per consultant", "Cohort completion"],
     systems: [
-      "ATS and CRM — Bullhorn, Vincere, JobAdder",
+      "ATS and CRM - Bullhorn, Vincere, JobAdder",
       "Learning management system",
       "Timesheets and payroll",
       "Job board and aggregator feeds",
       "In-house candidate databases",
     ],
     metaDescription:
-      "Desk margin, time-to-fill, fall-through and cohort outcomes on one definition — every desk measured the same way, without a spreadsheet.",
+      "Desk margin, time-to-fill, fall-through and cohort outcomes on one definition - every desk measured the same way, without a spreadsheet.",
     deepDive: {
       heading: "Inside a recruitment and training engagement",
       paragraphs: [
         "Placement, pipeline and margin data sit across the ATS, the CRM and payroll, and training outcomes sit in an LMS disconnected from all of it. So consultant productivity gets argued from memory, fall-through is absorbed quietly rather than measured, and the course completion data that should prove value to a client never gets joined back to the revenue it drove.",
         "We build a candidate and placement timeline from first contact to invoice in your own BigQuery, and wire cohort completion and outcome tracking to billing alongside it. The desk that usually looks different under this lens is the one that appears productive on raw placements but poor on margin once fall-through and time-to-fill are counted properly. Fall-through in particular stops being a cost the business absorbs silently and becomes a number, which is often the fastest margin improvement available once it is finally visible.",
-        "Every desk and every cohort then gets measured the same way, without a spreadsheet — consultant performance on contribution rather than activity, and training outcomes against the revenue they actually produced. Time to fill, desk margin, fall-through, placements per consultant and cohort completion all read from one definition.",
+        "Every desk and every cohort then gets measured the same way, without a spreadsheet - consultant performance on contribution rather than activity, and training outcomes against the revenue they actually produced. Time to fill, desk margin, fall-through, placements per consultant and cohort completion all read from one definition.",
       ],
     },
     faqs: [
@@ -599,7 +599,7 @@ export const sectors: Sector[] = [
       },
       {
         q: "Is fall-through actually measured, or just absorbed?",
-        a: `Most agencies absorb it quietly — we make it a number. Fall-through is tracked by desk and cohort so its real cost is visible, which is usually the fastest margin improvement available once you can finally see it.`,
+        a: `Most agencies absorb it quietly - we make it a number. Fall-through is tracked by desk and cohort so its real cost is visible, which is usually the fastest margin improvement available once you can finally see it.`,
       },
       {
         q: "Can you connect training course outcomes to revenue?",
@@ -629,7 +629,7 @@ export const sectors: Sector[] = [
     outputs: "The board pack builds itself, and the growth numbers survive diligence.",
     metrics: ["MRR", "Net revenue retention", "Activation rate", "CAC payback", "Logo churn"],
     systems: [
-      "Application database — Postgres, MySQL",
+      "Application database - Postgres, MySQL",
       "Stripe",
       "Product analytics",
       "CRM",
@@ -637,18 +637,18 @@ export const sectors: Sector[] = [
       "Ad platforms",
     ],
     metaDescription:
-      "Activation, retention and CAC payback from one event history — an investor-ready board pack that regenerates itself and survives diligence.",
+      "Activation, retention and CAC payback from one event history - an investor-ready board pack that regenerates itself and survives diligence.",
     deepDive: {
       heading: "Inside a SaaS and startups engagement",
       paragraphs: [
-        "Product events, billing and CRM tell three different growth stories, and reconciling them is a job nobody has time for, so the board pack gets rebuilt by hand the week before each meeting. Activation and retention signals arrive too late to act on, and the diligence questions an investor asks — cohort retention from the first cohort, true CAC payback, net revenue retention on a defined basis — take a week to answer because the underlying numbers have never been agreed.",
-        "We record every product event once in your own BigQuery and join it to billing and CRM, so activation, expansion, churn and CAC payback all come from one definition rather than three conflicting ones. The pattern that early-stage teams most often need to see is an activation rate that looks healthy while the earliest cohorts are quietly decaying on retention — invisible until the events are joined and the cohorts are cut properly. Because the history is immutable, doing this early matters: the event trail you capture now is what later cohort analysis depends on and cannot be recovered retrospectively.",
+        "Product events, billing and CRM tell three different growth stories, and reconciling them is a job nobody has time for, so the board pack gets rebuilt by hand the week before each meeting. Activation and retention signals arrive too late to act on, and the diligence questions an investor asks - cohort retention from the first cohort, true CAC payback, net revenue retention on a defined basis - take a week to answer because the underlying numbers have never been agreed.",
+        "We record every product event once in your own BigQuery and join it to billing and CRM, so activation, expansion, churn and CAC payback all come from one definition rather than three conflicting ones. The pattern that early-stage teams most often need to see is an activation rate that looks healthy while the earliest cohorts are quietly decaying on retention - invisible until the events are joined and the cohorts are cut properly. Because the history is immutable, doing this early matters: the event trail you capture now is what later cohort analysis depends on and cannot be recovered retrospectively.",
         "The board pack then regenerates itself, the growth numbers survive diligence because every one traces to an event rather than a spreadsheet, and a diligence question that used to take a week becomes a query. MRR, net revenue retention, activation rate, CAC payback and logo churn all read from one definition, with cohort retention curves running from your first cohort onward.",
       ],
     },
     faqs: [
       {
-        q: "Our product events, billing and CRM tell three different growth stories — can you fix that?",
+        q: "Our product events, billing and CRM tell three different growth stories - can you fix that?",
         a: `Yes. We record every product event once and join it to billing and CRM in your own BigQuery, so activation, expansion, churn and CAC payback all come from one definition. The three conflicting stories collapse into one set of numbers everyone works from.`,
       },
       {
@@ -656,7 +656,7 @@ export const sectors: Sector[] = [
         a: `That is the bar we build to. Because every metric derives from an immutable event history rather than a hand-built spreadsheet, the numbers are consistent and auditable, and diligence questions that used to take a week become a query. Cohort retention runs from your first cohort onwards.`,
       },
       {
-        q: "We're early — is it worth doing this now?",
+        q: "We're early - is it worth doing this now?",
         a: `Doing it early is the advantage: the event history you capture now is what later cohort and retention analysis depends on, and it cannot be recovered retrospectively. Solving one area is £${entryYearK}k a year at £${entryMonthlyK}k a month, in your own Google environment, and the board pack then builds itself.`,
       },
     ],
@@ -677,13 +677,13 @@ export const sectorsByGroup = (group: string) => sectors.filter(s => s.group ===
  * Every sector's FAQ list, plus a generated integration question.
  *
  * "Which wholesale systems do you connect to" is a real query, and the answer is
- * where the specific product names earn their keep — a merchant searching for
+ * where the specific product names earn their keep - a merchant searching for
  * reporting on Kerridge K8 or Access Dimensions has nothing to match against a
  * page that only says "any source, however it exposes itself".
  *
  * It is GENERATED from `systems` rather than written out, for two reasons. It
  * cannot drift from the chips shown higher up the same page, and the FAQPage
- * schema and the visible text are necessarily identical — Google discounts schema
+ * schema and the visible text are necessarily identical - Google discounts schema
  * that does not appear on the page, so a longer keyword-stuffed version hidden in
  * the markup would be worth less than nothing.
  *
@@ -694,7 +694,7 @@ export const sectorsByGroup = (group: string) => sectors.filter(s => s.group ===
  * A sector label as it should read mid-sentence.
  *
  * Plain .toLowerCase() turned "SaaS & Startups" into "saas & startups" and "B2B
- * Services" into "b2b services" — in the visible copy AND in the schema. A word
+ * Services" into "b2b services" - in the visible copy AND in the schema. A word
  * keeps its case if it carries an uppercase letter after the first character or
  * contains a digit, which covers SaaS, B2B and any acronym added later; anything
  * else lowercases normally.
@@ -709,17 +709,17 @@ export const integrationFaq = (sector: Sector) => {
   /* The chips are written capitalised for display, so inlined with commas they
      read as a broken sentence ("...means ERP, Warehouse management, Trade counter
      EPOS"). Presented after a colon and separated by semicolons they read as an
-     inventory, which is what they are — and the vendor sub-lists become
+     inventory, which is what they are - and the vendor sub-lists become
      parenthetical rather than a second colon inside the same clause. */
   const inventory = sector.systems
-    .map(s => (s.includes(" — ") ? `${s.replace(" — ", " (")})` : s))
+    .map(s => (s.includes(" - ") ? `${s.replace(" - ", " (")})` : s))
     .join("; ");
 
   return {
     q: `Which ${labelInSentence(sector.label)} systems do you connect to?`,
     /* Opens by answering the question actually asked. An earlier version opened
        with "Yes", which answers a yes/no question this is not. */
-    a: `Whatever you already run — it makes no difference whether a system exposes an API, a database view, a nightly file or a spreadsheet somebody maintains by hand. In ${labelInSentence(sector.label)} that usually means: ${inventory}. We only ever need read access with personal data excluded, and the layer is built in your own Google environment rather than ours.`,
+    a: `Whatever you already run - it makes no difference whether a system exposes an API, a database view, a nightly file or a spreadsheet somebody maintains by hand. In ${labelInSentence(sector.label)} that usually means: ${inventory}. We only ever need read access with personal data excluded, and the layer is built in your own Google environment rather than ours.`,
   };
 };
 

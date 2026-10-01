@@ -15,21 +15,21 @@ const pillars = [
     title: "Google BigQuery",
     plain: "Where your data lives.",
     blurb:
-      "One place for everything, run by Google so it scales without you thinking about it. Everything is recorded once and never rewritten, so last month's numbers cannot quietly change. And where your systems only hold today's state, we rebuild the history you never had — so you can see a trend where before there was only a snapshot.",
+      "One place for everything, run by Google so it scales without you thinking about it. Everything is recorded once and never rewritten, so last month's numbers cannot quietly change. And where your systems only hold today's state, we rebuild the history you never had - so you can see a trend where before there was only a snapshot.",
   },
   {
     icon: LayoutDashboard,
     title: "shadcn",
     plain: "What you look at.",
     blurb:
-      "Fast, clean dashboards and reports in your own brand — the same toolkit this website is built with. It is code you own, not a licence you rent, so nobody can put the price up or switch it off.",
+      "Fast, clean dashboards and reports in your own brand - the same toolkit this website is built with. It is code you own, not a licence you rent, so nobody can put the price up or switch it off.",
   },
   {
     icon: Sparkles,
     title: "Claude",
     plain: "Who you ask.",
     blurb:
-      "Ask a question in plain English and get an answer from your own data — no analyst, no ticket, no wait. It is the COO and the FD using this directly, not just the data team. Runs in your own Claude account, so your data stays inside your boundary and your controls.",
+      "Ask a question in plain English and get an answer from your own data - no analyst, no ticket, no wait. It is the COO and the FD using this directly, not just the data team. Runs in your own Claude account, so your data stays inside your boundary and your controls.",
   },
 ];
 
@@ -52,7 +52,7 @@ Three things.{" "}
           </h2>
           <p className="mt-5 text-lg text-muted-foreground">
             BigQuery is where your data lives. shadcn is what you look at. Claude is who
-            you ask. That is the whole thing — no vendor bake-off, no sprawl, nothing you
+            you ask. That is the whole thing - no vendor bake-off, no sprawl, nothing you
             have to re-platform later. We picked it because it works, it scales with you,
             and it lets us start in days rather than months. Connecting your own systems is
             the only part that varies, because that depends on what each one lets us read.
@@ -87,7 +87,7 @@ Three things.{" "}
                     key={item}
                     className="flex items-center gap-2.5 rounded-lg border border-white/[0.06] bg-navy-100/50 px-4 py-3 text-sm text-muted-foreground"
                   >
-                    <span aria-hidden className="text-electric/70 font-semibold">—</span>
+                    <span aria-hidden className="text-electric/70 font-semibold"> - </span>
                     <span className="line-through decoration-white/25">{item}</span>
                   </li>
                 ))}
@@ -95,7 +95,7 @@ Three things.{" "}
               <p className="mt-5 text-sm text-foreground/90 leading-relaxed">
                 In their place: BI delivery, tracking and decisioning, end to end, for
                 less than half a senior data hire. The whole environment is Terraformed,
-                so it hands over cleanly — or we keep running it and wire in new sources
+                so it hands over cleanly - or we keep running it and wire in new sources
                 as they arrive. Your call, not a contract term.
               </p>
             </CardContent>
@@ -111,7 +111,7 @@ Three things.{" "}
               </h3>
               <p className="mt-4 text-sm text-muted-foreground leading-relaxed">
                 No discovery phase to sit through, no procurement marathon. Give us
-                read access with personal data excluded, and we start — your first report inside a week.
+                read access with personal data excluded, and we start - your first report inside a week.
               </p>
               <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-5">
                 {[
@@ -128,7 +128,7 @@ Three things.{" "}
               </div>
               <div className="mt-auto pt-7">
                 <Button asChild variant="electric" size="lg">
-                  <a href="#contact">Start the conversation →</a>
+                  <a href="#contact">Talk to us →</a>
                 </Button>
               </div>
             </div>

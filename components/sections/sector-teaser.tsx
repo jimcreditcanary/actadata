@@ -4,7 +4,7 @@ import { sectors } from "@/lib/sectors";
 
 /**
  * Home-page routing block. Deliberately shows every sector rather than a
- * curated three — the point is that a visitor sees their own industry named and
+ * curated three - the point is that a visitor sees their own industry named and
  * clicks straight to a page written for them.
  */
 export function SectorTeaser() {

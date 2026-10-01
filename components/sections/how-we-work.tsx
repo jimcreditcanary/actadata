@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Eyebrow } from "@/components/eyebrow";
 
 /**
- * How we work — the ethos section on /about.
+ * How we work - the ethos section on /about.
  *
  * The commitments here are deliberately falsifiable: hand it over when it is
  * done, meet each person at their own level, expect the client to be
@@ -18,7 +18,7 @@ const principles = [
   {
     n: "02",
     t: "If it takes an hour, you get it in an hour",
-    d: "We do not drip-feed work to fit a milestone plan. Whatever is finished is handed over the moment it is finished — the code, the models, the reasoning behind them. You are never waiting on us for something that already exists.",
+    d: "We do not drip-feed work to fit a milestone plan. Whatever is finished is handed over the moment it is finished - the code, the models, the reasoning behind them. You are never waiting on us for something that already exists.",
   },
   {
     n: "03",
@@ -28,7 +28,7 @@ const principles = [
   {
     n: "04",
     t: "We expect you not to need us",
-    d: "By the end of twelve months you should be self-sufficient — usually a good while before that. At which point we get out of the way and let you fly, and you use us where it actually matters rather than out of habit.",
+    d: "By the end of twelve months you should be self-sufficient - usually a good while before that. At which point we get out of the way and let you fly, and you use us where it actually matters rather than out of habit.",
   },
 ];
 
@@ -36,7 +36,7 @@ const principles = [
  * `compact` is the home-page rendering: the four principle titles, which are
  * punchy enough to carry the ethos on their own, and the panel headline. The
  * paragraphs and the full argument stay on /about. In full it was 2,153px of a
- * phone screen — the titles do most of that work in a quarter of the space.
+ * phone screen - the titles do most of that work in a quarter of the space.
  */
 export function HowWeWork({ compact = false }: { compact?: boolean }) {
   return (
@@ -57,7 +57,7 @@ export function HowWeWork({ compact = false }: { compact?: boolean }) {
           </h2>
           <p className="mt-5 text-lg text-muted-foreground">
             We work at the front edge of what is actually possible with AI right now, and we
-            hand all of it over — the tools, the reasoning, the access. Our job is to make
+            hand all of it over - the tools, the reasoning, the access. Our job is to make
             ourselves unnecessary, then be genuinely useful when you choose to come back.
           </p>
         </div>
@@ -119,7 +119,7 @@ export function HowWeWork({ compact = false }: { compact?: boolean }) {
               </p>
               <p>
                 Then we help you put agents into the operation itself, so the repetitive work
-                stops consuming people. That is the point of all of it — your team spending
+                stops consuming people. That is the point of all of it - your team spending
                 their hours on customers and judgement calls, which is the part no model does
                 better than a good operator.
               </p>

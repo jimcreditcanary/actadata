@@ -9,14 +9,14 @@ export function Hero() {
       {/* base wash */}
       <div className="absolute inset-0 bg-gradient-to-b from-navy-100 via-navy to-navy pointer-events-none" />
 
-      {/* aurora gradient blobs — drift slowly, GPU accelerated */}
+      {/* aurora gradient blobs - drift slowly, GPU accelerated */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-[-10%] left-[10%] h-[640px] w-[640px] rounded-full bg-electric/25 blur-[140px] mix-blend-screen animate-aurora-a" />
         <div className="absolute top-[8%] right-[-6%] h-[560px] w-[560px] rounded-full bg-sky/30 blur-[150px] mix-blend-screen animate-aurora-b" />
         <div className="absolute bottom-[-15%] left-[30%] h-[520px] w-[520px] rounded-full bg-electric/15 blur-[140px] mix-blend-screen animate-aurora-c" />
       </div>
 
-      {/* topographic / data-flow SVG — abstract concentric arcs */}
+      {/* topographic / data-flow SVG - abstract concentric arcs */}
       <svg
         aria-hidden
         className="absolute inset-0 w-full h-full opacity-[0.18] pointer-events-none"
@@ -60,8 +60,8 @@ export function Hero() {
         <RotatingHero>
           <p className="mt-7 max-w-2xl text-lg md:text-xl text-muted-foreground leading-relaxed">
             Timely data, recorded once and never rewritten, in a single source your
-            whole business agrees on — and the shape AI actually works with. All on
-            Google, in your own secure, scalable environment. Live in weeks, not years —
+            whole business agrees on - and the shape AI actually works with. All on
+            Google, in your own secure, scalable environment. Live in weeks, not years - 
             handed over to you, or run by us.
           </p>
           <div className="mt-9 flex flex-wrap items-center gap-3">

@@ -6,7 +6,7 @@ import { join } from "path";
  * The square company avatar, 600×600 (2× LinkedIn's recommended 300×300).
  *
  * The avatar currently on the page is the old magenta tile with a "Data made
- * human" strapline, which no longer matches either the site or the new banner —
+ * human" strapline, which no longer matches either the site or the new banner - 
  * and the avatar sits directly on top of the banner, so a mismatch there is the
  * most visible brand error on the page.
  *

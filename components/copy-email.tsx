@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Check, Copy } from "lucide-react";
 
 /**
- * The address must be reachable without a working mail client — `mailto:` does
+ * The address must be reachable without a working mail client - `mailto:` does
  * nothing on machines with no default handler, which silently loses enquiries.
  * So it is shown as selectable text with a copy button alongside the mail link.
  */
@@ -14,7 +14,7 @@ export function CopyEmail({ email }: { email: string }) {
     try {
       await navigator.clipboard.writeText(email);
     } catch {
-      // Clipboard API blocked (insecure context, or permission denied) — the
+      // Clipboard API blocked (insecure context, or permission denied) - the
       // address is selectable text anyway, so fall through to the same feedback.
     }
     setCopied(true);

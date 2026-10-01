@@ -3,7 +3,7 @@ import { Eyebrow } from "@/components/eyebrow";
 /**
  * The pain, named plainly. Everything else on the site describes what we build;
  * this is the only section that describes the visitor's Tuesday. It leads with
- * the symptoms because that is what people recognise themselves in — nobody
+ * the symptoms because that is what people recognise themselves in - nobody
  * searches for "semantic layer", they search for a way out of the export.
  */
 const symptoms = [

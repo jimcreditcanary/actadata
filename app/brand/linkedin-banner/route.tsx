@@ -99,7 +99,7 @@ export function GET() {
               <span style={{ color: ELECTRIC, marginLeft: px(13) }}>AI needs.</span>
             </div>
             <div style={{ display: "flex", fontSize: px(19), color: "rgba(242,244,248,0.75)" }}>
-              Timely data, one source, agents that act — all on Google.
+              Timely data, one source, agents that act - all on Google.
             </div>
           </div>
 

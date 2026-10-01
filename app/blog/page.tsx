@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 /**
  * The blog index. Newest first, both kinds mixed, because a reader arriving
  * cold wants the most recent thing we said rather than a taxonomy. The two
- * grouped views underneath exist for the people who came for one or the other —
+ * grouped views underneath exist for the people who came for one or the other - 
  * and each only appears when it has something in it.
  */
 export default function BlogPage() {
@@ -36,7 +36,7 @@ export default function BlogPage() {
           data={graph({
             "@type": "Blog",
             "@id": `${SITE}/blog#blog`,
-            name: "Acta Data — Writing",
+            name: "Acta Data - Writing",
             description:
               "Case studies and thought leadership on operational data, event tracking and putting AI agents into a live business.",
             url: `${SITE}/blog`,
@@ -66,7 +66,7 @@ export default function BlogPage() {
             <div className="max-w-2xl">
               <p className="text-lg text-muted-foreground leading-relaxed">
                 Nothing published yet. If you want the thinking before the writing catches up,
-                ask on a call — we will talk you through the approach and the closest piece of
+                ask on a call - we will talk you through the approach and the closest piece of
                 work we are able to discuss.
               </p>
               <div className="mt-7 flex flex-wrap gap-4 text-sm">
@@ -93,7 +93,7 @@ export default function BlogPage() {
               )}
 
               {studies.length === 0 && (
-                /* Honest about the gap rather than silent about it — and it puts
+                /* Honest about the gap rather than silent about it - and it puts
                    the reference request in front of someone already reading. */
                 <div className="mt-14 rounded-2xl border border-white/[0.08] bg-card/40 p-7 md:p-8 max-w-3xl">
                   <h2 className="text-lg font-semibold tracking-tight">

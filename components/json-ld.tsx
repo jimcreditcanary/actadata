@@ -2,7 +2,7 @@
  * Renders a JSON-LD graph into the page.
  *
  * Server-rendered as a plain script tag so it is in the HTML the first time any
- * crawler or AI retriever sees the page — no client hydration involved.
+ * crawler or AI retriever sees the page - no client hydration involved.
  */
 export function JsonLd({ data }: { data: object }) {
   return (

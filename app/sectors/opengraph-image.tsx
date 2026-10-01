@@ -10,7 +10,7 @@ import { sectors } from "@/lib/sectors";
 export const size = OG_SIZE;
 export const contentType = "image/png";
 export const alt =
-  "Acta Data — we already know your value streams. Eleven sectors, from consumer credit to manufacturing.";
+  "Acta Data - we already know your value streams. Eleven sectors, from consumer credit to manufacturing.";
 
 export default function Image() {
   return new ImageResponse(

@@ -7,14 +7,14 @@ import { Button } from "@/components/ui/button";
 import { hasCaseStudies, hasPosts } from "@/lib/posts";
 
 /**
- * Real routes now, not anchors — the site is sectioned so each area can be
+ * Real routes now, not anchors - the site is sectioned so each area can be
  * landed on directly and linked to from campaigns.
  *
  * The case-studies and writing links only exist when there is something to read,
  * so an empty section can never be discovered.
  *
  * NAV WIDTH: eight links fit one row down to 1024px with 75px of clearance to the
- * CTA — measured, not guessed. Seven render today because "Case studies" is gated
+ * CTA - measured, not guessed. Seven render today because "Case studies" is gated
  * off until one is published; that publication takes it to eight, which still fits.
  * A ninth will not. Add one and something has to come out.
  *

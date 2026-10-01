@@ -25,7 +25,7 @@ export default function WhatWeBuildPage() {
         eyebrow="What we build"
         title="A working data function."
         accent="Without building one."
-        lede="Not a tool you have to staff. A working data function — the connections, the history, the metric tree, the reporting people actually open, and the AI layer on top."
+        lede="Not a tool you have to staff. A working data function - the connections, the history, the metric tree, the reporting people actually open, and the AI layer on top."
       >
         <div className="flex flex-wrap gap-3">
           <Button asChild variant="electric" size="lg">
@@ -40,7 +40,7 @@ export default function WhatWeBuildPage() {
       <WhatWeBuild />
       <SecondBrain />
       {/* Straight after the AI layer, because that is exactly what the quote is
-          about — the client running their own queries rather than asking us. */}
+          about - the client running their own queries rather than asking us. */}
       <Testimonial eyebrow="Built, delivered, handed over" />
       <DataProtection />
       <EngagementModels />

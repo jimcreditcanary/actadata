@@ -11,8 +11,8 @@ import { featuredQuote } from "@/lib/posts";
  * it in unconditionally instead of guarding at seven call sites.
  *
  * Two sizes:
- *   default — a full section, for pages where the quote is a beat of its own.
- *   compact — no eyebrow, tighter padding, for pages that already have a lot of
+ *   default - a full section, for pages where the quote is a beat of its own.
+ *   compact - no eyebrow, tighter padding, for pages that already have a lot of
  *             vertical furniture (the home page, which is measured in screens of
  *             thumb on a phone, and the case-studies index).
  *
@@ -43,7 +43,7 @@ export function Testimonial({
         {!compact && <Eyebrow className="mb-8">{eyebrow}</Eyebrow>}
 
         <blockquote className="max-w-4xl">
-          {/* The opening mark is decorative — the quotation marks around the text
+          {/* The opening mark is decorative - the quotation marks around the text
               already do the semantic job, and a screen reader announcing a
               free-floating quote glyph adds nothing. */}
           <span

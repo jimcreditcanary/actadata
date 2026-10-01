@@ -9,7 +9,7 @@ import { ContactFooter } from "@/components/sections/contact-footer";
 export const metadata: Metadata = {
   title: "About: operators first, data people second",
   description:
-    "Data and AI people who have held C-suite positions across marketing, operations, technology and product — in blue-chip brands and founder-led SMEs.",
+    "Data and AI people who have held C-suite positions across marketing, operations, technology and product - in blue-chip brands and founder-led SMEs.",
   alternates: { canonical: "/about" },
 };
 

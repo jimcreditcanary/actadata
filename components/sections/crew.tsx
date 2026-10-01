@@ -22,7 +22,7 @@ Decades of data and AI experience.{" "}
           </h2>
           <p className="mt-5 text-lg text-muted-foreground">
             We are data and AI people who have held C-suite positions across marketing,
-            operations, technology and product — so we have sat on your side of the table
+            operations, technology and product - so we have sat on your side of the table
             and owned the number, not just reported it. You feel it in week one: we find
             the handful of numbers that actually move your outcome, and ship them. A real
             report in days, not a discovery deck in six months.
@@ -42,7 +42,7 @@ Decades of data and AI experience.{" "}
           ))}
         </div>
 
-        {/* Where we've worked — the argument for why SME judgement is the edge,
+        {/* Where we've worked - the argument for why SME judgement is the edge,
             evidenced by the brands that judgement was formed in. */}
         <div className="mt-5 rounded-2xl border border-white/[0.06] bg-card/50 backdrop-blur p-6 md:p-10">
           <div className="max-w-3xl">
@@ -54,7 +54,7 @@ Decades of data and AI experience.{" "}
             </h3>
             <p className="mt-4 text-muted-foreground leading-relaxed">
               Every business can buy the same models now. What separates the ones that get
-              value from them is knowing which decisions actually move the number — and that
+              value from them is knowing which decisions actually move the number - and that
               only comes from having run things. We have informed strategy through operations
               and data systems in some of the biggest brands in the country and in
               founder-led SMEs, from inside as operators and alongside as consultants.
@@ -77,7 +77,7 @@ Decades of data and AI experience.{" "}
                 We operationalise AI
               </div>
               <h3 className="mt-3 text-2xl md:text-3xl font-semibold tracking-tight leading-tight">
-                Analytics that do something — not analytics you read.
+                Analytics that do something - not analytics you read.
               </h3>
               <p className="mt-4 text-sm text-muted-foreground leading-relaxed">
                 Where this really bites is the mid-market: enough complexity to need a
@@ -88,7 +88,7 @@ Decades of data and AI experience.{" "}
               <p>
                 A report tells you what happened last month. We build the layer
                 underneath it: AI inside your workflows, so a number becoming a problem
-                triggers the work — the case flagged, the limit reviewed, the exception
+                triggers the work - the case flagged, the limit reviewed, the exception
                 routed to whoever can clear it.
               </p>
               <p>

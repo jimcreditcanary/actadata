@@ -7,7 +7,7 @@ import { ExperienceMarquee } from "@/components/experience-marquee";
  * The full argument for why that experience matters lives in <Crew /> on /about.
  * On the home page it was 2,457px of a phone screen before the reader had got to
  * what we actually do, so all that survives here is the evidence itself and the
- * line that qualifies it — everything else is one tap away.
+ * line that qualifies it - everything else is one tap away.
  *
  * The qualification is not decoration: these are brands the team worked with in
  * prior roles and engagements, NOT Acta Data clients. Do not drop that wording.

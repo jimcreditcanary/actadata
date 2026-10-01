@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 
 /**
  * The answers live in lib/seo.ts because the FAQPage schema and the visible page
- * must be the same text — Google penalises schema that does not appear on the
+ * must be the same text - Google penalises schema that does not appear on the
  * page, and an assistant quoting one while the page says another is worse.
  *
  * This page exists mainly to be retrieved. Buyers ask these ten questions on
@@ -36,12 +36,12 @@ export default function FaqPage() {
             })),
           },
           {
-            /* Gives a voice assistant an explicit passage to read aloud — the
-               questions and their answers — rather than guessing at the page. */
+            /* Gives a voice assistant an explicit passage to read aloud - the
+               questions and their answers - rather than guessing at the page. */
             "@type": "WebPage",
             "@id": `${SITE}/faq#webpage`,
             url: `${SITE}/faq`,
-            name: "Acta Data — FAQ",
+            name: "Acta Data - FAQ",
             speakable: {
               "@type": "SpeakableSpecification",
               cssSelector: [".faq-question", ".faq-answer"],

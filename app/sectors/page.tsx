@@ -63,7 +63,7 @@ export default function SectorsPage() {
 
           <p className="text-sm text-muted-foreground">
             Not listed? The sector changes; the value streams rhyme. We have also delivered in
-            financial services consultancy, consumer-facing AI and public sector —{" "}
+            financial services consultancy, consumer-facing AI and public sector - {" "}
             <Link href="/contact" className="text-electric hover:underline">
               tell us what you measure
             </Link>

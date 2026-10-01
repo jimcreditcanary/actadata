@@ -2,14 +2,14 @@ import { ImageResponse } from "next/og";
 import { OgCard, OG_SIZE, ogFonts } from "@/components/og-card";
 
 /**
- * Share card for /case-studies — the link a sales email uses.
+ * Share card for /case-studies - the link a sales email uses.
  *
  * The design lives in components/og-card.tsx; this file is only the words.
  */
 export const size = OG_SIZE;
 export const contentType = "image/png";
 export const alt =
-  "Acta Data case studies — what we built, and what changed.";
+  "Acta Data case studies - what we built, and what changed.";
 
 export default function Image() {
   return new ImageResponse(

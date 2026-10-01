@@ -32,8 +32,8 @@ import { allPosts, caseStudies } from "@/lib/posts";
  * everything.
  *
  * The Summary Page mock stays despite being the tallest block left. It is the
- * most persuasive thing we have — it shows the product rather than describing
- * it — and it no longer carries a charting library.
+ * most persuasive thing we have - it shows the product rather than describing
+ * it - and it no longer carries a charting library.
  */
 export default function Page() {
   /* Case studies lead when they exist, because delivered work outsells opinion.
@@ -51,7 +51,7 @@ export default function Page() {
       {/* Proof before explanation. The brand marquee above says who we have
           worked with; this says what one of them got, in their words, before the
           page starts explaining anything. Compact, and it renders nothing until a
-          case study carrying a quote is published — so the mobile height budget
+          case study carrying a quote is published - so the mobile height budget
           only pays for it while it is earning. */}
       <Testimonial compact />
       <HowItWorks />

@@ -6,7 +6,7 @@ const tiles = [
   {
     icon: Database,
     title: "Integrations & Data Sources",
-    blurb: "Every system that matters, landed in one place. How we connect is source-dependent — API, export, replica or event stream, whatever yours exposes.",
+    blurb: "Every system that matters, landed in one place. How we connect is source-dependent - API, export, replica or event stream, whatever yours exposes.",
   },
   {
     icon: Cloud,
@@ -16,12 +16,12 @@ const tiles = [
   {
     icon: GitBranch,
     title: "Business Mapping & Metric Trees",
-    blurb: "We map how revenue actually moves through your business, then build the metric tree — the agreed map of how every number rolls up — that your operators can argue with, and settle arguments from.",
+    blurb: "We map how revenue actually moves through your business, then build the metric tree - the agreed map of how every number rolls up - that your operators can argue with, and settle arguments from.",
   },
   {
     icon: LineChart,
     title: "Operational & Risk Intelligence",
-    blurb: "Dashboards your team actually opens — finance, marketing, ops, risk — wired to the metric tree, with thresholds that raise the work rather than just colouring a cell red.",
+    blurb: "Dashboards your team actually opens - finance, marketing, ops, risk - wired to the metric tree, with thresholds that raise the work rather than just colouring a cell red.",
   },
   {
     icon: LayoutDashboard,
@@ -33,7 +33,7 @@ const tiles = [
   {
     icon: Sparkles,
     title: "Self-Service Analytics with Claude",
-    blurb: "Claude wired into your data in your own enterprise account. Your exec team asks in plain English and gets answers straight from the metric tree — and starts spotting opportunities nobody had time to look for.",
+    blurb: "Claude wired into your data in your own enterprise account. Your exec team asks in plain English and gets answers straight from the metric tree - and starts spotting opportunities nobody had time to look for.",
   },
 ];
 
@@ -48,7 +48,7 @@ export function WhatWeBuild() {
               Six capabilities. One coherent data function.
             </h2>
             <p className="mt-5 text-lg text-muted-foreground">
-              Built on a full event history in BigQuery — everything recorded once and
+              Built on a full event history in BigQuery - everything recorded once and
               never edited afterwards, which makes every later question cheaper to
               answer, whether that is a report, an attribution model or an AI one.
             </p>

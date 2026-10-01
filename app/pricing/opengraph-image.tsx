@@ -14,7 +14,7 @@ import {
 export const size = OG_SIZE;
 export const contentType = "image/png";
 export const alt =
-  "Acta Data pricing — £15k for the map, £60k to solve an area, £120k for the whole business.";
+  "Acta Data pricing - £15k for the map, £60k to solve an area, £120k for the whole business.";
 
 export default function Image() {
   return new ImageResponse(
@@ -23,7 +23,7 @@ export default function Image() {
         kicker="Pricing"
         lines={[`£${discoveryOneOffK}k for the map.`, `£${entryYearK}k to solve an area.`]}
         titleSize={72}
-        sub="Priced by how much of the business is in scope — and the map is credited in full if you go ahead."
+        sub="Priced by how much of the business is in scope - and the map is credited in full if you go ahead."
         chips={[
           `Discovery £${discoveryOneOffK}k`,
           `One area £${entryYearK}k/yr`,

@@ -34,7 +34,7 @@ export default function HowItWorksPage() {
       >
         <div className="flex flex-wrap gap-3">
           <Button asChild variant="electric" size="lg">
-            <Link href="/contact">Start the conversation →</Link>
+            <Link href="/contact">Talk to us →</Link>
           </Button>
           <Button asChild variant="outline" size="lg">
             <Link href="/what-we-build">What we build</Link>
@@ -56,7 +56,7 @@ export default function HowItWorksPage() {
           only open question is when they get it. */}
       {/* The only block on the site that evidences the real-time claim rather
           than asserting it: one cell per source per day. It came off the Summary
-          demo when that moved to home only, and it belongs here anyway — this is
+          demo when that moved to home only, and it belongs here anyway - this is
           the page where the plumbing is the subject. */}
       <section className="py-14 md:py-16 border-t border-white/[0.04]">
         <div className="container">
@@ -66,7 +66,7 @@ export default function HowItWorksPage() {
 
       <EngagementTimeline />
       {/* The timeline above claims a few months. This is the client saying it
-          took three — which is the only kind of evidence that claim can have. */}
+          took three - which is the only kind of evidence that claim can have. */}
       <Testimonial eyebrow="Three months, in practice" />
       <ContactFooter />
     </>

@@ -7,7 +7,7 @@ const models = [
     name: "From Scratch",
     duration: "Months, not years",
     blurb:
-      "Nothing to build on, or nothing you trust. We start from zero: first real report inside a week, and a working data layer your business runs on within the first few months — regulated reporting included.",
+      "Nothing to build on, or nothing you trust. We start from zero: first real report inside a week, and a working data layer your business runs on within the first few months - regulated reporting included.",
     tier: "One area and up",
     featured: true,
   },
@@ -44,7 +44,7 @@ export function EngagementModels() {
             Choose how you work with us.
           </h2>
           <p className="mt-5 text-lg text-muted-foreground">
-            Same operators, same stack, same standards. Four ways in — the only question is
+            Same operators, same stack, same standards. Four ways in - the only question is
             where you&apos;re starting from.
           </p>
         </div>
@@ -67,7 +67,7 @@ export function EngagementModels() {
                 <div className="mt-6 flex items-center justify-between gap-3">
                   <div className="text-electric font-medium">{m.tier}</div>
                   <Button asChild variant="ghost" size="sm" className="text-foreground/80 hover:text-electric shrink-0">
-                    <a href="#contact">Discuss →</a>
+                    <a href="#contact">Talk to us →</a>
                   </Button>
                 </div>
               </CardContent>
@@ -77,7 +77,7 @@ export function EngagementModels() {
 
         <p className="mt-8 text-center text-sm text-muted-foreground">
           <span className="text-foreground font-medium">Acta means acts.</span>{" "}
-          We build action data — not archive data.
+          We build action data - not archive data.
         </p>
       </div>
     </section>

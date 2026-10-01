@@ -8,12 +8,12 @@ import { posts, getPost, KIND_LABEL, formatDate } from "@/lib/posts";
  * of what a piece of writing gets.
  *
  * Built at build time from the same post data as the page, so publishing a post
- * produces its card with it — there is no image to remember to make.
+ * produces its card with it - there is no image to remember to make.
  */
 export const size = OG_SIZE;
 export const contentType = "image/png";
 
-export const alt = "Acta Data — writing on operational data, reporting and AI agents";
+export const alt = "Acta Data - writing on operational data, reporting and AI agents";
 
 export function generateStaticParams() {
   return posts.map(p => ({ slug: p.slug }));
@@ -28,7 +28,7 @@ export default async function PostOgImage({ params }: { params: Promise<{ slug: 
       (
         <OgCard
           lines={["The data layer", "AI needs."]}
-          sub="Timely data, one source, agents that act — all on Google."
+          sub="Timely data, one source, agents that act - all on Google."
         />
       ),
       { ...size, fonts: ogFonts() }

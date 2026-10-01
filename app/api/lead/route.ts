@@ -3,7 +3,7 @@ import { autoReply, leadAlert, type Lead } from "@/lib/emails";
 
 /**
  * Lead-capture endpoint. Takes the contact form, then fires two Postmark emails:
- *   1. the internal alert to LEAD_INBOX (never lose a lead — sent first), and
+ *   1. the internal alert to LEAD_INBOX (never lose a lead - sent first), and
  *   2. the auto-reply to the enquirer proposing times to meet.
  *
  * The enquirer never sees the internal inbox address; From is always the
@@ -95,7 +95,7 @@ export async function POST(req: Request) {
   const alert = leadAlert(lead);
   const reply = autoReply(lead);
 
-  // Send the internal alert first — the lead must never be lost even if the
+  // Send the internal alert first - the lead must never be lost even if the
   // auto-reply then fails.
   try {
     await sendEmail(token, {

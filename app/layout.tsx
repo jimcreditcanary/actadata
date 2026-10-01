@@ -20,13 +20,13 @@ export const metadata: Metadata = {
      of every one of them without each page repeating it. */
   title: {
     /* Kept under ~60 characters so it renders in full in the SERP rather than
-       truncating — the fuller "Built, handed over, done." line lives in the OG
+       truncating - the fuller "Built, handed over, done." line lives in the OG
        and Twitter titles below, where length is not clipped. */
-    default: "Acta Data — The data layer AI needs, built and handed over",
+    default: "Acta Data - The data layer AI needs, built and handed over",
     template: "%s | Acta Data",
   },
   description:
-    "Acta Data builds the operational data layer AI needs — event history in BigQuery, reporting people open, and Claude for self-service. Live in weeks, not years.",
+    "Acta Data builds the operational data layer AI needs - event history in BigQuery, reporting people open, and Claude for self-service. Live in weeks, not years.",
   metadataBase: new URL("https://www.actadata.co.uk"),
   alternates: { canonical: "/" },
   icons: {
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     shortcut: "/favicon.ico",
   },
   openGraph: {
-    title: "Acta Data — The data layer AI needs. Built, handed over, done.",
+    title: "Acta Data - The data layer AI needs. Built, handed over, done.",
     description:
       "Timely data, recorded once and never rewritten, in a single source AI can work with. All on Google, in your own secure, scalable environment.",
     url: "/",
@@ -65,7 +65,7 @@ export const metadata: Metadata = {
   category: "Data and AI consultancy",
   twitter: {
     card: "summary_large_image",
-    title: "Acta Data — The data layer AI needs. Built, handed over, done.",
+    title: "Acta Data - The data layer AI needs. Built, handed over, done.",
     description:
       "Timely data, recorded once and never rewritten, in a single source AI can work with. All on Google, in your own secure, scalable environment.",
   },
@@ -79,12 +79,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       suppressHydrationWarning
     >
       <body className="min-h-dvh bg-background font-sans">
-        {/* Who we are, what the site is, and what we sell — on every page, so no
+        {/* Who we are, what the site is, and what we sell - on every page, so no
             crawler has to find the right one to learn it. */}
         <JsonLd data={graph(organisation, website, service)} />
         <Nav />
         <main>{children}</main>
-        {/* Vercel Web Analytics — privacy-friendly, cookieless page + event
+        {/* Vercel Web Analytics - privacy-friendly, cookieless page + event
             analytics. Only sends data on Vercel; a no-op in local dev. Enable
             Web Analytics for the project in the Vercel dashboard to collect. */}
         <Analytics />

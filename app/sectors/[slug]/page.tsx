@@ -29,7 +29,7 @@ export async function generateMetadata({
   if (!sector) return {};
   return {
     title: `${sector.label} data & AI`,
-    /* A complete, hand-written sentence under ~155 chars — the old approach of
+    /* A complete, hand-written sentence under ~155 chars - the old approach of
        slicing tagline+intro to a fixed length cut every snippet mid-sentence. */
     description: sector.metaDescription,
     alternates: { canonical: `/sectors/${sector.slug}` },
@@ -93,7 +93,7 @@ export default async function SectorPage({ params }: { params: Promise<{ slug: s
         <p className="max-w-2xl text-muted-foreground leading-relaxed">{sector.intro}</p>
         <div className="mt-8 flex flex-wrap gap-3">
           <Button asChild variant="electric" size="lg">
-            <Link href="/contact">Talk about your numbers →</Link>
+            <Link href="/contact">Talk to us →</Link>
           </Button>
           <Button asChild variant="outline" size="lg">
             <Link href="/how-it-works">See how it works</Link>
@@ -135,7 +135,7 @@ export default async function SectorPage({ params }: { params: Promise<{ slug: s
             ))}
           </div>
           <p className="mt-5 max-w-2xl text-sm text-muted-foreground">
-            Whatever it is and however it exposes itself — API, database, nightly
+            Whatever it is and however it exposes itself - API, database, nightly
             file, or a spreadsheet somebody maintains by hand. We only ever need read
             access, with personal data excluded.
           </p>
@@ -181,7 +181,7 @@ export default async function SectorPage({ params }: { params: Promise<{ slug: s
               <p className="text-lg text-foreground/90 leading-relaxed">{sector.outputs}</p>
               <p className="mt-5 text-sm text-muted-foreground leading-relaxed">
                 Live in months rather than years, from £{entryMonthlyK}k a month, on your own
-                Google environment — handed over to you, or run by us.
+                Google environment - handed over to you, or run by us.
               </p>
             </CardContent>
           </Card>
@@ -189,7 +189,7 @@ export default async function SectorPage({ params }: { params: Promise<{ slug: s
         </div>
       </section>
 
-      {/* Sector-specific narrative — written per sector, so each page carries
+      {/* Sector-specific narrative - written per sector, so each page carries
           real depth and unique language rather than the shared wrapper. */}
       <section className="py-14 md:py-16 border-t border-white/[0.04]">
         <div className="container">
@@ -218,7 +218,7 @@ export default async function SectorPage({ params }: { params: Promise<{ slug: s
         cta={{ href: "/blog", label: "All writing →" }}
       />
 
-      {/* Sector-specific Q&A. Matches the FAQPage schema above exactly — Google
+      {/* Sector-specific Q&A. Matches the FAQPage schema above exactly - Google
           requires FAQ markup to be visible on the page it describes. */}
       <section className="py-14 md:py-16 border-t border-white/[0.04]">
         <div className="container">

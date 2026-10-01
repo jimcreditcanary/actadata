@@ -2,8 +2,8 @@
  * Branded email templates for the lead-capture flow.
  *
  * Two emails go out on every enquiry:
- *   1. autoReply  — to the person who filled the form, proposing times to meet.
- *   2. leadAlert  — to the Acta Data inbox, flagging a new lead to act on now.
+ *   1. autoReply - to the person who filled the form, proposing times to meet.
+ *   2. leadAlert - to the Acta Data inbox, flagging a new lead to act on now.
  *
  * Both are plain table-and-inline-style HTML: that is the only layout that
  * survives across Outlook, Gmail and Apple Mail. Colours mirror the site's
@@ -102,17 +102,17 @@ function suggestedSlots(from = new Date()): { long: string; short: string }[] {
   });
 }
 
-/** Auto-reply to the person who enquired — warm, direct, proposes times. */
+/** Auto-reply to the person who enquired - warm, direct, proposes times. */
 export function autoReply(lead: Lead): { subject: string; html: string; text: string } {
   const name = firstName(lead.name);
   const [a, b] = suggestedSlots();
 
-  const subject = "Let's find a time — Acta Data";
+  const subject = "Let's find a time - Acta Data";
 
   const inner = `
-    <h1 style="margin:0 0 16px 0;font-family:'Archivo Black',Arial,sans-serif;font-weight:800;font-size:24px;line-height:1.25;color:${TEXT};">Thanks, ${name} — let's talk.</h1>
+    <h1 style="margin:0 0 16px 0;font-family:'Archivo Black',Arial,sans-serif;font-weight:800;font-size:24px;line-height:1.25;color:${TEXT};">Thanks, ${name} - let's talk.</h1>
     <p style="margin:0 0 16px 0;font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1.6;color:${TEXT};">
-      Got your details. The next step is a 30-minute call — no deck. We'll tell you whether we're the right partner and exactly what we'd ship in your first 30 days.
+      Got your details. The next step is a 30-minute call - no deck. We'll tell you whether we're the right partner and exactly what we'd ship in your first 30 days.
     </p>
     <p style="margin:0 0 12px 0;font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1.6;color:${TEXT};">
       A couple of times that work our end:
@@ -122,12 +122,12 @@ export function autoReply(lead: Lead): { subject: string; html: string; text: st
       <tr><td style="padding:6px 0;font-family:Arial,Helvetica,sans-serif;font-size:15px;color:${VIOLET_GLOW};">→ ${b.long}</td></tr>
     </table>
     <p style="margin:0 0 24px 0;font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1.6;color:${TEXT};">
-      Reply to this email with whichever suits — or a better time — and I'll send a calendar hold.
+      Reply to this email with whichever suits - or a better time - and I'll send a calendar hold.
     </p>
     <table role="presentation" cellpadding="0" cellspacing="0">
       <tr>
         <td style="border-radius:10px;background:${VIOLET};">
-          <a href="mailto:hello@actadata.co.uk?subject=${encodeURIComponent("Re: Let's find a time — Acta Data")}" style="display:inline-block;padding:12px 22px;font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:700;color:${NAVY};text-decoration:none;">Reply with a time →</a>
+          <a href="mailto:hello@actadata.co.uk?subject=${encodeURIComponent("Re: Let's find a time - Acta Data")}" style="display:inline-block;padding:12px 22px;font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:700;color:${NAVY};text-decoration:none;">Reply with a time →</a>
         </td>
       </tr>
     </table>
@@ -135,29 +135,29 @@ export function autoReply(lead: Lead): { subject: string; html: string; text: st
       Speak soon,<br/><span style="color:${TEXT};">The team at Acta Data</span>
     </p>`;
 
-  const text = `Thanks, ${name} — let's talk.
+  const text = `Thanks, ${name} - let's talk.
 
-Got your details. The next step is a 30-minute call — no deck. We'll tell you whether we're the right partner and exactly what we'd ship in your first 30 days.
+Got your details. The next step is a 30-minute call - no deck. We'll tell you whether we're the right partner and exactly what we'd ship in your first 30 days.
 
 A couple of times that work our end:
   - ${a.long}
   - ${b.long}
 
-Reply to this email with whichever suits — or a better time — and I'll send a calendar hold.
+Reply to this email with whichever suits - or a better time - and I'll send a calendar hold.
 
 Speak soon,
 The team at Acta Data
 
-—
+ - 
 Acta Data Ltd · Registered in England & Wales, company no. 14182372 · ICO reg. ZB502441.
 Chester House, Lloyd Drive, Cheshire Oaks Business Park, Ellesmere Port, Cheshire CH65 9HQ.`;
 
   return { subject, html: shell(inner), text };
 }
 
-/** Internal alert to the Acta Data inbox — a new lead to act on immediately. */
+/** Internal alert to the Acta Data inbox - a new lead to act on immediately. */
 export function leadAlert(lead: Lead): { subject: string; html: string; text: string } {
-  const subject = `🔔 New lead — ${lead.name}, ${lead.company} (act now)`;
+  const subject = `🔔 New lead - ${lead.name}, ${lead.company} (act now)`;
 
   const row = (label: string, value: string, href?: string) => `
     <tr>
@@ -171,7 +171,7 @@ export function leadAlert(lead: Lead): { subject: string; html: string; text: st
     <p style="margin:0 0 6px 0;font-family:Arial,Helvetica,sans-serif;font-size:12px;text-transform:uppercase;letter-spacing:2px;color:${VIOLET};">New enquiry</p>
     <h1 style="margin:0 0 8px 0;font-family:'Archivo Black',Arial,sans-serif;font-weight:800;font-size:24px;line-height:1.25;color:${TEXT};">${lead.name} wants to talk.</h1>
     <p style="margin:0 0 22px 0;font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1.6;color:${MUTED};">
-      An auto-reply proposing times has already gone to them. Follow up now while it's live — reply straight to this email to reach them.
+      An auto-reply proposing times has already gone to them. Follow up now while it's live - reply straight to this email to reach them.
     </p>
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
       ${row("Name", lead.name)}
@@ -181,7 +181,7 @@ export function leadAlert(lead: Lead): { subject: string; html: string; text: st
       ${row("Mobile", lead.mobile, `tel:${lead.mobile.replace(/\s+/g, "")}`)}
     </table>`;
 
-  const text = `NEW LEAD — act now
+  const text = `NEW LEAD - act now
 
 ${lead.name} wants to talk. An auto-reply proposing times has already gone to them.
 

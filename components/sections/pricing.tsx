@@ -17,13 +17,13 @@ import {
 } from "@/lib/economics";
 
 /**
- * Priced by scope, and the annual figure is the headline — £60k and £120k are the
+ * Priced by scope, and the annual figure is the headline - £60k and £120k are the
  * numbers a board signs off, where "£5k a month" reads as a subscription nobody
  * has to think about.
  *
  * The Discovery tier is styled differently on purpose. It is the only one that
  * does not ask for a year, and its whole pitch is that you can take the output
- * and do it yourself — so it gets a dashed frame that reads as detachable rather
+ * and do it yourself - so it gets a dashed frame that reads as detachable rather
  * than as the cheap seat in a subscription ladder.
  */
 const plans = [
@@ -37,12 +37,12 @@ const plans = [
     diy: true,
     summary: "The map, the plan and the watch-outs. Then do it yourself, or don't.",
     features: [
-      "Your value streams mapped end to end — where cost, revenue, conversion and time actually go",
+      "Your value streams mapped end to end - where cost, revenue, conversion and time actually go",
       "Where the value leaks, quantified, and what fixing each one is worth",
       "AI readiness: what your data can support today, and what it cannot",
-      "The watch-outs — where AI will embarrass you if you point it at this as-is",
+      "The watch-outs - where AI will embarrass you if you point it at this as-is",
       "A build plan and strategy you own outright, whoever you hand it to",
-      "No obligation to continue — take the plan and run it yourself",
+      "No obligation to continue - take the plan and run it yourself",
     ],
     cta: "Start with the map",
   },
@@ -53,10 +53,10 @@ const plans = [
     monthlyK: entryMonthlyK,
     fit: tiers.oneArea.fit,
     bound: tiers.oneArea.bound,
-    summary: "Pick the area that hurts — usually operations — and we finish it.",
+    summary: "Pick the area that hurts - usually operations - and we finish it.",
     features: [
       "One value stream, built end to end rather than half-covered everywhere",
-      "Every source it touches connected — ERP, in-house database, nightly file or a hand-maintained spreadsheet",
+      "Every source it touches connected - ERP, in-house database, nightly file or a hand-maintained spreadsheet",
       "BigQuery and Cloud Run in your own secure, scalable Google environment",
       "Full event history, business mapping and the metric tree for that area",
       "The Summary Page, live, for the part of the business you chose",
@@ -73,9 +73,9 @@ const plans = [
     summary: "The whole company mapped, and your exec team answering their own questions.",
     features: [
       "Every value stream in the business, on one layer with one set of definitions",
-      "Reporting suite for finance, marketing, ops and risk — regulated reporting included",
+      "Reporting suite for finance, marketing, ops and risk - regulated reporting included",
       "Claude self-service analytics in your own enterprise account",
-      "Personal data stays out — the model never sees what it shouldn't",
+      "Personal data stays out - the model never sees what it shouldn't",
       "Answers drawn from the metric tree, with limits your risk team can sign off",
     ],
     cta: "Map the business",
@@ -94,7 +94,7 @@ const plans = [
       "Autonomous agents running real operational workflows",
       "Exceptions routed and escalated without a human chasing them",
       "Organisational optimisation, by operators who do it for a living",
-      "Priced against the outcome — we share the upside we create",
+      "Priced against the outcome - we share the upside we create",
     ],
     cta: "Talk about outcomes",
   },
@@ -106,7 +106,7 @@ export function Pricing() {
       <div className="container">
         <div className="max-w-3xl">
           <Eyebrow className="mb-5">Pricing</Eyebrow>
-          {/* "Cheaper than hiring" as a headline invites the wrong question — what am
+          {/* "Cheaper than hiring" as a headline invites the wrong question - what am
               I not getting? This states the cause and the pass-through instead, so the
               price reads as earned rather than discounted. Kept to two short clauses:
               the longer version ran to six lines on a phone, which is not punchy. */}
@@ -118,7 +118,7 @@ export function Pricing() {
             <span className="block text-electric">You keep the difference.</span>
           </h2>
           <p className="mt-5 text-lg text-muted-foreground">
-            AI made a small, senior team much quicker — work that took a quarter takes weeks.
+            AI made a small, senior team much quicker - work that took a quarter takes weeks.
             We pass that gain on rather than banking it, and charge for what is actually
             scarce: knowing which decisions move your number. Nothing is held back to protect
             a follow-on sale. You get the tools, the code and the reasoning, and the sooner
@@ -227,7 +227,7 @@ export function Pricing() {
               </p>
               <p>
                 Take it to your own team, take it to another supplier, or sit on it for a year.
-                If you do come back, you already know exactly what you are buying — and so do
+                If you do come back, you already know exactly what you are buying - and so do
                 we, which is why the build starts in week one rather than in discovery.
               </p>
               <p className="text-foreground/90">
@@ -239,7 +239,7 @@ export function Pricing() {
           </div>
         </div>
 
-        {/* After the build — deliberately open. Nobody signs a 12-month build
+        {/* After the build - deliberately open. Nobody signs a 12-month build
             without knowing what month 13 looks like. */}
         <div className="mt-5 rounded-2xl border border-white/[0.06] bg-card/40 backdrop-blur p-7 md:p-9">
           <div className="max-w-3xl">
@@ -249,7 +249,7 @@ export function Pricing() {
             </h3>
             <p className="mt-4 text-muted-foreground">
               A structured handover either way: everything is Terraformed and
-              version-controlled, so what you inherit is infrastructure as code — not a
+              version-controlled, so what you inherit is infrastructure as code - not a
               machine only we know how to restart. Then pick as much or as little ongoing
               help as you want.
             </p>
@@ -265,7 +265,7 @@ export function Pricing() {
               {
                 t: "Keep it running",
                 price: `£${maintenanceMonthlyK}k / month`,
-                d: "A rolling monthly contract: monitoring, fixes and upgrades so nothing falls over. Cancel whenever — no notice period, no exit fee.",
+                d: "A rolling monthly contract: monitoring, fixes and upgrades so nothing falls over. Cancel whenever - no notice period, no exit fee.",
                 featured: true,
               },
               {
@@ -302,7 +302,7 @@ export function Pricing() {
         </div>
 
         <p className="mt-8 text-center text-sm text-muted-foreground">
-          For context: solving one area is £{entryYearK}k a year — less than half of one
+          For context: solving one area is £{entryYearK}k a year - less than half of one
           fully-loaded senior data hire (~£{seniorHireLoadedK}k), and mapping the whole business
           at £{wholeBusinessYearK}k is around a quarter of the {headcount}-person team you&apos;d
           otherwise build, which still takes {inHouseTimeToFirstOutput} to produce anything

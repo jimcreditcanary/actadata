@@ -5,7 +5,7 @@ import { join } from "path";
  * The share-card design, in one place, so the home card and every post card are
  * the same object with different words in it.
  *
- * Rendered by satori (next/og), which is flexbox-only — no grid, no shorthand
+ * Rendered by satori (next/og), which is flexbox-only - no grid, no shorthand
  * `background` on some properties, and every element that contains children needs
  * an explicit `display`. Fonts must be loaded or it silently falls back: setting
  * `fontFamily: "sans-serif"` with `fontWeight: 800` is what made the original
@@ -20,7 +20,7 @@ const INK = "#F2F4F8";
 /** The three source bands from the flow diagram on the site. */
 const BANDS = ["#4F46E5", "#A855F7", "#E835D8"];
 
-/** Archivo Black for display, Archivo Regular for body — same family, no clash. */
+/** Archivo Black for display, Archivo Regular for body - same family, no clash. */
 export function ogFonts() {
   const dir = join(process.cwd(), "app/_fonts");
   return [
@@ -39,7 +39,7 @@ export function ogFonts() {
   ];
 }
 
-/** Many systems in, one source out — the diagram idea at card scale. */
+/** Many systems in, one source out - the diagram idea at card scale. */
 function GridMotif({ rowsPerBand = 4, cols = 9 }: { rowsPerBand?: number; cols?: number }) {
   return (
     <div style={{ display: "flex", alignItems: "center", gap: 18 }}>
@@ -82,7 +82,7 @@ function GridMotif({ rowsPerBand = 4, cols = 9 }: { rowsPerBand?: number; cols?:
 }
 
 export function OgCard({
-  /** Small label top-left under the wordmark position — e.g. "Insight". */
+  /** Small label top-left under the wordmark position - e.g. "Insight". */
   kicker,
   /** Headline, split into lines. The last line takes the accent colour. */
   lines,

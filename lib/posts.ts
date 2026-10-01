@@ -2,7 +2,7 @@
  * One content model for the blog: case studies and thought-leadership pieces
  * live in the same array, separated by `kind`.
  *
- * Two systems would drift — a case study written as a "post" and another written
+ * Two systems would drift - a case study written as a "post" and another written
  * as a "case study" would eventually disagree about what a case study is. So a
  * case study is just a post that also carries stats/situation/work/outcome, and
  * the post page renders those extra blocks when they exist.
@@ -11,10 +11,10 @@
  * /case-studies explains itself instead of showing placeholder cards, its nav
  * link does not appear, the home page falls back to the insight pieces, the
  * site-wide testimonial disappears, and the sitemap omits the detail pages. That
- * still holds — it is how the site behaved before the first study was published,
+ * still holds - it is how the site behaved before the first study was published,
  * and how it would behave again if one were withdrawn.
  *
- * TEMPLATE — copy one, fill it in, delete the comment. `slug` is the URL.
+ * TEMPLATE - copy one, fill it in, delete the comment. `slug` is the URL.
  *
  * A THOUGHT-LEADERSHIP PIECE:
  *   {
@@ -35,7 +35,7 @@
  *     ],
  *   }
  *
- * A CASE STUDY — same shape, plus the four case-study fields:
+ * A CASE STUDY - same shape, plus the four case-study fields:
  *   {
  *     slug: "consumer-duty-reporting-in-three-months",
  *     kind: "case-study",
@@ -101,13 +101,13 @@ export type Post = {
 
 /**
  * Thought-leadership pieces. Each one argues a position Acta Data already takes
- * publicly elsewhere on the site, at length — the shared-drive folder, the
+ * publicly elsewhere on the site, at length - the shared-drive folder, the
  * spreadsheet trap, data before agents, and the four atomic units. No client
  * facts and no figures appear in any of them, deliberately: everything here is
  * argument, so nothing needs a source we cannot show.
  *
  * The folder piece is the only one carrying a `sector`, which puts it on
- * /sectors/wholesale — that page's writing section renders nothing without it.
+ * /sectors/wholesale - that page's writing section renders nothing without it.
  * Add a sector only where a piece genuinely belongs to one; a general argument
  * tagged to a sector just makes the sector page look thinner than it is.
  */
@@ -117,7 +117,7 @@ const insightPosts: Post[] = [
     kind: "insight",
     title: "Your data team is a folder on a shared drive",
     excerpt:
-      "It is called Reports, it has 240 files in it, and every one of them is a question the business asks every week. That folder is not a failure — it is a specification.",
+      "It is called Reports, it has 240 files in it, and every one of them is a question the business asks every week. That folder is not a failure - it is a specification.",
     published: "2026-08-10",
     readingMinutes: 4,
     author: "Shaun Adams",
@@ -136,7 +136,7 @@ const insightPosts: Post[] = [
         items: [
           "Stock take March FINAL v4.xlsx",
           "Debtors chase list (Dave's copy).xlsx",
-          "Margin by branch — DO NOT EDIT.xlsx",
+          "Margin by branch - DO NOT EDIT.xlsx",
           "Quotes outstanding wk32.xlsx",
           "Price list 2026 (new) (2).xlsx",
           "Van costs Sheet1.xlsx",
@@ -151,7 +151,7 @@ const insightPosts: Post[] = [
       { type: "h2", text: "Nobody says the next part out loud" },
       {
         type: "p",
-        text: "Those spreadsheets are not a failure. Somebody built each one because the system would not answer the question, and the business has run on them ever since. That person — usually one person — is doing a data engineer's job by hand, on a Sunday, and has been for years.",
+        text: "Those spreadsheets are not a failure. Somebody built each one because the system would not answer the question, and the business has run on them ever since. That person - usually one person - is doing a data engineer's job by hand, on a Sunday, and has been for years.",
       },
       {
         type: "p",
@@ -170,7 +170,7 @@ const insightPosts: Post[] = [
           "Margin by branch is gross margin, so the branch that absorbs the deliveries and the returns still looks like the good one.",
           "Quotes outstanding has no win rate in it, and no record of which quotes went cold or why.",
           "Two price lists are in circulation and the trade counter has the older one.",
-          "Van costs sit in their own file, so cost to serve per drop — where the margin actually goes — is never in the same place as the margin.",
+          "Van costs sit in their own file, so cost to serve per drop - where the margin actually goes - is never in the same place as the margin.",
           "Credit limits were set once, years ago, on customers who have since doubled or halved.",
           "Rebate thresholds get hit or missed without anyone noticing until the quarter closes.",
         ],
@@ -199,7 +199,7 @@ const insightPosts: Post[] = [
       },
       {
         type: "p",
-        text: "The person who currently maintains the folder does not lose their job. They stop being the pipeline and start being the person who says what to do about what the numbers show — which is what you hired them for in the first place.",
+        text: "The person who currently maintains the folder does not lose their job. They stop being the pipeline and start being the person who says what to do about what the numbers show - which is what you hired them for in the first place.",
       },
       { type: "h2", text: "And you are not too small" },
       {
@@ -208,7 +208,7 @@ const insightPosts: Post[] = [
       },
       {
         type: "p",
-        text: "You are also the size where it pays back fastest. A large corporate needs a multi-year programme and a steering committee, because it has forty systems and nine countries to reconcile first. A hundred-person merchant needs a few months, because the whole operation genuinely fits in one layer — one stock system, one finance system, one CRM if you are lucky, and the folder in between.",
+        text: "You are also the size where it pays back fastest. A large corporate needs a multi-year programme and a steering committee, because it has forty systems and nine countries to reconcile first. A hundred-person merchant needs a few months, because the whole operation genuinely fits in one layer - one stock system, one finance system, one CRM if you are lucky, and the folder in between.",
       },
       {
         type: "p",
@@ -220,7 +220,7 @@ const insightPosts: Post[] = [
       },
       {
         type: "p",
-        text: "Every file in it is a question the business already decided was worth answering every week, and somebody has already done the hard thinking about what matters — they just had to do it in Excel. Build the layer that answers those eight questions properly and you have not started a data project. You have finished one that has been running by hand for years.",
+        text: "Every file in it is a question the business already decided was worth answering every week, and somebody has already done the hard thinking about what matters - they just had to do it in Excel. Build the layer that answers those eight questions properly and you have not started a data project. You have finished one that has been running by hand for years.",
       },
     ],
   },
@@ -241,7 +241,7 @@ const insightPosts: Post[] = [
       },
       {
         type: "p",
-        text: "The instinct is to call this a data problem. It usually isn't. The data exists — it is in the loan book, the CRM, the payment provider, the call system. The problem is that nobody has agreed, once, in one place, what a customer is, what a sale is, or which timestamp counts. So every report re-litigates it from scratch, by hand, in a workbook one person really understands.",
+        text: "The instinct is to call this a data problem. It usually isn't. The data exists - it is in the loan book, the CRM, the payment provider, the call system. The problem is that nobody has agreed, once, in one place, what a customer is, what a sale is, or which timestamp counts. So every report re-litigates it from scratch, by hand, in a workbook one person really understands.",
       },
       { type: "h2", text: "What that actually costs" },
       {
@@ -260,7 +260,7 @@ const insightPosts: Post[] = [
       { type: "h2", text: "The fix is boring" },
       {
         type: "p",
-        text: "You define the events once — a customer was created, an application was submitted, a payment was taken, a call was answered — and you store them immutably, with the time they happened. Then every report, every dashboard and every agent reads the same events.",
+        text: "You define the events once - a customer was created, an application was submitted, a payment was taken, a call was answered - and you store them immutably, with the time they happened. Then every report, every dashboard and every agent reads the same events.",
       },
       {
         type: "quote",
@@ -283,7 +283,7 @@ const insightPosts: Post[] = [
       },
       {
         type: "p",
-        text: "If three of those are true, the reporting is not your bottleneck — the absence of an agreed layer underneath it is. Remove the manual reporting entirely and the analyst you already employ becomes the person telling you what to do about the numbers.",
+        text: "If three of those are true, the reporting is not your bottleneck - the absence of an agreed layer underneath it is. Remove the manual reporting entirely and the analyst you already employ becomes the person telling you what to do about the numbers.",
       },
     ],
   },
@@ -303,7 +303,7 @@ const insightPosts: Post[] = [
       },
       {
         type: "p",
-        text: "A language model is very good at reasoning over what you give it, and completely indifferent to whether that thing is right. Point it at a warehouse where “active customer” means four different things and it will answer confidently, four different ways, and none of the answers will arrive flagged as suspect. You have not bought intelligence. You have bought a confident guessing machine — and one your team will believe for a while.",
+        text: "A language model is very good at reasoning over what you give it, and completely indifferent to whether that thing is right. Point it at a warehouse where “active customer” means four different things and it will answer confidently, four different ways, and none of the answers will arrive flagged as suspect. You have not bought intelligence. You have bought a confident guessing machine - and one your team will believe for a while.",
       },
       { type: "h2", text: "What an agent actually needs" },
       {
@@ -320,7 +320,7 @@ const insightPosts: Post[] = [
       },
       {
         type: "p",
-        text: "With those, an agent is reasoning over facts and becomes genuinely useful. Without them, every output needs a human to check it — which is exactly the cost you were trying to remove.",
+        text: "With those, an agent is reasoning over facts and becomes genuinely useful. Without them, every output needs a human to check it - which is exactly the cost you were trying to remove.",
       },
       { type: "h2", text: "The order matters more than the ambition" },
       {
@@ -338,7 +338,7 @@ const insightPosts: Post[] = [
       },
       {
         type: "p",
-        text: "So the sequence is: quality data first, then agents on top of it, then your people deployed where a human genuinely does it better. That last part is not the consolation prize. It is the whole return — nobody ever won a customer because their reporting reconciled.",
+        text: "So the sequence is: quality data first, then agents on top of it, then your people deployed where a human genuinely does it better. That last part is not the consolation prize. It is the whole return - nobody ever won a customer because their reporting reconciled.",
       },
     ],
   },
@@ -347,7 +347,7 @@ const insightPosts: Post[] = [
     kind: "insight",
     title: "Cost, revenue, conversion, time",
     excerpt:
-      "Four atomic units are enough to describe almost any operation — and to show you where the value is leaking out of it.",
+      "Four atomic units are enough to describe almost any operation - and to show you where the value is leaking out of it.",
     published: "2026-08-08",
     readingMinutes: 3,
     author: "Shaun Adams",
@@ -363,15 +363,15 @@ const insightPosts: Post[] = [
       {
         type: "ul",
         items: [
-          "Cost — what this step consumes.",
-          "Revenue — what it brings in.",
-          "Conversion — whether the thing progressed, and to what.",
-          "Time — how long it took, and how long it sat waiting.",
+          "Cost - what this step consumes.",
+          "Revenue - what it brings in.",
+          "Conversion - whether the thing progressed, and to what.",
+          "Time - how long it took, and how long it sat waiting.",
         ],
       },
       {
         type: "p",
-        text: "Those are the atomic units. Everything else — channel, product, region, underwriter, adviser, tier, cohort — is context layered on top. It sounds like a simplification and it is the opposite: once every activity carries those four measures plus its context, you can cut the entire business the same way and the totals still agree.",
+        text: "Those are the atomic units. Everything else - channel, product, region, underwriter, adviser, tier, cohort - is context layered on top. It sounds like a simplification and it is the opposite: once every activity carries those four measures plus its context, you can cut the entire business the same way and the totals still agree.",
       },
       { type: "h2", text: "Why this finds the leaks" },
       {
@@ -385,19 +385,19 @@ const insightPosts: Post[] = [
       { type: "h2", text: "What you do with it" },
       {
         type: "p",
-        text: "The output is not a bigger dashboard. It is a shortlist. When the whole stream is visible in one place, the argument stops being whose number is right and becomes which of these three things we fix this quarter — and you can put a value on each one before committing anybody to it.",
+        text: "The output is not a bigger dashboard. It is a shortlist. When the whole stream is visible in one place, the argument stops being whose number is right and becomes which of these three things we fix this quarter - and you can put a value on each one before committing anybody to it.",
       },
       { type: "quote", text: "The output is not a bigger dashboard. It is a shortlist." },
       {
         type: "p",
-        text: "It also gives you somewhere sensible to point the agents. Something chasing the documents that hold up a fifth of your cases is worth more than a chatbot on the front page — and you only know that is the bottleneck because you took time as seriously as you took revenue.",
+        text: "It also gives you somewhere sensible to point the agents. Something chasing the documents that hold up a fifth of your cases is worth more than a chatbot on the front page - and you only know that is the bottleneck because you took time as seriously as you took revenue.",
       },
     ],
   },
 ];
 
 /**
- * Case studies — delivered work, published with the client's permission.
+ * Case studies - delivered work, published with the client's permission.
  *
  * Every figure here comes from the signed case-study document. Two things are
  * deliberately absent: the size of DRA's book, which is their number to disclose
@@ -425,24 +425,24 @@ const caseStudyPosts: Post[] = [
     ],
     situation: [
       "All operational data sat in SQL Server; every report was pulled into Excel and assembled by hand, every month.",
-      "Every figure was “as of now” — no way to see the book as it stood at a past date, so nothing could be tracked month on month.",
+      "Every figure was “as of now” - no way to see the book as it stood at a past date, so nothing could be tracked month on month.",
       "Definitions varied between spreadsheets, so every new question from the board, a client or the FCA meant starting again.",
     ],
     work: [
       "A nightly automated feed into Google BigQuery, in their own cloud environment.",
-      "30+ governed views encoding the business's definitions once — revenue, collections, contact, service, Consumer Duty.",
+      "30+ governed views encoding the business's definitions once - revenue, collections, contact, service, Consumer Duty.",
       "Point-in-time history across the whole book: any figure, reconstructed at any month-end.",
-      "A reporting suite on top: an FCA Consumer Duty board report, a monthly client pack with a full audit trail, an operations pack that generates its own board PDF, and per-client reports — all in DRA's own brand.",
+      "A reporting suite on top: an FCA Consumer Duty board report, a monthly client pack with a full audit trail, an operations pack that generates its own board PDF, and per-client reports - all in DRA's own brand.",
       "Claude wired into the governed layer, with personal data kept out of it, so the reporting suite is prompt-driven and the team change their own reports.",
     ],
     outcome: [
       "Monthly packs that took days to assemble are produced in minutes, and every figure traces to a governed definition.",
       "Consumer Duty MI went from a once-a-year exercise to standing monthly measurement across roughly 60 metrics per client.",
-      "New questions are answered from the platform in hours — including ones the old reporting could not see at all.",
+      "New questions are answered from the platform in hours - including ones the old reporting could not see at all.",
       "Claude is now used across the organisation rather than in development alone, because it finally has governed data and business context to reason over.",
     ],
     quote: {
-      text: "The transparency and the speed the Acta Data team work at is refreshing. Being able to query our own data and build our own reports is the biggest step forward we've had in five years — and it has only been three months.",
+      text: "The transparency and the speed the Acta Data team work at is refreshing. Being able to query our own data and build our own reports is the biggest step forward we've had in five years - and it has only been three months.",
       name: "Tom Hill",
       role: "Chief Operating Officer, The Digital DRA",
     },
@@ -454,7 +454,7 @@ const caseStudyPosts: Post[] = [
       },
       {
         type: "p",
-        text: "The bigger problem was not the assembly work. It was that every figure was as of now. There was no way to see the book as it stood at a past month-end — so nothing could be tracked month on month. Not arrears movement, not collections performance, not whether a treatment was working.",
+        text: "The bigger problem was not the assembly work. It was that every figure was as of now. There was no way to see the book as it stood at a past month-end - so nothing could be tracked month on month. Not arrears movement, not collections performance, not whether a treatment was working.",
       },
       {
         type: "p",
@@ -467,7 +467,7 @@ const caseStudyPosts: Post[] = [
       { type: "h2", text: "The definitions were the real work" },
       {
         type: "p",
-        text: "Definitions varied between spreadsheets. So every new question — from the board, a client, or the FCA — started from scratch, and the answer depended on which workbook you asked.",
+        text: "Definitions varied between spreadsheets. So every new question - from the board, a client, or the FCA - started from scratch, and the answer depended on which workbook you asked.",
       },
       {
         type: "p",
@@ -475,7 +475,7 @@ const caseStudyPosts: Post[] = [
       },
       {
         type: "p",
-        text: "Then the part that made it trustworthy on day one: every figure was validated against the client's existing board numbers before go-live. Not reconciled afterwards — matched first, so nobody had to take the new platform on faith.",
+        text: "Then the part that made it trustworthy on day one: every figure was validated against the client's existing board numbers before go-live. Not reconciled afterwards - matched first, so nobody had to take the new platform on faith.",
       },
       { type: "h2", text: "Point-in-time history for the whole book" },
       {
@@ -488,7 +488,7 @@ const caseStudyPosts: Post[] = [
       },
       {
         type: "p",
-        text: "Seven reporting products now run on top of it: an FCA Consumer Duty board report, a monthly client pack with a full audit trail, an operations pack that generates its own board PDF, and per-client reports — all in DRA's own brand.",
+        text: "Seven reporting products now run on top of it: an FCA Consumer Duty board report, a monthly client pack with a full audit trail, an operations pack that generates its own board PDF, and per-client reports - all in DRA's own brand.",
       },
       { type: "h2", text: "It was built with their team, not around them" },
       {
@@ -497,7 +497,7 @@ const caseStudyPosts: Post[] = [
       },
       {
         type: "p",
-        text: "That split matters. The operational knowledge — why a number moves, which exception matters, what a client needs to see — was already in the building. It usually is. What was missing was somewhere to put it.",
+        text: "That split matters. The operational knowledge - why a number moves, which exception matters, what a client needs to see - was already in the building. It usually is. What was missing was somewhere to put it.",
       },
       { type: "h2", text: "Then we gave it to Claude" },
       {
@@ -506,7 +506,7 @@ const caseStudyPosts: Post[] = [
       },
       {
         type: "p",
-        text: "So the reporting suite became prompt-driven. Tom Hill, their COO, changes his own reports — no ticket, no developer, no waiting for us. Claude is now used across the organisation rather than in one corner of it.",
+        text: "So the reporting suite became prompt-driven. Tom Hill, their COO, changes his own reports - no ticket, no developer, no waiting for us. Claude is now used across the organisation rather than in one corner of it.",
       },
       {
         type: "p",
@@ -519,7 +519,7 @@ const caseStudyPosts: Post[] = [
       },
       {
         type: "p",
-        text: "That is the model. We set it up properly, and you take it as far as you want — with us, or on your own. The measure of the engagement is not how long we stay.",
+        text: "That is the model. We set it up properly, and you take it as far as you want - with us, or on your own. The measure of the engagement is not how long we stay.",
       },
       {
         type: "p",
@@ -555,7 +555,7 @@ export const hasCaseStudies = () => caseStudies().length > 0;
  * That derivation is the point: this line now appears on the home page, four
  * interior pages and the study itself, and a testimonial that says something
  * slightly different in one of those places is worse than no testimonial at all.
- * Change the client's words in one place — the case study — or nowhere.
+ * Change the client's words in one place - the case study - or nowhere.
  *
  * Returns undefined when no published study carries a quote, and every caller
  * renders nothing in that case, so removing the study cleanly removes the quote
@@ -575,7 +575,7 @@ export const featuredQuote = (): FeaturedQuote | undefined => {
   return { ...study.quote, client: study.client, href: `/blog/${study.slug}` };
 };
 
-/** en-GB, spelled out — "8 August 2026". */
+/** en-GB, spelled out - "8 August 2026". */
 export const formatDate = (iso: string) =>
   new Date(`${iso}T00:00:00Z`).toLocaleDateString("en-GB", {
     day: "numeric",

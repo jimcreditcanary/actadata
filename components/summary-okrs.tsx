@@ -2,7 +2,7 @@
  * OKR tracking against target.
  *
  * The bar shows progress; the tick shows where the business should be by now
- * (pace), which is the difference between a progress bar and target tracking —
+ * (pace), which is the difference between a progress bar and target tracking - 
  * 60% of the way to a number is good in month eleven and a problem in month two.
  * Status is derived from progress against pace, never hand-set, so the colour
  * can never disagree with the numbers next to it.
@@ -13,9 +13,9 @@ export type Okr = {
   /** Current value and target, already formatted for display. */
   current: string;
   target: string;
-  /** 0–100, progress toward target. */
+  /** 0-100, progress toward target. */
   progress: number;
-  /** 0–100, where they should be by this point in the quarter. */
+  /** 0-100, where they should be by this point in the quarter. */
   pace: number;
 };
 

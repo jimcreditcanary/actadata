@@ -3,7 +3,7 @@ import { Eyebrow } from "@/components/eyebrow";
 import { maintenanceMonthlyK, actaTimeToFirstOutput } from "@/lib/economics";
 
 /**
- * The shape of an engagement over time — the one thing /how-it-works has that
+ * The shape of an engagement over time - the one thing /how-it-works has that
  * the home page does not, and the answer to the question every prospect asks
  * second ("so what actually happens, and when?").
  *
@@ -16,7 +16,7 @@ const stages = [
     when: "Week one",
     what: "Something useful, already live",
     detail:
-      "We connect the first source, land the events in your BigQuery project and put a real number in front of you. Not a plan for a number — the number. It is deliberately the first thing we do, because it tells you whether you want to work with us.",
+      "We connect the first source, land the events in your BigQuery project and put a real number in front of you. Not a plan for a number - the number. It is deliberately the first thing we do, because it tells you whether you want to work with us.",
   },
   {
     when: "First month",
@@ -34,7 +34,7 @@ const stages = [
     when: "Months four to twelve",
     what: "Self-service, then agents",
     detail:
-      "We open the layer up to your team through Claude, with personal data walled off, so people can ask their own questions. Then we put agents onto the repetitive operational work — the chasing, the flagging, the routing — and keep your people on the decisions.",
+      "We open the layer up to your team through Claude, with personal data walled off, so people can ask their own questions. Then we put agents onto the repetitive operational work - the chasing, the flagging, the routing - and keep your people on the decisions.",
   },
   {
     when: "After twelve months",
@@ -63,7 +63,7 @@ export function EngagementTimeline() {
           </p>
         </div>
 
-        {/* A single rule down the left with a node per stage — reads as a sequence
+        {/* A single rule down the left with a node per stage - reads as a sequence
             on desktop and stacks without losing the thread on mobile. */}
         <ol className="mt-14 relative border-l border-white/[0.08] space-y-11 pl-7 md:pl-9">
           {stages.map(s => (

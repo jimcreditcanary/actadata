@@ -6,14 +6,14 @@ import { entryYearK, discoveryOneOffK } from "@/lib/economics";
  * For the business that reads all of this and decides it is for somebody else.
  *
  * Builders merchants, wholesalers, distributors, plant hire, family
- * manufacturers — businesses doing real volume with real margin pressure, who
+ * manufacturers - businesses doing real volume with real margin pressure, who
  * assume "data and AI" means tech companies. The objection is never "we don't
  * believe it works", it is "that is not us".
  *
  * The filenames are the whole device. Abstract talk about value streams does not
  * land with someone whose business genuinely runs on a shared drive; a list of
  * workbooks they recognise does, because they wrote them. Keep them specific,
- * keep the version suffixes, and keep them affectionate rather than mocking —
+ * keep the version suffixes, and keep them affectionate rather than mocking - 
  * these spreadsheets are the reason the business works, not a failure. The point
  * is that the person maintaining them is doing a data engineer's job by hand on a
  * Sunday.
@@ -21,7 +21,7 @@ import { entryYearK, discoveryOneOffK } from "@/lib/economics";
 const workbooks = [
   { file: "Stock take March FINAL v4.xlsx", cost: "Cash sitting on a shelf nobody has counted since March" },
   { file: "Debtors chase list (Dave's copy).xlsx", cost: "The only copy, and it leaves when Dave does" },
-  { file: "Margin by branch — DO NOT EDIT.xlsx", cost: "Gross margin, so the branch that eats the deliveries still looks fine" },
+  { file: "Margin by branch - DO NOT EDIT.xlsx", cost: "Gross margin, so the branch that eats the deliveries still looks fine" },
   { file: "Quotes outstanding wk32.xlsx", cost: "Nobody knows the win rate, or which quotes went cold and why" },
   { file: "Price list 2026 (new) (2).xlsx", cost: "Two versions in circulation, and the trade counter has the old one" },
   { file: "Van costs Sheet1.xlsx", cost: "Cost to serve per drop, which is where the margin actually goes" },
@@ -32,7 +32,7 @@ const workbooks = [
 /**
  * `compact` is the home rendering: the objection, the filenames and the
  * size argument. The three "what you get" columns come off, because home already
- * answers that question three times over — but the filename list stays, because
+ * answers that question three times over - but the filename list stays, because
  * it is the only part that makes somebody recognise themselves.
  */
 export function NotATechCompany({ compact = false }: { compact?: boolean }) {
@@ -57,7 +57,7 @@ export function NotATechCompany({ compact = false }: { compact?: boolean }) {
             {!compact && (
               <>
                 {" "}
-                If that is you, this is more for you than it is for the tech companies — because
+                If that is you, this is more for you than it is for the tech companies - because
                 you are the one still doing it by hand.
               </>
             )}
@@ -101,13 +101,13 @@ export function NotATechCompany({ compact = false }: { compact?: boolean }) {
           </p>
         </div>
 
-        {/* What they get, in their own terms — not "insight", answers. */}
+        {/* What they get, in their own terms - not "insight", answers. */}
         {!compact && (
         <div className="mt-14 grid gap-x-10 gap-y-9 md:grid-cols-3">
           {[
             {
               t: "Which customers actually make you money",
-              d: "Not gross margin — margin after the deliveries, the returns, the credit you carry and the time your team spends on them. Most merchants find a handful of their biggest accounts are their worst.",
+              d: "Not gross margin - margin after the deliveries, the returns, the credit you carry and the time your team spends on them. Most merchants find a handful of their biggest accounts are their worst.",
             },
             {
               t: "What is dead on the shelf",
@@ -115,7 +115,7 @@ export function NotATechCompany({ compact = false }: { compact?: boolean }) {
             },
             {
               t: "Which branch, van or rep is carrying the others",
-              d: "The same numbers for every part of the business, worked out the same way — so the comparison is an argument about what to do rather than about whose spreadsheet is right.",
+              d: "The same numbers for every part of the business, worked out the same way - so the comparison is an argument about what to do rather than about whose spreadsheet is right.",
             },
           ].map(x => (
             <div key={x.t}>
@@ -137,7 +137,7 @@ export function NotATechCompany({ compact = false }: { compact?: boolean }) {
               <p>
                 In a large corporate, doing this properly is a multi-year programme with a steering
                 committee. In a business of forty or a hundred people it is a few months, because
-                the whole operation genuinely fits in one layer — one stock system, one finance
+                the whole operation genuinely fits in one layer - one stock system, one finance
                 system, one CRM if you are lucky, and the spreadsheets in between.
               </p>
               )}
@@ -145,7 +145,7 @@ export function NotATechCompany({ compact = false }: { compact?: boolean }) {
                 And the payback is not a nicer report. It is one dead product line cleared, one
                 bad account repriced, one rebate threshold hit that you would otherwise have
                 missed. At £{entryYearK}k a year for a single area, that arithmetic tends to work
-                out quickly — or start with the £{discoveryOneOffK}k map and see the numbers before
+                out quickly - or start with the £{discoveryOneOffK}k map and see the numbers before
                 you commit to anything.
               </p>
             </div>

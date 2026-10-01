@@ -9,7 +9,7 @@ import { OgCard, OG_SIZE, ogFonts } from "@/components/og-card";
 export const size = OG_SIZE;
 export const contentType = "image/png";
 export const alt =
-  "Acta Data — clean, model, alert, act. Cost, revenue, conversion and time on every activity.";
+  "Acta Data - clean, model, alert, act. Cost, revenue, conversion and time on every activity.";
 
 export default function Image() {
   return new ImageResponse(
@@ -17,7 +17,7 @@ export default function Image() {
       <OgCard
         kicker="How it works"
         lines={["Clean. Model.", "Alert. Act."]}
-        sub="Every system in, recorded once, and then it works for you — reporting, exceptions, agents."
+        sub="Every system in, recorded once, and then it works for you - reporting, exceptions, agents."
         chips={["Cost", "Revenue", "Conversion", "Time"]}
         accentLastChip={false}
       />

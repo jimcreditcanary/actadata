@@ -1,5 +1,5 @@
 /**
- * Balanced scorecard — the top block of the Summary Page.
+ * Balanced scorecard - the top block of the Summary Page.
  *
  * Deliberately the four Kaplan & Norton perspectives rather than a pile of
  * whatever metrics happen to be available. That is the whole point of a
@@ -9,7 +9,7 @@
  * actually matters.
  *
  * RAG is against target, and in the real product it is derived from the metric
- * tree — never typed in by whoever built the slide. The values here are
+ * tree - never typed in by whoever built the slide. The values here are
  * illustrative, so they are authored.
  */
 export const PERSPECTIVES = ["Financial", "Customer", "Operations", "People & growth"] as const;
@@ -37,7 +37,7 @@ const RAG: Record<Rag, { dot: string; text: string; label: string }> = {
   red: { dot: "#F87171", text: "text-red-400", label: "Off plan" },
 };
 
-/** Inline sparkline — hand-rolled so eight of them cost no charting library. */
+/** Inline sparkline - hand-rolled so eight of them cost no charting library. */
 function Spark({ data, rag }: { data: number[]; rag: Rag }) {
   const w = 60;
   const h = 16;
